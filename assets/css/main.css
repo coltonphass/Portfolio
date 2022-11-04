@@ -206,7 +206,7 @@ a {
   -ms-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
   color: #ffc400;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:hover {
@@ -2250,7 +2250,7 @@ body > article {
   line-height: 1.75em;
 }
 
-#top p a {
+#top p a, #contact a {
   color: inherit;
 }
 
