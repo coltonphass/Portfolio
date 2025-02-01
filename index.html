@@ -1,176 +1,506 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <link rel="shortcut icon" type="x-icon" href="portfolio.png">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Google Fots -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <!-- Remixicon Icon -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- Remixicon Icon -->
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <!-- Main CSS -->
-    <link href="assets/css/main.css" rel="stylesheet">
-    <title>Colton Phass Portfolio</title>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="global.css" />
   </head>
+
   <body>
-    
-    <!-- header -->
-    <header class="ds-header">
-      <div class="container">
-          <div class="ds-logo">
-            <a href="index.html">Phass</a>
-          </div>
+    <section id="hero-1203">
+      <div class="cs-container">
+        <div class="cs-content">
+          <span class="cs-topper">Welcome to my Portfolio</span>
+          <h1 class="cs-title">My name is Colton Phass</h1>
+          <p class="cs-text">
+            I’m a software developer from Havre de Grace, Maryland.
+          </p>
+          <a
+            href="Colton Phass Resume.pdf"
+            target="_blank"
+            class="cs-button-solid"
+            >My Resume</a
+          >
+        </div>
+        <!--To make your own background crops of people use https://www.remove.bg/-->
+        <picture class="cs-picture">
+          <source media="(max-width: 601px)" srcset="images/portrait.png" />
+          <source media="(min-width: 601px)" srcset="images/portrait.png" />
+          <img
+            aria-hidden="true"
+            decoding="async"
+            src="images/portrait.png"
+            alt="accountant"
+            width="886"
+            height="842"
+          />
+        </picture>
       </div>
-    </header>
-    <!-- header -->
-    <!-- banner -->
-    <section class="ds-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-sm-12  col-md-6  col-lg-7  col-xl-7  col-xxl-7 ds-banner-left">
-              <h1 class="ds-banner-hed">
-                I’m a software developer from Havre de Grace, Maryland.
-              </h1>
-              <ul class="ds-social">
-                <li><a href="https://github.com/coltonphass" target="_blanck"><i class="ri-github-fill"></i></a></li>
-                <li><a href="https://stackoverflow.com/users/26387000/colton-phass" target="_blanck"><i class="ri-stack-overflow-line"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/colton-phass-61223a255/" target="_blanck"><i class="ri-linkedin-fill"></i></a></li>
-              </ul>
+      <!--Floating Arrow-->
+      <img
+        class="cs-floater"
+        aria-hidden="true"
+        decoding="async"
+        src="images/background/space.png"
+        alt="accountant"
+        width="1465"
+        height="950"
+      />
+    </section>
+
+    <div id="wrapper-1639">
+      <!-- ============================================ -->
+      <!--                  Services                    -->
+      <!-- ============================================ -->
+
+      <section id="services-1639">
+        <div class="cs-container">
+          <ul class="cs-card-group">
+            <li class="cs-item">
+              <div class="cs-flex">
+                <h2 class="cs-h2">Tech Stack</h2>
+                <p class="cs-item-text">
+                  Proficient in modern web technologies and frameworks, with
+                  hands-on experience in full-stack development including HTML,
+                  CSS, JS, Python, and C/C++.
+                </p>
+              </div>
+              <img
+                class="cs-icon"
+                loading="lazy"
+                decoding="async"
+                src="images/icons/icons8-stack-50.png"
+                alt="icon"
+                width="48"
+                height="48"
+              />
+            </li>
+            <li class="cs-item">
+              <div class="cs-flex">
+                <h2 class="cs-h2">Problem Solver</h2>
+                <p class="cs-item-text">
+                  Turning complex challenges into elegant solutions through
+                  clean code and efficient algorithms. Passionate about
+                  optimizing performance and user experience.
+                </p>
+              </div>
+              <img
+                class="cs-icon"
+                loading="lazy"
+                decoding="async"
+                src="images/icons/icons8-problem-solving-50.png"
+                alt="icon"
+                width="48"
+                height="48"
+              />
+            </li>
+            <li class="cs-item">
+              <div class="cs-flex">
+                <h2 class="cs-h2">Development Approach</h2>
+                <p class="cs-item-text">
+                  Continuously exploring new technologies while building on
+                  solid fundamentals. Strong focus on writing efficient,
+                  scalable code
+                </p>
+              </div>
+              <img
+                class="cs-icon"
+                loading="lazy"
+                decoding="async"
+                src="images/icons/icons8-development-50.png"
+                alt="icon"
+                width="48"
+                height="48"
+              />
+            </li>
+            <li class="cs-item">
+              <div class="cs-flex">
+                <h2 class="cs-h2">Code Quality</h2>
+                <p class="cs-item-text">
+                  Committed to writing maintainable, well-documented code. Focus
+                  on testing, version control, and industry best practices.
+                </p>
+              </div>
+              <img
+                class="cs-icon"
+                loading="lazy"
+                decoding="async"
+                src="images/icons/icons8-quality-50.png"
+                alt="icon"
+                width="48"
+                height="48"
+              />
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!--                Side By Side                  -->
+      <!-- ============================================ -->
+
+      <section id="sbs-1639">
+        <div class="cs-container">
+          <div class="cs-content">
+            <span class="cs-topper">About Me</span>
+            <h2 class="cs-title">
+              I am a self driven programmer with a passion for coding.
+            </h2>
+            <picture class="cs-picture">
+              <!--Mobile Image-->
+              <source media="(max-width: 600px)" srcset="images/code.png" />
+              <!--Tablet and above Image-->
+              <source media="(min-width: 601px)" srcset="images/code.png" />
+              <img
+                loading="lazy"
+                decoding="async"
+                src="images/code.png"
+                alt="people"
+                width="608"
+                height="406"
+              />
+            </picture>
           </div>
-          <div class="col-12 col-sm-12  col-md-6  col-lg-5  col-xl-5  col-xxl-5">
-            <figure>
-              <img src="assets/images/pic02.jpg" class="ds-image-shadow">
-              <figcaption>Colton Phass</figcaption>
-            </figure>
+          <div class="cs-stats-group">
+            <p class="cs-text">
+              At 23, I'm a dedicated programmer with over 3 years of coding
+              experience and a degree in Computer Information Systems.
+              Throughout my academic journey, I maintained straight A's in all
+              programming courses, demonstrating both my passion and aptitude
+              for software development.
+            </p>
+            <p class="cs-text">
+              My journey in tech goes beyond just academics - I'm constantly
+              building, learning, and pushing my boundaries in both frontend and
+              backend development. Whether it's crafting responsive web
+              applications or diving deep into C++ algorithms, I approach each
+              project with enthusiasm and attention to detail.
+            </p>
+            <ul class="cs-stats">
+              <li class="cs-stat">
+                <span class="cs-number">3+</span>
+                <span class="cs-desc">Years Coding</span>
+              </li>
+              <li class="cs-stat">
+                <span class="cs-number">100+</span>
+                <span class="cs-desc">GitHub Contributions</span>
+              </li>
+              <li class="cs-stat">
+                <span class="cs-number">15+</span>
+                <span class="cs-desc">Completed Projects</span>
+              </li>
+            </ul>
           </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================ -->
+    <!--                  Gallery                     -->
+    <!-- ============================================ -->
+
+    <section id="gallery-1716">
+      <div class="cs-container">
+        <div class="cs-content">
+          <span class="cs-topper">PROJECT SHOWCASE</span>
+          <h2 class="cs-title">My Work</h2>
+          <!--If you remove the cs-text, the rectangle shape will disappear.  If you need to remove it, transfer the :before and .cs-text:last-of-type styles to the cs-title on mobile and desktop-->
+          <p class="cs-text">View some of my git repos</p>
+          <a
+            href="https://github.com/coltonphass"
+            target="_blank"
+            class="cs-button-solid"
+            >View All</a
+          >
+        </div>
+        <div class="cs-gallery">
+          <picture class="cs-picture">
+            <!--Mobile Image-->
+            <source media="(max-width: 600px)" srcset="images/gifs/demo.gif" />
+            <!--Tablet and above Image-->
+            <source media="(min-width: 601px)" srcset="images/gifs/demo.gif" />
+            <img
+              loading="lazy"
+              decoding="async"
+              src="images/gifs/demo.gif"
+              alt="picture"
+              width="480"
+              height="549"
+            />
+          </picture>
+          <picture class="cs-picture">
+            <!--Mobile Image-->
+            <source media="(max-width: 600px)" srcset="images/gifs/demo2.gif" />
+            <!--Tablet and above Image-->
+            <source media="(min-width: 601px)" srcset="images/gifs/demo2.gif" />
+            <img
+              loading="lazy"
+              decoding="async"
+              srcset="images/gifs/demo3.gif"
+              alt="picture"
+              width="480"
+              height="549"
+            />
+          </picture>
+          <picture class="cs-picture">
+            <!--Mobile Image-->
+            <source media="(max-width: 600px)" srcset="images/gifs/demo3.gif" />
+            <!--Tablet and above Image-->
+            <source media="(min-width: 601px)" srcset="images/gifs/demo3.gif" />
+            <img
+              loading="lazy"
+              decoding="async"
+              srcset="images/gifs/demo3.gif"
+              alt="picture"
+              width="480"
+              height="549"
+            />
+          </picture>
         </div>
       </div>
     </section>
-    <!-- banner -->
-    <!-- resume -->
-    <section class="ds-resume-section">
-      <div class="container">
-          <div class="row">
-              <div class="col-12 col-sm-12  col-md-6  col-lg-6  col-xl-6  col-xxl-6">
-                <h2>I am passionate about making creative and engaging software</h2>
-              </div>
-              <div class="col-12 col-sm-12  col-md-6  col-lg-6  col-xl-6  col-xxl-6">
-                <p>I am skilled in C/C++, Java, JavaScript, HTML5, CSS, Python, Markdown, and Wordpress, with experience creating dynamic and static websites. My background includes creative school projects in C/C++. As an honor student and member of the Phi Theta Kappa society, I am currently engaged in a research group contract with two outstanding professors, focusing on web development. I am known for my active and engaged approach to learning.</p>
-                <a href="assets/Colton Phass Resume.pdf" class="ds-download-button">Download Resume <i class="ri-download-line"></i></a>
-              </div>
-          </div>
+
+    <!-- ============================================ -->
+    <!--                   Contact                    -->
+    <!-- ============================================ -->
+
+    <section id="contact-1105">
+      <div class="cs-container">
+        <div class="cs-content">
+          <span class="cs-topper">Contact Me</span>
+          <h2 class="cs-title">Make An Appointment</h2>
+          <!-- Form with Formspree Integration -->
+          <form
+            class="cs-form"
+            id="cs-form-1105"
+            name="Contact Form"
+            method="POST"
+            action="https://formspree.io/f/xyzkjpnv"
+          >
+            <label class="cs-label">
+              Name
+              <input
+                class="cs-input"
+                required
+                type="text"
+                name="name"
+                placeholder="Name"
+              />
+            </label>
+            <label class="cs-label cs-email">
+              Email
+              <input
+                class="cs-input"
+                required
+                type="email"
+                name="email"
+                placeholder="Email"
+              />
+            </label>
+            <label class="cs-label cs-phone">
+              Phone
+              <input
+                class="cs-input"
+                required
+                type="tel"
+                name="phone"
+                placeholder="Phone"
+              />
+            </label>
+            <label class="cs-label">
+              Message
+              <textarea
+                class="cs-input cs-textarea"
+                required
+                name="message"
+                placeholder="Write message..."
+              ></textarea>
+            </label>
+            <button class="cs-button-solid cs-submit" type="submit">
+              Make an Appointment
+            </button>
+          </form>
+          <!-- Success Message -->
+          <p id="success-message" style="display: none; color: green">
+            ✅ Your message has been sent successfully!
+          </p>
+        </div>
+
+        <ul class="cs-ul">
+          <li class="cs-li">
+            <picture class="cs-icon-wrapper">
+              <img
+                aria-hidden="true"
+                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/mech-phone.svg"
+                alt="phone icon"
+                class="cs-icon"
+                width="40"
+                height="40"
+                decoding="async"
+              />
+            </picture>
+            <div class="cs-flex-group">
+              <span class="cs-header">Phone</span>
+              <a href="tel:443-655-6886" class="cs-link">+1 (443) 655 6886</a>
+            </div>
+          </li>
+          <li class="cs-li">
+            <picture class="cs-icon-wrapper">
+              <img
+                aria-hidden="true"
+                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/mech-email.svg"
+                alt="mail icon"
+                class="cs-icon"
+                width="40"
+                height="40"
+                decoding="async"
+              />
+            </picture>
+            <div class="cs-flex-group">
+              <span class="cs-header">Email</span>
+              <a href="mailto:coltonsphass@gmail.com" class="cs-link"
+                >coltonsphass@gmail.com</a
+              >
+            </div>
+          </li>
+          <li class="cs-li">
+            <picture class="cs-icon-wrapper">
+              <img
+                aria-hidden="true"
+                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/mech-pin.svg"
+                alt="address icon"
+                class="cs-icon"
+                width="40"
+                height="40"
+                decoding="async"
+              />
+            </picture>
+            <div class="cs-flex-group">
+              <span class="cs-header">Location</span>
+              <a href="https://g.co/kgs/BDXt6NM" class="cs-link"
+                >Edgewood, Maryland.</a
+              >
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
-    <!-- projects -->
-    <section class="ds-projects-section">
-      <div class="container">
-          <h2><span>projects</span>Check out a few of my recent projects.</h2>
-          <div class="row ds-projects-listing-section">
-            <div class="col-12 col-sm-12  col-md-4  col-lg-4  col-xl-4  col-xxl-4 ds-projects-loop">
-                <figure>
-                  <a href="https://github.com/coltonphass/Super-Tic-Tac-Toe" target="_blanck" class="ds-link-button"><i class="ri-external-link-line"></i></a>
-                  <img src="assets/images/demo.gif" class="ds-image-shadow transition">
-                </figure>
-                <section>
-                  <h3>Super Tic Tac Toe</h3>
-                  <span>An adjustable up to 9x9 tic tac toe game made in C/C++.</span>
-                </section>
-            </div>
-            <div class="col-12 col-sm-12  col-md-4  col-lg-4  col-xl-4  col-xxl-4 ds-projects-loop">
-                <figure>
-                  <a href="https://github.com/coltonphass/Combat-Simulator" target="_blanck" class="ds-link-button"><i class="ri-external-link-line"></i></a>
-                  <img src="assets/images/demo2.gif" class="ds-image-shadow transition">
-                </figure>
-                <section>
-                  <h3>Combat Simulator</h3>
-                  <span>A very simple text based combat sim in C/C++</span>
-                </section>
-            </div>
-            <div class="col-12 col-sm-12  col-md-4  col-lg-4  col-xl-4  col-xxl-4 ds-projects-loop">
-                <figure>
-                  <a href="https://github.com/coltonphass/SlidingPuzzle" target="_blanck" class="ds-link-button"><i class="ri-external-link-line"></i></a>
-                  <img src="assets/images/demo4.gif" class="ds-image-shadow transition">
-                </figure>
-                <section>
-                  <h3>Sliding Puzzle</h3>
-                  <span>a simple windows c++ sliding puzzle minigame.</span>
-                </section>
-            </div>
-          </div>
-      </div>
-    </section>
-    <!-- projects -->
-    <!-- testimonials -->
-    <section class="ds-testimonials-section">
-      <div class="container">
-          <h2><span>Goals</span></h2>
-          <div class="ds-testimonials-slider">
-            <div class="ds-testimonials-loop">
-              <article>
-                As I prepare to graduate with a degree in CIS and programming this spring, my focus is on expanding my skills and knowledge in software development. I am eager to explore new programming languages and technologies, aiming to deepen my current understanding and tackle challenges in the field.
-              </article>
-              <section>
-                <span class="ds-name">Colton Phass</span>
-                <span class="ds-post">Entry level programmer</span>
-              </section>
-            </div>
-            <div class="ds-testimonials-loop">
-              <article>
-                Beyond programming skills, I desire to utilize technology for societal good. My goal is to contribute to projects that promote healing, support outreach, and innovation in current tech solutions. I am motivated to become a programmer who makes a meaningful impact on communities.
-              </article>
-              <section>
-                <span class="ds-name">Colton Phass</span>
-                <span class="ds-post">Entry level programmer</span>
-              </section>
-            </div>
-            <div class="ds-testimonials-loop">
-              <article>
-                My goal after graduation is to pursue a career in back-end development, utilizing my skills obtained from college and knowledge of C++ & Java. I am passionate about building server side applications and find it quite exciting to work with conditonal logic.
-              </article>
-                <section>
-                  <span class="ds-name">Colton Phass</span>
-                  <span class="ds-post">Entry level programmer</span>
-                </section>
-        
-           
-            </div>
-          </div>
-      </div>
-    </section>
-    <!-- testimonials -->
-    <section class="ds-email-section">
-       <div class="container">
-          <h2>I'm available for work</h2>
-          <a href="mailto:coltonsphass@gmail.com">coltonsphass@gmail.com</a>
-       </div>
-    </section>
-    <!-- footer -->
-    <footer class="ds-footer">
-      <div class="container">
-        <span class="ds-copyright">© 2020 All right reserved. <br><a href="https://www.designstub.com/" target="_blanck">Free minimal bootstrap template by Designstub.</span>
+
+    <!-- JavaScript for Form Submission -->
+    <script>
+      document
+        .getElementById("cs-form-1105")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          var form = this;
+          var formData = new FormData(form);
+
+          fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: { Accept: "application/json" },
+          })
+            .then((response) =>
+              response.ok ? response.json() : Promise.reject(response)
+            )
+            .then(() => {
+              document.getElementById("success-message").style.display =
+                "block";
+              form.reset();
+            })
+            .catch((error) =>
+              alert("❌ Error sending message. Please try again.")
+            );
+        });
+    </script>
+
+    <!-- ============================================ -->
+    <!--                  Footer                      -->
+    <!-- ============================================ -->
+    <footer id="footer-1390">
+      <div class="cs-container">
+        <div class="cs-top">
+          <a aria-label="go back to home" class="cs-logo" href="/">
+            <img
+              class="cs-logo-img"
+              loading="lazy"
+              decoding="async"
+              src="images/Adobe Express - file.png"
+              alt="logo"
+              width="209"
+              height="40"
+            />
+          </a>
+        </div>
+        <div class="cs-bottom">
+          <!--Social-->
+          <ul class="cs-social">
+            <li class="cs-social-li">
+              <a
+                href="#"
+                class="cs-social-link"
+                aria-label="github"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  class="cs-social-icon cs-default"
+                  src="images/icons/icons8-github-100.png"
+                  alt="github icon"
+                  loading="lazy"
+                  decoding="async"
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+            <li class="cs-social-li">
+              <a
+                href="#"
+                class="cs-social-link"
+                aria-label="twitter"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  class="cs-social-icon cs-default"
+                  src="images/icons/icons8-x-100.png"
+                  alt="twitter icon"
+                  loading="lazy"
+                  decoding="async"
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+            <li class="cs-social-li">
+              <a
+                href="#"
+                class="cs-social-link"
+                aria-label="linkedin"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  class="cs-social-icon cs-default"
+                  src="images/icons/icons8-linkedin-128.png"
+                  alt="linkedin icon"
+                  loading="lazy"
+                  decoding="async"
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </footer>
-    <!-- footer -->
-    <!-- Optional JavaScript; choose one of the two! -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        
-    <script src="assets/js/main.js"></script>
   </body>
 </html>
