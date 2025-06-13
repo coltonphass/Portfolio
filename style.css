@@ -896,14 +896,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1.0rem;
   }
   #footer-1390 .cs-social-li {
     list-style: none;
   }
   #footer-1390 .cs-social-link {
-    width: 2rem;
-    height: 2rem;
+    width: 4rem;
+    height: 4rem;
     background-color: #484848;
     border-radius: 50%;
     display: flex;
@@ -919,7 +919,7 @@
     opacity: 1;
   }
   #footer-1390 .cs-social-icon {
-    width: 1.75rem;
+    width: 2.75rem;
     height: auto;
     display: block;
     opacity: 0.6;
