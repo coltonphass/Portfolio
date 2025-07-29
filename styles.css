@@ -757,6 +757,11 @@ body {
     padding: 0.3rem 1rem;
     border-radius: 15px;
     display: inline-block;
+    margin-left: auto;
+}
+
+.project-meta {
+    display: flex;
 }
 
 .project-name {
@@ -1183,3 +1188,10 @@ body {
                 padding: 40px 10px;
             }
         }
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
+    gap: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
