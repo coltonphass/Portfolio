@@ -1,154 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Contact - Colton Phass</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="bg-elements">
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
     </div>
-    
+
     <div class="contact-form-container">
-        <div class="contact-form-header">
-            <h1 class="contact-form-title">CONTACT</h1>
-            <p class="contact-form-subtitle">Let's build something together</p>
+      <div class="contact-form-header">
+        <h1 class="contact-form-title">CONTACT</h1>
+        <p class="contact-form-subtitle">Let's build something together</p>
+      </div>
+
+      <form
+        class="contact-form"
+        id="cs-form-1105"
+        action="https://formspree.io/f/xyzkjpnv"
+        method="POST"
+      >
+        <div class="rate-limit-notice">
+          <strong>Spam Protection:</strong> This form includes validation to
+          prevent spam. Please allow a moment for submission.
         </div>
 
-        <form class="contact-form" id="cs-form-1105" action="https://formspree.io/f/xyzkjpnv" method="POST">
-            <div class="rate-limit-notice">
-                <strong>Spam Protection:</strong> This form includes validation to prevent spam. Please allow a moment for submission.
-            </div>
-
-            <div class="form-group">
-                <label for="name" class="form-label">Name *</label>
-                <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    required 
-                    class="form-input"
-                    placeholder="Your full name"
-                    maxlength="100"
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="email" class="form-label">Email *</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    required 
-                    class="form-input"
-                    placeholder="your.email@example.com"
-                    maxlength="254"
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="subject" class="form-label">Subject *</label>
-                <input 
-                    type="text" 
-                    id="subject" 
-                    name="subject" 
-                    required 
-                    class="form-input"
-                    placeholder="What's this about?"
-                    maxlength="200"
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="message" class="form-label">Message *</label>
-                <textarea 
-                    id="message" 
-                    name="message" 
-                    required 
-                    class="form-textarea"
-                    placeholder="Tell me about your project, question, or just say hi!"
-                    maxlength="2000"
-                ></textarea>
-            </div>
-
-            <!-- Honeypot field - hidden from users -->
-            <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
-
-            <button type="submit" class="submit-button" id="submitBtn">
-                Send Message
-            </button>
-
-            <div class="form-status success" id="success-message" style="display: none;">
-                ✅ Message sent successfully! I'll get back to you soon.
-            </div>
-        </form>
-
-        <div class="back-link-container">
-            <a href="resume.html" class="back-link">Back to Resume</a>
+        <div class="form-group">
+          <label for="name" class="form-label">Name *</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="form-input"
+            placeholder="Your full name"
+            maxlength="100"
+          />
         </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email *</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="form-input"
+            placeholder="your.email@example.com"
+            maxlength="254"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="subject" class="form-label">Subject *</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            required
+            class="form-input"
+            placeholder="What's this about?"
+            maxlength="200"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">Message *</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            class="form-textarea"
+            placeholder="Tell me about your project, question, or just say hi!"
+            maxlength="2000"
+          ></textarea>
+        </div>
+
+        <!-- Honeypot field - hidden from users -->
+        <input
+          type="text"
+          name="_gotcha"
+          class="honeypot"
+          tabindex="-1"
+          autocomplete="off"
+        />
+
+        <button type="submit" class="submit-button" id="submitBtn">
+          Send Message
+        </button>
+
+        <div
+          class="form-status success"
+          id="success-message"
+          style="display: none"
+        >
+          ✅ Message sent successfully! I'll get back to you soon.
+        </div>
+      </form>
+
+      <div class="back-link-container">
+        <a href="resume.html" class="back-link">Back to Resume</a>
+      </div>
     </div>
 
     <!-- JavaScript for Form Submission -->
     <script>
-        document.getElementById("cs-form-1105").addEventListener("submit", function (e) {
-            e.preventDefault();
-            var form = this;
-            var formData = new FormData(form);
-            
-            // Show loading state
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: { Accept: "application/json" },
-            })
+      document
+        .getElementById("cs-form-1105")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          var form = this;
+          var formData = new FormData(form);
+
+          // Show loading state
+          const submitBtn = document.getElementById("submitBtn");
+          const originalText = submitBtn.textContent;
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending...";
+
+          fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: { Accept: "application/json" },
+          })
             .then((response) =>
-                response.ok ? response.json() : Promise.reject(response)
+              response.ok ? response.json() : Promise.reject(response)
             )
             .then(() => {
-                document.getElementById("success-message").style.display = "block";
-                form.reset();
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+              document.getElementById("success-message").style.display =
+                "block";
+              form.reset();
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
             })
             .catch((error) => {
-                alert("❌ Error sending message. Please try again.");
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+              alert("❌ Error sending message. Please try again.");
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
             });
         });
 
-        // Enhanced form validation feedback
-        const inputs = document.querySelectorAll('.form-input, .form-textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                if (this.hasAttribute('required') && !this.value.trim()) {
-                    this.style.borderColor = 'rgba(231, 76, 60, 0.5)';
-                } else if (this.type === 'email' && this.value && !isValidEmail(this.value)) {
-                    this.style.borderColor = 'rgba(231, 76, 60, 0.5)';
-                } else {
-                    this.style.borderColor = 'rgba(78, 205, 196, 0.2)';
-                }
-            });
-            
-            input.addEventListener('focus', function() {
-                this.style.borderColor = '#4ecdc4';
-            });
+      // Enhanced form validation feedback
+      const inputs = document.querySelectorAll(".form-input, .form-textarea");
+      inputs.forEach((input) => {
+        input.addEventListener("blur", function () {
+          if (this.hasAttribute("required") && !this.value.trim()) {
+            this.style.borderColor = "rgba(231, 76, 60, 0.5)";
+          } else if (
+            this.type === "email" &&
+            this.value &&
+            !isValidEmail(this.value)
+          ) {
+            this.style.borderColor = "rgba(231, 76, 60, 0.5)";
+          } else {
+            this.style.borderColor = "rgba(78, 205, 196, 0.2)";
+          }
         });
 
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
+        input.addEventListener("focus", function () {
+          this.style.borderColor = "#4ecdc4";
+        });
+      });
+
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
     </script>
-</body>
+  </body>
 </html>
