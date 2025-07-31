@@ -1021,7 +1021,6 @@ body {
   font-weight: 200;
   letter-spacing: clamp(0.3em, 2vw, 0.8em);
   margin-bottom: 2rem;
-  margin-left: 50px;
   color: #ecf0f1;
   text-transform: uppercase;
   animation: titleGlow 3s ease-in-out infinite alternate;
