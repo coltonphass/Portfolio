@@ -1,189 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
     <title>Colton Phass - Resume</title>
-</head>
-<body>
-    <div class="bg-elements">
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-    </div>
-    
-    <div class="resume-container">
-        <div class="resume-header">
-            <h1 class="resume-name">COLTON PHASS</h1>
-            <h2 class="resume-title">FULLSTACK DEVELOPER</h2>
-            
-            <img src="/images/coltonpfp.png" alt="Colton Phass Profile Picture" class="profile-image">
-            
-            <div class="contact-section">
-        <a href="contact.html" class="summon-button">EMAIL ME</a>
-            </div>
-            
-            <ul class="social-links">
-                <li>
-                    <a href="https://github.com/coltonphass" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
-                        <img src="images/icons/icons8-github-100.png" alt="GitHub" class="social-icon">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://x.com/coltonphass" class="social-link" aria-label="Twitter/X" target="_blank" rel="noopener">
-                        <img src="images/icons/icons8-x-100.png" alt="Twitter/X" class="social-icon">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/colton-phass-61223a255/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
-                        <img src="images/icons/icons8-linkedin-128.png" alt="LinkedIn" class="social-icon">
-                    </a>
-                </li>
-            </ul>
-        </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <section class="resume-section projects-section" id="projects">
-            <h2 class="section-title">LATEST PROJECT</h2>
-            
-            <div class="project-showcase">
-<img src="/images/projects/blackjack.gif" alt="Blackjack game" class="project-display">
-                
-                <h3 class="project-name">Web Game Collection (Blackjack)</h3>
-                <p class="project-description">
-                    Currently working on some browser games for fun and to practice JS
-                </p>
-                <a href="https://coltonsgames.netlify.app/html/blackjack.html" class="project-link" target="_blank" rel="noopener">View on Netlify</a>
-            </div>            <div style="text-align: center; margin-top: 2rem;">
-                <a href="allprojects.html" class="view-projects-link" rel="noopener">View more projects »</a>
-            </div>
-        </section>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Resume of Colton Phass, Fullstack Developer. Explore skills, experience, education, and projects."
+    />
+    <meta
+      name="keywords"
+      content="Colton Phass, Resume, Fullstack Developer, Skills, Experience, Education, Projects"
+    />
+    <meta name="author" content="Colton Phass" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Colton Phass - Resume" />
+    <meta
+      property="og:description"
+      content="Resume of Colton Phass, Fullstack Developer. Explore skills, experience, education, and projects."
+    />
+    <meta property="og:url" content="https://coltonphass.com/resume.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Colton Phass Portfolio" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Colton Phass - Resume" />
+    <meta
+      name="twitter:description"
+      content="Resume of Colton Phass, Fullstack Developer."
+    />
+    <meta name="twitter:creator" content="@coltonphass" />
+    <meta
+      name="twitter:image"
+      content="https://coltonphass.com/images/coltonpfp.png"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://coltonphass.com/resume.html" />
+
+    <!-- Preconnects for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload Google Fonts stylesheet -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+
+    <!-- Load Google Fonts stylesheet asynchronously -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Preload main stylesheet -->
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Security Meta -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  </head>
+
+  <body>
+    <div class="bg-elements">
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+    </div>
+
+    <div class="resume-container">
+      <div class="resume-header">
+        <h1 class="resume-name">COLTON PHASS</h1>
+        <h2 class="resume-title">FULLSTACK DEVELOPER</h2>
+
+        <!-- Profile image with fetchpriority high -->
+        <picture>
+          <source srcset="/images/coltonpfp.webp" type="image/webp" />
+          <img
+            src="/images/coltonpfp.png"
+            alt="Colton Phass Profile Picture"
+            class="profile-image"
+            width="200"
+            height="200"
+            fetchpriority="high"
+            decoding="async"
+            loading="eager"
+          />
+        </picture>
 
         <div class="contact-section">
-            <h3 class="contact-title">Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Languages & Frameworks</h4>
-                    <p>HTML5, CSS3, JavaScript, Python, C++ (Object-Oriented Programming)</p>
-                </div>
-                <div class="skill-category">
-                    <h4>Web Development</h4>
-                    <p>Responsive Design, SEO Best Practices, Analytics Integration</p>
-                </div>
-                <div class="skill-category">
-                    <h4>Tools & Platforms</h4>
-                    <p>WordPress (CMS), Git/GitHub, ZyLabs, Google Colab</p>
-                </div>
-                <div class="skill-category">
-                    <h4>Systems & Networking</h4>
-                    <p>Linux Command Line, Basic Networking Troubleshooting</p>
-                </div>
-                    <div class="skill-category">
-                    <h4>Soft Skills</h4>
-                    <p>Technical Writing, Problem-Solving, Curriculum Design, Team Collaboration</p>
-                </div>
-            </div>
+          <a href="contact.html" class="summon-button">EMAIL ME</a>
         </div>
 
-<section class="resume-section">
-  <h2 class="section-title">EXPERIENCE</h2>
-<div class="experience-grid">
-  <div class="job">
-    <h3 class="company-name">Mark Dencler & Nick Schoeb</h3>
-    <p class="job-dates">Mar 2025–Present</p>
-    <p class="job-title">AI Research Assistant</p>
-    <p class="job-description">
-      Helped develop a college-level (credit and non-redit) AI/ML curriculum utilizing tools such as Tensorflow, googlecolab and huggingface.<br>
-      Researched modern AI topics, designed and organized course content, and assisted on classroom integration.
-    </p>
-  </div>
+        <ul class="social-links">
+          <li>
+            <a
+              href="https://github.com/coltonphass"
+              class="social-link"
+              aria-label="GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="images/icons/icons8-github-100.png"
+                alt="GitHub"
+                class="social-icon"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://x.com/coltonphass"
+              class="social-link"
+              aria-label="Twitter/X"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="images/icons/icons8-x-100.png"
+                alt="Twitter/X"
+                class="social-icon"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/colton-phass-61223a255/"
+              class="social-link"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="images/icons/icons8-linkedin-128.png"
+                alt="LinkedIn"
+                class="social-icon"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
 
-  <div class="job">
-    <h3 class="company-name">Mark Dencler & Nick Schoeb</h3>
-    <p class="job-dates">May 2024–Dec 2024</p>
-    <p class="job-title">Fullstack Developer (Research)</p>
-    <p class="job-description">
-Built 10+ interactive web development exercises and project-based assignments for ZyLabs material, covering HTML, CSS, and JavaScript.<br>
-Refined course structure and content through feedback analysis and pressure-testing.
+      <section class="resume-section projects-section" id="projects">
+        <h2 class="section-title">LATEST PROJECT</h2>
 
-    </p>
-  </div>
+        <div class="project-showcase">
+          <img
+            src="/images/projects/blackjack.gif"
+            alt="Blackjack game"
+            class="project-display"
+            loading="lazy"
+            decoding="async"
+          />
 
-  <div class="job">
-    <h3 class="company-name">Code Zealot Studios</h3>
-    <p class="job-dates">2023–2024</p>
-    <p class="job-title">Fullstack Developer Intern</p>
-    <p class="job-description">
-  Developed 5+ responsive client websites using HTML, CSS, and JavaScript.<br>
-Improved SEO by adding relevant tags and used Google Lighthouse to audit and boost site performance.
-    </p>
-  </div>
+          <h3 class="project-name">Web Game Collection (Blackjack)</h3>
+          <p class="project-description">
+            Currently working on some browser games for fun and to practice JS
+          </p>
+          <a
+            href="https://coltonsgames.netlify.app/html/blackjack.html"
+            class="project-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >View on Netlify</a
+          >
+        </div>
+        <div style="text-align: center; margin-top: 2rem">
+          <a
+            href="allprojects.html"
+            class="view-projects-link"
+            rel="noopener noreferrer"
+            >View more projects »</a
+          >
+        </div>
+      </section>
 
-  <div class="job">
-    <h3 class="company-name">Self</h3>
-    <p class="job-dates">2021–Present</p>
-    <p class="job-title">Independent Developer</p>
-    <p class="job-description">
-Developed and maintained personal websites including e-commerce WordPress sites and a portfolio using HTML, CSS, and JavaScript.<br>
-Created 30+ projects in Python and C++.
-    </p>
-  </div>
-</section>
+      <div class="contact-section">
+        <h3 class="contact-title">Skills</h3>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4>Languages & Frameworks</h4>
+            <p>
+              HTML5, CSS3, JavaScript, Python, C++ (Object-Oriented Programming)
+            </p>
+          </div>
+          <div class="skill-category">
+            <h4>Web Development</h4>
+            <p>Responsive Design, SEO Best Practices, Analytics Integration</p>
+          </div>
+          <div class="skill-category">
+            <h4>Tools & Platforms</h4>
+            <p>WordPress (CMS), Git/GitHub, ZyLabs, Google Colab</p>
+          </div>
+          <div class="skill-category">
+            <h4>Systems & Networking</h4>
+            <p>Linux Command Line, Basic Networking Troubleshooting</p>
+          </div>
+          <div class="skill-category">
+            <h4>Soft Skills</h4>
+            <p>
+              Technical Writing, Problem-Solving, Curriculum Design, Team
+              Collaboration
+            </p>
+          </div>
+        </div>
+      </div>
 
-<section class="resume-section">
-  <h2 class="section-title">EDUCATION</h2>
+      <section class="resume-section">
+        <h2 class="section-title">EXPERIENCE</h2>
+        <div class="experience-grid">
+          <div class="job">
+            <h3 class="company-name">Mark Dencler & Nick Schoeb</h3>
+            <p class="job-dates">Mar 2025–Present</p>
+            <p class="job-title">AI Research Assistant</p>
+            <p class="job-description">
+              Helped develop a college-level (credit and non-redit) AI/ML
+              curriculum utilizing tools such as Tensorflow, googlecolab and
+              huggingface.<br />
+              Researched modern AI topics, designed and organized course
+              content, and assisted on classroom integration.
+            </p>
+          </div>
 
-  <div class="job">
-    <h3 class="company-name">Harford Community College</h3>
-    <p class="job-dates">2023–2025</p>
-    <p class="job-title">Associates Degree in Computer Information Systems</p>
-<p class="job-description">
-  3.9 GPA | Phi Theta Kappa Honor Society | 10+ merit scholarships awarded<br><br>
-  Completed key coursework including:<br><br>
-  • C++: Intro, Programming I, Programming II<br>
-  • Java: Intro, Programming I<br>
-  • Python Programming<br>
-  • Computer Operating Systems and Networking<br>
-  • Web Programming and Technical Writing
-</p>
+          <div class="job">
+            <h3 class="company-name">Mark Dencler & Nick Schoeb</h3>
+            <p class="job-dates">May 2024–Dec 2024</p>
+            <p class="job-title">Fullstack Developer (Research)</p>
+            <p class="job-description">
+              Built 10+ interactive web development exercises and project-based
+              assignments for ZyLabs material, covering HTML, CSS, and
+              JavaScript.<br />
+              Refined course structure and content through feedback analysis and
+              pressure-testing.
+            </p>
+          </div>
 
-  </div>
-  </div>
-</section>
+          <div class="job">
+            <h3 class="company-name">Code Zealot Studios</h3>
+            <p class="job-dates">2023–2024</p>
+            <p class="job-title">Fullstack Developer Intern</p>
+            <p class="job-description">
+              Developed 5+ responsive client websites using HTML, CSS, and
+              JavaScript.<br />
+              Improved SEO by adding relevant tags and used Google Lighthouse to
+              audit and boost site performance.
+            </p>
+          </div>
 
+          <div class="job">
+            <h3 class="company-name">Self</h3>
+            <p class="job-dates">2021–Present</p>
+            <p class="job-title">Independent Developer</p>
+            <p class="job-description">
+              Developed and maintained personal websites including e-commerce
+              WordPress sites and a portfolio using HTML, CSS, and
+              JavaScript.<br />
+              Created 30+ projects in Python and C++.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <section class="resume-section">
-            <h2 class="section-title">REFERENCES</h2>
-            
-            <div class="references-grid">
-                <div class="reference">
-    <h4 class="reference-name">Nicholas Schoeb</h4>
-    <p class="reference-title">Software Engineer / Educator</p>
-    <p class="reference-contact">
-        <a href="https://www.linkedin.com/in/nicholas-schoeb-b1534192/" class="reference-link">View their LinkedIn</a>
-    </p>
-</div>
-<div class="reference">
-    <h4 class="reference-name">Mark Dencler</h4>
-    <p class="reference-title">Software Engineer / Educator</p>
-    <p class="reference-contact">
-        <a href="https://www.harford.edu/about/get-to-know-harford/faculty-staff-directory/mark-dencler.php" class="reference-link">View their Contact info</a>
-    </p>
-</div>
-<div class="reference">
-    <h4 class="reference-name">Tyler Phass</h4>
-    <p class="reference-title">Senior Developer</p>
-    <p class="reference-contact">
-        <a href="https://www.linkedin.com/in/tyler-phass/" class="reference-link">View their LinkedIn</a>
-    </p>
-</div>
-                <div style="display: flex; justify-content: center; margin-top: 2rem;">
-                <a href="index.html" class="back-link">Back to About</a>
-                </div>
+      <section class="resume-section">
+        <h2 class="section-title">EDUCATION</h2>
 
-            </div>
-        </section>
+        <div class="job">
+          <h3 class="company-name">Harford Community College</h3>
+          <p class="job-dates">2023–2025</p>
+          <p class="job-title">
+            Associates Degree in Computer Information Systems
+          </p>
+          <p class="job-description">
+            3.9 GPA | Phi Theta Kappa Honor Society | 10+ merit scholarships
+            awarded<br /><br />
+            Completed key coursework including:<br /><br />
+            • C++: Intro, Programming I, Programming II<br />
+            • Java: Intro, Programming I<br />
+            • Python Programming<br />
+            • Computer Operating Systems and Networking<br />
+            • Web Programming and Technical Writing
+          </p>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2 class="section-title">REFERENCES</h2>
+
+        <div class="references-grid">
+          <div class="reference">
+            <h4 class="reference-name">Nicholas Schoeb</h4>
+            <p class="reference-title">Software Engineer / Educator</p>
+            <p class="reference-contact">
+              <a
+                href="https://www.linkedin.com/in/nicholas-schoeb-b1534192/"
+                class="reference-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View their LinkedIn</a
+              >
+            </p>
+          </div>
+          <div class="reference">
+            <h4 class="reference-name">Mark Dencler</h4>
+            <p class="reference-title">Software Engineer / Educator</p>
+            <p class="reference-contact">
+              <a
+                href="https://www.harford.edu/about/get-to-know-harford/faculty-staff-directory/mark-dencler.php"
+                class="reference-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View their Contact info</a
+              >
+            </p>
+          </div>
+          <div class="reference">
+            <h4 class="reference-name">Tyler Phass</h4>
+            <p class="reference-title">Senior Developer</p>
+            <p class="reference-contact">
+              <a
+                href="https://www.linkedin.com/in/tyler-phass/"
+                class="reference-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View their LinkedIn</a
+              >
+            </p>
+          </div>
+          <div style="display: flex; justify-content: center; margin-top: 2rem">
+            <a href="index.html" class="back-link">Back to About</a>
+          </div>
+        </div>
+      </section>
     </div>
-</body>
+  </body>
 </html>
