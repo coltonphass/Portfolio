@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Colton Phass Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Meta Tags -->
@@ -15,6 +16,7 @@
     />
     <meta name="author" content="Colton Phass" />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#16213e" />
 
     <!-- Open Graph Meta Tags for Social Sharing -->
     <meta property="og:title" content="Colton Phass - Fullstack Developer" />
@@ -29,6 +31,7 @@
     <meta property="og:url" content="https://coltonphass.com" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Colton Phass Portfolio" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -66,29 +69,25 @@
       href="/images/favicon-16x16.png"
     />
 
-    <!-- Preload Critical Resources -->
+    <!-- Preconnect / Preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="styles.css" as="style" />
     <link rel="preload" href="/images/coltonpfp.png" as="image" />
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      as="style"
-    />
-
-    <!-- DNS Prefetch for External Domains -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//github.com" />
-    <link rel="dns-prefetch" href="//linkedin.com" />
-    <link rel="dns-prefetch" href="//x.com" />
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- Performance and Security -->
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Security (if you still want these in HTML; server headers are preferred) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <title>Colton Phass Portfolio</title>
   </head>
   <body>
     <div class="bg-elements">
@@ -102,12 +101,19 @@
       <h1 class="main-title">ABOUT</h1>
       <h2 class="name">COLTON PHASS</h2>
 
-      <img
-        src="/images/coltonpfp.png"
-        alt="Colton Phass Profile Picture"
-        class="profile-image"
-      />
+      <!-- WebP first, PNG fallback (keeps class + structure your CSS expects) -->
+      <picture>
+        <source srcset="/images/coltonpfp.webp" type="image/webp" />
+        <img
+          src="/images/coltonpfp.png"
+          alt="Colton Phass Profile Picture"
+          class="profile-image"
+          width="200"
+          height="200"
+        />
+      </picture>
 
+      <!-- Restored original .info-line divs (so your CSS selectors keep working) -->
       <div class="info-line">Fullstack Developer</div>
       <div class="info-line">Based in Edgewood, Maryland</div>
       <div class="info-line">Passionate about Gaming & Backend Development</div>
@@ -156,6 +162,7 @@
               src="images/icons/icons8-github-100.png"
               alt="GitHub"
               class="social-icon"
+              loading="lazy"
             />
           </a>
         </li>
@@ -171,6 +178,7 @@
               src="images/icons/icons8-x-100.png"
               alt="Twitter/X"
               class="social-icon"
+              loading="lazy"
             />
           </a>
         </li>
@@ -186,6 +194,7 @@
               src="images/icons/icons8-linkedin-128.png"
               alt="LinkedIn"
               class="social-icon"
+              loading="lazy"
             />
           </a>
         </li>
