@@ -3,8 +3,137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Colton Phass - Fullstack Developer from Maryland specializing in Python, C++, JavaScript, and web development. View my projects and resume."
+    />
+    <meta
+      name="keywords"
+      content="Colton Phass, Fullstack Developer, Python, C++, JavaScript, Web Development, Maryland, Portfolio"
+    />
+    <meta name="author" content="Colton Phass" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Colton Phass - Fullstack Developer" />
+    <meta
+      property="og:description"
+      content="23-year-old fullstack developer passionate about gaming, backend development, and technology. Based in Maryland."
+    />
+    <meta
+      property="og:image"
+      content="https://coltonphass.com/images/coltonpfp.png"
+    />
+    <meta property="og:url" content="https://coltonphass.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Colton Phass Portfolio" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Colton Phass - Fullstack Developer" />
+    <meta
+      name="twitter:description"
+      content="23-year-old fullstack developer passionate about gaming, backend development, and technology."
+    />
+    <meta
+      name="twitter:image"
+      content="https://coltonphass.com/images/coltonpfp.png"
+    />
+    <meta name="twitter:creator" content="@coltonphass" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://coltonphass.com/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="preload" href="/images/coltonpfp.png" as="image" />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      as="style"
+    />
+
+    <!-- DNS Prefetch for External Domains -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//github.com" />
+    <link rel="dns-prefetch" href="//linkedin.com" />
+    <link rel="dns-prefetch" href="//x.com" />
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css" />
-    <title>Colton Phass Portfolio</title>
+
+    <!-- Performance and Security -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#4ecdc4" />
+    <meta name="msapplication-TileColor" content="#4ecdc4" />
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Colton Phass",
+        "jobTitle": "Fullstack Developer",
+        "description": "Fullstack Developer specializing in Python, C++, JavaScript, and web development",
+        "url": "https://coltonphass.com",
+        "image": "https://coltonphass.com/images/coltonpfp.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Edgewood",
+          "addressRegion": "Maryland",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+          "https://github.com/coltonphass",
+          "https://www.linkedin.com/in/colton-phass-61223a255/",
+          "https://x.com/coltonphass"
+        ],
+        "knowsAbout": [
+          "Python",
+          "C++",
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "Web Development",
+          "Pygame",
+          "Backend Development"
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Harford Community College"
+        }
+      }
+    </script>
+
+    <title>
+      Colton Phass - Fullstack Developer | Python, C++, Web Development
+    </title>
   </head>
   <body>
     <div class="bg-elements">
@@ -14,103 +143,150 @@
       <div class="floating-circle"></div>
     </div>
 
-    <div class="container">
-      <h1 class="main-title">ABOUT</h1>
-      <h2 class="name">COLTON PHASS</h2>
+    <main class="container">
+      <header>
+        <h1 class="main-title">ABOUT</h1>
+        <h2 class="name">COLTON PHASS</h2>
+        <img
+          src="/images/coltonpfp.png"
+          alt="Colton Phass - Fullstack Developer from Maryland"
+          class="profile-image"
+          width="300"
+          height="300"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </header>
 
-      <img
-        src="/images/coltonpfp.png"
-        alt="Colton Phass Profile Picture"
-        class="profile-image"
-      />
-
-      <div class="info-line">Fullstack Developer</div>
-      <div class="info-line">Based in Edgewood, Maryland</div>
-      <div class="info-line">Passionate about Gaming & Backend Development</div>
-      <div class="info-line">
-        <a href="https://github.com/coltonphass/learning-pygame"
-          >Currently focused on Python & Pygame</a
-        >
-      </div>
-
-      <div class="left-content-block">
-        <p>
-          Hey, I'm Colton, I'm 23 and a junior fullstack developer. I'm really
-          into video games, cars, tech, and pretty much anything I can take
-          apart and figure out how it works.
-        </p>
-
-        <p>
-          My interest in tech started way back with Pokémon Red — that was the
-          first time I really got curious about computers and games. Later on,
-          games like TF2 and other mod-heavy stuff pushed that curiosity even
-          further.
-        </p>
-
-        <p>
-          I started messing with web development around 17, just learning HTML
-          and CSS on my own at home. I didn't take it super seriously at first —
-          just built random little sites and played around with Udemy courses.
-          But when I hit 21, I got into C++, and that kind of changed
-          everything. That's when I really started taking development seriously
-          and realized how fun backend can actually be. I also completed my
-          Associate's degree in Computer Information Systems (CIS), which helped
-          give me a more solid foundation.
-        </p>
-      </div>
-
-      <ul class="social-links">
-        <li>
+      <section class="info-section">
+        <div class="info-line">Fullstack Developer</div>
+        <div class="info-line">Based in Edgewood, Maryland</div>
+        <div class="info-line">
+          Passionate about Gaming & Backend Development
+        </div>
+        <div class="info-line">
           <a
-            href="https://github.com/coltonphass"
-            class="social-link"
-            aria-label="GitHub"
+            href="https://github.com/coltonphass/learning-pygame"
             target="_blank"
             rel="noopener"
+            aria-label="View Colton's Python & Pygame projects on GitHub"
           >
-            <img
-              src="images/icons/icons8-github-100.png"
-              alt="GitHub"
-              class="social-icon"
-            />
+            Currently focused on Python & Pygame
           </a>
-        </li>
-        <li>
-          <a
-            href="https://x.com/coltonphass"
-            class="social-link"
-            aria-label="Twitter/X"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="images/icons/icons8-x-100.png"
-              alt="Twitter/X"
-              class="social-icon"
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/colton-phass-61223a255/"
-            class="social-link"
-            aria-label="LinkedIn"
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              src="images/icons/icons8-linkedin-128.png"
-              alt="LinkedIn"
-              class="social-icon"
-            />
-          </a>
-        </li>
-      </ul>
+        </div>
+      </section>
 
-      <div class="cta-section">
+      <section class="about-section">
+        <div class="left-content-block">
+          <p>
+            Hey, I'm Colton, I'm 23 and a junior fullstack developer. I'm really
+            into video games, cars, tech, and pretty much anything I can take
+            apart and figure out how it works.
+          </p>
+          <p>
+            My interest in tech started way back with Pokémon Red — that was the
+            first time I really got curious about computers and games. Later on,
+            games like TF2 and other mod-heavy stuff pushed that curiosity even
+            further.
+          </p>
+          <p>
+            I started messing with web development around 17, just learning HTML
+            and CSS on my own at home. I didn't take it super seriously at first
+            — just built random little sites and played around with Udemy
+            courses. But when I hit 21, I got into C++, and that kind of changed
+            everything. That's when I really started taking development
+            seriously and realized how fun backend can actually be. I also
+            completed my Associate's degree in Computer Information Systems
+            (CIS), which helped give me a more solid foundation.
+          </p>
+        </div>
+      </section>
+
+      <section class="social-section">
+        <h3 class="sr-only">Social Links</h3>
+        <ul class="social-links">
+          <li>
+            <a
+              href="https://github.com/coltonphass"
+              class="social-link"
+              aria-label="Visit Colton's GitHub profile"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="images/icons/icons8-github-100.png"
+                alt="GitHub"
+                class="social-icon"
+                width="28"
+                height="28"
+                loading="lazy"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://x.com/coltonphass"
+              class="social-link"
+              aria-label="Follow Colton on Twitter/X"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="images/icons/icons8-x-100.png"
+                alt="Twitter/X"
+                class="social-icon"
+                width="28"
+                height="28"
+                loading="lazy"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/colton-phass-61223a255/"
+              class="social-link"
+              aria-label="Connect with Colton on LinkedIn"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="images/icons/icons8-linkedin-128.png"
+                alt="LinkedIn"
+                class="social-icon"
+                width="28"
+                height="28"
+                loading="lazy"
+              />
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="cta-section">
         <h3 class="cta-title">Want to learn more?</h3>
-        <a href="resume.html" class="resume-link">View my resume</a>
-      </div>
-    </div>
+        <a
+          href="resume.html"
+          class="resume-link"
+          aria-label="View Colton Phass's full resume and experience"
+        >
+          View my resume
+        </a>
+      </section>
+    </main>
+
+    <!-- Add screen reader only class for accessibility -->
+    <style>
+      .sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+    </style>
   </body>
 </html>
