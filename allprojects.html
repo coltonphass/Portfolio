@@ -1,136 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
     <title>All Projects - Colton Phass</title>
-</head>
-<body>
-    <div class="bg-elements">
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-    </div>
-    
-    <div class="projects-container">
-        
-        <div class="projects-header">
-            <h1 class="projects-main-title">PROJECTS</h1>
-            <p class="projects-subtitle">Like what you see?</p>
-            <a href="https://github.com/coltonphass" class="summon-button" target="_blank">GITHUB</a>
-        </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<div class="projects-grid">
-    <!-- Super Slider Puzzle -->
-    <div class="project-card">
-        <div class="project-image-container">
-            <a href="https://github.com/coltonphass/Super-Puzzle-Slider#">
-                <img src="/images/projects/superpuzzle.gif" alt="Super Sliding Puzzle" class="project-image">
-                <div class="project-overlay"></div>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Explore all projects by Colton Phass, including games, websites, and Python applications. View GitHub repositories and demos."
+    />
+    <meta
+      name="keywords"
+      content="Colton Phass, projects, portfolio, games, Python, C++, web development, GitHub"
+    />
+    <meta name="author" content="Colton Phass" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="All Projects - Colton Phass" />
+    <meta
+      property="og:description"
+      content="Explore all projects by Colton Phass, including games, websites, and Python applications."
+    />
+    <meta
+      property="og:url"
+      content="https://coltonphass.com/allprojects.html"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Colton Phass Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:image"
+      content="https://coltonphass.com/images/coltonpfp.png"
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="All Projects - Colton Phass" />
+    <meta
+      name="twitter:description"
+      content="Explore all projects by Colton Phass, including games, websites, and Python applications."
+    />
+    <meta
+      name="twitter:image"
+      content="https://coltonphass.com/images/coltonpfp.png"
+    />
+    <meta name="twitter:creator" content="@coltonphass" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://coltonphass.com/allprojects.html" />
+
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload Google Fonts -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+
+    <!-- Load Google Fonts asynchronously -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Preload main stylesheet -->
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Security Meta -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  </head>
+  <body>
+    <div class="bg-elements" aria-hidden="true">
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+    </div>
+
+    <main class="projects-container" role="main">
+      <header class="projects-header">
+        <h1 class="projects-main-title">PROJECTS</h1>
+        <p class="projects-subtitle">Like what you see?</p>
+        <a
+          href="https://github.com/coltonphass"
+          class="summon-button"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Profile"
+        >
+          GITHUB
+        </a>
+      </header>
+
+      <section class="projects-grid" aria-label="Project list">
+        <!-- Project Card Template -->
+        <article class="project-card">
+          <div class="project-image-container">
+            <a
+              href="https://github.com/coltonphass/Super-Puzzle-Slider#"
+              aria-label="Super Slider Puzzle GitHub repository"
+            >
+              <img
+                src="/images/projects/superpuzzle.gif"
+                alt="Super Sliding Puzzle"
+                class="project-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-overlay" aria-hidden="true"></div>
             </a>
-        </div>
-        <div class="project-info">
+          </div>
+          <div class="project-info">
             <div class="project-meta">
-                <span class="project-date">DEC 2024 | C++ Console Game</span>
+              <time datetime="2024-12">DEC 2024</time> | C++ Console Game
             </div>
-            <h3 class="project-title">Super Slider Puzzle</h3>
-            <p class="project-description">A simple adjustable sliding puzzle mini-game that runs on Windows Console made in C++</p>
-        </div>
-    </div>
+            <h2 class="project-title">Super Slider Puzzle</h2>
+            <p class="project-description">
+              A simple adjustable sliding puzzle mini-game that runs on Windows
+              Console made in C++
+            </p>
+          </div>
+        </article>
 
-    <!-- Example Dentist Website -->
-    <div class="project-card">
-        <div class="project-image-container">
-            <a href="https://dentitchsolutions.netlify.app/">
-                <img src="images/projects/dentist.gif" alt="Mobile App UI" class="project-image">
-                <div class="project-overlay"></div>
+        <article class="project-card">
+          <div class="project-image-container">
+            <a
+              href="https://dentitchsolutions.netlify.app/"
+              aria-label="Example Dentist Website demo"
+            >
+              <img
+                src="images/projects/dentist.gif"
+                alt="Mobile App UI"
+                class="project-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-overlay" aria-hidden="true"></div>
             </a>
-        </div>
-        <div class="project-info">
+          </div>
+          <div class="project-info">
             <div class="project-meta">
-                <span class="project-date">APR 2025 | Website</span>
+              <time datetime="2025-04">APR 2025</time> | Website
             </div>
-            <h3 class="project-title">Example Dentist Website</h3>
-            <p class="project-description">Modern dentistry site interface design with white theme and intuitive navigation.</p>
-        </div>
-    </div>
+            <h2 class="project-title">Example Dentist Website</h2>
+            <p class="project-description">
+              Modern dentistry site interface design with white theme and
+              intuitive navigation.
+            </p>
+          </div>
+        </article>
 
-    <!-- Space Shooter -->
-    <div class="project-card">
-        <div class="project-image-container">
-            <a href="https://github.com/coltonphass/learning-pygame">
-                <img src="images/projects/space shooter.gif" alt="Space Shooter" class="project-image">
-                <div class="project-overlay"></div>
+        <article class="project-card">
+          <div class="project-image-container">
+            <a
+              href="https://github.com/coltonphass/learning-pygame"
+              aria-label="Space Shooter GitHub repository"
+            >
+              <img
+                src="images/projects/space shooter.gif"
+                alt="Space Shooter"
+                class="project-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-overlay" aria-hidden="true"></div>
             </a>
-        </div>
-        <div class="project-info">
+          </div>
+          <div class="project-info">
             <div class="project-meta">
-                <span class="project-date">JUL 2025 | Pygame Application</span>
+              <time datetime="2025-07">JUL 2025</time> | Pygame Application
             </div>
-            <h3 class="project-title">Space Shooter</h3>
-            <p class="project-description">Classic Space Shooter programmed in Python using Pygame <i>(Still in progress.)</i></p>
-        </div>
-    </div>
+            <h2 class="project-title">Space Shooter</h2>
+            <p class="project-description">
+              Classic Space Shooter programmed in Python using Pygame
+              <i>(Still in progress.)</i>
+            </p>
+          </div>
+        </article>
 
-    <!-- Shape Maker -->
-    <div class="project-card">
-        <div class="project-image-container">
-            <a href="https://github.com/coltonphass/Shape-Maker">
-                <img src="images/projects/shapes.gif" alt="Python Shapes" class="project-image">
-                <div class="project-overlay"></div>
+        <article class="project-card">
+          <div class="project-image-container">
+            <a
+              href="https://github.com/coltonphass/Shape-Maker"
+              aria-label="Shape Maker GitHub repository"
+            >
+              <img
+                src="images/projects/shapes.gif"
+                alt="Python Shapes"
+                class="project-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-overlay" aria-hidden="true"></div>
             </a>
-        </div>
-        <div class="project-info">
+          </div>
+          <div class="project-info">
             <div class="project-meta">
-                <span class="project-date">AUG 2024 | Python Console Game</span>
+              <time datetime="2024-08">AUG 2024</time> | Python Console Game
             </div>
-            <h3 class="project-title">Shape Maker</h3>
-            <p class="project-description">A Python program that allows users to display different shapes with customized sizes. </p>
-        </div>
-    </div>
+            <h2 class="project-title">Shape Maker</h2>
+            <p class="project-description">
+              A Python program that allows users to display different shapes
+              with customized sizes.
+            </p>
+          </div>
+        </article>
 
-    <!-- Zombie Survival -->
-    <div class="project-card">
-        <div class="project-image-container">
-            <img src="images/projects/zombie.gif" alt="Zombie Game" class="project-image">
-            <div class="project-overlay"></div>
-        </div>
-        <div class="project-info">
+        <article class="project-card">
+          <div class="project-image-container">
+            <img
+              src="images/projects/zombie.gif"
+              alt="Zombie Game"
+              class="project-image"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="project-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-info">
             <div class="project-meta">
-                <span class="project-date">JUNE 2025 | Pygame Application</span>
+              <time datetime="2025-06">JUNE 2025</time> | Pygame Application
             </div>
-            <h3 class="project-title">Zombie Survival</h3>
-            <p class="project-description">Zombie survival game made in Pygame similar to vampire survivors <i>this is my first pygame application!</i></p>
-        </div>
-    </div>
+            <h2 class="project-title">Zombie Survival</h2>
+            <p class="project-description">
+              Zombie survival game made in Pygame similar to vampire survivors
+              <i>this is my first pygame application!</i>
+            </p>
+          </div>
+        </article>
 
-    <!-- Gym Website -->
-    <div class="project-card">
-        <div class="project-image-container">
-            <img src="images/projects/gym.gif" alt="Gym Website" class="project-image">
-            <div class="project-overlay"></div>
-        </div>
-        <div class="project-info">
+        <article class="project-card">
+          <div class="project-image-container">
+            <img
+              src="images/projects/gym.gif"
+              alt="Gym Website"
+              class="project-image"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="project-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="project-info">
             <div class="project-meta">
-                <span class="project-date">APR 2025 | Website</span>
+              <time datetime="2025-04">APR 2025</time> | Website
             </div>
-            <h3 class="project-title">Example Gym Website</h3>
-            <p class="project-description">Personal portfolio website built with HTML5, CSS3, and JavaScript featuring modern design.</p>
+            <h2 class="project-title">Example Gym Website</h2>
+            <p class="project-description">
+              Personal portfolio website built with HTML5, CSS3, and JavaScript
+              featuring modern design.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <footer class="projects-footer" role="contentinfo">
+        <div style="display: flex; justify-content: center; margin-top: 2rem">
+          <a href="resume.html" class="back-link">Back to Resume</a>
         </div>
-    </div>
-</div>
-
-
-        <div class="projects-footer">
-                </div>
-                <div style="display: flex; justify-content: center; margin-top: 2rem;">
-                <a href="resume.html" class="back-link">Back to Resume</a>
-                </div>
-        </div>
-    </div>
-
-
-</body>
+      </footer>
+    </main>
+  </body>
 </html>
