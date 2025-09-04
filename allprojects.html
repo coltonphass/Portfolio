@@ -98,6 +98,14 @@
 
     <!-- Security Meta -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <div class="bg-elements">
@@ -118,7 +126,42 @@
           >GITHUB</a
         >
       </div>
+      <div class="nav-container" id="nav-container">
+        <div class="nav-circle">
+          <button class="nav-button" id="open">
+            <i class="fas fa-bars"></i>
+          </button>
+          <button class="nav-button" id="close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
 
+      <nav class="nav-menu">
+        <ul>
+          <li>
+            <a href="index.html" class="nav-link"
+              ><i class="fas fa-home"></i> Home</a
+            >
+          </li>
+          <li>
+            <a href="resume.html" class="nav-link"
+              ><i class="fas fa-user"></i> Resume</a
+            >
+          </li>
+          <li>
+            <a href="allprojects.html" class="nav-link"
+              ><i class="fas fa-code"></i> Projects</a
+            >
+          </li>
+          <li>
+            <a href="contact.html" class="nav-link"
+              ><i class="fas fa-envelope"></i> Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <script src="script.js"></script>
       <div class="projects-grid">
         <!-- Super Slider Puzzle -->
         <div class="project-card">
@@ -318,11 +361,7 @@
           </div>
         </div>
       </div>
-
       <div class="projects-footer"></div>
-      <div style="display: flex; justify-content: center; margin-top: 2rem">
-        <a href="resume.html" class="back-link">Back to Resume</a>
-      </div>
     </div>
   </body>
 </html>

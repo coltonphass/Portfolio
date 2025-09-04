@@ -90,6 +90,14 @@
 
     <!-- Security Meta -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+            <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
 
   <body>
@@ -102,85 +110,30 @@
 
     <div class="resume-container">
       <div class="resume-header">
-        <h1 class="resume-name">COLTON PHASS</h1>
+        <h1 class="resume-name">RESUME</h1>
         <h2 class="resume-title">FULLSTACK DEVELOPER</h2>
+<div class="nav-container" id="nav-container">
+  <div class="nav-circle">
+    <button class="nav-button" id="open">
+      <i class="fas fa-bars"></i>
+    </button>
+    <button class="nav-button" id="close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>
 
-        <!-- Profile image with fetchpriority high -->
-        <picture>
-          <source srcset="/images/coltonpfp.webp" type="image/webp" />
-          <img
-            src="/images/coltonpfp.png"
-            alt="Colton Phass Profile Picture"
-            class="profile-image"
-            width="200"
-            height="200"
-            fetchpriority="high"
-            decoding="async"
-            loading="eager"
-          />
-        </picture>
-
-        <div class="contact-section">
-          <a href="contact.html" class="summon-button">EMAIL ME</a>
-        </div>
-
-        <ul class="social-links">
-          <li>
-            <a
-              href="https://github.com/coltonphass"
-              class="social-link"
-              aria-label="GitHub"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="images/icons/icons8-github-100.png"
-                alt="GitHub"
-                class="social-icon"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://x.com/coltonphass"
-              class="social-link"
-              aria-label="Twitter/X"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="images/icons/icons8-x-100.png"
-                alt="Twitter/X"
-                class="social-icon"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/colton-phass-61223a255/"
-              class="social-link"
-              aria-label="LinkedIn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="images/icons/icons8-linkedin-128.png"
-                alt="LinkedIn"
-                class="social-icon"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </li>
-        </ul>
-      </div>
-
+<nav class="nav-menu">
+  <ul>
+    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="resume.html" class="nav-link"><i class="fas fa-user"></i> Resume</a></li>
+    <li><a href="allprojects.html" class="nav-link"><i class="fas fa-code"></i> Projects</a></li>
+    <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+  </ul>
+</nav>
+          <script src="script.js"></script>
       <section class="resume-section projects-section" id="projects">
-        <h2 class="section-title">LATEST PROJECT</h2>
+        <h2 class="section-title">LATEST PROJECTS</h2>
 
         <div class="project-showcase">
           <video
@@ -323,6 +276,16 @@
             • Web Programming and Technical Writing
           </p>
         </div>
+        <div class="job">
+          <h3 class="company-name">University of Maryland Global Campus</h3>
+          <p class="job-dates">2025-2027</p>
+          <p class="job-title">
+            Pursuing Bachelors Degree in Computer Science
+          </p>
+          <p class="job-description">
+            First Semester OCT 15th. 2025
+          </p>
+        </div>
       </section>
 
       <section class="resume-section">
@@ -367,9 +330,6 @@
                 >View their LinkedIn</a
               >
             </p>
-          </div>
-          <div style="display: flex; justify-content: center; margin-top: 2rem">
-            <a href="index.html" class="back-link">Back to About</a>
           </div>
         </div>
       </section>

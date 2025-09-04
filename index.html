@@ -94,6 +94,15 @@
 
     <!-- Security meta (optional, server headers preferred) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+        <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
   </head>
 
   <body>
@@ -105,8 +114,7 @@
     </div>
 
     <div class="container">
-      <h1 class="main-title">ABOUT</h1>
-      <h2 class="name">COLTON PHASS</h2>
+      <h1 class="main-title">Colton Phass</h1>
 
       <!-- Profile picture with fetchpriority high -->
       <picture>
@@ -121,38 +129,58 @@
         />
       </picture>
 
+<div class="nav-container" id="nav-container">
+  <div class="nav-circle">
+    <button class="nav-button" id="open">
+      <i class="fas fa-bars"></i>
+    </button>
+    <button class="nav-button" id="close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>
+
+<nav class="nav-menu">
+  <ul>
+    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="resume.html" class="nav-link"><i class="fas fa-user"></i> Resume</a></li>
+    <li><a href="allprojects.html" class="nav-link"><i class="fas fa-code"></i> Projects</a></li>
+    <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+  </ul>
+</nav>
+          <script src="script.js"></script>
+
       <div class="info-line">Fullstack Developer</div>
-      <div class="info-line">Based in Edgewood, Maryland</div>
-      <div class="info-line">Passionate about Gaming & Backend Development</div>
       <div class="info-line">
-        <a href="https://github.com/coltonphass/learning-pygame"
-          >Currently focused on Python & Pygame</a
+        Based in Edgewood, Maryland | Looking for remote, hybrid and on-site
+        work.
+      </div>
+      <div class="info-line">
+        <a href="https://www.umgc.edu/"
+          >A.A. in CIS, pursuing B.A. in CS @UMGC</a
         >
+      </div>
+      <div class="info-line">
+        Currently focused on Python and Web Development
       </div>
 
       <div class="left-content-block">
         <p>
-          Hey, I'm Colton, I'm 23 and a junior fullstack developer. I'm really
-          into video games, cars, tech, and pretty much anything I can take
-          apart and figure out how it works.
+          I'm a fullstack developer. I'm really into problem-solving, and tech;
+          Anything I can take apart and figure out how it works.
         </p>
 
         <p>
-          My interest in tech started way back with Pokémon Red — that was the
-          first time I really got curious about computers and games. Later on,
-          games like TF2 and other mod-heavy stuff pushed that curiosity even
-          further.
+          I started web development around 2019, learning HTML and CSS on my
+          own. I built some personal projects and practiced with Udemy courses.
+          In 2023, I got into C++, and that's when I really started enjoying
+          programming. That interest got me into other languages like Python.
         </p>
 
         <p>
-          I started messing with web development around 17, just learning HTML
-          and CSS on my own at home. I didn't take it super seriously at first —
-          just built random little sites and played around with Udemy courses.
-          But when I hit 21, I got into C++, and that kind of changed
-          everything. That's when I really started taking development seriously
-          and realized how fun backend can actually be. I also completed my
-          Associate's degree in Computer Information Systems (CIS), which helped
-          give me a more solid foundation.
+          My interest in programming started with Pokémon Red; that was the
+          first time I became curious about computers and games. Later on, games
+          like TF2 and other mod-heavy stuff pushed that curiosity even further.
         </p>
       </div>
 
@@ -206,11 +234,5 @@
           </a>
         </li>
       </ul>
-
-      <div class="cta-section">
-        <h3 class="cta-title">Want to learn more?</h3>
-        <a href="resume.html" class="resume-link">View my resume</a>
-      </div>
-    </div>
   </body>
 </html>

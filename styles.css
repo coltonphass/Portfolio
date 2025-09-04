@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -9,7 +9,7 @@
 body {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   min-height: 100vh;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #ecf0f1;
   overflow-x: hidden;
   position: relative;
@@ -168,7 +168,7 @@ body {
 }
 
 .profile-image::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -6px;
   left: -6px;
@@ -192,7 +192,8 @@ body {
 }
 
 /* Enhanced info lines with staggered animations */
-.info-line {
+.info-line,
+.info-line2 {
   font-size: clamp(0.9rem, 2.5vw, 1rem);
   text-align: center;
   margin-bottom: 0.5rem;
@@ -240,7 +241,7 @@ body {
 }
 
 .info-line a::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -378,7 +379,7 @@ body {
 }
 
 .social-link::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -100%;
@@ -463,7 +464,7 @@ body {
 }
 
 .resume-link::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -100%;
@@ -484,7 +485,7 @@ body {
 }
 
 .resume-link::after {
-  content: "→";
+  content: '→';
   transition: transform 0.3s ease;
 }
 
@@ -551,7 +552,7 @@ body {
 }
 
 .section-title::after {
-  content: "";
+  content: '';
   display: block;
   width: 60px;
   height: 2px;
@@ -646,7 +647,7 @@ body {
 }
 
 .view-projects-link::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -704,7 +705,7 @@ body {
 }
 
 .summon-button::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -100%;
@@ -876,7 +877,7 @@ body {
 }
 
 .back-link::before {
-  content: "←";
+  content: '←';
   transition: transform 0.3s ease;
 }
 
@@ -982,7 +983,7 @@ body {
 }
 
 .reference-link::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -1165,7 +1166,7 @@ body {
   border-radius: 10px;
   color: #ecf0f1;
   font-size: clamp(0.9rem, 2.5vw, 1rem);
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   transition: all 0.3s ease;
   resize: vertical;
 }
@@ -1216,7 +1217,7 @@ body {
 }
 
 .submit-button::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -100%;
@@ -1449,4 +1450,114 @@ body {
   .left-content-block {
     margin: 1.5rem 0;
   }
+}
+.nav-container {
+  position: fixed;
+  top: -90px;
+  right: -90px;
+  z-index: 1000;
+}
+.nav-circle {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #1a1a2e 100%);
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+}
+.nav-container.show-nav .nav-circle {
+  transform: rotate(50deg);
+}
+.nav-button {
+  cursor: pointer;
+  position: absolute;
+  height: 37px;
+  width: 37px;
+  margin-top: 12px;
+  margin-right: -8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 18px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.nav-button#open {
+  top: 50%;
+  right: 65%;
+  transform: translate(-50%, -50%);
+}
+.nav-button#close {
+  top: 73%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+.nav-menu {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  z-index: 999;
+}
+.nav-menu ul {
+  list-style-type: none;
+  padding-right: 25px;
+}
+.nav-menu ul li {
+  margin: 25px 0;
+  transform: translateX(150%); /* Push further out to hide completely */
+  transition: transform 0.4s ease-in-out;
+}
+/* Remove the staircase effect by using the same transform for all items */
+.nav-menu ul li:nth-child(2),
+.nav-menu ul li:nth-child(3),
+.nav-menu ul li:nth-child(4) {
+  margin-right: 0; /* Reset margin-right to 0 for all items */
+  transform: translateX(150%); /* Use same transform as the first item */
+}
+/* Staggered animation delays for nice cascading effect */
+.nav-container.show-nav ~ .nav-menu li:nth-child(1) {
+  transform: translateX(0);
+  transition-delay: 0.1s;
+}
+.nav-container.show-nav ~ .nav-menu li:nth-child(2) {
+  transform: translateX(0);
+  transition-delay: 0.2s;
+}
+.nav-container.show-nav ~ .nav-menu li:nth-child(3) {
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+.nav-container.show-nav ~ .nav-menu li:nth-child(4) {
+  transform: translateX(0);
+  transition-delay: 0.4s;
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 25px;
+  background: rgba(78, 205, 196, 0.1);
+  transition: all 0.3s ease;
+}
+.nav-link:hover {
+  background: rgba(78, 205, 196, 0.2);
+  color: #4ecdc4;
+}
+.nav-link i {
+  margin-right: 10px;
+}
+/* Add this to make content blur when nav is open */
+.nav-container.show-nav ~ .container {
+  transform: rotate(-5deg) scale(0.95);
+  filter: blur(2px);
+  opacity: 0.7;
+  transition: all 0.5s ease;
 }

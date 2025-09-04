@@ -91,6 +91,14 @@
 
     <!-- Security Meta -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <div class="bg-elements">
@@ -105,7 +113,42 @@
         <h1 class="contact-form-title">CONTACT</h1>
         <p class="contact-form-subtitle">Let's build something together</p>
       </div>
+      <div class="nav-container" id="nav-container">
+        <div class="nav-circle">
+          <button class="nav-button" id="open">
+            <i class="fas fa-bars"></i>
+          </button>
+          <button class="nav-button" id="close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
 
+      <nav class="nav-menu">
+        <ul>
+          <li>
+            <a href="index.html" class="nav-link"
+              ><i class="fas fa-home"></i> Home</a
+            >
+          </li>
+          <li>
+            <a href="resume.html" class="nav-link"
+              ><i class="fas fa-user"></i> Resume</a
+            >
+          </li>
+          <li>
+            <a href="allprojects.html" class="nav-link"
+              ><i class="fas fa-code"></i> Projects</a
+            >
+          </li>
+          <li>
+            <a href="contact.html" class="nav-link"
+              ><i class="fas fa-envelope"></i> Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+      
       <form
         class="contact-form"
         id="cs-form-1105"
@@ -206,74 +249,8 @@
         </div>
       </form>
 
-      <div class="back-link-container">
-        <a href="resume.html" class="back-link">Back to Resume</a>
-      </div>
-    </div>
-
-    <!-- JavaScript for Form Submission -->
-    <script>
-      document
-        .getElementById("cs-form-1105")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          var form = this;
-          var formData = new FormData(form);
-
-          // Show loading state
-          const submitBtn = document.getElementById("submitBtn");
-          const originalText = submitBtn.textContent;
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Sending...";
-
-          fetch(form.action, {
-            method: form.method,
-            body: formData,
-            headers: { Accept: "application/json" },
-          })
-            .then((response) =>
-              response.ok ? response.json() : Promise.reject(response)
-            )
-            .then(() => {
-              document.getElementById("success-message").style.display =
-                "block";
-              form.reset();
-              submitBtn.disabled = false;
-              submitBtn.textContent = originalText;
-            })
-            .catch(() => {
-              alert("❌ Error sending message. Please try again.");
-              submitBtn.disabled = false;
-              submitBtn.textContent = originalText;
-            });
-        });
-
-      // Enhanced form validation feedback
-      const inputs = document.querySelectorAll(".form-input, .form-textarea");
-      inputs.forEach((input) => {
-        input.addEventListener("blur", function () {
-          if (this.hasAttribute("required") && !this.value.trim()) {
-            this.style.borderColor = "rgba(231, 76, 60, 0.5)";
-          } else if (
-            this.type === "email" &&
-            this.value &&
-            !isValidEmail(this.value)
-          ) {
-            this.style.borderColor = "rgba(231, 76, 60, 0.5)";
-          } else {
-            this.style.borderColor = "rgba(78, 205, 196, 0.2)";
-          }
-        });
-
-        input.addEventListener("focus", function () {
-          this.style.borderColor = "#4ecdc4";
-        });
-      });
-
-      function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-      }
-    </script>
+    <!-- JavaScript Files -->
+    <script src="script.js"></script>
+    <script src="contact-form.js"></script>
   </body>
 </html>
