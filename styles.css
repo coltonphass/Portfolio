@@ -620,14 +620,20 @@ body {
   width: 100%;
   margin: 0 auto 1rem;
   padding: clamp(1rem, 3vw, 1.5rem);
+  padding-left: 30px;
   font-size: clamp(1rem, 2.8vw, 1.2rem);
   font-weight: 400;
   letter-spacing: 0.02em;
   border-radius: 10px;
   box-sizing: border-box;
   overflow-wrap: break-word;
+  line-height: 1.6;
   text-align: left;
   border-left: 3px solid #4ecdc4;
+}
+
+.job-description li {
+  margin-bottom: 10px;
 }
 
 .job-note {
