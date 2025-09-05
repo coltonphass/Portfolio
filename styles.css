@@ -1451,6 +1451,7 @@ body {
     margin: 1.5rem 0;
   }
 }
+
 .nav-container {
   position: fixed;
   top: -90px;
@@ -1560,4 +1561,235 @@ body {
   filter: blur(2px);
   opacity: 0.7;
   transition: all 0.5s ease;
+}
+
+/* nav media */
+@media (max-width: 768px) {
+  .nav-container {
+    position: fixed;
+    top: -45px;
+    right: -45px;
+    z-index: 1000;
+  }
+  .nav-circle {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #1a1a2e 100%);
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+  }
+  .nav-container.show-nav .nav-circle {
+    transform: rotate(65deg);
+  }
+  .nav-button {
+    cursor: pointer;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    margin-top: 5px;
+    margin-right: -25px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .nav-button#open {
+    top: 50%;
+    right: 65%;
+    transform: translate(-80%, -75%);
+  }
+  .nav-button#close {
+    top: 73%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .nav-menu {
+    position: fixed;
+    top: 100px;
+    right: 0;
+    z-index: 999;
+  }
+  .nav-menu ul {
+    list-style-type: none;
+    padding-right: 25px;
+  }
+  .nav-menu ul li {
+    margin: 22px 0;
+    transform: translateX(150%); /* Push further out to hide completely */
+    transition: transform 0.4s ease-in-out;
+  }
+  /* Remove the staircase effect by using the same transform for all items */
+  .nav-menu ul li:nth-child(2),
+  .nav-menu ul li:nth-child(3),
+  .nav-menu ul li:nth-child(4) {
+    margin-right: 0; /* Reset margin-right to 0 for all items */
+    transform: translateX(150%); /* Use same transform as the first item */
+  }
+  /* Staggered animation delays for nice cascading effect */
+  .nav-container.show-nav ~ .nav-menu li:nth-child(1) {
+    transform: translateX(0);
+    transition-delay: 0.1s;
+  }
+  .nav-container.show-nav ~ .nav-menu li:nth-child(2) {
+    transform: translateX(0);
+    transition-delay: 0.2s;
+  }
+  .nav-container.show-nav ~ .nav-menu li:nth-child(3) {
+    transform: translateX(0);
+    transition-delay: 0.3s;
+  }
+  .nav-container.show-nav ~ .nav-menu li:nth-child(4) {
+    transform: translateX(0);
+    transition-delay: 0.4s;
+  }
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+
+    transition: all 0.3s ease;
+  }
+  .nav-link:hover {
+    background: rgba(78, 205, 196, 1.2);
+    color: #000000;
+  }
+  .nav-link i {
+    margin-right: 10px;
+  }
+  /* Add this to make content blur when nav is open */
+  .nav-container.show-nav ~ .container {
+    transform: rotate(-5deg) scale(0.95);
+    filter: blur(2px);
+    opacity: 0.7;
+    transition: all 0.5s ease;
+  }
+}
+
+@media (max-width: 550px) {
+  /* Extra small screens */
+  .nav-container {
+    position: fixed;
+    top: -40px;
+    right: -40px;
+    z-index: 1000;
+  }
+  .nav-circle {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #1a1a2e 100%);
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: relative;
+    opacity: 0.7;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+  }
+  .nav-container.show-nav .nav-circle {
+    transform: rotate(50deg);
+  }
+  .nav-button {
+    cursor: pointer;
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    margin-top: 7px;
+    margin-right: -13px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .nav-button#open {
+    top: 47%;
+    right: 65%;
+    transform: translate(-70%, -60%);
+  }
+  .nav-button#close {
+    top: 73%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .nav-menu {
+    position: fixed;
+    top: 100px;
+    right: 0;
+    z-index: 999;
+  }
+  .nav-menu ul {
+    list-style-type: none;
+    padding-right: 15px;
+  }
+  .nav-menu ul li {
+    margin: 15px 0;
+    transform: translateX(150%); /* Push further out to hide completely */
+    transition: transform 0.4s ease-in-out;
+  }
+  /* Remove the staircase effect by using the same transform for all items */
+  .nav-menu ul li:nth-child(2),
+  .nav-menu ul li:nth-child(3),
+  .nav-menu ul li:nth-child(4) {
+    margin-right: 0; /* Reset margin-right to 0 for all items */
+    transform: translateX(150%); /* Use same transform as the first item */
+  }
+  /* Staggered animation delays for nice cascading effect */
+  .nav-container.show-nav ~ .nav-menu li:nth-child(1) {
+    transform: translateX(0);
+    transition-delay: 0.1s;
+  }
+  .nav-container.show-nav ~ .nav-menu li:nth-child(2) {
+    transform: translateX(0);
+    transition-delay: 0.2s;
+  }
+  .nav-container.show-nav ~ .nav-menu li:nth-child(3) {
+    transform: translateX(0);
+    transition-delay: 0.3s;
+  }
+  .nav-container.show-nav ~ .nav-menu li:nth-child(4) {
+    transform: translateX(0);
+    transition-delay: 0.4s;
+  }
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+
+    transition: all 0.3s ease;
+  }
+  .nav-link:hover {
+    background: rgba(78, 205, 196, 1.2);
+    color: #000000;
+  }
+  .nav-link i {
+    margin-right: 10px;
+  }
+  /* Add this to make content blur when nav is open */
+  .nav-container.show-nav ~ .container {
+    transform: rotate(-5deg) scale(0.95);
+    filter: blur(2px);
+    opacity: 0.7;
+    transition: all 0.5s ease;
+  }
 }
