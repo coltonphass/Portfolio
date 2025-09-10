@@ -578,16 +578,25 @@ body {
   padding: clamp(1.5rem, 4vw, 2rem);
   border-radius: 15px;
   border: 1px solid rgba(78, 205, 196, 0.1);
-  transition: all 0.3s ease;
+
+  transform: translateX(400%);
+  transition: transform 0.8s ease;
 }
 
-.job:hover {
+.job.show:hover {
   background: rgba(78, 205, 196, 0.05);
   border-color: rgba(78, 205, 196, 0.2);
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(78, 205, 196, 0.1);
 }
 
+.job:nth-of-type(odd) {
+  transform: translateX(-400%);
+}
+
+.job.show {
+  transform: translateX(0);
+}
 .company-name {
   font-size: clamp(1.2rem, 3.5vw, 1.4rem);
   font-weight: 500;
