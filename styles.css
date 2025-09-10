@@ -570,7 +570,6 @@ body {
   }
 }
 
-/* Enhanced job cards */
 .job {
   margin-bottom: 3rem;
   text-align: center;
@@ -578,16 +577,10 @@ body {
   padding: clamp(1.5rem, 4vw, 2rem);
   border-radius: 15px;
   border: 1px solid rgba(78, 205, 196, 0.1);
-
   transform: translateX(400%);
-  transition: transform 0.8s ease;
-}
-
-.job.show:hover {
-  background: rgba(78, 205, 196, 0.05);
-  border-color: rgba(78, 205, 196, 0.2);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(78, 205, 196, 0.1);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .job:nth-of-type(odd) {
@@ -596,7 +589,18 @@ body {
 
 .job.show {
   transform: translateX(0);
+  opacity: 1;
 }
+
+.job-inner {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.job.show:hover .job-inner {
+  transform: translateY(-15px);
+}
+
 .company-name {
   font-size: clamp(1.2rem, 3.5vw, 1.4rem);
   font-weight: 500;
