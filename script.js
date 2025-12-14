@@ -104,7 +104,7 @@ function renderContributionGraph(contributionDays, containerId) {
   const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   // --- Prepare Data ---
-  // FIX 1: Use the last 364 days (52 full weeks) for an accurate year display
+  // FIX: Use the last 364 days (52 full weeks) for an accurate year display
   const days = contributionDays.slice(-364);
   const weeks = [];
   const monthPositions = {};
@@ -174,7 +174,7 @@ function renderContributionGraph(contributionDays, containerId) {
   const monthLabelsContainer = document.createElement('div');
   monthLabelsContainer.className = 'github-month-labels';
 
-  // FIX 2: Correct month positioning and spacing logic
+  // FIX: Correct month positioning and spacing logic
   let lastPositionIndex = -99; // Track the column index of the last rendered month
 
   // Loop through all 12 months
@@ -185,10 +185,8 @@ function renderContributionGraph(contributionDays, containerId) {
       positionIndex = monthPositions[m];
     }
 
-    // Week column width is 12px. The left fixed column is 20px. The + 6 is for centering the label.
-    // NOTE: The 20px offset is now handled by the separate .github-day-labels column layout
-    // We only need the positioning based on the week index and centering (6px).
-    const leftOffset = positionIndex * 12 + 6;
+    // CRITICAL FIX: Re-include the 20px offset for the Day Labels Column, plus the 6px for centering.
+    const leftOffset = positionIndex * 12 + 20 + 6;
 
     // Render the label only if its position is recorded and it's at least 3 columns past the last one.
     if (positionIndex !== -1 && positionIndex > lastPositionIndex + 2) {
