@@ -1066,3 +1066,9 @@ footer {
   /* This margin should remain 0 now that the day labels are a separate column */
   margin-left: 0;
 }
+#home .home-blog-section h2 {
+  background: linear-gradient(135deg, #f97316 0%, #fb7185 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
