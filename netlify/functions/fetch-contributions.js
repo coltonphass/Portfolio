@@ -1,8 +1,11 @@
 // netlify/functions/fetch-contributions.js
 
-// The GITHUB_PAT is securely read from Netlify Environment Variables.
+// --- FIX: Explicitly require node-fetch for maximum compatibility ---
+const fetch = require('node-fetch');
+// -------------------------------------------------------------------
+
 const { GITHUB_PAT } = process.env;
-const GITHUB_USERNAME = 'coltonphass'; // <--- !!! UPDATE THIS WITH YOUR GITHUB USERNAME !!!
+const GITHUB_USERNAME = 'coltonphass'; // <--- Check this is correct
 const GITHUB_GRAPHQL_ENDPOINT = 'https://api.github.com/graphql';
 
 // The GraphQL query to fetch the contribution calendar for the past year
@@ -55,7 +58,7 @@ exports.handler = async (event, context) => {
 
     const result = await response.json();
 
-    // Check for GraphQL errors (e.g., user not found)
+    // Check for GraphQL errors
     if (result.errors) {
       console.error('GraphQL Errors:', result.errors);
       return {
@@ -64,7 +67,7 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // 2. Flatten the data structure: combine all weeks into a single array of days
+    // 2. Flatten the data structure
     const contributionDays =
       result.data.user.contributionsCollection.contributionCalendar.weeks.flatMap(
         (week) => week.contributionDays
@@ -75,7 +78,6 @@ exports.handler = async (event, context) => {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        // Instruct browser and CDN to cache this for 1 hour to reduce API calls
         'Cache-Control': 'public, max-age=3600, must-revalidate',
       },
       body: JSON.stringify(contributionDays),
