@@ -1031,3 +1031,39 @@ footer {
   padding: 20px;
   color: #94a3b8;
 }
+
+/* --- Day Labels (Mon, Wed, Fri) --- */
+
+/* Wrapper for the entire graph: day labels + graph area */
+.github-calendar-grid {
+  display: flex;
+  flex-direction: row; /* Puts the day labels next to the graph */
+  /* Adjust width to ensure the full 52-week calendar fits or scrolls */
+}
+
+/* The fixed-width column for Mon, Wed, Fri labels */
+.github-day-labels {
+  width: 20px; /* Width of the label column */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Start labels from the top */
+  margin-top: 25px; /* Offset to align with the first day square */
+  flex-shrink: 0; /* Prevents this column from shrinking */
+}
+
+.day-label {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  height: 12px; /* Set height to align with squares (10px square + 2px gap) */
+  line-height: 10px; /* Align text vertically */
+  /* Only display three labels to save space */
+  &:nth-child(even) {
+    visibility: hidden; /* Hides Tues, Thurs, Sat */
+  }
+}
+
+/* Adjust the month labels to sit over the graph area */
+.github-month-labels {
+  /* REMOVE margin-left: 20px; or change it to 0 */
+  margin-left: 0;
+}
