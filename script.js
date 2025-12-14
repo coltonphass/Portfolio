@@ -75,41 +75,135 @@ function filterProjects() {
 
 /**
  * Renders the GitHub contribution calendar grid into a specified container.
- * @param {Array<Object>} contributionDays - Array of contribution day objects (date, contributionCount, color).
+ * @param {Array<Object>} contributionDays - Array of contribution day objects.
  * @param {string} containerId - The ID of the HTML element to render the graph into.
  */
 function renderContributionGraph(contributionDays, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  // Clear loading text and previous content
+  // Clear previous content
   container.innerHTML = '';
 
-  // Slice for about a year's worth of data, then group into 7-day columns (weeks)
+  // --- Month Names Array (Starts with January for lookup) ---
+  const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  // --- Prepare Data ---
+  // Use the last 371 days (approx. 53 full weeks) for a full year display
   const days = contributionDays.slice(-371);
   const weeks = [];
+  const monthPositions = {}; // To store the starting position for each month label
 
   // Group days into columns of 7 (a week)
   for (let i = 0; i < days.length; i += 7) {
-    weeks.push(days.slice(i, i + 7));
+    const week = days.slice(i, i + 7);
+    weeks.push(week);
+
+    // Check the first day of the week to see if it's the start of a new month
+    const firstDay = week[0];
+    if (firstDay) {
+      const date = new Date(firstDay.date);
+      const monthIndex = date.getMonth(); // 0 (Jan) - 11 (Dec)
+
+      // If the month hasn't been recorded yet, record its position
+      if (!monthPositions[monthIndex] && i > 0) {
+        // i > 0 prevents labeling the first week if it's mid-month
+        // Position is based on the column index (i / 7)
+        monthPositions[monthIndex] = i / 7;
+      }
+    }
   }
 
-  // Create the main container for all weeks
+  // --- Build Components ---
+
+  // 1. Main Wrapper (handles overall layout and scroll)
+  const wrapper = document.createElement('div');
+  wrapper.className = 'github-graph-wrapper';
+
+  // 2. Month Labels Row
+  const monthLabelsContainer = document.createElement('div');
+  monthLabelsContainer.className = 'github-month-labels';
+
+  // Calculate the total number of weeks to determine the width scale
+
+  let lastPosition = 0;
+  const today = new Date();
+  const currentMonthIndex = today.getMonth(); // Get the current month index
+
+  // Loop through all 12 months (or fewer, if the dataset is shorter than a year)
+  for (let m = 0; m < 12; m++) {
+    // Find the index of the column where this month starts
+    let positionIndex = -1;
+    for (const index in monthPositions) {
+      if (parseInt(index) === m) {
+        positionIndex = monthPositions[index];
+        break;
+      }
+    }
+
+    // We calculate the left offset for the label
+    // The formula is: column_index * (square_width + week_gap)
+    const leftOffset = positionIndex * 14;
+
+    // Render a label if the position is recorded OR if it's the current month (to guarantee a recent label)
+    if (positionIndex !== -1 || m === currentMonthIndex) {
+      // Only render a label if it's visually spaced apart from the last one
+      // Use 30px as a rough minimum gap to prevent label overlap
+      if (
+        leftOffset > lastPosition + 30 ||
+        m === new Date(days[0].date).getMonth()
+      ) {
+        // Get the starting month of the data set to correctly align the very first label
+        const startDayDate = new Date(days[0].date);
+        const startMonthIndex = startDayDate.getMonth();
+
+        // Adjust positionIndex if the dataset starts on this month
+        let effectivePositionIndex = positionIndex;
+        if (m === startMonthIndex && positionIndex === -1) {
+          effectivePositionIndex = 0;
+        }
+
+        if (effectivePositionIndex !== -1) {
+          const labelDiv = document.createElement('span');
+          labelDiv.className = 'month-label';
+          labelDiv.textContent = monthNames[m];
+          labelDiv.style.left = `${effectivePositionIndex * 14}px`;
+          monthLabelsContainer.appendChild(labelDiv);
+          lastPosition = effectivePositionIndex * 14;
+        }
+      }
+    }
+  }
+
+  wrapper.appendChild(monthLabelsContainer);
+
+  // 3. Contribution Grid
   const weeksContainer = document.createElement('div');
   weeksContainer.className = 'github-weeks-container';
 
-  // Map over weeks
   weeks.forEach((week) => {
-    // Create the container for a single week (column)
     const weekDiv = document.createElement('div');
     weekDiv.className = 'github-week';
 
-    // Map over days in the week
+    // Render the 7 days we got for the column
     week.forEach((day) => {
       const dayDiv = document.createElement('div');
       dayDiv.className = 'github-day';
 
-      // Set the color and title attribute
+      // Set color and tooltip
       dayDiv.style.backgroundColor = day.color;
       dayDiv.title = `${day.date}: ${day.contributionCount} contributions`;
 
@@ -119,7 +213,19 @@ function renderContributionGraph(contributionDays, containerId) {
     weeksContainer.appendChild(weekDiv);
   });
 
-  container.appendChild(weeksContainer);
+  wrapper.appendChild(weeksContainer);
+
+  // 4. Total Contributions Counter
+  const total = contributionDays.reduce(
+    (sum, day) => sum + day.contributionCount,
+    0
+  );
+  const totalDiv = document.createElement('div');
+  totalDiv.className = 'github-total-contributions';
+  totalDiv.textContent = `Total contributions in the last year: ${total}`;
+
+  container.appendChild(totalDiv);
+  container.appendChild(wrapper);
 }
 
 /**

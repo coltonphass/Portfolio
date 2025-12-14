@@ -955,3 +955,79 @@ footer {
     justify-content: flex-start;
   }
 }
+/* ======================================================================
+   GITHUB CONTRIBUTION GRAPH STYLING FIXES (New Rules)
+   ====================================================================== */
+
+/* --- Container Fixes --- */
+
+/* Ensure the main container for the graph allows horizontal scrolling if needed 
+   and handles the month labels */
+.github-graph-wrapper {
+  /* Use a layout that handles the row of labels and the grid of squares */
+  display: flex;
+  flex-direction: column; /* Stacks the month labels above the graph area */
+  overflow-x: auto; /* Allows horizontal scrolling if the screen is too narrow */
+  padding-bottom: 5px; /* Space for the scrollbar */
+}
+
+/* The actual graph grid area (where the squares live) */
+.github-weeks-container {
+  display: flex; /* Makes the weeks flow horizontally */
+  gap: 2px; /* Small space between week columns */
+  padding: 2px; /* Inner padding */
+}
+
+/* --- Month Labels --- */
+
+/* Container for the month labels */
+.github-month-labels {
+  display: flex;
+  position: relative;
+  /* Adjust this margin to align the months correctly over the columns */
+  margin-left: 20px; /* Space for the day labels on the left */
+  margin-bottom: 5px;
+  height: 15px; /* Give the labels a defined height */
+}
+
+/* Individual month label */
+.month-label {
+  position: absolute; /* Allows for overlapping and exact positioning */
+  font-size: 0.75rem;
+  color: #94a3b8; /* slate-400 */
+  /* Width estimation: approx. 4.3 weeks * (12px square + 2px gap) = ~60px */
+  white-space: nowrap; /* Prevent names from wrapping */
+}
+
+/* --- Day Squares --- */
+
+/* Individual week column */
+.github-week {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Space between the squares in the column */
+}
+
+/* Individual day square */
+.github-day {
+  width: 10px; /* Slightly smaller square for better fit */
+  height: 10px;
+  border-radius: 2px; /* Make it slightly rounded */
+  background-color: #0d1117; /* GitHub's base background color for empty days */
+  flex-shrink: 0; /* Ensures squares don't shrink */
+}
+
+/* Ensure the total contribution counter is styled nicely */
+.github-total-contributions {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+/* Style for the loading/error text */
+.loading-text {
+  text-align: center;
+  padding: 20px;
+  color: #94a3b8;
+}
