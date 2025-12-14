@@ -105,7 +105,7 @@ function renderContributionGraph(contributionDays, containerId) {
 
   // --- Prepare Data ---
   // Use the last 371 days (approx. 53 full weeks) for a full year display
-  const days = contributionDays.slice(-371);
+  const days = contributionDays.slice(-364);
   const weeks = [];
   const monthPositions = {};
   const total = days.reduce((sum, day) => sum + day.contributionCount, 0);
@@ -184,7 +184,7 @@ function renderContributionGraph(contributionDays, containerId) {
       positionIndex = monthPositions[m];
     }
 
-    const leftOffset = positionIndex * 14;
+    const leftOffset = positionIndex * 12 + 20 + 6;
 
     // Render a label if the position is recorded OR if it's the very first week column
     // We use a smaller spacing heuristic now (3 columns = 42px)
