@@ -1,0 +1,957 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #d4d4d4;
+  background: #0f172a;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(148, 163, 184, 0.15) 1px,
+    transparent 0
+  );
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1e293b;
+  z-index: 100;
+  position: relative;
+}
+
+.nav-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-weight: 600;
+  color: #f1f5f9;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.95em;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #f1f5f9;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.page {
+  display: none;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page.active {
+  display: block;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.profile-image {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.profile-image img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 2px solid #0f172a;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #f1f5f9;
+}
+
+.subtitle {
+  font-size: 1.1em;
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+.description {
+  color: #cbd5e1;
+  margin-bottom: 30px;
+  font-size: 1.05em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #1e293b;
+  color: #f1f5f9;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s;
+  border: 1px solid #334155;
+}
+
+.btn:hover {
+  background: #334155;
+  border-color: #475569;
+}
+
+.connect {
+  margin-top: 30px;
+}
+
+.connect h3 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: #f1f5f9;
+}
+
+.social-links {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.social-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s;
+  padding: 4px 0;
+}
+
+.social-links a:hover {
+  color: #60a5fa;
+}
+
+.social-links span {
+  color: #334155;
+  font-size: 0.8em;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  color: #e2e8f0;
+  border-bottom: 2px solid #1e293b;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+/* Only Projects on Home - Blue to Cyan */
+#home .section:nth-child(2) h2 {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Only Blog on Home - Purple to Pink */
+#home .section:nth-child(3) h2 {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.projects,
+.blog-posts {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border: 1px solid #334155;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  border-color: #475569;
+}
+
+.card-date {
+  font-size: 0.85em;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #f1f5f9;
+}
+
+.card-description {
+  color: #94a3b8;
+  font-size: 0.95em;
+}
+
+.project-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.about-content {
+  line-height: 1.8;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  color: #cbd5e1;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.skill-tag {
+  background: #1e293b;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-align: center;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  font-size: 0.9em;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  word-break: break-word;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.skill-tag:hover {
+  transform: translateY(-3px);
+  border-color: #475569;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.uses-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #1e293b;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 0.95em;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.3s;
+}
+.uses-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fills the container without distortion (it will crop as needed) */
+  display: block;
+}
+
+.tab-btn:hover {
+  color: #cbd5e1;
+}
+
+.tab-btn.active {
+  color: #60a5fa;
+  border-bottom-color: #60a5fa;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.uses-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.uses-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+  background: transparent;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.uses-item:hover {
+  background: #1e293b;
+  border-color: #334155;
+  transform: none;
+  box-shadow: none;
+}
+
+.uses-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+}
+
+.uses-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: none;
+}
+
+.uses-item:hover .uses-icon img {
+  filter: none;
+}
+
+.uses-content {
+  flex: 1;
+}
+
+.uses-item h3 {
+  color: #e2e8f0;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.uses-item p {
+  display: none;
+}
+
+.project-filter {
+  margin-bottom: 30px;
+}
+
+.project-filter label {
+  color: #94a3b8;
+  margin-right: 10px;
+}
+
+.project-filter select {
+  background: #1e293b;
+  color: #f1f5f9;
+  border: 1px solid #334155;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  cursor: pointer;
+}
+
+.project-filter select:focus {
+  outline: none;
+  border-color: #60a5fa;
+}
+
+.project-stats {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  font-size: 0.85em;
+  color: #64748b;
+}
+
+.project-stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 60px 20px 40px;
+  color: #64748b;
+  font-size: 0.9em;
+  border-top: 1px solid #1e293b;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-links {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-links a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #94a3b8;
+}
+
+.footer-links span {
+  color: #334155;
+  font-size: 0.8em;
+}
+
+.scroll-top {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #1e293b;
+  color: #94a3b8;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  font-size: 0.85em;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.scroll-top:hover {
+  background: #334155;
+  color: #cbd5e1;
+  border-color: #475569;
+  transform: translateY(-2px);
+}
+
+/* Blog Post Page Styles */
+.blog-post-header {
+  margin-bottom: 40px;
+}
+
+.blog-post-hero {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  border-radius: 12px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  border: 1px solid #334155;
+}
+
+.about-hero {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #14b8a6 0%, #3b82f6 100%);
+  border-radius: 12px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 120px;
+  border: 1px solid #334155;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+}
+
+.about-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills container */
+  display: block;
+}
+
+.uses-hero {
+  margin-bottom: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1e293b; /* Fallback/background color */
+  height: 350px; /* Set a fixed height for the banner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #334155;
+}
+
+.blog-post-meta {
+  color: #64748b;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+.blog-post-title {
+  font-size: 2.5em;
+  color: #f1f5f9;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.blog-post-description {
+  font-size: 1.15em;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.blog-post-content {
+  color: #cbd5e1;
+  line-height: 1.8;
+  font-size: 1.05em;
+}
+
+.blog-post-content h2 {
+  font-size: 1.8em;
+  margin: 40px 0 20px;
+  color: #e2e8f0;
+}
+
+.blog-post-content h3 {
+  font-size: 1.4em;
+  margin: 30px 0 15px;
+  color: #f1f5f9;
+}
+
+.blog-post-content p {
+  margin-bottom: 20px;
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+  margin: 20px 0;
+  padding-left: 30px;
+}
+
+.blog-post-content li {
+  margin-bottom: 10px;
+}
+
+.blog-post-content code {
+  background: #1e293b;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #60a5fa;
+  border: 1px solid #334155;
+}
+
+.blog-post-content pre {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 20px 0;
+  border: 1px solid #334155;
+}
+
+.blog-post-content pre code {
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+.blog-post-content blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 20px;
+  margin: 20px 0;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  text-decoration: none;
+  margin-bottom: 30px;
+  font-size: 0.95em;
+  transition: color 0.3s;
+}
+
+.back-button:hover {
+  color: #60a5fa;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  .container {
+    padding: 40px 20px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .nav-links a {
+    font-size: 0.85em;
+  }
+}
+
+/* --- General Icon Styling and Glow (Applies to all uses-icons) --- */
+.uses-icon img {
+  width: 48px; /* Default size for software/general icons */
+  height: 48px;
+  object-fit: contain;
+  /* Applying the subtle blue glow to ALL icons */
+  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.3)) /* Base Glow */
+    drop-shadow(0 0 3px rgba(96, 165, 250, 0.1));
+  transition: all 0.3s ease-out;
+}
+
+/* Hover effect for all icons (subtle lift and glow intensification) */
+.uses-item:hover .uses-icon img {
+  filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.6))
+    /* Brighter/larger glow on hover */
+    drop-shadow(0 0 6px rgba(96, 165, 250, 0.2));
+  transform: scale(1.05);
+}
+
+/* --- HARDWARE SECTION OVERRIDES (To keep the images larger) --- */
+
+/* 1. Target the images specifically within the #hardware tab and override the size */
+#hardware .uses-icon img {
+  width: 72px; /* Override: Larger size for hardware */
+  height: 72px;
+}
+
+/* 2. Increase the size of the hardware icon container to hold the bigger image */
+#hardware .uses-icon {
+  width: 80px; /* Override: Adjust to comfortably fit the 72px image */
+  height: 80px;
+  min-width: 80px;
+}
+
+/* 3. Adjust spacing for the uses-item containers in the hardware tab (from previous step) */
+#hardware .uses-item {
+  gap: 12px;
+  padding: 20px 10px;
+}
+
+/* 4. Adjust grid layout for the wider hardware icons (from previous step) */
+#hardware .uses-list {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  justify-content: center;
+}
+
+.experience-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  border-color: #475569;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle-link a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s;
+  padding: 4px 0;
+}
+
+.subtitle-link a:hover {
+  color: #60a5fa;
+}
+
+/* Add this new rule to set the size of the container */
+.project-icon {
+  width: 58px; /* Must match the image width */
+  height: 58px; /* Must match the image height */
+  /* Optional: Add a margin to separate the icon from the title/description */
+  margin-bottom: 12px;
+}
+
+.project-icon img {
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* --- PROJECTS PAGE STYLING --- */
+
+/* Use Flexbox to align the filter controls and the button */
+.project-filter {
+  display: flex;
+  align-items: center; /* Vertically center items */
+  gap: 15px; /* Space between filter controls and button */
+  margin-top: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* Ensure the button is pushed to the right, taking up available space */
+.project-filter label,
+.project-filter select {
+  /* This prevents the label and select from taking up space with flex-grow */
+  flex-shrink: 0;
+}
+
+/* Use margin-left: auto to push the button all the way to the right */
+.project-filter .btn-github {
+  margin-left: auto; /* Pushes this element to the end of the flex container */
+  /* Keep the button small and consistent */
+  padding: 8px 15px;
+  font-size: 0.9em;
+}
+
+/* Optional: Make the select box look nicer and match the dark theme */
+.project-filter select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #334155; /* slate-700 */
+  background-color: #1e293b; /* slate-800 */
+  color: #d4d4d4;
+  appearance: none; /* Removes default OS styling for a cleaner look */
+}
+
+/* Handle small screens: Center controls if they wrap */
+@media (max-width: 600px) {
+  .project-filter {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align stacked items to the left */
+    gap: 10px;
+  }
+
+  .project-filter .btn-github {
+    margin-left: 0; /* Remove auto-margin for stacking */
+    align-self: flex-end; /* Align the button to the right end of the column */
+  }
+}
+
+/* --- GITHUB CONTRIBUTION GRAPH STYLES --- */
+
+.github-contributions-section h2 {
+  /* Give it a distinct gradient for the Home page */
+  background: linear-gradient(
+    135deg,
+    #10b981 0%,
+    #06b6d4 100%
+  ); /* Green-Cyan */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.github-card {
+  /* Matches: bg-card border rounded-lg p-6 / p-4 */
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 25px;
+}
+
+.github-legend {
+  /* Styling for the Less/More legend */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align right */
+  font-size: 0.85em;
+  color: #94a3b8;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.day-square {
+  /* Square for the color swatches */
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+/* Styles for the graph grid (renderContributionGraph output) */
+.github-weeks-container {
+  /* Matches: flex gap-1 */
+  display: flex;
+  gap: 4px; /* Space between week columns */
+}
+
+.github-week {
+  /* Matches: flex flex-col gap-1 */
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Space between days in a week */
+}
+
+.github-day {
+  /* Matches: w-3 h-3 rounded-sm */
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.loading-text {
+  color: #94a3b8;
+  font-size: 0.9em;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* --- MOBILE VIEW (Default: screens < 768px) --- */
+
+/* Matches: md:hidden */
+.github-desktop-view {
+  display: none;
+}
+
+.github-mobile-view {
+  width: 100%; /* Matches: w-full */
+}
+
+.github-scroll-wrapper {
+  /* Matches: overflow-x-auto */
+  overflow-x: auto;
+  padding-bottom: 5px; /* Adds space for the scrollbar */
+}
+
+.github-graph-inner {
+  /* Matches: flex justify-center min-w-[600px] */
+  display: flex;
+  justify-content: flex-start; /* Changed from center to start for better scroll experience */
+  min-width: 600px; /* Forces horizontal scroll on narrow screens */
+}
+
+/* --- DESKTOP VIEW (Min-width 768px for "md" breakpoint) --- */
+
+@media (min-width: 768px) {
+  /* Matches: hidden md:block */
+  .github-desktop-view {
+    display: block;
+  }
+
+  /* Matches: md:hidden */
+  .github-mobile-view {
+    display: none;
+  }
+
+  /* Matches: flex justify-start */
+  .github-graph-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
