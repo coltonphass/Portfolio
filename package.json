@@ -1,0 +1,11 @@
+{
+  "name": "coltonphass-portfolio",
+  "version": "1.0.0",
+  "description": "Dependencies for Netlify Build and Functions",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
