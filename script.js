@@ -120,10 +120,15 @@ function renderContributionGraph(contributionDays, containerId) {
     if (startDay) {
       const date = new Date(startDay.date);
       const monthIndex = date.getMonth();
+      const weekColumnIndex = i / 7;
 
-      // Record position if it's the start of a month AND the position hasn't been recorded
-      if (!monthPositions[monthIndex] && i > 0) {
-        monthPositions[monthIndex] = i / 7;
+      // If the month hasn't been recorded, record its position.
+      // Check if the current day is the 1st of the month, or if it's the first week and the month is new.
+      if (
+        !monthPositions[monthIndex] &&
+        (date.getDate() === 1 || weekColumnIndex === 0)
+      ) {
+        monthPositions[monthIndex] = weekColumnIndex;
       }
     }
   }
@@ -150,8 +155,8 @@ function renderContributionGraph(contributionDays, containerId) {
   dayLabels.forEach((label, index) => {
     const labelDiv = document.createElement('span');
     labelDiv.className = 'day-label';
-    // Only display labels for Mon, Wed, Fri (index 1, 3, 5) to match GitHub style
-    if (index % 2 !== 0) {
+    // Only display labels for Mon, Wed, Fri, Sun to match GitHub style
+    if (index === 1 || index === 3 || index === 5) {
       labelDiv.textContent = label.charAt(0);
     } else {
       labelDiv.textContent = ''; // Empty string for Sun, Tue, Thu, Sat
@@ -169,30 +174,27 @@ function renderContributionGraph(contributionDays, containerId) {
   const monthLabelsContainer = document.createElement('div');
   monthLabelsContainer.className = 'github-month-labels';
 
-  let lastPosition = 0;
+  let lastPosition = -999; // Initialize to a negative value far away to ensure the first label always renders
 
   // Loop through all 12 months
   for (let m = 0; m < 12; m++) {
     let positionIndex = -1;
 
-    // Find the column index where this month starts
     if (monthPositions[m] !== undefined) {
       positionIndex = monthPositions[m];
     }
 
     const leftOffset = positionIndex * 14;
 
-    // Render a label if the position is recorded
-    if (positionIndex !== -1) {
-      // Heuristic: Only render a label if it's visually spaced far enough from the last one (3 columns/42px)
-      if (leftOffset > lastPosition + 42) {
-        const labelDiv = document.createElement('span');
-        labelDiv.className = 'month-label';
-        labelDiv.textContent = monthNames[m];
-        labelDiv.style.left = `${leftOffset}px`;
-        monthLabelsContainer.appendChild(labelDiv);
-        lastPosition = leftOffset;
-      }
+    // Render a label if the position is recorded OR if it's the very first week column
+    // We use a smaller spacing heuristic now (3 columns = 42px)
+    if (positionIndex !== -1 && leftOffset > lastPosition + 42) {
+      const labelDiv = document.createElement('span');
+      labelDiv.className = 'month-label';
+      labelDiv.textContent = monthNames[m];
+      labelDiv.style.left = `${leftOffset}px`;
+      monthLabelsContainer.appendChild(labelDiv);
+      lastPosition = leftOffset;
     }
   }
 
