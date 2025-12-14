@@ -1,73 +1,83 @@
-// ===========================================================
-// Utility: Format a date into YYYY-MM-DD
-// ===========================================================
-function formatDate(date) {
-  const year = date.getFullYear();
-  const month = `${date.getMonth() + 1}`.padStart(2, '0');
-  const day = `${date.getDate()}`.padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
+// ======================================================================
+// CORE NAVIGATION AND UTILITIES
+// ======================================================================
 
-// ===========================================================
-// Fetch Contribution Data from GitHub
-// Uses the official GitHub GraphQL API.
-// ===========================================================
-async function fetchContributionData(username, githubToken) {
-  const query = `
-    query($userName:String!) {
-      user(login: $userName){
-        contributionsCollection {
-          contributionCalendar {
-            totalContributions
-            weeks {
-              contributionDays {
-                date
-                contributionCount
-                color
-                weekday
-              }
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  const variables = { userName: username };
-
-  const response = await fetch('https://api.github.com/graphql', {
-    method: 'POST',
-    headers: {
-      Authorization: `bearer ${githubToken}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ query, variables }),
+/**
+ * Handles single-page application navigation by toggling the 'active' class on pages.
+ * @param {string} pageId - The ID of the page element to show (e.g., 'home', 'about').
+ */
+function showPage(pageId) {
+  // Hide all pages
+  document.querySelectorAll('.page').forEach((page) => {
+    page.classList.remove('active');
   });
 
-  if (!response.ok) {
-    throw new Error(`GitHub API request failed: ${response.status}`);
-  }
+  // Remove active class from all nav links
+  document.querySelectorAll('.nav-links a').forEach((link) => {
+    link.classList.remove('active');
+  });
 
-  const data = await response.json();
+  // Show selected page
+  document.getElementById(pageId).classList.add('active');
 
-  if (data.errors) {
-    console.error(data.errors);
-    throw new Error('GraphQL errors occurred while fetching data.');
-  }
+  // Add active class to clicked nav link
+  document.getElementById('nav-' + pageId).classList.add('active');
 
-  const weeks =
-    data?.data?.user?.contributionsCollection?.contributionCalendar?.weeks ||
-    [];
-
-  // Flatten days into a single array
-  const contributionDays = weeks.flatMap((w) => w.contributionDays);
-
-  return contributionDays;
+  // Scroll to top
+  window.scrollTo(0, 0);
 }
 
-// ===========================================================
-// Render Graph
-// ===========================================================
+/**
+ * Handles tabbed content (e.g., in the About page)
+ * @param {string} tabId - The ID of the tab content element to show.
+ */
+function showTab(tabId) {
+  // Hide all tab contents
+  document.querySelectorAll('.tab-content').forEach((content) => {
+    content.classList.remove('active');
+  });
+
+  // Remove active class from all tab buttons
+  document.querySelectorAll('.tab-btn').forEach((btn) => {
+    btn.classList.remove('active');
+  });
+
+  // Show selected tab
+  document.getElementById(tabId).classList.add('active');
+
+  // The event object is passed implicitly in the onclick attribute.
+  // We use event.target to reference the button that was clicked.
+  if (event.target) {
+    event.target.classList.add('active');
+  }
+}
+
+/**
+ * Filters the project list based on the selected category.
+ */
+function filterProjects() {
+  const select = document.getElementById('project-select');
+  const category = select.value;
+  const projects = document.querySelectorAll('#projects-list .card');
+
+  projects.forEach((project) => {
+    if (category === 'all' || project.dataset.category === category) {
+      project.style.display = 'block';
+    } else {
+      project.style.display = 'none';
+    }
+  });
+}
+
+// ======================================================================
+// GITHUB CONTRIBUTION GRAPH LOGIC
+// ======================================================================
+
+/**
+ * Renders the GitHub contribution calendar grid into a specified container.
+ * @param {Array<Object>} contributionDays - Array of contribution day objects.
+ * @param {string} containerId - The ID of the HTML element to render the graph into.
+ */
 function renderContributionGraph(contributionDays, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -75,60 +85,7 @@ function renderContributionGraph(contributionDays, containerId) {
   // Clear previous content
   container.innerHTML = '';
 
-  // --- Prepare Data ---
-  // FIX: Use the last 364 days (52 full weeks)
-  const days = contributionDays.slice(-364);
-  const weeks = [];
-  const monthPositions = {};
-  const total = days.reduce((sum, day) => sum + day.contributionCount, 0);
-
-  // Group days into columns of 7 and track month starts
-  for (let i = 0; i < days.length; i += 7) {
-    const week = days.slice(i, i + 7);
-    weeks.push(week);
-
-    const weekColumnIndex = i / 7;
-
-    // Always record the month for the very first visible column (so you get a label at the start)
-    const firstNonNullDay = week.find((d) => d);
-    if (weekColumnIndex === 0 && firstNonNullDay) {
-      const firstDate = new Date(firstNonNullDay.date);
-      const firstMonthIndex = firstDate.getMonth();
-      if (monthPositions[firstMonthIndex] === undefined) {
-        monthPositions[firstMonthIndex] = weekColumnIndex;
-      }
-    }
-
-    // Record a month label when the 1st of that month appears anywhere in this column
-    for (const d of week) {
-      if (!d) continue;
-      const date = new Date(d.date);
-      const monthIndex = date.getMonth();
-
-      if (date.getDate() === 1 && monthPositions[monthIndex] === undefined) {
-        monthPositions[monthIndex] = weekColumnIndex;
-      }
-    }
-  }
-
-  // --- Build Components ---
-
-  // 1. Total contributions label
-  const totalLabel = document.createElement('div');
-  totalLabel.classList.add('github-total');
-  totalLabel.textContent = `${total} contributions in the last year`;
-  container.appendChild(totalLabel);
-
-  // 2. Graph wrapper (contains months row + grid)
-  const graphWrapper = document.createElement('div');
-  graphWrapper.classList.add('github-graph-wrapper');
-  container.appendChild(graphWrapper);
-
-  // 3. Month labels row
-  const monthLabels = document.createElement('div');
-  monthLabels.classList.add('github-month-labels');
-
-  // We'll show up to 12 month labels, but avoid overlapping
+  // --- Configuration ---
   const monthNames = [
     'Jan',
     'Feb',
@@ -143,151 +100,198 @@ function renderContributionGraph(contributionDays, containerId) {
     'Nov',
     'Dec',
   ];
+  const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-  // Sort recorded positions by column index
-  const entries = Object.entries(monthPositions)
-    .map(([m, pos]) => ({ monthIndex: parseInt(m, 10), pos }))
-    .sort((a, b) => a.pos - b.pos);
+  // --- Prepare Data ---
+  // Use the last 364 days (52 full weeks)
+  const days = contributionDays.slice(-364);
+  const weeks = [];
+  const monthPositions = {};
+  const total = days.reduce(
+    (sum, day) => sum + (day?.contributionCount || 0),
+    0
+  );
 
-  let lastPositionIndex = -Infinity;
-  entries.forEach(({ monthIndex, pos }) => {
-    // Avoid placing labels too close together (2 columns apart)
-    if (pos > lastPositionIndex + 2) {
-      const label = document.createElement('span');
-      label.textContent = monthNames[monthIndex];
-      label.style.left = `${pos * 14}px`; // Each column width roughly 14px
-      monthLabels.appendChild(label);
-      lastPositionIndex = pos;
+  // Group days into columns of 7 and track month starts
+  for (let i = 0; i < days.length; i += 7) {
+    const week = days.slice(i, i + 7);
+    weeks.push(week);
+
+    const weekColumnIndex = i / 7;
+
+    // Record the month for the first visible column so the left side has a label
+    const firstNonNullDay = week.find((d) => d);
+    if (weekColumnIndex === 0 && firstNonNullDay) {
+      const firstDate = new Date(firstNonNullDay.date);
+      const firstMonthIndex = firstDate.getMonth();
+      if (monthPositions[firstMonthIndex] === undefined) {
+        monthPositions[firstMonthIndex] = weekColumnIndex;
+      }
     }
+
+    // ✅ FIX: Look at *every* day in the column (not just week[0])
+    // so months don't disappear depending on alignment.
+    for (const d of week) {
+      if (!d) continue;
+      const dt = new Date(d.date);
+      const m = dt.getMonth();
+
+      if (dt.getDate() === 1 && monthPositions[m] === undefined) {
+        monthPositions[m] = weekColumnIndex;
+      }
+    }
+  }
+
+  // --- Build Components ---
+
+  // 1. Total Contributions Counter
+  const totalDiv = document.createElement('div');
+  totalDiv.className = 'github-total-contributions';
+  totalDiv.textContent = `Total contributions in the last year: ${total}`;
+  container.appendChild(totalDiv);
+
+  // 2. Main Wrapper
+  const wrapper = document.createElement('div');
+  wrapper.className = 'github-graph-wrapper';
+
+  // 3. Calendar Grid (day labels + graph area)
+  const gridContainer = document.createElement('div');
+  gridContainer.className = 'github-calendar-grid';
+
+  // 4. Day Labels Column
+  const dayLabelsColumn = document.createElement('div');
+  dayLabelsColumn.className = 'github-day-labels';
+  dayLabels.forEach((label, index) => {
+    const labelDiv = document.createElement('span');
+    labelDiv.className = 'day-label';
+    if (index === 1 || index === 3 || index === 5) {
+      labelDiv.textContent = label.charAt(0);
+    } else {
+      labelDiv.textContent = '';
+    }
+    dayLabelsColumn.appendChild(labelDiv);
   });
+  gridContainer.appendChild(dayLabelsColumn);
 
-  graphWrapper.appendChild(monthLabels);
+  // 5. Graph Area Container (Month Labels + Weeks Grid)
+  const graphArea = document.createElement('div');
+  graphArea.style.display = 'flex';
+  graphArea.style.flexDirection = 'column';
 
-  // 4. Actual graph grid
-  const graph = document.createElement('div');
-  graph.classList.add('github-graph');
-  graphWrapper.appendChild(graph);
+  // 6. Month Labels Row
+  const monthLabelsContainer = document.createElement('div');
+  monthLabelsContainer.className = 'github-month-labels';
 
-  // 5. Day labels (vertical) on the left
-  const dayLabels = document.createElement('div');
-  dayLabels.classList.add('github-day-labels');
+  let lastPositionIndex = -99;
 
-  // GitHub uses labels for Mon, Wed, Fri (or similar)
-  const labelDays = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
-  labelDays.forEach((d) => {
-    const span = document.createElement('span');
-    span.textContent = d;
-    dayLabels.appendChild(span);
-  });
+  for (let m = 0; m < 12; m++) {
+    const positionIndex =
+      monthPositions[m] !== undefined ? monthPositions[m] : -1;
 
-  // Wrap day labels + grid
-  const gridWrapper = document.createElement('div');
-  gridWrapper.classList.add('github-grid-wrapper');
+    // Keep your existing pixel math
+    const leftOffset = positionIndex * 12 + 20 + 6;
 
-  gridWrapper.appendChild(dayLabels);
+    if (positionIndex !== -1 && positionIndex > lastPositionIndex + 2) {
+      const labelDiv = document.createElement('span');
+      labelDiv.className = 'month-label';
+      labelDiv.textContent = monthNames[m];
+      labelDiv.style.left = `${leftOffset}px`;
+      monthLabelsContainer.appendChild(labelDiv);
+      lastPositionIndex = positionIndex;
+    }
+  }
 
-  // Create the grid columns
-  const grid = document.createElement('div');
-  grid.classList.add('github-grid');
+  graphArea.appendChild(monthLabelsContainer);
+
+  // 7. Contribution Weeks Grid
+  const weeksContainer = document.createElement('div');
+  weeksContainer.className = 'github-weeks-container';
 
   weeks.forEach((week) => {
-    const col = document.createElement('div');
-    col.classList.add('github-week');
+    const weekDiv = document.createElement('div');
+    weekDiv.className = 'github-week';
 
     week.forEach((day) => {
-      const cell = document.createElement('div');
-      cell.classList.add('github-day');
+      const dayDiv = document.createElement('div');
+      dayDiv.className = 'github-day';
 
+      // Guard just in case
       if (day) {
-        cell.style.backgroundColor = day.color;
-        cell.title = `${day.contributionCount} contributions on ${day.date}`;
+        dayDiv.style.backgroundColor = day.color;
+        dayDiv.title = `${day.date}: ${day.contributionCount} contributions`;
       } else {
-        cell.style.backgroundColor = '#ebedf0';
+        dayDiv.style.backgroundColor = '#ebedf0';
+        dayDiv.title = '';
       }
 
-      col.appendChild(cell);
+      weekDiv.appendChild(dayDiv);
     });
 
-    grid.appendChild(col);
+    weeksContainer.appendChild(weekDiv);
   });
 
-  gridWrapper.appendChild(grid);
-  graphWrapper.appendChild(gridWrapper);
-
-  // 6. Legend
-  const legend = document.createElement('div');
-  legend.classList.add('github-legend');
-
-  const less = document.createElement('span');
-  less.textContent = 'Less';
-  legend.appendChild(less);
-
-  // GitHub-like colors (approx)
-  const legendColors = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'];
-  legendColors.forEach((c) => {
-    const box = document.createElement('span');
-    box.classList.add('legend-box');
-    box.style.backgroundColor = c;
-    legend.appendChild(box);
-  });
-
-  const more = document.createElement('span');
-  more.textContent = 'More';
-  legend.appendChild(more);
-
-  container.appendChild(legend);
+  graphArea.appendChild(weeksContainer);
+  gridContainer.appendChild(graphArea);
+  wrapper.appendChild(gridContainer);
+  container.appendChild(wrapper);
 }
 
-// ===========================================================
-// Page/App Logic
-// ===========================================================
+/**
+ * Fetches contribution data securely via Netlify Function and initiates rendering.
+ */
+async function fetchAndRenderContributions() {
+  const desktopContainer = document.getElementById('github-graph-desktop');
+  const mobileContainer = document.getElementById('github-graph-mobile');
+
+  // Display loading state
+  const loadingHTML =
+    '<p class="loading-text">Loading contribution data...</p>';
+  if (desktopContainer) desktopContainer.innerHTML = loadingHTML;
+  if (mobileContainer) mobileContainer.innerHTML = loadingHTML;
+
+  try {
+    // Netlify Function endpoint
+    const response = await fetch('/.netlify/functions/fetch-contributions', {
+      cache: 'no-store',
+    });
+
+    if (!response.ok) {
+      throw new Error(`Netlify Function failed. Status: ${response.status}`);
+    }
+
+    const contributionDays = await response.json();
+
+    renderContributionGraph(contributionDays, 'github-graph-desktop');
+    renderContributionGraph(contributionDays, 'github-graph-mobile');
+  } catch (error) {
+    console.error('Error rendering GitHub graph:', error);
+
+    const msg = error && error.message ? error.message : 'Unknown error';
+    const errorHTML = `<p class="loading-text" style="color:#ef4444;">Error loading graph: ${msg}<br/>Open DevTools Console + Network to see why.</p>`;
+
+    if (desktopContainer) desktopContainer.innerHTML = errorHTML;
+    if (mobileContainer) mobileContainer.innerHTML = errorHTML;
+  }
+}
+
+// ======================================================================
+// ENHANCED NAVIGATION / INITIALIZATION
+// ======================================================================
+
+const originalShowPage = showPage;
+
+showPage = function (pageId) {
+  originalShowPage(pageId);
+  if (pageId === 'home') {
+    fetchAndRenderContributions();
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Simple page switching logic
-  document.querySelectorAll('.nav a').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = link.getAttribute('href').replace('#', '');
-
-      document.querySelectorAll('.page').forEach((page) => {
-        page.classList.remove('active');
-      });
-
-      document.getElementById(target)?.classList.add('active');
-    });
-  });
-
-  // Defaults
-  const usernameInput = document.getElementById('github-username');
-  const tokenInput = document.getElementById('github-token');
-  const loadBtn = document.getElementById('github-load-btn');
-
-  if (loadBtn) {
-    loadBtn.addEventListener('click', async () => {
-      const username = usernameInput?.value?.trim();
-      const token = tokenInput?.value?.trim();
-
-      if (!username || !token) {
-        alert(
-          'Please enter both a GitHub username and a Personal Access Token.'
-        );
-        return;
-      }
-
-      try {
-        loadBtn.disabled = true;
-        loadBtn.textContent = 'Loading...';
-
-        const days = await fetchContributionData(username, token);
-        renderContributionGraph(days, 'github-graph-container');
-      } catch (err) {
-        console.error(err);
-        alert(
-          'Failed to load GitHub contributions. Check console for details.'
-        );
-      } finally {
-        loadBtn.disabled = false;
-        loadBtn.textContent = 'Load';
-      }
-    });
+  if (
+    document.getElementById('github-graph-desktop') &&
+    document.getElementById('home').classList.contains('active')
+  ) {
+    fetchAndRenderContributions();
   }
 });
