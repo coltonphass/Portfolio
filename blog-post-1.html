@@ -3,13 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Building Modern Web Applications - Your Name</title>
+    <title>Learning How to Learn - Colton Phass</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav>
       <div class="nav-container">
-        <a href="index.html" class="nav-brand">Your Name</a>
+        <a href="index.html" class="nav-brand">Colton Phass</a>
         <ul class="nav-links">
           <li><a href="index.html#home" id="nav-home">Home</a></li>
           <li><a href="index.html#about" id="nav-about">About</a></li>
@@ -26,160 +31,191 @@
       <a href="index.html#blog" class="back-button"> ← Back to Blog </a>
 
       <article>
-        <div class="blog-post-hero">🚀</div>
+        <div class="blog-post-hero">
+          <img src="images/blogs/blog1img.png" />
+        </div>
 
         <div class="blog-post-header">
-          <div class="blog-post-meta">Dec 10, 2025 · 5 min read</div>
-          <h1 class="blog-post-title">Building Modern Web Applications</h1>
+          <div class="blog-post-meta">Dec 16, 2025 · 5 min read</div>
+          <h1 class="blog-post-title">Learning How to Learn</h1>
           <p class="blog-post-description">
-            A comprehensive guide to creating responsive and performant web apps
-            using modern frameworks and best practices.
+            A self-reflection amid frustration and self-doubt.
           </p>
         </div>
 
         <div class="blog-post-content">
           <p>
-            In today's fast-paced digital landscape, building modern web
-            applications requires a thoughtful approach that balances user
-            experience, performance, and maintainability. This guide will walk
-            you through the essential concepts and tools you need to know.
+            In today’s world, we are constantly faced with the struggle of
+            comparing ourselves to others. Whether it’s social media, YouTube,
+            or other forms of online interaction, we often end up feeling
+            worthless or not smart enough. The issue, however, may not be a lack
+            of intelligence, but rather that we are approaching learning the
+            wrong way.
           </p>
 
-          <h2>The Foundation: Choose Your Stack Wisely</h2>
+          <h2>Realization: Stop Comparing Yourself to Others</h2>
           <p>
-            Before diving into code, it's crucial to select the right technology
-            stack for your project. Consider factors like team expertise,
-            project requirements, and long-term maintenance. Popular choices
-            include:
-          </p>
-          <ul>
-            <li>
-              <strong>React</strong> - A flexible library with a massive
-              ecosystem and community support
-            </li>
-            <li>
-              <strong>Next.js</strong> - Full-featured framework built on React
-              with excellent performance
-            </li>
-            <li>
-              <strong>Vue.js</strong> - Progressive framework that's easy to
-              learn and integrate
-            </li>
-            <li>
-              <strong>Svelte</strong> - Compiler-based approach that results in
-              highly optimized code
-            </li>
-          </ul>
-
-          <p>
-            Each framework has its strengths, and the "best" choice depends
-            entirely on your specific needs. Don't fall into the trap of
-            following trends blindly—evaluate based on your project's
-            requirements.
+            The first and most important step is to stop comparing yourself to
+            other people. Learning is a deeply personal journey, one that far
+            exceeds anyone else’s ideals, understandings, or approaches. It is
+            unique to each individual, so the methods we use to learn will
+            almost certainly differ.
           </p>
 
-          <h2>Performance Matters</h2>
           <p>
-            Users expect fast, responsive applications. Here are key strategies
-            to ensure your app performs well:
+            If we focus on our own self-improvement, no matter how small, and
+            reinforce it with positivity, we can far surpass our previous
+            expectations. This naturally leads to an important question:
+            <i>what are our goals?</i>
           </p>
 
-          <h3>Code Splitting and Lazy Loading</h3>
+          <h2>Set Healthy Goals</h2>
           <p>
-            Break your application into smaller chunks that load on demand. This
-            reduces the initial bundle size and improves load times
-            significantly. Modern bundlers like Webpack and Vite make this
-            process seamless.
+            What exactly is a healthy goal? A healthy goal is small, achievable,
+            and realistic. It’s unfair to expect yourself to build a massive,
+            full-stack application as your very first project. Instead, start
+            with something manageable and give yourself a realistic timeline.
           </p>
 
-          <pre><code>// Example: Lazy loading a component in React
-const Dashboard = lazy(() => import('./Dashboard'));
-
-function App() {
-  return (
-    &lt;Suspense fallback={&lt;Loading /&gt;}&gt;
-      &lt;Dashboard /&gt;
-    &lt;/Suspense&gt;
-  );
-}</code></pre>
-
-          <h3>Optimize Images and Assets</h3>
           <p>
-            Images often account for the majority of a page's weight. Use modern
-            formats like WebP, implement responsive images with
-            &lt;code&gt;srcset&lt;/code&gt;, and consider using a CDN for faster
-            delivery.
+            Learn intentionally. Take notes. Reflect on what worked and what
+            didn’t. And most importantly, relax. Programming is meant to be
+            creative and enjoyable, not a source of constant stress or
+            self-hatred.
+          </p>
+
+          <h3>Learn How to Break Things Down</h3>
+          <p>
+            Breaking problems into smaller pieces is a crucial skill. Write down
+            what your program is supposed to do, identify where you feel stuck,
+            and solve one small problem at a time.
+          </p>
+
+          <pre><code class ="language-python"># Example: Break a problem into small steps (Python)
+# Goal: Track your study sessions and total focused time
+
+sessions = [45, 45, 30]  # minutes of focused work
+total_minutes = sum(sessions)
+session_count = len(sessions)
+
+print("Sessions:", session_count)
+print("Total focused minutes:", total_minutes)
+print("Total focused hours:", round(total_minutes / 60, 2))
+</code></pre>
+
+          <h3>Time Chunking</h3>
+          <p>
+            Set intentional time intervals for studying and take advantage of
+            your brain’s natural efficiency. Deep learning happens best during
+            focused flow states with minimal distractions. You can spend hours
+            stuck on a single topic and still make very little progress.
+          </p>
+
+          <p>
+            Instead, try 45 minutes of focused, enjoyable study followed by a
+            30-minute break. Repeat this three times a day, and you’ll likely
+            learn far more than you ever would during an exhausting eight-hour
+            cram session.
           </p>
 
           <blockquote>
-            "Performance is not just a technical requirement—it's a core part of
-            user experience. Every millisecond counts."
+            “Silence is essential. We need silence just as much as we need air,
+            just as much as plants need light. If our minds are crowded with
+            words and thoughts, there is no space for us.” — Thich Nhat Hanh
           </blockquote>
 
-          <h2>Responsive Design is Non-Negotiable</h2>
+          <h2>Make Programming Fun</h2>
           <p>
-            With users accessing your application from countless devices,
-            responsive design isn't optional. Use CSS frameworks like Tailwind
-            CSS or create a robust design system with CSS Grid and Flexbox.
+            If programming is something you truly want to pursue, it has to be
+            enjoyable. I struggled with this deeply. As someone with Obsessive
+            Compulsive Disorder, I often associated programming with boring,
+            mundane, and exhausting tasks. Over time, this mindset led me
+            straight into burnout—largely due to school pressure, constant
+            comparison, and unrealistic expectations.
           </p>
 
           <p>
-            Mobile-first development helps ensure your application works well on
-            smaller screens while progressively enhancing the experience on
-            larger displays.
+            That burnout forced me to reflect. If I wanted to pursue programming
+            professionally, something had to change.
           </p>
 
-          <h2>State Management Done Right</h2>
           <p>
-            As applications grow, managing state becomes increasingly complex.
-            Choose a state management solution that scales with your needs:
+            I started talking with my college peers, playing games on CodinGame,
+            experimenting with game engines, and learning Python through
+            libraries like Pygame. For the first time in a long while,
+            programming felt fun again. I was working on things I genuinely
+            cared about and seeing my ideas come to life.
           </p>
+
+          <h2>Repetition Is Important</h2>
+          <p>
+            I would often, like I previously stated, do 8 hour crams for my
+            Programming II assignments. I would ChatGPT my way through them and
+            end up coming out with a decent program. Ultimately, I’d get an A,
+            but I walked away knowing almost nothing.
+          </p>
+
+          <p>
+            It took me a while to realize it wasn’t just self-critical thinking
+            holding me back. It was my fear of doing the work myself. When I
+            skipped the struggle and jumped straight to the answer, I also
+            skipped the learning. I wasn’t building the mental connections I
+            needed to actually understand what was happening.
+          </p>
+
+          <p>
+            That’s why repetition matters. The more you revisit a concept,
+            especially across multiple days the more your brain reinforces it.
+            Repetition isn’t just “doing the same thing again” it’s returning to
+            an idea after time has passed, when your brain has started to forget
+            it. That’s where real learning happens.
+          </p>
+
+          <p>
+            <strong>Hermann Ebbinghaus</strong> one of the first scientists to
+            study memory, demonstrated through his work on the forgetting curve
+            that memory decays rapidly without repetition. Repeated exposure,
+            however, dramatically slows this decay.
+          </p>
+          <blockquote>
+            “With any considerable number of repetitions, a relatively small
+            number of relearnings is sufficient to reproduce the entire series.”
+            — Hermann Ebbinghaus, Memory: A Contribution to Experimental
+            Psychology (1885)
+          </blockquote>
+
+          <h2>Embrace Your Weak Points</h2>
+          <p>
+            Focusing only on the areas where you already feel strong won’t lead
+            to much growth. It might feel productive, but it’s often just
+            comfortable. Real progress comes from identifying what you avoid,
+            what you fear, or what makes you feel “not smart enough” and then
+            working on it slowly, one step at a time.
+          </p>
+
+          <p>
+            By applying these strategies to your weakest areas, you’ll
+            experience growth not just in technical skill, but also in
+            confidence and resilience.
+          </p>
+
+          <h2>Prevent Burnout</h2>
+          <p>
+            Above all else, protect your mental health and overall well-being.
+            If programming becomes an exhausting, joyless obligation, burnout is
+            almost inevitable and it will affect every part of your life.
+          </p>
+
+          <p>Remember:</p>
           <ul>
-            <li>
-              For simple apps, React Context or component state might be
-              sufficient
-            </li>
-            <li>
-              Medium complexity apps benefit from libraries like Zustand or
-              Jotai
-            </li>
-            <li>
-              Large applications might need Redux or MobX for predictable state
-              management
-            </li>
+            <li>Don’t compare yourself to anyone but who you were yesterday</li>
+            <li>Set healthy, realistic goals</li>
+            <li>Break problems into manageable pieces</li>
+            <li>Allocate your time intentionally</li>
+            <li>Make learning fun</li>
+            <li>Embrace repetition</li>
+            <li>Target your weak points with patience</li>
           </ul>
-
-          <h2>Testing and Quality Assurance</h2>
-          <p>Don't skip testing. Implement a testing strategy that includes:</p>
-          <ul>
-            <li>
-              <strong>Unit tests</strong> for individual functions and
-              components
-            </li>
-            <li><strong>Integration tests</strong> for feature workflows</li>
-            <li>
-              <strong>End-to-end tests</strong> for critical user journeys
-            </li>
-          </ul>
-
-          <p>
-            Tools like Jest, React Testing Library, and Playwright make testing
-            more accessible and maintainable.
-          </p>
-
-          <h2>Conclusion</h2>
-          <p>
-            Building modern web applications is both an art and a science. Focus
-            on fundamentals, prioritize user experience, and never stop
-            learning. The web platform evolves rapidly, but these core
-            principles remain constant.
-          </p>
-
-          <p>
-            Remember: the best application is one that solves real problems for
-            real users. Technology choices matter, but they should always serve
-            that primary goal.
-          </p>
         </div>
       </article>
     </div>
@@ -205,5 +241,7 @@ function App() {
         ↑ Scroll to Top
       </a>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
   </body>
 </html>

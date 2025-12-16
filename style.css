@@ -1072,4 +1072,61 @@ footer {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-/* --- END OF GITHUB CONTRIBUTION GRAPH STYLING FIXES --- */
+.blog-post-hero {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #334155;
+  margin-bottom: 34px;
+  background: none; /* remove shading */
+  height: auto; /* let image decide */
+}
+
+.blog-post-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: unset; /* no forcing */
+}
+/* ===============================
+   Prism.js Custom Styling
+   =============================== */
+
+pre[class*='language-'] {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 24px 0;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+code[class*='language-'] {
+  color: #e2e8f0;
+}
+
+/* Comments */
+.token.comment {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Keywords (for, if, def, etc.) */
+.token.keyword {
+  color: #8b5cf6;
+}
+
+/* Strings */
+.token.string {
+  color: #34d399;
+}
+
+/* Functions */
+.token.function {
+  color: #60a5fa;
+}
+
+/* Numbers */
+.token.number {
+  color: #fbbf24;
+}
