@@ -1,104 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- =========================
-         HEAD / META / ASSETS
-         ========================= -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Colton Phass - Portfolio</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- =========================
-         APP SHELL
-         ========================= -->
-
-    <!-- ========== NAV / ROUTER (showPage) ========== -->
-    <nav>
-      <div class="nav-container">
-        <a href="#" class="nav-brand" onclick="showPage('home'); return false;"
-          >Colton Phass</a
-        >
-        <ul class="nav-links">
-          <li>
-            <a
-              href="#"
-              onclick="showPage('home'); return false;"
-              class="active"
-              id="nav-home"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="showPage('about'); return false;"
-              id="nav-about"
-              >About</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="showPage('projects'); return false;"
-              id="nav-projects"
-              >Projects</a
-            >
-          </li>
-          <li>
-            <a href="#" onclick="showPage('blog'); return false;" id="nav-blog"
-              >Blog</a
-            >
-          </li>
-          <li>
-            <a href="#" onclick="showPage('uses'); return false;" id="nav-uses"
-              >Uses</a
-            >
-          </li>
-        </ul>
+    <!-- PAGE LOADER OVERLAY -->
+    <div id="page-transition" class="is-active" aria-hidden="true">
+      <div class="page-transition-inner">
+        <div class="page-spinner"></div>
+        <div class="page-loading-text">Loading…</div>
       </div>
-    </nav>
+    </div>
 
-    <!-- ========== MAIN CONTAINER / PAGES MOUNT ========== -->
-    <div class="container">
-      <!-- =========================
-           PAGE: HOME (Landing)
-           ========================= -->
-      <div id="home" class="page active">
+    <!-- WRAP ALL VISIBLE CONTENT -->
+    <div class="page-wrap is-loading">
+      <nav>
+        <div class="nav-container">
+          <a href="index.html" class="nav-brand">Colton Phass</a>
+          <ul class="nav-links">
+            <li><a href="index.html" class="active" id="nav-home">Home</a></li>
+            <li><a href="about.html" id="nav-about">About</a></li>
+            <li><a href="projects.html" id="nav-projects">Projects</a></li>
+            <li><a href="blog.html" id="nav-blog">Blog</a></li>
+            <li><a href="uses.html" id="nav-uses">Uses</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container">
         <div class="profile">
           <div class="profile-image">
             <img src="/images/coltonpfp.webp" alt="Colton Phass" />
           </div>
 
           <h1>Hello, I'm Colton Phass👋</h1>
-         <p class="subtitle">
-  Software Engineer
-  <span class="subtitle-link">
-    <a href="https://kreativetech.com/">@Kreative Technologies</a>
-  </span>
-  | A.S. in CIS | Pursuing B.S. in CS
-</p>
 
-          <p class="description">
-            I'm a software engineer focused on building efficient,
-            scalable, and user-friendly code. With a strong
-            foundation in computer science and hands-on experience in various
-            technologies, I love turning ideas into reality through curiosity.
+          <p class="subtitle">
+            Software Engineer
+            <span class="subtitle-link">
+              <a href="https://kreativetech.com/">@Kreative Technologies</a>
+            </span>
+            | A.S. in CIS | Pursuing B.S. in CS
           </p>
 
-          <a href="#" onclick="showPage('about'); return false;" class="btn"
-            >More About Me</a
-          >
+          <p class="description">
+            I'm a software engineer focused on building efficient, scalable, and
+            user-friendly code. With a strong foundation in computer science and
+            hands-on experience in various technologies, I love turning ideas
+            into reality through curiosity.
+          </p>
+
+          <a href="about.html" class="btn">More About Me</a>
 
           <div class="connect">
             <h3>Connect</h3>
             <div class="social-links">
               <a href="https://github.com/coltonphass">GitHub</a>
               <span>•</span>
-              <a href="https://www.linkedin.com/in/colton-phass-61223a255/">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/colton-phass-61223a255/"
+                >LinkedIn</a
+              >
               <span>•</span>
-              <a href="https://www.codingame.com/profile/6c0691c159ff8aa6eb18430504ab0edc7750706">CodinGame</a>
+              <a
+                href="https://www.codingame.com/profile/6c0691c159ff8aa6eb18430504ab0edc7750706"
+                >CodinGame</a
+              >
             </div>
           </div>
         </div>
@@ -106,16 +75,31 @@
         <div class="section github-contributions-section">
           <h3>Activity</h3>
           <h2>GitHub Contributions</h2>
-          
+
           <div class="github-desktop-view">
             <div class="card github-card">
               <div class="github-legend">
                 Less
-                <span style="background-color: #ebedf0;" class="day-square"></span>
-                <span style="background-color: #9be9a8;" class="day-square"></span>
-                <span style="background-color: #40c463;" class="day-square"></span>
-                <span style="background-color: #30a14e;" class="day-square"></span>
-                <span style="background-color: #216e39;" class="day-square"></span>
+                <span
+                  style="background-color: #ebedf0"
+                  class="day-square"
+                ></span>
+                <span
+                  style="background-color: #9be9a8"
+                  class="day-square"
+                ></span>
+                <span
+                  style="background-color: #40c463"
+                  class="day-square"
+                ></span>
+                <span
+                  style="background-color: #30a14e"
+                  class="day-square"
+                ></span>
+                <span
+                  style="background-color: #216e39"
+                  class="day-square"
+                ></span>
                 More
               </div>
               <div class="github-graph-container" id="github-graph-desktop">
@@ -128,11 +112,26 @@
             <div class="card github-card">
               <div class="github-legend">
                 Less
-                <span style="background-color: #ebedf0;" class="day-square"></span>
-                <span style="background-color: #9be9a8;" class="day-square"></span>
-                <span style="background-color: #40c463;" class="day-square"></span>
-                <span style="background-color: #30a14e;" class="day-square"></span>
-                <span style="background-color: #216e39;" class="day-square"></span>
+                <span
+                  style="background-color: #ebedf0"
+                  class="day-square"
+                ></span>
+                <span
+                  style="background-color: #9be9a8"
+                  class="day-square"
+                ></span>
+                <span
+                  style="background-color: #40c463"
+                  class="day-square"
+                ></span>
+                <span
+                  style="background-color: #30a14e"
+                  class="day-square"
+                ></span>
+                <span
+                  style="background-color: #216e39"
+                  class="day-square"
+                ></span>
                 More
               </div>
               <div class="github-scroll-wrapper">
@@ -150,39 +149,52 @@
 
           <div class="projects">
             <a href="https://github.com/coltonphass/Space-Shooter" class="card">
-              <div class="project-icon"><img src="images/Project-images/spaceshooter1.png"></div>
+              <div class="project-icon">
+                <img src="images/Project-images/spaceshooter1.png" alt="" />
+              </div>
               <div class="card-title">Pygame Space Shooter</div>
               <div class="card-description">
-            Developed a 2D arcade-style space shooter following a YouTube tutorial; implemented collision
-detection, score tracking, and sprite animation. 
+                Developed a 2D arcade-style space shooter following a YouTube
+                tutorial; implemented collision detection, score tracking, and
+                sprite animation.
               </div>
             </a>
 
             <a href="https://daovienmeditation.com/" class="card">
-              <div class="project-icon"><img src="images/Project-images/meditation.png"></div>
+              <div class="project-icon">
+                <img src="images/Project-images/meditation.png" alt="" />
+              </div>
               <div class="card-title">Dao Vien Meditation</div>
               <div class="card-description">
-                A simple site for Dao Vien Meditation Center to share information about meditation classes, upcoming events and course material.
+                A simple site for Dao Vien Meditation Center to share
+                information about meditation classes, upcoming events and course
+                material.
               </div>
             </a>
 
-            <a href="https://github.com/coltonphass/Algorithm-Timer" class="card">
-              <div class="project-icon"><img src="images/Project-images/algtimer.png"></div>
+            <a
+              href="https://github.com/coltonphass/Algorithm-Timer"
+              class="card"
+            >
+              <div class="project-icon">
+                <img src="images/Project-images/algtimer.png" alt="" />
+              </div>
               <div class="card-title">C++ Algorithm Timer</div>
               <div class="card-description">
-                A simple C++ console-based program that visually compares the execution time of Bubble Sort, Selection Sort, and Insertion Sort.
+                A simple C++ console-based program that visually compares the
+                execution time of Bubble Sort, Selection Sort, and Insertion
+                Sort.
               </div>
             </a>
           </div>
-                    <div style="margin-top: 30px; text-align: left">
-        <a href="#" onclick="showPage('projects'); return false;" class="btn"
-          >View All Projects</a
-        >
-      </div>
+
+          <div style="margin-top: 30px; text-align: left">
+            <a href="projects.html" class="btn">View All Projects</a>
+          </div>
         </div>
 
-<div class="section home-blog-section">          
-  <h3>Latest</h3>
+        <div class="section home-blog-section">
+          <h3>Latest</h3>
           <h2>Blog Posts</h2>
 
           <div class="blog-posts">
@@ -190,952 +202,43 @@ detection, score tracking, and sprite animation.
               <div class="card-date">Dec 16, 2025</div>
               <div class="card-title">Learning How to Learn</div>
               <div class="card-description">
-                  A personal reflection on frustration, burnout, and rediscovering how to
-                  learn programming in a healthier, more sustainable way.
+                A personal reflection on frustration, burnout, and rediscovering
+                how to learn programming in a healthier, more sustainable way.
               </div>
             </a>
           </div>
+
           <div style="margin-top: 30px; text-align: left">
-        <a href="#" onclick="showPage('blog'); return false;" class="btn"
-          >View All Blog Posts</a
+            <a href="blog.html" class="btn">View All Blog Posts</a>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <span>•</span>
+          <a href="about.html">About</a>
+          <span>•</span>
+          <a href="projects.html">Projects</a>
+          <span>•</span>
+          <a href="blog.html">Blog</a>
+          <span>•</span>
+          <a href="uses.html">Uses</a>
+        </div>
+
+        <p style="margin-bottom: 15px">© 2025 Colton Phass</p>
+
+        <a
+          href="#"
+          class="scroll-top"
+          onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
         >
-      </div>
-        </div>
-      </div>
-
-      <!-- =========================
-           PAGE: ABOUT
-           ========================= -->
-      <div id="about" class="page">
-        <!-- ABOUT: Hero Image -->
-        <div class="about-hero"><image src="images/menola.webp" alt="About Me"></div>
-
-        <!-- ABOUT: Title -->
-        <h1>About Me</h1>
-
-        <!-- ABOUT: Content -->
-        <div class="about-content">
-          <!-- ABOUT: Bio / Intro Copy -->
-<p>
-  I’m a software engineer who loves problem-solving and learning how things work through trial and error. 
-  I started making webpages in 2019, teaching myself HTML and CSS through personal projects and Udemy courses. 
-  In 2023, I discovered C++ through school, and that’s when programming really became a passion for me. 
-  It pushed me deeper into core fundamentals and expanded my interest into languages like Python.
-</p>
-
-<p>
-  My curiosity has led me to explore various areas of software development, including web development, 
-  data structures, algorithms, and AI/ML. I enjoy taking on challenges that push me to grow and improve my skills, 
-  and I’ve built strong connections through my Artificial Intelligence research group and college peers.
-</p>
-
-<p>
-  When I’m not coding, I enjoy playing video games and practicing martial arts. I’ve been training in karate 
-  and having a lot of fun with it, and I’m also passionate about learning how to create my own video games 
-  and interactive experiences, right now my focus is UEFN.
-</p>
-
-
-          <!-- ABOUT: Skills -->
-          <h2 style="margin-top: 40px">Skills</h2>
-          <div class="skills">
-            <div class="skill-tag">Web Performance Optimization</div>
-            <div class="skill-tag">Website Development</div>
-            <div class="skill-tag">Git & Github</div>
-            <div class="skill-tag">Artifical Intelligence and Machine Learning</div>
-            <div class="skill-tag">Python3</div>
-            <div class="skill-tag">Java</div>
-            <div class="skill-tag">HTML5</div>
-            <div class="skill-tag">CSS3</div>
-            <div class="skill-tag">JavaScript</div>
-            <div class="skill-tag">SQL</div>
-            <div class="skill-tag">Linux and Windows</div>
-            <div class="skill-tag">OpenText AppWorks</div>
-          </div>
-
-          <!-- ABOUT: Experience -->
-          <h2 style="margin-top: 40px">Experience</h2>
-
-          <!-- ABOUT: Resume CTA -->
-          <div style="margin-bottom: 30px; text-align: right">
-            <a
-              href="Resume/Colton_Portfolio_Resume.pdf"
-              class="btn"
-              style="display: inline-flex; align-items: center; gap: 8px"
-            >
-              📄 View Resume
-            </a>
-          </div>
-
-          <!-- ABOUT: Experience Cards -->
-          <div style="display: grid; gap: 30px">
-            <!-- ABOUT: Experience Item 1 -->
-<div
-  class="experience-card"
-  style="
-    padding: 25px;
-    background: #1e293b;
-    border-radius: 8px;
-    border: 1px solid #334155;
-  "
->
-              <h3 style="color: #f1f5f9; margin-bottom: 8px; font-size: 1.1em">
-                Software Engineer I
-              </h3>
-              <p style="color: #60a5fa; font-size: 0.95em; margin-bottom: 4px">
-                Kreative Technologies
-              </p>
-              <p style="color: #64748b; font-size: 0.9em; margin-bottom: 12px">
-                Nov 2025 - Present
-              </p>
-              <p style="color: #94a3b8; line-height: 1.6">
-                Analyze, integrate, and maintain complex clinical 
-                enterprise applications on the OpenText platform, 
-                supporting legacy system migrations and collaborating 
-                with cross-functional teams to deliver scalable healthcare information systems.
-              </p>
-            </div>
-
-            <!-- ABOUT: Experience Item 2 -->
-<div
-  class="experience-card"
-  style="
-    padding: 25px;
-    background: #1e293b;
-    border-radius: 8px;
-    border: 1px solid #334155;
-  "
->
-              <h3 style="color: #f1f5f9; margin-bottom: 8px; font-size: 1.1em">
-                Student Research Assistant & Student Curricular Co-Designer
-              </h3>
-              <p style="color: #60a5fa; font-size: 0.95em; margin-bottom: 4px">
-                Harford Community College
-              </p>
-              <p style="color: #64748b; font-size: 0.9em; margin-bottom: 12px">
-                Mar 2025 - Present
-              </p>
-              <p style="color: #94a3b8; line-height: 1.6">
-                Participate in FY25 curricular research development 
-                at Harford Community College, conducting AI and machine 
-                learning academic research, contributing to credit and 
-                non-credit curriculum design, and supporting associated 
-                academic publications under faculty supervision.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- =========================
-           PAGE: PROJECTS
-           ========================= -->
-      <div id="projects" class="page">
-        <!-- PROJECTS: Header -->
-        <h1>Projects</h1>
-        <p class="description" style="text-align: left; margin-left: 0">
-          Here are some of my projects I've worked on recently.
-        </p>
-
-        <!-- PROJECTS: Filter Control -->
-        <div class="project-filter">
-          <label for="project-select">Filter by:</label>
-          
-          <select id="project-select" onchange="filterProjects()">
-            <option value="all">All Projects</option>
-            <option value="web">Web Apps</option>
-            <option value="games">Games</option>
-            <option value="console applications">Console Applications</option>
-            <option value="discord bots">Discord Bots</option>
-          </select>
-
-          <a 
-      href="https://github.com/coltonphass?tab=repositories" 
-      target="_blank" 
-      class="btn btn-github"
-    >
-      View More on GitHub
-    </a>
-        </div>
-
-
-        <!-- PROJECTS: List / Grid -->
-        <div class="projects" id="projects-list">
-          <!-- PROJECTS: Card 1 -->
-          <a href="https://daovienmeditation.com/" class="card" data-category="web">
-            <div class="project-icon"><img src="images/Project-images/meditation.png"></div>
-            <div class="card-title">Dao Vien Meditation</div>
-            <div class="card-description">
-              A simple site for Dao Vien Meditation Center to share
-              information about meditation classes, upcoming events and
-              course material.
-            </div>
-          </a>
-
-          <!-- PROJECTS: Card 2 -->
-          <a href="https://coltonsgames.netlify.app/html/blackjack.html" class="card" data-category="web">
-            <div class="project-icon"><img src="images/Project-images/blackjack.png"></div>
-            <div class="card-title">Black Jack</div>
-            <div class="card-description">
-              A web based Black Jack game built with HTML, CSS, and JavaScript
-            </div>
-          </a>
-
-          <!-- PROJECTS: Card 3 -->
-          <a href="https://github.com/coltonphass/Super-Puzzle-Slider#" class="card" data-category="console applications">
-            <div class="project-icon"><img src="images/Project-images/slidingpuzzle.png"></div>
-            <div class="card-title">Super Puzzle Slider</div>
-            <div class="card-description">
-            A simple adjustable sliding puzzle mini-game that runs on Windows Console made in C++            
-            </div>
-          </a>
-
-          <!-- PROJECTS: Card 4 -->
-          <a href="https://github.com/coltonphass/Space-Shooter" class="card" data-category="games">
-            <div class="project-icon"><img src="images/Project-images/spaceshooter1.png"></div>
-            <div class="card-title">Space Shooter</div>
-            <div class="card-description">
-              A classic arcade style space shooter game built with Python and Pygame
-            </div>
-          </a>
-
-          <!-- PROJECTS: Card 5 -->
-          <a href="https://dentitchsolutions.netlify.app/" class="card" data-category="web">
-            <div class="project-icon"><img src="images/Project-images/tooth.png"></div>
-            <div class="card-title">Dentitch Solutions</div>
-            <div class="card-description">
-              Example website for a fictional dental solutions company built with HTML, CSS, and JavaScript
-            </div>
-          </a>
-
-           <!-- PROJECTS: Card 6 -->
-          <a href="https://github.com/coltonphass/Discord-Bot-Jason" class="card" data-category="discord bots">
-            <div class="project-icon"><img src="images/Project-images/dadbot5.png"></div>
-            <div class="card-title">Jason (Dad) Bot</div>
-            <div class="card-description">
-              A silly discord bot that tells dad jokes and random facts built with Python and Discord.py
-            </div>
-          </a>
-
-        </div>
-      </div>
-
-      <!-- =========================
-           PAGE: BLOG
-           ========================= -->
-      <div id="blog" class="page">
-        <!-- BLOG: Header -->
-        <h1>Blog</h1>
-        <p class="description" style="text-align: left; margin-left: 0">
-          Thoughts, stories, and ideas about software development and
-          technology.
-        </p>
-
-        <!-- BLOG: Posts List -->
-        <div class="blog-posts">
-          <!-- BLOG: Post Card 1 -->
-          <a href="blog-post-1.html" class="card">
-            <div class="card-date">Dec 16, 2025 · 5 min read</div>
-            <div class="card-title">Learning How to Learn</div>
-            <div class="card-description">
-              A personal reflection on frustration, burnout, and rediscovering how to
-                  learn programming in a healthier, more sustainable way.
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- =========================
-           PAGE: USES
-           ========================= -->
-      <div id="uses" class="page">
-        <!-- USES: Hero Image -->
-        <div class="uses-hero"><image src="images/setup.webp"></div>
-
-        <!-- USES: Header -->
-        <h1>Uses</h1>
-        <p class="description" style="text-align: left; margin-left: 0">
-          Here's a list of the hardware, software, and tools I use every day.
-        </p>
-
-        <!-- USES: Tabs / Category Router (showTab) -->
-        <div class="uses-tabs">
-          <button class="tab-btn active" onclick="showTab('all')">All</button>
-          <button class="tab-btn" onclick="showTab('editor')">Editor</button>
-          <button class="tab-btn" onclick="showTab('hardware')">
-            Hardware
-          </button>
-          <button class="tab-btn" onclick="showTab('software')">
-            Software
-          </button>
-          <button class="tab-btn" onclick="showTab('other')">Other</button>
-        </div>
-
-        <!-- =========================
-             USES: TAB = ALL
-             ========================= -->
-        <div id="all" class="tab-content active">
-          <!-- USES/ALL: List -->
-          <div class="uses-list">
-            <!-- USES/ALL: Item - VS Code -->
-            <div class="uses-item">
-              <a href="https://code.visualstudio.com/">
-              <div class="uses-icon"><image src="/images/icons/vscode.webp"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Visual Studio Code</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Discord -->
-            <div class="uses-item">
-              <a href="https://discord.com/">
-              <div class="uses-icon"><image src="images/icons/discord.webp"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Discord</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Notepad++ -->
-            <div class="uses-item">
-              <a href="https://notepad-plus-plus.org/">
-              <div class="uses-icon"><image src="images/icons/notepadpng.webp"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Notepad ++</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - IntelliJ -->
-            <div class="uses-item">
-              <a href="https://www.jetbrains.com/idea/">
-              <div class="uses-icon"><image src="images/icons/intellij-removebg-preview.png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Intellij IDEA</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - MySQL -->
-            <div class="uses-item">
-              <a href="https://www.mysql.com/">
-              <div class="uses-icon"><image src="images/icons/mysql.webp"></div>
-              </a>
-              <div class="uses-content">
-                <h3>MySQL</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Firefox -->
-            <div class="uses-item">
-              <a href="https://www.mozilla.org/en-US/firefox/new/">
-              <div class="uses-icon"><image src="images/icons/firefox-removebg-preview.png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Firefox</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Obsidian -->
-            <div class="uses-item">
-              <a href="https://help.obsidian.md/">
-              <div class="uses-icon"><image src="images/icons/obsidian.png"></div>
-              </a>
-                <div class="uses-content">
-                <h3>Obsidian</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - YouTube Music -->
-            <div class="uses-item">
-               <a href="https://music.youtube.com/">
-              <div class="uses-icon"><image src="images/icons/youtube_music.webp"></div>
-              </a>
-              <div class="uses-content">
-                <h3>YT Music</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Excel -->
-            <div class="uses-item">
-              <a href="https://www.microsoft.com/en-us/microsoft-365/excel">
-              <div class="uses-icon"><image src="images/icons/excel-removebg-preview.png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Excel</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Git Bash -->
-            <div class="uses-item">
-              <a href="https://git-scm.com/">
-              <div class="uses-icon"><image src="images/icons/gitbash-removebg-preview.png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Git Bash</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - ChatGPT -->
-            <div class="uses-item">
-              <a href="https://chat.openai.com/">
-              <div class="uses-icon"><image src="images/icons/gpt-removebg-preview.png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>ChatGPT</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Gemini -->
-            <div class="uses-item">
-              <a href="https://gemini.google.com/app">
-              <div class="uses-icon"><image src="images/icons/gemini-removebg-preview.png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Gemini</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Claude -->
-            <div class="uses-item">
-              <a href="https://claude.ai/new">
-              <div class="uses-icon"><image src="images/icons/claude-removebg-preview.png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Claude</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Ollama -->
-            <div class="uses-item">
-              <a href="https://ollama.com/">
-              <div class="uses-icon"><image src="images/icons/ollama-removebg-preview.png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Ollama</h3>
-              </div>
-            </div>
-
-            <!-- USES/ALL: Item - Visual Studio -->
-            <div class="uses-item">
-              <a href="https://visualstudio.microsoft.com/downloads/">
-              <div class="uses-icon"><image src="images/icons/visual_studio-removebg-preview(1).png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Visual Studio</h3>
-              </div>
-            </div>
-
-            <!-- =========================
-                 USES/ALL: HARDWARE BLOCK
-                 ========================= -->
-            <!-- USES/ALL/HARDWARE: CPU -->
-            <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/cpu-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>CPU: AMD Ryzen 7 5800X (8-Core)</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: GPU -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/gpu-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>GPU: NVIDIA GeForce RTX 3060 Ti</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: RAM -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/RAM.webp">
-          </div>
-          <div class="uses-content">
-            <h3>RAM: 64GB DDR4 Corsair</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Motherboard -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/MB.png">
-          </div>
-          <div class="uses-content">
-            <h3>Motherboard: ASUS TUF GAMING B550-PLUS WIFI II</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Laptop -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/laptop-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>Laptop: ASUS ROG Zephyrus G14 (2023 Edition)</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Monitor 1 -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/OMEN_MONITOR-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>OMEN 27i IPS</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Monitor 2 -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/PIXIO_MONITOR.png">
-          </div>
-          <div class="uses-content">
-            <h3>Pixio PX248PS</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Monitor 3 -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/Monitor_ACER-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>Acer SA243Y G0</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Mic -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/mic1-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>Samson Q2U Dynamic USB/XLR Mic</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Headset -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/HEADSET.png">
-          </div>
-          <div class="uses-content">
-            <h3>Headset: Corsair Void RGB Elite Wireless</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Mouse 1 -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/RAZER_MOUSE.png">
-          </div>
-          <div class="uses-content">
-            <h3>Razer Cobra</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Mouse 2 -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/logitech-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>Logitech M720 Wireless Mouse</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Keyboard 1 -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/RAZER_KEYBOARD-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>Razer Ornata V3 X</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Keyboard 2 -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/AULA-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>AULA F75</h3>
-          </div>
-        </div>
-
-        <!-- USES/ALL/HARDWARE: Webcam -->
-        <div class="uses-item">
-          <div class="uses-icon">
-            <img src="images/Hardware/aluratek-removebg-preview.png">
-          </div>
-          <div class="uses-content">
-            <h3>Webcam: Aluratek 1080p HD</h3>
-          </div>
-        </div>
-          </div>
-        </div>
-
-        <!-- =========================
-             USES: TAB = EDITOR
-             ========================= -->
-        <div id="editor" class="tab-content">
-          <!-- USES/EDITOR: List -->
-          <div class="uses-list">
-            <!-- USES/EDITOR: VS Code -->
-             <div class="uses-item">
-              <a href="https://code.visualstudio.com/">
-              <div class="uses-icon"><image src="/images/icons/vscode.webp"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Visual Studio Code</h3>
-              </div>
-            </div>
-
-            <!-- USES/EDITOR: IntelliJ -->
-            <div class="uses-item">
-              <a href="https://www.jetbrains.com/idea/">
-              <div class="uses-icon"><image src="images/icons/intellij-removebg-preview.png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Intellij IDEA</h3>
-              </div>
-            </div>
-
-            <!-- USES/EDITOR: Notepad++ -->
-             <div class="uses-item">
-              <a href="https://notepad-plus-plus.org/">
-              <div class="uses-icon"><image src="images/icons/notepadpng.webp"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Notepad ++</h3>
-              </div>
-            </div>
-
-            <!-- USES/EDITOR: Visual Studio -->
-            <div class="uses-item">
-              <a href="https://visualstudio.microsoft.com/downloads/">
-              <div class="uses-icon"><image src="images/icons/visual_studio-removebg-preview(1).png"></div>
-              </a>
-              <div class="uses-content">
-                <h3>Visual Studio</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- =========================
-             USES: TAB = HARDWARE
-             ========================= -->
-       <div id="hardware" class="tab-content">
-         <!-- USES/HARDWARE: List -->
-         <div class="uses-list">
-            <!-- USES/HARDWARE: CPU -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/cpu-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>CPU: AMD Ryzen 7 5800X (8-Core)</h3>
-              </div>
-            </div>
-
-            <!-- USES/HARDWARE: GPU -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/gpu-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>GPU: NVIDIA GeForce RTX 3060 Ti</h3>
-              </div>
-            </div>
-
-            <!-- USES/HARDWARE: RAM -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/RAM.webp">
-              </div>
-              <div class="uses-content">
-                <h3>RAM: 64GB DDR4 Corsair</h3>
-              </div>
-            </div>
-
-            <!-- USES/HARDWARE: Motherboard -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/MB.png">
-              </div>
-              <div class="uses-content">
-                <h3>Motherboard: ASUS TUF GAMING B550-PLUS WIFI II</h3>
-              </div>
-            </div>
-
-            <!-- USES/HARDWARE: Laptop -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/laptop-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>Laptop: ASUS ROG Zephyrus G14 (2023 Edition)</h3>
-              </div>
-            </div>
-
-            <!-- USES/HARDWARE: Monitor 1 -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/OMEN_MONITOR-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>OMEN 27i IPS</h3>
-              </div>
-            </div>
-            
-            <!-- USES/HARDWARE: Monitor 2 -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/PIXIO_MONITOR.png">
-              </div>
-              <div class="uses-content">
-                <h3>Pixio PX248PS</h3>
-              </div>
-            </div>
-            
-            <!-- USES/HARDWARE: Monitor 3 -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/Monitor_ACER-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>Acer SA243Y G0</h3>
-              </div>
-            </div>
-
-            <!-- USES/HARDWARE: Mic -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/mic1-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>Samson Q2U Dynamic USB/XLR Mic</h3>
-              </div>
-            </div>
-            
-            <!-- USES/HARDWARE: Headset -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/HEADSET.png">
-              </div>
-              <div class="uses-content">
-                <h3>Headset: Corsair Void RGB Elite Wireless</h3>
-              </div>
-            </div>
-
-            <!-- USES/HARDWARE: Mouse 1 -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/RAZER_MOUSE.png">
-              </div>
-              <div class="uses-content">
-                <h3>Razer Cobra</h3>
-              </div>
-            </div>
-            
-            <!-- USES/HARDWARE: Mouse 2 -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/logitech-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>Logitech M720 Wireless Mouse</h3>
-              </div>
-            </div>
-            
-            <!-- USES/HARDWARE: Keyboard 1 -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/RAZER_KEYBOARD-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>Razer Ornata V3 X</h3>
-              </div>
-            </div>
-
-            <!-- USES/HARDWARE: Keyboard 2 -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/AULA-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>AULA F75</h3>
-              </div>
-            </div>
-
-            <!-- USES/HARDWARE: Webcam -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/aluratek-removebg-preview.png">
-              </div>
-              <div class="uses-content">
-                <h3>Webcam: Aluratek 1080p HD</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-
-       <!-- =========================
-       USES: TAB = SOFTWARE 
-       ========================= -->
-  <div id="software" class="tab-content">
-    <div class="uses-list">
-      <div class="uses-item">
-        <a href="https://discord.com/">
-        <div class="uses-icon"><image src="images/icons/discord.webp"></div>
+          ↑ Scroll to Top
         </a>
-        <div class="uses-content">
-          <h3>Discord</h3>
-        </div>
-      </div>
-
-      <div class="uses-item">
-        <a href="https://www.mysql.com/">
-        <div class="uses-icon"><image src="images/icons/mysql.webp"></div>
-        </a>
-        <div class="uses-content">
-          <h3>MySQL</h3>
-        </div>
-      </div>
-
-      <div class="uses-item">
-        <a href="https://www.mozilla.org/en-US/firefox/new/">
-        <div class="uses-icon"><image src="images/icons/firefox-removebg-preview.png"></div>
-        </a>
-        <div class="uses-content">
-          <h3>Firefox</h3>
-        </div>
-      </div>
-
-      <div class="uses-item">
-        <a href="https://help.obsidian.md/">
-        <div class="uses-icon"><image src="images/icons/obsidian.png"></div>
-        </a>
-        <div class="uses-content">
-          <h3>Obsidian</h3>
-        </div>
-      </div>
-
-      <div class="uses-item">
-        <a href="https://www.microsoft.com/en-us/microsoft-365/excel">
-        <div class="uses-icon"><image src="images/icons/excel-removebg-preview.png"></div>
-        </a>
-        <div class="uses-content">
-          <h3>Excel</h3>
-        </div>
-      </div>
-
-      <div class="uses-item">
-        <a href="https://git-scm.com/">
-        <div class="uses-icon"><image src="images/icons/gitbash-removebg-preview.png"></div>
-        </a>
-        <div class="uses-content">
-          <h3>Git Bash</h3>
-        </div>
-      </div>
+      </footer>
     </div>
-  </div>
 
-  <!-- =========================
-       USES: TAB = OTHER (filler removed; real items added)
-       ========================= -->
-  <div id="other" class="tab-content">
-    <div class="uses-list">
-      <div class="uses-item">
-        <a href="https://music.youtube.com/">
-        <div class="uses-icon"><image src="images/icons/youtube_music.webp"></div>
-        </a>
-        <div class="uses-content">
-          <h3>YT Music</h3>
-        </div>
-      </div>
-
-      <div class="uses-item">
-        <a href="https://chat.openai.com/">
-        <div class="uses-icon"><image src="images/icons/gpt-removebg-preview.png"></div>
-        </a>
-        <div class="uses-content">
-          <h3>ChatGPT</h3>
-        </div>
-      </div>
-
-      <div class="uses-item">
-        <a href="https://gemini.google.com/app">
-        <div class="uses-icon"><image src="images/icons/gemini-removebg-preview.png"></div>
-        </a>
-        <div class="uses-content">
-          <h3>Gemini</h3>
-        </div>
-      </div>
-
-      <div class="uses-item">
-        <a href="https://claude.ai/new">
-        <div class="uses-icon"><image src="images/icons/claude-removebg-preview.png"></div>
-        </a>
-        <div class="uses-content">
-          <h3>Claude</h3>
-        </div>
-      </div>
-
-      <div class="uses-item">
-        <a href="https://ollama.com/">
-        <div class="uses-icon"><image src="images/icons/ollama-removebg-preview.png"></div>
-        </a>
-        <div class="uses-content">
-          <h3>Ollama</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      </div>
-
-    <!-- =========================
-         FOOTER
-         ========================= -->
-    <footer>
-      <!-- FOOTER: Quick Links -->
-      <div class="footer-links">
-        <a href="#" onclick="showPage('home'); return false;">Home</a>
-        <span>•</span>
-        <a href="#" onclick="showPage('about'); return false;">About</a>
-        <span>•</span>
-        <a href="#" onclick="showPage('projects'); return false;">Projects</a>
-        <span>•</span>
-        <a href="#" onclick="showPage('blog'); return false;">Blog</a>
-        <span>•</span>
-        <a href="#" onclick="showPage('uses'); return false;">Uses</a>
-      </div>
-
-      <!-- FOOTER: Copyright -->
-      <p style="margin-bottom: 15px">© 2025 Colton Phass</p>
-
-      <!-- FOOTER: Scroll-to-Top -->
-      <a
-        href="#"
-        class="scroll-top"
-        onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
-      >
-        ↑ Scroll to Top
-      </a>
-    </footer>
-
-    <!-- =========================
-         SCRIPTS
-         ========================= -->
     <script src="script.js"></script>
   </body>
 </html>

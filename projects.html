@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects - Colton Phass</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- PAGE LOADER OVERLAY -->
+    <div id="page-transition" class="is-active" aria-hidden="true">
+      <div class="page-transition-inner">
+        <div class="page-spinner"></div>
+        <div class="page-loading-text">Loading…</div>
+      </div>
+    </div>
+
+    <!-- WRAP ALL VISIBLE CONTENT -->
+    <div class="page-wrap is-loading">
+      <nav>
+        <div class="nav-container">
+          <a href="index.html" class="nav-brand">Colton Phass</a>
+          <ul class="nav-links">
+            <li><a href="index.html" id="nav-home">Home</a></li>
+            <li><a href="about.html" id="nav-about">About</a></li>
+            <li>
+              <a href="projects.html" class="active" id="nav-projects"
+                >Projects</a
+              >
+            </li>
+            <li><a href="blog.html" id="nav-blog">Blog</a></li>
+            <li><a href="uses.html" id="nav-uses">Uses</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container">
+        <h1>Projects</h1>
+        <p class="description" style="text-align: left; margin-left: 0">
+          Here are some of my projects I've worked on recently.
+        </p>
+
+        <div class="project-filter">
+          <label for="project-select">Filter by:</label>
+
+          <select id="project-select" onchange="filterProjects()">
+            <option value="all">All Projects</option>
+            <option value="web">Web Apps</option>
+            <option value="games">Games</option>
+            <option value="console applications">Console Applications</option>
+            <option value="discord bots">Discord Bots</option>
+          </select>
+
+          <a
+            href="https://github.com/coltonphass?tab=repositories"
+            target="_blank"
+            class="btn btn-github"
+            >View More on GitHub</a
+          >
+        </div>
+
+        <div class="projects" id="projects-list">
+          <a
+            href="https://daovienmeditation.com/"
+            class="card"
+            data-category="web"
+          >
+            <div class="project-icon">
+              <img src="images/Project-images/meditation.png" alt="" />
+            </div>
+            <div class="card-title">Dao Vien Meditation</div>
+            <div class="card-description">
+              A simple site for Dao Vien Meditation Center to share information
+              about meditation classes, upcoming events and course material.
+            </div>
+          </a>
+
+          <a
+            href="https://coltonsgames.netlify.app/html/blackjack.html"
+            class="card"
+            data-category="web"
+          >
+            <div class="project-icon">
+              <img src="images/Project-images/blackjack.png" alt="" />
+            </div>
+            <div class="card-title">Black Jack</div>
+            <div class="card-description">
+              A web based Black Jack game built with HTML, CSS, and JavaScript
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/coltonphass/Super-Puzzle-Slider#"
+            class="card"
+            data-category="console applications"
+          >
+            <div class="project-icon">
+              <img src="images/Project-images/slidingpuzzle.png" alt="" />
+            </div>
+            <div class="card-title">Super Puzzle Slider</div>
+            <div class="card-description">
+              A simple adjustable sliding puzzle mini-game that runs on Windows
+              Console made in C++
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/coltonphass/Space-Shooter"
+            class="card"
+            data-category="games"
+          >
+            <div class="project-icon">
+              <img src="images/Project-images/spaceshooter1.png" alt="" />
+            </div>
+            <div class="card-title">Space Shooter</div>
+            <div class="card-description">
+              A classic arcade style space shooter game built with Python and
+              Pygame
+            </div>
+          </a>
+
+          <a
+            href="https://dentitchsolutions.netlify.app/"
+            class="card"
+            data-category="web"
+          >
+            <div class="project-icon">
+              <img src="images/Project-images/tooth.png" alt="" />
+            </div>
+            <div class="card-title">Dentitch Solutions</div>
+            <div class="card-description">
+              Example website for a fictional dental solutions company built
+              with HTML, CSS, and JavaScript
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/coltonphass/Discord-Bot-Jason"
+            class="card"
+            data-category="discord bots"
+          >
+            <div class="project-icon">
+              <img src="images/Project-images/dadbot5.png" alt="" />
+            </div>
+            <div class="card-title">Jason (Dad) Bot</div>
+            <div class="card-description">
+              A silly discord bot that tells dad jokes and random facts built
+              with Python and Discord.py
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <span>•</span>
+          <a href="about.html">About</a>
+          <span>•</span>
+          <a href="projects.html">Projects</a>
+          <span>•</span>
+          <a href="blog.html">Blog</a>
+          <span>•</span>
+          <a href="uses.html">Uses</a>
+        </div>
+        <p style="margin-bottom: 15px">© 2025 Colton Phass</p>
+        <a
+          href="#"
+          class="scroll-top"
+          onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
+        >
+          ↑ Scroll to Top
+        </a>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

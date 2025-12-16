@@ -1130,3 +1130,70 @@ code[class*='language-'] {
 .token.number {
   color: #fbbf24;
 }
+
+/* =========================================================
+   PAGE TRANSITION LOADER
+   ========================================================= */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  /* match your site background */
+  background: rgba(15, 23, 42, 0.98);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+#page-transition.is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.page-transition-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.page-spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  border: 3px solid rgba(148, 163, 184, 0.25); /* slate-400-ish */
+  border-top-color: rgba(96, 165, 250, 0.95); /* your accent blue */
+  animation: spin 0.9s linear infinite;
+
+  box-shadow: 0 0 18px rgba(96, 165, 250, 0.15);
+}
+
+.page-loading-text {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  letter-spacing: 0.2px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Optional: blur/slide the page content itself during transitions */
+.page-wrap {
+  transition: filter 260ms ease, transform 260ms ease, opacity 260ms ease;
+}
+
+.page-wrap.is-loading {
+  filter: blur(10px);
+  transform: translateY(6px);
+  opacity: 0.9;
+}
