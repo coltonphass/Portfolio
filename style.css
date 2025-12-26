@@ -329,6 +329,7 @@ h2 {
   margin-bottom: 30px;
   border-bottom: 2px solid #1e293b;
   flex-wrap: wrap;
+  align-items: flex-end;
 }
 
 .tab-btn {
@@ -339,8 +340,11 @@ h2 {
   cursor: pointer;
   font-size: 0.95em;
   border-bottom: 2px solid transparent;
-  margin-bottom: -2px;
+  margin-bottom: 0;
   transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
 }
 .uses-hero img {
   width: 100%;
@@ -709,6 +713,128 @@ footer {
   }
 }
 
+/* Additional mobile-friendly adjustments */
+@media (max-width: 600px) {
+  .nav-container {
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  .nav-brand {
+    font-size: 1em;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .profile {
+    margin-bottom: 40px;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    font-size: 32px;
+  }
+
+  .profile-image img {
+    width: 110px;
+    height: 110px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .subtitle {
+    font-size: 1em;
+  }
+
+  .description {
+    font-size: 1em;
+    max-width: 100%;
+    padding: 0 6px;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.95em;
+  }
+
+  .projects,
+  .blog-posts {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .project-icon,
+  .project-icon img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .skills {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .uses-hero,
+  .about-hero,
+  .blog-post-hero {
+    height: auto;
+    min-height: 140px;
+    padding: 12px;
+    font-size: 40px;
+  }
+
+  .uses-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .uses-item {
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    text-align: left;
+  }
+
+  .uses-icon,
+  .uses-icon img {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .project-filter {
+    margin-top: 12px;
+  }
+
+  footer {
+    padding: 36px 14px 24px;
+  }
+
+  .scroll-top {
+    padding: 6px 12px;
+  }
+
+  /* Reduce the size of the loading spinner on small screens */
+  .page-spinner {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Github graph: allow smaller min width for mobile scrolling */
+  .github-graph-inner {
+    min-width: 420px;
+  }
+}
+
 /* --- General Icon Styling and Glow (Applies to all uses-icons) --- */
 .uses-icon img {
   width: 48px; /* Default size for software/general icons */
@@ -805,19 +931,30 @@ footer {
   flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
-/* Ensure the button is pushed to the right, taking up available space */
+/* Ensure the label, select and button align and share consistent heights */
 .project-filter label,
-.project-filter select {
-  /* This prevents the label and select from taking up space with flex-grow */
+.project-filter select,
+.project-filter .btn-github {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
 }
 
-/* Use margin-left: auto to push the button all the way to the right */
+.project-filter select {
+  height: 40px;
+}
+
 .project-filter .btn-github {
   margin-left: auto; /* Pushes this element to the end of the flex container */
-  /* Keep the button small and consistent */
-  padding: 8px 15px;
-  font-size: 0.9em;
+  padding: 12px 24px; /* match .btn */
+  font-size: 0.95em;
+  align-self: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  border-radius: 6px;
+  min-width: unset;
 }
 
 /* Optional: Make the select box look nicer and match the dark theme */
@@ -832,15 +969,31 @@ footer {
 
 /* Handle small screens: Center controls if they wrap */
 @media (max-width: 600px) {
+  .tab-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    height: 36px;
+  }
+
   .project-filter {
     flex-direction: column; /* Stack items vertically */
     align-items: flex-start; /* Align stacked items to the left */
     gap: 10px;
   }
 
+  .project-filter label {
+    margin-bottom: 6px;
+  }
+
+  .project-filter select {
+    width: 100%;
+  }
+
   .project-filter .btn-github {
     margin-left: 0; /* Remove auto-margin for stacking */
-    align-self: flex-end; /* Align the button to the right end of the column */
+    align-self: stretch; /* Make button stretch to full width of the column */
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
