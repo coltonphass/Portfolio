@@ -3,8 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO: Primary meta tags -->
+    <meta name="description" content="Colton Phass — Software Engineer portfolio. Projects, blog posts, and contact information showcasing software engineering work and activity." />
+    <meta name="author" content="Colton Phass" />
+    <meta name="keywords" content="Colton Phass, software engineer, portfolio, projects, blog, GitHub, JavaScript, C++, Python" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="/" />
+    <meta name="theme-color" content="#0f172a" />
     <title>Colton Phass - Portfolio</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- Open Graph / Social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Colton Phass — Software Engineer" />
+    <meta property="og:description" content="Software engineer portfolio: projects, blog posts, and contact information." />
+    <meta property="og:url" content="/" />
+    <meta property="og:site_name" content="Colton Phass" />
+    <meta property="og:image" content="/images/coltonpfp.webp" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@coltonphass" />
+    <meta name="twitter:creator" content="@coltonphass" />
+    <meta name="twitter:title" content="Colton Phass — Software Engineer" />
+    <meta name="twitter:description" content="Software engineer portfolio: projects, blog posts, and contact information." />
+    <meta name="twitter:image" content="/images/coltonpfp.webp" />
   </head>
   <body>
     <!-- PAGE LOADER OVERLAY -->
@@ -240,5 +262,21 @@
     </div>
 
     <script src="script.js"></script>
+    <!-- Structured data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Colton Phass",
+      "url": "/",
+      "image": "/images/coltonpfp.webp",
+      "jobTitle": "Software Engineer",
+      "sameAs": [
+        "https://github.com/coltonphass",
+        "https://www.linkedin.com/in/colton-phass-61223a255/",
+        "https://www.codingame.com/profile/6c0691c159ff8aa6eb18430504ab0edc7750706"
+      ]
+    }
+    </script>
   </body>
 </html>
