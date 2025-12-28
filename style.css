@@ -63,7 +63,7 @@ nav {
 }
 
 .nav-links a {
-  color: #94a3b8;
+  color: #cbd5e1;
   text-decoration: none;
   font-size: 0.95em;
   transition: color 0.3s;
@@ -254,7 +254,7 @@ h2 {
 
 .card-date {
   font-size: 0.85em;
-  color: #64748b;
+  color: #cbd5e1;
   margin-bottom: 8px;
 }
 
@@ -478,7 +478,7 @@ h2 {
 footer {
   text-align: center;
   padding: 60px 20px 40px;
-  color: #64748b;
+  color: #94a3b8;
   font-size: 0.9em;
   border-top: 1px solid #1e293b;
   position: relative;
@@ -495,7 +495,7 @@ footer {
 }
 
 .footer-links a {
-  color: #64748b;
+  color: #cbd5e1;
   text-decoration: none;
   font-size: 0.9em;
   transition: color 0.3s;
@@ -1349,4 +1349,36 @@ code[class*='language-'] {
   filter: blur(10px);
   transform: translateY(6px);
   opacity: 0.9;
+}
+
+/* Accessibility: Visible focus styles for keyboard users */
+a:focus,
+.btn:focus,
+.card:focus,
+.tab-btn:focus,
+.project-filter select:focus,
+.scroll-top:focus,
+.nav-links a:focus,
+.footer-links a:focus,
+.social-links a:focus {
+  outline: 3px solid rgba(96, 165, 250, 0.9);
+  outline-offset: 3px;
+}
+
+/* Make :focus-visible less intrusive for mouse users */
+a:focus:not(:focus-visible),
+.btn:focus:not(:focus-visible),
+.card:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Improve contrast for interactive text when hovered/focused */
+.nav-links a:hover,
+.nav-links a:focus {
+  color: #f1f5f9;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: #f1f5f9;
 }
