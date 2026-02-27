@@ -1,718 +1,734 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Uses - Colton Phass</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- PAGE LOADER OVERLAY -->
-    <div id="page-transition" class="is-active" aria-hidden="true">
-      <div class="page-transition-inner">
-        <div class="page-spinner"></div>
-        <div class="page-loading-text">Loading…</div>
-      </div>
-    </div>
-
-    <!-- WRAP ALL VISIBLE CONTENT -->
-    <div class="page-wrap is-loading">
-      <nav>
-        <div class="nav-container">
-          <a href="index.html" class="nav-brand">Colton Phass</a>
-          <ul class="nav-links">
-            <li><a href="index.html" id="nav-home">Home</a></li>
-            <li><a href="about.html" id="nav-about">About</a></li>
-            <li><a href="projects.html" id="nav-projects">Projects</a></li>
-            <li><a href="blog.html" id="nav-blog">Blog</a></li>
-            <li><a href="uses.html" class="active" id="nav-uses">Uses</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="container">
-        <div class="uses-hero">
-          <img src="images/setup.webp" alt="Setup" />
-        </div>
-
-        <h1>Uses</h1>
-        <p class="description" style="text-align: left; margin-left: 0">
-          Here's a list of the hardware, software, and tools I use every day.
-        </p>
-
-        <div class="uses-tabs">
-          <button class="tab-btn active" onclick="showTab('all')">All</button>
-          <button class="tab-btn" onclick="showTab('editor')">Editor</button>
-          <button class="tab-btn" onclick="showTab('hardware')">
-            Hardware
-          </button>
-          <button class="tab-btn" onclick="showTab('software')">
-            Software
-          </button>
-          <button class="tab-btn" onclick="showTab('other')">Other</button>
-        </div>
-
-        <!-- TAB: ALL -->
-        <div id="all" class="tab-content active">
-          <div class="uses-list">
-            <div class="uses-item">
-              <a href="https://code.visualstudio.com/">
-                <div class="uses-icon">
-                  <img src="/images/icons/vscode.webp" alt="VS Code" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Visual Studio Code</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://discord.com/">
-                <div class="uses-icon">
-                  <img src="images/icons/discord.webp" alt="Discord" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Discord</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://notepad-plus-plus.org/">
-                <div class="uses-icon">
-                  <img src="images/icons/notepadpng.webp" alt="Notepad++" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Notepad ++</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://www.jetbrains.com/idea/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/intellij-removebg-preview.png"
-                    alt="IntelliJ"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Intellij IDEA</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://www.mysql.com/">
-                <div class="uses-icon">
-                  <img src="images/icons/mysql.webp" alt="MySQL" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>MySQL</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://www.mozilla.org/en-US/firefox/new/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/firefox-removebg-preview.png"
-                    alt="Firefox"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Firefox</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://help.obsidian.md/">
-                <div class="uses-icon">
-                  <img src="images/icons/obsidian.png" alt="Obsidian" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Obsidian</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://music.youtube.com/">
-                <div class="uses-icon">
-                  <img src="images/icons/youtube_music.webp" alt="YT Music" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>YT Music</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://www.microsoft.com/en-us/microsoft-365/excel">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/excel-removebg-preview.png"
-                    alt="Excel"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Excel</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://git-scm.com/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/gitbash-removebg-preview.png"
-                    alt="Git Bash"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Git Bash</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://chat.openai.com/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/gpt-removebg-preview.png"
-                    alt="ChatGPT"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>ChatGPT</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://gemini.google.com/app">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/gemini-removebg-preview.png"
-                    alt="Gemini"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Gemini</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://claude.ai/new">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/claude-removebg-preview.png"
-                    alt="Claude"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Claude</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://ollama.com/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/ollama-removebg-preview.png"
-                    alt="Ollama"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Ollama</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://visualstudio.microsoft.com/downloads/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/visual_studio-removebg-preview(1).png"
-                    alt="Visual Studio"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Visual Studio</h3></div>
-            </div>
-
-            <!-- hardware block (as you had it) -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/cpu-removebg-preview.png" alt="CPU" />
-              </div>
-              <div class="uses-content">
-                <h3>CPU: AMD Ryzen 7 5800X (8-Core)</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/gpu-removebg-preview.png" alt="GPU" />
-              </div>
-              <div class="uses-content">
-                <h3>GPU: NVIDIA GeForce RTX 3060 Ti</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/RAM.webp" alt="RAM" />
-              </div>
-              <div class="uses-content"><h3>RAM: 64GB DDR4 Corsair</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/MB.png" alt="Motherboard" />
-              </div>
-              <div class="uses-content">
-                <h3>Motherboard: ASUS TUF GAMING B550-PLUS WIFI II</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/laptop-removebg-preview.png"
-                  alt="Laptop"
-                />
-              </div>
-              <div class="uses-content">
-                <h3>Laptop: ASUS ROG Zephyrus G14 (2023 Edition)</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/OMEN_MONITOR-removebg-preview.png"
-                  alt="Monitor"
-                />
-              </div>
-              <div class="uses-content"><h3>OMEN 27i IPS</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/PIXIO_MONITOR.png" alt="Monitor" />
-              </div>
-              <div class="uses-content"><h3>Pixio PX248PS</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/Monitor_ACER-removebg-preview.png"
-                  alt="Monitor"
-                />
-              </div>
-              <div class="uses-content"><h3>Acer SA243Y G0</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/mic1-removebg-preview.png"
-                  alt="Mic"
-                />
-              </div>
-              <div class="uses-content">
-                <h3>Samson Q2U Dynamic USB/XLR Mic</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/HEADSET.png" alt="Headset" />
-              </div>
-              <div class="uses-content">
-                <h3>Headset: Corsair Void RGB Elite Wireless</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/RAZER_MOUSE.png" alt="Mouse" />
-              </div>
-              <div class="uses-content"><h3>Razer Cobra</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/logitech-removebg-preview.png"
-                  alt="Mouse"
-                />
-              </div>
-              <div class="uses-content">
-                <h3>Logitech M720 Wireless Mouse</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/RAZER_KEYBOARD-removebg-preview.png"
-                  alt="Keyboard"
-                />
-              </div>
-              <div class="uses-content"><h3>Razer Ornata V3 X</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/AULA-removebg-preview.png"
-                  alt="Keyboard"
-                />
-              </div>
-              <div class="uses-content"><h3>AULA F75</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/aluratek-removebg-preview.png"
-                  alt="Webcam"
-                />
-              </div>
-              <div class="uses-content"><h3>Webcam: Aluratek 1080p HD</h3></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB: EDITOR -->
-        <div id="editor" class="tab-content">
-          <div class="uses-list">
-            <div class="uses-item">
-              <a href="https://code.visualstudio.com/">
-                <div class="uses-icon">
-                  <img src="/images/icons/vscode.webp" alt="VS Code" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Visual Studio Code</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://www.jetbrains.com/idea/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/intellij-removebg-preview.png"
-                    alt="IntelliJ"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Intellij IDEA</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://notepad-plus-plus.org/">
-                <div class="uses-icon">
-                  <img src="images/icons/notepadpng.webp" alt="Notepad++" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Notepad ++</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://visualstudio.microsoft.com/downloads/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/visual_studio-removebg-preview(1).png"
-                    alt="Visual Studio"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Visual Studio</h3></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB: HARDWARE -->
-        <div id="hardware" class="tab-content">
-          <div class="uses-list">
-            <!-- (your full hardware block stays exactly as you posted) -->
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/cpu-removebg-preview.png" alt="CPU" />
-              </div>
-              <div class="uses-content">
-                <h3>CPU: AMD Ryzen 7 5800X (8-Core)</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/gpu-removebg-preview.png" alt="GPU" />
-              </div>
-              <div class="uses-content">
-                <h3>GPU: NVIDIA GeForce RTX 3060 Ti</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/RAM.webp" alt="RAM" />
-              </div>
-              <div class="uses-content"><h3>RAM: 64GB DDR4 Corsair</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/MB.png" alt="Motherboard" />
-              </div>
-              <div class="uses-content">
-                <h3>Motherboard: ASUS TUF GAMING B550-PLUS WIFI II</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/laptop-removebg-preview.png"
-                  alt="Laptop"
-                />
-              </div>
-              <div class="uses-content">
-                <h3>Laptop: ASUS ROG Zephyrus G14 (2023 Edition)</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/OMEN_MONITOR-removebg-preview.png"
-                  alt="Monitor"
-                />
-              </div>
-              <div class="uses-content"><h3>OMEN 27i IPS</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/PIXIO_MONITOR.png" alt="Monitor" />
-              </div>
-              <div class="uses-content"><h3>Pixio PX248PS</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/Monitor_ACER-removebg-preview.png"
-                  alt="Monitor"
-                />
-              </div>
-              <div class="uses-content"><h3>Acer SA243Y G0</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/mic1-removebg-preview.png"
-                  alt="Mic"
-                />
-              </div>
-              <div class="uses-content">
-                <h3>Samson Q2U Dynamic USB/XLR Mic</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/HEADSET.png" alt="Headset" />
-              </div>
-              <div class="uses-content">
-                <h3>Headset: Corsair Void RGB Elite Wireless</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img src="images/Hardware/RAZER_MOUSE.png" alt="Mouse" />
-              </div>
-              <div class="uses-content"><h3>Razer Cobra</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/logitech-removebg-preview.png"
-                  alt="Mouse"
-                />
-              </div>
-              <div class="uses-content">
-                <h3>Logitech M720 Wireless Mouse</h3>
-              </div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/RAZER_KEYBOARD-removebg-preview.png"
-                  alt="Keyboard"
-                />
-              </div>
-              <div class="uses-content"><h3>Razer Ornata V3 X</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/AULA-removebg-preview.png"
-                  alt="Keyboard"
-                />
-              </div>
-              <div class="uses-content"><h3>AULA F75</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <div class="uses-icon">
-                <img
-                  src="images/Hardware/aluratek-removebg-preview.png"
-                  alt="Webcam"
-                />
-              </div>
-              <div class="uses-content"><h3>Webcam: Aluratek 1080p HD</h3></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB: SOFTWARE -->
-        <div id="software" class="tab-content">
-          <div class="uses-list">
-            <div class="uses-item">
-              <a href="https://discord.com/">
-                <div class="uses-icon">
-                  <img src="images/icons/discord.webp" alt="Discord" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Discord</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://www.mysql.com/">
-                <div class="uses-icon">
-                  <img src="images/icons/mysql.webp" alt="MySQL" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>MySQL</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://www.mozilla.org/en-US/firefox/new/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/firefox-removebg-preview.png"
-                    alt="Firefox"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Firefox</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://help.obsidian.md/">
-                <div class="uses-icon">
-                  <img src="images/icons/obsidian.png" alt="Obsidian" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Obsidian</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://www.microsoft.com/en-us/microsoft-365/excel">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/excel-removebg-preview.png"
-                    alt="Excel"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Excel</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://git-scm.com/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/gitbash-removebg-preview.png"
-                    alt="Git Bash"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Git Bash</h3></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB: OTHER -->
-        <div id="other" class="tab-content">
-          <div class="uses-list">
-            <div class="uses-item">
-              <a href="https://music.youtube.com/">
-                <div class="uses-icon">
-                  <img src="images/icons/youtube_music.webp" alt="YT Music" />
-                </div>
-              </a>
-              <div class="uses-content"><h3>YT Music</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://chat.openai.com/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/gpt-removebg-preview.png"
-                    alt="ChatGPT"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>ChatGPT</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://gemini.google.com/app">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/gemini-removebg-preview.png"
-                    alt="Gemini"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Gemini</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://claude.ai/new">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/claude-removebg-preview.png"
-                    alt="Claude"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Claude</h3></div>
-            </div>
-
-            <div class="uses-item">
-              <a href="https://ollama.com/">
-                <div class="uses-icon">
-                  <img
-                    src="images/icons/ollama-removebg-preview.png"
-                    alt="Ollama"
-                  />
-                </div>
-              </a>
-              <div class="uses-content"><h3>Ollama</h3></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <footer>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <span>•</span>
-          <a href="about.html">About</a>
-          <span>•</span>
-          <a href="projects.html">Projects</a>
-          <span>•</span>
-          <a href="blog.html">Blog</a>
-          <span>•</span>
-          <a href="uses.html">Uses</a>
-        </div>
-        <p style="margin-bottom: 15px">© 2025 Colton Phass</p>
-        <a
-          href="#"
-          class="scroll-top"
-          onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
-        >
-          ↑ Scroll to Top
-        </a>
-      </footer>
-
-      <script src="script.js"></script>
-    </div>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Uses - Colton Phass</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!-- PAGE LOADER OVERLAY -->
+		<div
+			id="page-transition"
+			class="is-active"
+			aria-hidden="true"
+			style="
+				position: fixed;
+				inset: 0;
+				z-index: 9999;
+				background: rgba(15, 23, 42, 0.98);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			"
+		>
+			<div class="page-transition-inner">
+				<div class="page-spinner"></div>
+				<div class="page-loading-text">Loading…</div>
+			</div>
+		</div>
+
+		<!-- WRAP ALL VISIBLE CONTENT -->
+		<div class="page-wrap is-loading">
+			<nav>
+				<div class="nav-container">
+					<a href="index.html" class="nav-brand">Colton Phass</a>
+					<ul class="nav-links">
+						<li><a href="index.html" id="nav-home">Home</a></li>
+						<li><a href="about.html" id="nav-about">About</a></li>
+						<li><a href="projects.html" id="nav-projects">Projects</a></li>
+						<li><a href="blog.html" id="nav-blog">Blog</a></li>
+						<li><a href="uses.html" class="active" id="nav-uses">Uses</a></li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="container">
+				<div class="uses-hero">
+					<img src="images/setup.webp" alt="Setup" />
+				</div>
+
+				<h1>Uses</h1>
+				<p class="description" style="text-align: left; margin-left: 0">
+					Here's a list of the hardware, software, and tools I use every day.
+				</p>
+
+				<div class="uses-tabs">
+					<button class="tab-btn active" onclick="showTab('all')">All</button>
+					<button class="tab-btn" onclick="showTab('editor')">Editor</button>
+					<button class="tab-btn" onclick="showTab('hardware')">
+						Hardware
+					</button>
+					<button class="tab-btn" onclick="showTab('software')">
+						Software
+					</button>
+					<button class="tab-btn" onclick="showTab('other')">Other</button>
+				</div>
+
+				<!-- TAB: ALL -->
+				<div id="all" class="tab-content active">
+					<div class="uses-list">
+						<div class="uses-item">
+							<a href="https://code.visualstudio.com/">
+								<div class="uses-icon">
+									<img src="/images/icons/vscode.webp" alt="VS Code" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>Visual Studio Code</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://discord.com/">
+								<div class="uses-icon">
+									<img src="images/icons/discord.webp" alt="Discord" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>Discord</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://notepad-plus-plus.org/">
+								<div class="uses-icon">
+									<img src="images/icons/notepadpng.webp" alt="Notepad++" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>Notepad ++</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://www.jetbrains.com/idea/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/intellij-removebg-preview.png"
+										alt="IntelliJ"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Intellij IDEA</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://www.mysql.com/">
+								<div class="uses-icon">
+									<img src="images/icons/mysql.webp" alt="MySQL" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>MySQL</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://www.mozilla.org/en-US/firefox/new/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/firefox-removebg-preview.png"
+										alt="Firefox"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Firefox</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://help.obsidian.md/">
+								<div class="uses-icon">
+									<img src="images/icons/obsidian.png" alt="Obsidian" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>Obsidian</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://music.youtube.com/">
+								<div class="uses-icon">
+									<img src="images/icons/youtube_music.webp" alt="YT Music" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>YT Music</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://www.microsoft.com/en-us/microsoft-365/excel">
+								<div class="uses-icon">
+									<img
+										src="images/icons/excel-removebg-preview.png"
+										alt="Excel"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Excel</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://git-scm.com/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/gitbash-removebg-preview.png"
+										alt="Git Bash"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Git Bash</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://chat.openai.com/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/gpt-removebg-preview.png"
+										alt="ChatGPT"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>ChatGPT</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://gemini.google.com/app">
+								<div class="uses-icon">
+									<img
+										src="images/icons/gemini-removebg-preview.png"
+										alt="Gemini"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Gemini</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://claude.ai/new">
+								<div class="uses-icon">
+									<img
+										src="images/icons/claude-removebg-preview.png"
+										alt="Claude"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Claude</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://ollama.com/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/ollama-removebg-preview.png"
+										alt="Ollama"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Ollama</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://visualstudio.microsoft.com/downloads/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/visual_studio-removebg-preview(1).png"
+										alt="Visual Studio"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Visual Studio</h3></div>
+						</div>
+
+						<!-- hardware block (as you had it) -->
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/cpu-removebg-preview.png" alt="CPU" />
+							</div>
+							<div class="uses-content">
+								<h3>CPU: AMD Ryzen 7 5800X (8-Core)</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/gpu-removebg-preview.png" alt="GPU" />
+							</div>
+							<div class="uses-content">
+								<h3>GPU: NVIDIA GeForce RTX 3060 Ti</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/RAM.webp" alt="RAM" />
+							</div>
+							<div class="uses-content"><h3>RAM: 64GB DDR4 Corsair</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/MB.png" alt="Motherboard" />
+							</div>
+							<div class="uses-content">
+								<h3>Motherboard: ASUS TUF GAMING B550-PLUS WIFI II</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/laptop-removebg-preview.png"
+									alt="Laptop"
+								/>
+							</div>
+							<div class="uses-content">
+								<h3>Laptop: ASUS ROG Zephyrus G14 (2023 Edition)</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/OMEN_MONITOR-removebg-preview.png"
+									alt="Monitor"
+								/>
+							</div>
+							<div class="uses-content"><h3>OMEN 27i IPS</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/PIXIO_MONITOR.png" alt="Monitor" />
+							</div>
+							<div class="uses-content"><h3>Pixio PX248PS</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/Monitor_ACER-removebg-preview.png"
+									alt="Monitor"
+								/>
+							</div>
+							<div class="uses-content"><h3>Acer SA243Y G0</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/mic1-removebg-preview.png"
+									alt="Mic"
+								/>
+							</div>
+							<div class="uses-content">
+								<h3>Samson Q2U Dynamic USB/XLR Mic</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/HEADSET.png" alt="Headset" />
+							</div>
+							<div class="uses-content">
+								<h3>Headset: Corsair Void RGB Elite Wireless</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/RAZER_MOUSE.png" alt="Mouse" />
+							</div>
+							<div class="uses-content"><h3>Razer Cobra</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/logitech-removebg-preview.png"
+									alt="Mouse"
+								/>
+							</div>
+							<div class="uses-content">
+								<h3>Logitech M720 Wireless Mouse</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/RAZER_KEYBOARD-removebg-preview.png"
+									alt="Keyboard"
+								/>
+							</div>
+							<div class="uses-content"><h3>Razer Ornata V3 X</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/AULA-removebg-preview.png"
+									alt="Keyboard"
+								/>
+							</div>
+							<div class="uses-content"><h3>AULA F75</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/aluratek-removebg-preview.png"
+									alt="Webcam"
+								/>
+							</div>
+							<div class="uses-content"><h3>Webcam: Aluratek 1080p HD</h3></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- TAB: EDITOR -->
+				<div id="editor" class="tab-content">
+					<div class="uses-list">
+						<div class="uses-item">
+							<a href="https://code.visualstudio.com/">
+								<div class="uses-icon">
+									<img src="/images/icons/vscode.webp" alt="VS Code" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>Visual Studio Code</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://www.jetbrains.com/idea/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/intellij-removebg-preview.png"
+										alt="IntelliJ"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Intellij IDEA</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://notepad-plus-plus.org/">
+								<div class="uses-icon">
+									<img src="images/icons/notepadpng.webp" alt="Notepad++" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>Notepad ++</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://visualstudio.microsoft.com/downloads/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/visual_studio-removebg-preview(1).png"
+										alt="Visual Studio"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Visual Studio</h3></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- TAB: HARDWARE -->
+				<div id="hardware" class="tab-content">
+					<div class="uses-list">
+						<!-- (your full hardware block stays exactly as you posted) -->
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/cpu-removebg-preview.png" alt="CPU" />
+							</div>
+							<div class="uses-content">
+								<h3>CPU: AMD Ryzen 7 5800X (8-Core)</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/gpu-removebg-preview.png" alt="GPU" />
+							</div>
+							<div class="uses-content">
+								<h3>GPU: NVIDIA GeForce RTX 3060 Ti</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/RAM.webp" alt="RAM" />
+							</div>
+							<div class="uses-content"><h3>RAM: 64GB DDR4 Corsair</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/MB.png" alt="Motherboard" />
+							</div>
+							<div class="uses-content">
+								<h3>Motherboard: ASUS TUF GAMING B550-PLUS WIFI II</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/laptop-removebg-preview.png"
+									alt="Laptop"
+								/>
+							</div>
+							<div class="uses-content">
+								<h3>Laptop: ASUS ROG Zephyrus G14 (2023 Edition)</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/OMEN_MONITOR-removebg-preview.png"
+									alt="Monitor"
+								/>
+							</div>
+							<div class="uses-content"><h3>OMEN 27i IPS</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/PIXIO_MONITOR.png" alt="Monitor" />
+							</div>
+							<div class="uses-content"><h3>Pixio PX248PS</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/Monitor_ACER-removebg-preview.png"
+									alt="Monitor"
+								/>
+							</div>
+							<div class="uses-content"><h3>Acer SA243Y G0</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/mic1-removebg-preview.png"
+									alt="Mic"
+								/>
+							</div>
+							<div class="uses-content">
+								<h3>Samson Q2U Dynamic USB/XLR Mic</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/HEADSET.png" alt="Headset" />
+							</div>
+							<div class="uses-content">
+								<h3>Headset: Corsair Void RGB Elite Wireless</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img src="images/Hardware/RAZER_MOUSE.png" alt="Mouse" />
+							</div>
+							<div class="uses-content"><h3>Razer Cobra</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/logitech-removebg-preview.png"
+									alt="Mouse"
+								/>
+							</div>
+							<div class="uses-content">
+								<h3>Logitech M720 Wireless Mouse</h3>
+							</div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/RAZER_KEYBOARD-removebg-preview.png"
+									alt="Keyboard"
+								/>
+							</div>
+							<div class="uses-content"><h3>Razer Ornata V3 X</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/AULA-removebg-preview.png"
+									alt="Keyboard"
+								/>
+							</div>
+							<div class="uses-content"><h3>AULA F75</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<div class="uses-icon">
+								<img
+									src="images/Hardware/aluratek-removebg-preview.png"
+									alt="Webcam"
+								/>
+							</div>
+							<div class="uses-content"><h3>Webcam: Aluratek 1080p HD</h3></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- TAB: SOFTWARE -->
+				<div id="software" class="tab-content">
+					<div class="uses-list">
+						<div class="uses-item">
+							<a href="https://discord.com/">
+								<div class="uses-icon">
+									<img src="images/icons/discord.webp" alt="Discord" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>Discord</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://www.mysql.com/">
+								<div class="uses-icon">
+									<img src="images/icons/mysql.webp" alt="MySQL" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>MySQL</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://www.mozilla.org/en-US/firefox/new/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/firefox-removebg-preview.png"
+										alt="Firefox"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Firefox</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://help.obsidian.md/">
+								<div class="uses-icon">
+									<img src="images/icons/obsidian.png" alt="Obsidian" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>Obsidian</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://www.microsoft.com/en-us/microsoft-365/excel">
+								<div class="uses-icon">
+									<img
+										src="images/icons/excel-removebg-preview.png"
+										alt="Excel"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Excel</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://git-scm.com/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/gitbash-removebg-preview.png"
+										alt="Git Bash"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Git Bash</h3></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- TAB: OTHER -->
+				<div id="other" class="tab-content">
+					<div class="uses-list">
+						<div class="uses-item">
+							<a href="https://music.youtube.com/">
+								<div class="uses-icon">
+									<img src="images/icons/youtube_music.webp" alt="YT Music" />
+								</div>
+							</a>
+							<div class="uses-content"><h3>YT Music</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://chat.openai.com/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/gpt-removebg-preview.png"
+										alt="ChatGPT"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>ChatGPT</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://gemini.google.com/app">
+								<div class="uses-icon">
+									<img
+										src="images/icons/gemini-removebg-preview.png"
+										alt="Gemini"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Gemini</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://claude.ai/new">
+								<div class="uses-icon">
+									<img
+										src="images/icons/claude-removebg-preview.png"
+										alt="Claude"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Claude</h3></div>
+						</div>
+
+						<div class="uses-item">
+							<a href="https://ollama.com/">
+								<div class="uses-icon">
+									<img
+										src="images/icons/ollama-removebg-preview.png"
+										alt="Ollama"
+									/>
+								</div>
+							</a>
+							<div class="uses-content"><h3>Ollama</h3></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<div class="footer-links">
+					<a href="index.html">Home</a>
+					<span>•</span>
+					<a href="about.html">About</a>
+					<span>•</span>
+					<a href="projects.html">Projects</a>
+					<span>•</span>
+					<a href="blog.html">Blog</a>
+					<span>•</span>
+					<a href="uses.html">Uses</a>
+				</div>
+				<p style="margin-bottom: 15px">© 2025 Colton Phass</p>
+				<a
+					href="#"
+					class="scroll-top"
+					onclick="
+						window.scrollTo({ top: 0, behavior: 'smooth' });
+						return false;
+					"
+				>
+					↑ Scroll to Top
+				</a>
+			</footer>
+
+			<script src="script.js"></script>
+		</div>
+	</body>
 </html>

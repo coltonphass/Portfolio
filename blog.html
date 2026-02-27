@@ -1,79 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog - Colton Phass</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- PAGE LOADER OVERLAY -->
-    <div id="page-transition" class="is-active" aria-hidden="true">
-      <div class="page-transition-inner">
-        <div class="page-spinner"></div>
-        <div class="page-loading-text">Loading…</div>
-      </div>
-    </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Blog - Colton Phass</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!-- PAGE LOADER OVERLAY -->
+		<div
+			id="page-transition"
+			class="is-active"
+			aria-hidden="true"
+			style="
+				position: fixed;
+				inset: 0;
+				z-index: 9999;
+				background: rgba(15, 23, 42, 0.98);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			"
+		>
+			<div class="page-transition-inner">
+				<div class="page-spinner"></div>
+				<div class="page-loading-text">Loading…</div>
+			</div>
+		</div>
 
-    <!-- WRAP ALL VISIBLE CONTENT -->
-    <div class="page-wrap is-loading">
-      <nav>
-        <div class="nav-container">
-          <a href="index.html" class="nav-brand">Colton Phass</a>
-          <ul class="nav-links">
-            <li><a href="index.html" id="nav-home">Home</a></li>
-            <li><a href="about.html" id="nav-about">About</a></li>
-            <li><a href="projects.html" id="nav-projects">Projects</a></li>
-            <li>
-              <a href="blog.html" class="active" id="nav-blog">Blog</a>
-            </li>
-            <li><a href="uses.html" id="nav-uses">Uses</a></li>
-          </ul>
-        </div>
-      </nav>
+		<!-- WRAP ALL VISIBLE CONTENT -->
+		<div class="page-wrap is-loading">
+			<nav>
+				<div class="nav-container">
+					<a href="index.html" class="nav-brand">Colton Phass</a>
+					<ul class="nav-links">
+						<li><a href="index.html" id="nav-home">Home</a></li>
+						<li><a href="about.html" id="nav-about">About</a></li>
+						<li><a href="projects.html" id="nav-projects">Projects</a></li>
+						<li>
+							<a href="blog.html" class="active" id="nav-blog">Blog</a>
+						</li>
+						<li><a href="uses.html" id="nav-uses">Uses</a></li>
+					</ul>
+				</div>
+			</nav>
 
-      <div class="container">
-        <h1>Blog</h1>
-        <p class="description" style="text-align: left; margin-left: 0">
-          Thoughts, stories, and ideas about software development and
-          technology.
-        </p>
+			<div class="container">
+				<h1>Blog</h1>
+				<p class="description" style="text-align: left; margin-left: 0">
+					Thoughts, stories, and ideas about software development and
+					technology.
+				</p>
 
-        <div class="blog-posts">
-          <a href="blog-post-1.html" class="card">
-            <div class="card-date">Dec 16, 2025 · 5 min read</div>
-            <div class="card-title">Learning How to Learn</div>
-            <div class="card-description">
-              A personal reflection on frustration, burnout, and rediscovering
-              how to learn programming in a healthier, more sustainable way.
-            </div>
-          </a>
-        </div>
-      </div>
+				<div class="blog-posts">
+					<a href="blog-post-1.html" class="card">
+						<div class="card-date">Dec 16, 2025 · 5 min read</div>
+						<div class="card-title">Learning How to Learn</div>
+						<div class="card-description">
+							A personal reflection on frustration, burnout, and rediscovering
+							how to learn programming in a healthier, more sustainable way.
+						</div>
+					</a>
+				</div>
+			</div>
 
-      <footer>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <span>•</span>
-          <a href="about.html">About</a>
-          <span>•</span>
-          <a href="projects.html">Projects</a>
-          <span>•</span>
-          <a href="blog.html">Blog</a>
-          <span>•</span>
-          <a href="uses.html">Uses</a>
-        </div>
-        <p style="margin-bottom: 15px">© 2025 Colton Phass</p>
-        <a
-          href="#"
-          class="scroll-top"
-          onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;"
-        >
-          ↑ Scroll to Top
-        </a>
-      </footer>
-    </div>
+			<footer>
+				<div class="footer-links">
+					<a href="index.html">Home</a>
+					<span>•</span>
+					<a href="about.html">About</a>
+					<span>•</span>
+					<a href="projects.html">Projects</a>
+					<span>•</span>
+					<a href="blog.html">Blog</a>
+					<span>•</span>
+					<a href="uses.html">Uses</a>
+				</div>
+				<p style="margin-bottom: 15px">© 2025 Colton Phass</p>
+				<a
+					href="#"
+					class="scroll-top"
+					onclick="
+						window.scrollTo({ top: 0, behavior: 'smooth' });
+						return false;
+					"
+				>
+					↑ Scroll to Top
+				</a>
+			</footer>
+		</div>
 
-    <script src="script.js"></script>
-  </body>
+		<script src="script.js"></script>
+	</body>
 </html>
