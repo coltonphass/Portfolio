@@ -1,5 +1,5 @@
 User-agent: *
-Disallow:
+Allow: /
 
 # Point crawlers to the sitemap
-Sitemap: /sitemap.xml
+Sitemap: https://www.coltonphass.com/sitemap.xml
