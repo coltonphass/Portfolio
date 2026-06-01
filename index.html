@@ -876,10 +876,14 @@
 								id="contact-form"
 							>
 								<input type="hidden" name="form-name" value="contact" />
-								<p class="mail-hp">
+								<p class="mail-hp" aria-hidden="true">
 									<label
-										>Don't fill this out:
-										<input name="bot-field" /></label>
+										>Don't fill this out if you're human:
+										<input
+											name="bot-field"
+											tabindex="-1"
+											autocomplete="off"
+									/></label>
 								</p>
 
 								<div class="field-row">
@@ -890,6 +894,7 @@
 											name="name"
 											type="text"
 											placeholder="Your Name"
+											autocomplete="name"
 											required
 										/>
 									</div>
@@ -900,6 +905,7 @@
 											name="email"
 											type="email"
 											placeholder="your@email.com"
+											autocomplete="email"
 											required
 										/>
 									</div>
