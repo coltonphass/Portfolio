@@ -198,25 +198,29 @@
 				status.style.color = "var(--text-dim)";
 			}
 
-			fetch("/", {
+			// Post to the current page path; Netlify intercepts form posts on any path.
+			fetch(window.location.pathname || "/", {
 				method: "POST",
 				headers: { "Content-Type": "application/x-www-form-urlencoded" },
 				body: data,
 			})
 				.then(function (res) {
-					if (!res.ok) throw new Error("Network response was not ok");
+					if (!res.ok) throw new Error("HTTP " + res.status);
 					form.reset();
 					if (status) {
 						status.className = "form-status ok";
-						status.textContent =
-							"✓ message sent — I'll reply within 24h.";
+						status.textContent = "✓ message sent — I'll reply within 24h.";
 					}
 				})
-				.catch(function () {
+				.catch(function (err) {
+					// Surface the real reason in the console for debugging.
+					// "HTTP 404" here usually means Netlify hasn't detected the form yet
+					// (redeploy after enabling form detection), or you're testing locally.
+					console.error("[contact form] submit failed:", err && err.message);
 					if (status) {
 						status.className = "form-status err";
 						status.textContent =
-							"✗ something went wrong — email me via LinkedIn instead.";
+							"✗ couldn't send — reach me on LinkedIn or GitHub.";
 					}
 				})
 				.finally(function () {
