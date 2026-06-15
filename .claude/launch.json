@@ -6,6 +6,12 @@
       "runtimeExecutable": "C:\\Users\\chief\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
       "runtimeArgs": ["-m", "http.server", "3000"],
       "port": 3000
+    },
+    {
+      "name": "daovien",
+      "runtimeExecutable": "C:\\Users\\chief\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "3010", "--directory", "C:\\Users\\chief\\github\\dao-vien-meditation"],
+      "port": 3010
     }
   ]
 }
