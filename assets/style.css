@@ -1079,7 +1079,8 @@ p {
 	--col-gap: 46px;
 	--row-gap: 52px;
 	--turn: 34px;
-	--conn-y: 17px;
+	/* card padding-top + half the head row: puts the line on the hash line */
+	--conn-y: 32px;
 
 	position: relative;
 	max-width: 1000px;
@@ -1229,22 +1230,13 @@ p {
 	transform: scale(1.08);
 }
 
-/* date pill rides above the card, level with the connector */
+/* date sits at the far end of the head row */
 .git-date {
-	align-self: flex-start;
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	margin-bottom: 10px;
+	margin-left: auto;
 	font-family: var(--font-mono);
-	font-size: 0.76rem;
-	color: var(--text-dim);
-	background: var(--bg-elevated);
-	border: 1px solid var(--border);
-	border-radius: var(--radius-sm);
-	padding: 5px 11px;
+	font-size: 0.72rem;
+	color: var(--text-muted);
 	white-space: nowrap;
-	z-index: 2;
 }
 
 /* the card */
@@ -1256,15 +1248,15 @@ p {
 	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
 	overflow: hidden;
-	padding: 16px;
+	padding: 18px 20px;
 	transition:
 		transform 0.22s ease,
 		border-color 0.22s ease,
 		box-shadow 0.22s ease;
 }
 
+/* no lift here — the card must stay welded to its connector */
 .git-card:hover {
-	transform: translateY(-3px);
 	border-color: var(--border-strong);
 	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
@@ -1273,14 +1265,14 @@ p {
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	flex-wrap: wrap;
-	margin-bottom: 8px;
+	margin-bottom: 14px;
 }
 
 .git-hash {
 	font-family: var(--font-mono);
 	font-size: 0.82rem;
 	color: var(--accent);
+	flex-shrink: 0;
 }
 
 .branch-badge {
@@ -1291,13 +1283,8 @@ p {
 	border: 1px solid rgba(96, 165, 250, 0.3);
 	border-radius: 5px;
 	padding: 2px 8px;
-}
-
-.git-company {
-	margin-left: auto;
-	font-family: var(--font-mono);
-	font-size: 0.76rem;
-	color: var(--text-muted);
+	white-space: nowrap;
+	flex-shrink: 0;
 }
 
 .git-card-body {
@@ -1306,29 +1293,39 @@ p {
 }
 
 .git-card-body h3 {
-	font-size: 1.12rem;
-	margin-bottom: 4px;
+	font-size: 1.08rem;
+	line-height: 1.35;
+	letter-spacing: -0.015em;
+	margin-bottom: 3px;
 }
 
-.git-card-body .at {
+/* employer on its own line — no "@" needed */
+.git-org {
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
 	color: var(--text-muted);
-	font-weight: 500;
+	margin-bottom: 14px;
 }
 
 .git-desc {
 	border-left: 2px solid var(--accent-dim);
-	padding-left: 12px;
-	margin: 10px 0 12px;
+	padding-left: 14px;
+	margin: 0 0 16px;
 	font-family: var(--font-sans);
 	font-size: 0.9rem;
-	line-height: 1.55;
+	line-height: 1.68;
 	color: var(--text-dim);
+}
+
+.git-desc strong {
+	color: var(--text);
+	font-weight: 600;
 }
 
 .git-tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px;
+	gap: 7px;
 }
 
 .git-tag {
@@ -1344,10 +1341,10 @@ p {
 .git-stats {
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	gap: 14px;
 	flex-wrap: wrap;
-	margin-top: 10px;
-	padding-top: 8px;
+	margin-top: 16px;
+	padding-top: 12px;
 	border-top: 1px solid var(--border);
 	font-family: var(--font-mono);
 	font-size: 0.7rem;
@@ -2266,6 +2263,14 @@ textarea:focus-visible {
 	.git-commit .git-node {
 		left: 0;
 		right: auto;
+	}
+	/* no connectors to stay level with, so the head may wrap freely */
+	.git-card-head {
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+	.git-date {
+		margin-left: 0;
 	}
 
 	.field-row {
