@@ -210,8 +210,8 @@ p {
 }
 
 .section {
-	padding-top: 110px;
-	padding-bottom: 110px;
+	padding-top: 70px;
+	padding-bottom: 70px;
 	scroll-margin-top: 24px;
 	border-top: 1px solid var(--border);
 }
@@ -221,7 +221,7 @@ p {
 }
 
 .section-head {
-	margin-bottom: 48px;
+	margin-bottom: 32px;
 }
 
 .section-head h2 {
@@ -442,7 +442,7 @@ p {
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
-	padding-top: 110px;
+	padding-top: 70px;
 	padding-bottom: 70px;
 	border-top: none;
 }
@@ -890,15 +890,15 @@ p {
 .stat-tiles {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 16px;
-	margin-top: 22px;
+	gap: 12px;
+	margin-top: 14px;
 }
 
 .stat-tile {
 	background: var(--surface);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-md);
-	padding: 18px 20px;
+	padding: 14px 16px;
 	transition:
 		transform 0.2s ease,
 		border-color 0.2s ease,
@@ -940,13 +940,13 @@ p {
 
 .stat-tile .label {
 	font-family: var(--font-mono);
-	font-size: 0.72rem;
+	font-size: 0.68rem;
 	letter-spacing: 0.06em;
 	color: var(--text-muted);
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	margin-bottom: 12px;
+	margin-bottom: 8px;
 }
 
 .stat-tile .num {
@@ -1073,69 +1073,150 @@ p {
 	margin-bottom: 30px;
 }
 
+/* serpentine board: commits snake right → down → left, one short
+   animated connector per hop instead of one long vertical rail */
 .git-graph {
+	--col-gap: 46px;
+	--row-gap: 52px;
+	--turn: 34px;
+	--conn-y: 17px;
+
 	position: relative;
-	max-width: 980px;
+	max-width: 1000px;
 	margin: 0 auto;
-	padding: 10px 0 0;
-}
-
-/* central branch line */
-.git-graph::before {
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: 0;
-	bottom: 64px;
-	width: 2px;
-	background: var(--border-strong);
-	transform: translateX(-50%);
-}
-
-/* accent line that "draws" down as you scroll */
-.git-line-fill {
-	position: absolute;
-	left: 50%;
-	top: 0;
-	width: 2px;
-	height: 0;
-	background: var(--accent);
-	transform: translateX(-50%);
-	box-shadow: 0 0 12px var(--accent-glow);
-	z-index: 1;
+	display: grid;
+	grid-template-columns: 1fr 1fr var(--turn);
+	/* the two commit rows match so the U-turn lands on commit 3's node */
+	grid-template-rows: 1fr 1fr auto;
+	column-gap: var(--col-gap);
+	row-gap: var(--row-gap);
 }
 
 .git-commit {
 	position: relative;
-	width: 50%;
-	padding: 0 44px;
-	margin-bottom: 46px;
+	display: flex;
+	flex-direction: column;
 }
 
-.git-commit.left {
-	left: 0;
+.git-commit:nth-of-type(1) {
+	grid-column: 1;
+	grid-row: 1;
+}
+.git-commit:nth-of-type(2) {
+	grid-column: 2;
+	grid-row: 1;
+}
+.git-commit:nth-of-type(3) {
+	grid-column: 2;
+	grid-row: 2;
+}
+.git-commit:nth-of-type(4) {
+	grid-column: 1;
+	grid-row: 2;
 }
 
-.git-commit.right {
-	left: 50%;
+/* horizontal hops live in the column gap, drawn by the commit they leave */
+.git-commit:nth-of-type(1)::before,
+.git-commit:nth-of-type(1)::after,
+.git-commit:nth-of-type(3)::before,
+.git-commit:nth-of-type(3)::after {
+	content: "";
+	position: absolute;
+	top: var(--conn-y);
+	width: var(--col-gap);
+	height: 2px;
+	pointer-events: none;
 }
 
-/* node on the center line */
+.git-commit::before {
+	background: var(--border-strong);
+	z-index: 1;
+}
+
+.git-commit::after {
+	background: var(--accent);
+	box-shadow: 0 0 10px var(--accent-glow);
+	transform: scaleX(0);
+	transition: transform 0.5s ease;
+	z-index: 2;
+}
+
+.git-commit:nth-of-type(1)::before,
+.git-commit:nth-of-type(1)::after {
+	left: 100%;
+	transform-origin: left center;
+}
+
+.git-commit:nth-of-type(3)::before,
+.git-commit:nth-of-type(3)::after {
+	right: 100%;
+	transform-origin: right center;
+}
+
+.git-commit.flow::after,
+.no-js .git-commit::after {
+	transform: scaleX(1);
+}
+
+/* the U-turn on the right: out of commit 2, down, back into commit 3 */
+.git-turn {
+	grid-column: 3;
+	grid-row: 1 / span 2;
+	position: relative;
+	pointer-events: none;
+}
+
+.git-turn::before,
+.git-turn > i {
+	content: "";
+	position: absolute;
+	right: 0;
+	left: calc(-1 * var(--col-gap));
+	top: var(--conn-y);
+	height: calc((100% + var(--row-gap)) / 2);
+	border: 2px solid var(--border-strong);
+	border-left: none;
+	border-radius: 0 14px 14px 0;
+}
+
+.git-turn > i {
+	border-color: var(--accent);
+	border-left: none;
+	clip-path: inset(0 0 100% 0);
+	transition: clip-path 0.6s ease;
+}
+
+.git-turn.flow > i,
+.no-js .git-turn > i {
+	clip-path: inset(0 0 0 0);
+}
+
+/* node sits where the connector meets the card */
 .git-node {
 	position: absolute;
-	top: 26px;
-	width: 18px;
-	height: 18px;
+	top: calc(var(--conn-y) - 8px);
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
 	background: var(--bg);
 	border: 2px solid var(--text-muted);
 	box-shadow: 0 0 0 4px var(--bg);
-	z-index: 2;
+	z-index: 3;
 	transition:
 		border-color 0.35s ease,
 		background 0.35s ease,
 		box-shadow 0.35s ease,
 		transform 0.35s ease;
+}
+
+.git-commit:nth-of-type(1) .git-node,
+.git-commit:nth-of-type(3) .git-node,
+.git-commit:nth-of-type(4) .git-node {
+	right: -8px;
+}
+
+.git-commit:nth-of-type(2) .git-node {
+	left: -8px;
 }
 
 .git-node.reached,
@@ -1145,67 +1226,37 @@ p {
 	box-shadow:
 		0 0 0 4px var(--bg),
 		0 0 16px var(--accent-glow);
-	transform: scale(1.05);
+	transform: scale(1.08);
 }
 
-.git-commit.left .git-node {
-	right: -9px;
-}
-
-.git-commit.right .git-node {
-	left: -9px;
-}
-
-/* connector tick from card to center line */
-.git-commit::after {
-	content: "";
-	position: absolute;
-	top: 34px;
-	width: 44px;
-	height: 2px;
-	background: var(--border-strong);
-}
-
-.git-commit.left::after {
-	right: 0;
-}
-
-.git-commit.right::after {
-	left: 0;
-}
-
-/* date pill on the opposite side of the node */
+/* date pill rides above the card, level with the connector */
 .git-date {
-	position: absolute;
-	top: 24px;
+	align-self: flex-start;
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
+	margin-bottom: 10px;
 	font-family: var(--font-mono);
-	font-size: 0.78rem;
+	font-size: 0.76rem;
 	color: var(--text-dim);
 	background: var(--bg-elevated);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-sm);
-	padding: 6px 12px;
+	padding: 5px 11px;
 	white-space: nowrap;
 	z-index: 2;
 }
 
-.git-commit.left .git-date {
-	left: calc(100% + 26px);
-}
-
-.git-commit.right .git-date {
-	right: calc(100% + 26px);
-}
-
 /* the card */
 .git-card {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 	background: var(--bg-elevated);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
 	overflow: hidden;
+	padding: 16px;
 	transition:
 		transform 0.22s ease,
 		border-color 0.22s ease,
@@ -1223,8 +1274,7 @@ p {
 	align-items: center;
 	gap: 10px;
 	flex-wrap: wrap;
-	padding: 16px 20px;
-	border-bottom: 1px solid var(--border);
+	margin-bottom: 8px;
 }
 
 .git-hash {
@@ -1251,7 +1301,8 @@ p {
 }
 
 .git-card-body {
-	padding: 20px;
+	flex: 1;
+	padding: 0;
 }
 
 .git-card-body h3 {
@@ -1266,11 +1317,11 @@ p {
 
 .git-desc {
 	border-left: 2px solid var(--accent-dim);
-	padding-left: 16px;
-	margin: 14px 0 18px;
+	padding-left: 12px;
+	margin: 10px 0 12px;
 	font-family: var(--font-sans);
-	font-size: 0.95rem;
-	line-height: 1.65;
+	font-size: 0.9rem;
+	line-height: 1.55;
 	color: var(--text-dim);
 }
 
@@ -1293,12 +1344,13 @@ p {
 .git-stats {
 	display: flex;
 	align-items: center;
-	gap: 14px;
+	gap: 12px;
 	flex-wrap: wrap;
-	padding: 14px 20px;
+	margin-top: 10px;
+	padding-top: 8px;
 	border-top: 1px solid var(--border);
 	font-family: var(--font-mono);
-	font-size: 0.76rem;
+	font-size: 0.7rem;
 	color: var(--text-muted);
 }
 
@@ -1312,10 +1364,13 @@ p {
 
 /* initial commit at the bottom */
 .git-initial {
+	grid-column: 1 / -1;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	position: relative;
 	z-index: 2;
+	margin-top: 8px;
 }
 
 .git-initial span {
@@ -1447,7 +1502,7 @@ p {
 .pinned-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 16px;
+	gap: 12px;
 }
 
 .proj-card {
@@ -1473,7 +1528,7 @@ p {
 .pc-preview {
 	display: block;
 	width: 100%;
-	height: 180px;
+	height: 150px;
 	overflow: hidden;
 	background: var(--bg-elevated);
 	border-bottom: 1px solid var(--border);
@@ -1499,15 +1554,15 @@ p {
 .pc-desc,
 .pc-tags,
 .pc-foot {
-	padding: 0 22px;
+	padding: 0 16px;
 }
 
 .pc-head {
-	padding-top: 22px;
+	padding-top: 14px;
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	margin-bottom: 12px;
+	margin-bottom: 8px;
 }
 
 .pc-name {
@@ -1531,17 +1586,17 @@ p {
 }
 
 .pc-desc {
-	font-size: 0.92rem;
+	font-size: 0.9rem;
 	color: var(--text-dim);
-	margin-bottom: 14px;
+	margin-bottom: 10px;
 	flex: 1;
 }
 
 .pc-tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 7px;
-	margin-bottom: 16px;
+	gap: 6px;
+	margin-bottom: 10px;
 }
 
 .pc-tag {
@@ -1557,12 +1612,12 @@ p {
 .pc-foot {
 	display: flex;
 	align-items: center;
-	gap: 14px;
+	gap: 12px;
 	border-top: 1px solid var(--border);
-	padding-top: 14px;
-	padding-bottom: 22px;
+	padding-top: 10px;
+	padding-bottom: 14px;
 	font-family: var(--font-mono);
-	font-size: 0.76rem;
+	font-size: 0.72rem;
 	color: var(--text-muted);
 }
 
@@ -1615,7 +1670,7 @@ p {
 	background: var(--bg-elevated);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
-	padding: 24px 26px;
+	padding: 16px 18px;
 	border-left: 3px solid var(--accent);
 	transition:
 		transform 0.22s ease,
@@ -1654,9 +1709,9 @@ p {
 
 .edu-degree {
 	font-family: var(--font-mono);
-	font-size: 0.9rem;
+	font-size: 0.88rem;
 	color: var(--accent);
-	margin-bottom: 16px;
+	margin-bottom: 10px;
 }
 
 .edu-tags {
@@ -1685,7 +1740,7 @@ p {
    ========================================================= */
 .post-list {
 	display: grid;
-	gap: 16px;
+	gap: 12px;
 }
 
 .post-card {
@@ -1693,7 +1748,7 @@ p {
 	background: var(--surface);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
-	padding: 24px;
+	padding: 16px 18px;
 	transition:
 		transform 0.22s ease,
 		border-color 0.22s ease,
@@ -2189,37 +2244,28 @@ textarea:focus-visible {
 		margin-bottom: 24px;
 	}
 
-	/* git graph collapses to a single left rail */
-	.git-graph::before,
-	.git-line-fill {
-		left: 7px;
+	/* serpentine collapses to a single stacked column */
+	.git-graph {
+		grid-template-columns: 1fr;
+		grid-template-rows: none;
+		row-gap: 26px;
 	}
-	.git-commit,
-	.git-commit.left,
-	.git-commit.right {
-		width: 100%;
-		left: 0;
-		padding: 0 0 0 36px;
+	.git-commit:nth-of-type(1),
+	.git-commit:nth-of-type(2),
+	.git-commit:nth-of-type(3),
+	.git-commit:nth-of-type(4) {
+		grid-column: 1;
+		grid-row: auto;
+		padding-left: 26px;
 	}
-	.git-commit.left .git-node,
-	.git-commit.right .git-node {
-		left: -2px;
-		right: auto;
-	}
-	.git-commit::after {
+	.git-commit::before,
+	.git-commit::after,
+	.git-turn {
 		display: none;
 	}
-	.git-date {
-		position: static;
-		margin-bottom: 12px;
-	}
-	.git-commit.left .git-date,
-	.git-commit.right .git-date {
-		left: auto;
+	.git-commit .git-node {
+		left: 0;
 		right: auto;
-	}
-	.git-graph::before {
-		bottom: 50px;
 	}
 
 	.field-row {

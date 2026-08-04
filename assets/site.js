@@ -144,33 +144,41 @@
 		});
 	}
 
-	/* ---------- Git-graph: draw the line + light nodes on scroll ---------- */
+	/* ---------- Git-graph: light each node + its incoming hop on scroll ---------- */
 	function initGitGraph() {
 		var graph = document.querySelector(".git-graph");
-		var fill = document.getElementById("git-line-fill");
-		if (!graph || !fill) return;
+		if (!graph) return;
 
-		var nodes = Array.prototype.slice.call(
-			graph.querySelectorAll(".git-node"),
+		var commits = Array.prototype.slice.call(
+			graph.querySelectorAll(".git-commit"),
 		);
+		if (!commits.length) return;
+
+		var turn = graph.querySelector(".git-turn");
 		var reduce =
 			window.matchMedia &&
 			window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+		// the hop that leads into commit i: [0]→1, turn→2, [2]→3
+		function hopInto(i) {
+			if (i === 1) return commits[0];
+			if (i === 2) return turn;
+			if (i === 3) return commits[2];
+			return null;
+		}
+
 		function update() {
-			var rect = graph.getBoundingClientRect();
 			var vh = window.innerHeight || document.documentElement.clientHeight;
-			var total = graph.offsetHeight;
-			// the "draw head" sits ~55% down the viewport
-			var filled = vh * 0.55 - rect.top;
-			filled = Math.max(0, Math.min(total, filled));
-			if (reduce) filled = total;
+			var head = vh * 0.62;
 
-			fill.style.height = filled + "px";
-
-			nodes.forEach(function (n) {
-				var ny = n.getBoundingClientRect().top - rect.top + 9;
-				n.classList.toggle("reached", ny <= filled);
+			commits.forEach(function (commit, i) {
+				var node = commit.querySelector(".git-node");
+				if (!node) return;
+				var reached =
+					reduce || node.getBoundingClientRect().top <= head;
+				node.classList.toggle("reached", reached);
+				var hop = hopInto(i);
+				if (hop) hop.classList.toggle("flow", reached);
 			});
 		}
 
