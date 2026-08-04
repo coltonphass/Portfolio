@@ -167,6 +167,15 @@
 			return null;
 		}
 
+		// The U-turn drops from row 1's head row to row 2's. Rows size to their
+		// own content, so measure the gap rather than assuming they match.
+		// offsetTop ignores transforms, so the reveal animation can't skew it.
+		function sizeTurn() {
+			if (!turn || commits.length < 3) return;
+			var drop = commits[2].offsetTop - commits[0].offsetTop;
+			if (drop > 0) graph.style.setProperty("--turn-h", drop + "px");
+		}
+
 		function update() {
 			var vh = window.innerHeight || document.documentElement.clientHeight;
 			var head = vh * 0.62;
@@ -182,9 +191,17 @@
 			});
 		}
 
+		sizeTurn();
 		update();
 		window.addEventListener("scroll", update, { passive: true });
-		window.addEventListener("resize", update);
+		window.addEventListener("resize", function () {
+			sizeTurn();
+			update();
+		});
+		// cards can reflow once webfonts land, which moves row 2
+		if (document.fonts && document.fonts.ready) {
+			document.fonts.ready.then(sizeTurn);
+		}
 	}
 
 	/* ---------- Contact form (Netlify) with AJAX success ---------- */

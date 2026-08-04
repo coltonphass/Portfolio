@@ -1087,8 +1087,8 @@ p {
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 1fr 1fr var(--turn);
-	/* the two commit rows match so the U-turn lands on commit 3's node */
-	grid-template-rows: 1fr 1fr auto;
+	/* rows size to content; the U-turn measures its own drop (see site.js) */
+	align-items: start;
 	column-gap: var(--col-gap);
 	row-gap: var(--row-gap);
 }
@@ -1163,6 +1163,8 @@ p {
 .git-turn {
 	grid-column: 3;
 	grid-row: 1 / span 2;
+	/* span both rows so the no-JS fallback height has something to measure */
+	align-self: stretch;
 	position: relative;
 	pointer-events: none;
 }
@@ -1174,7 +1176,8 @@ p {
 	right: 0;
 	left: calc(-1 * var(--col-gap));
 	top: var(--conn-y);
-	height: calc((100% + var(--row-gap)) / 2);
+	/* JS sets --turn-h to the exact drop between the two head rows */
+	height: var(--turn-h, calc((100% + var(--row-gap)) / 2));
 	border: 2px solid var(--border-strong);
 	border-left: none;
 	border-radius: 0 14px 14px 0;
@@ -1241,9 +1244,6 @@ p {
 
 /* the card */
 .git-card {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
 	background: var(--bg-elevated);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
@@ -1288,7 +1288,6 @@ p {
 }
 
 .git-card-body {
-	flex: 1;
 	padding: 0;
 }
 
