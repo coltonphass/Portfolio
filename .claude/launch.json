@@ -12,6 +12,12 @@
       "runtimeExecutable": "C:\\Users\\chief\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
       "runtimeArgs": ["-m", "http.server", "3010", "--directory", "C:\\Users\\chief\\github\\dao-vien-meditation"],
       "port": 3010
+    },
+    {
+      "name": "budget-app",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": ["C:\\Users\\chief\\github\\budget-app\\node_modules\\vite\\bin\\vite.js", "C:\\Users\\chief\\github\\budget-app", "--port", "5173"],
+      "port": 5173
     }
   ]
 }
