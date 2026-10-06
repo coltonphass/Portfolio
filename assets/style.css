@@ -1,73 +1,45 @@
 /* =========================================================
-   Colton Phass — portfolio
-   Single column, system fonts, no build step.
-   Light by default; dark follows the OS unless overridden.
+   Colton Phass portfolio
+
+   An editor shell wrapped around a readable document.
+   The chrome (tabs, explorer, terminal, palette) carries the
+   personality; the content inside the pane is plain, well-set
+   prose, because the people reading it are often recruiters
+   skimming for facts rather than engineers admiring syntax.
+
+   Rule: nothing is hidden by default. The hiding rule is
+   scoped to [data-app="on"], set only by JS at runtime, so a
+   stale or blocked script degrades to a scrollable document.
    ========================================================= */
 
 /* ---------------------------------------------------------
-   1. Tokens
+   1. Tokens, warm charcoal, cream, amber
    --------------------------------------------------------- */
 :root {
-	/* ---- palette ----------------------------------------------------
-	   Editor-dark: near-black base, cool white text, purple accent, with
-	   amber and green as the secondary syntax colours.
-	   Every colour value lives here exactly once. The blocks further down
-	   only re-point --bg, --text, etc. at one of these two sets, so
-	   changing a shade is a one-line edit rather than three.
-	   ------------------------------------------------------------------ */
+	--bg: #1d2021;
+	--chrome: #282828;
+	--chrome-2: #1b1b1c;
+	--chrome-3: #32302f;
+	--border: #3c3836;
 
-	/* dark */
-	--d-bg: #141416;
-	--d-bg-soft: #1c1c21;
-	--d-text: #f0f8ff;
-	--d-text-dim: #b4b8c4;
-	--d-text-mute: #8b90a0;
-	--d-border: #2a2a32;
-	--d-accent: #c084fc;
-	--d-accent-soft: rgba(192, 132, 252, 0.14);
-	--d-amber: #f4a949;
-	--d-green: #9ae17b;
-	--d-red: #f87171;
-	--d-shadow: rgba(0, 0, 0, 0.45);
+	--text: #ebdbb2;
+	--text-dim: #d5c4a1;
+	--text-mute: #a89984;
 
-	/* light */
-	--l-bg: #fbfbfd;
-	--l-bg-soft: #f2f2f6;
-	--l-text: #16161c;
-	--l-text-dim: #4c4c58;
-	--l-text-mute: #6c6c7a;
-	--l-border: #e3e3ea;
-	--l-accent: #7e22ce;
-	--l-accent-soft: rgba(126, 34, 206, 0.09);
-	--l-amber: #b45309;
-	/* deliberately darker than the dark-theme green: it sits on its own
-	   translucent tint in the status pill, which lifts the backdrop */
-	--l-green: #166534;
-	--l-red: #dc2626;
-	--l-shadow: rgba(16, 16, 28, 0.1);
+	--accent: #fe8019;
+	--yellow: #fabd2f;
+	--green: #b8bb26;
+	--aqua: #8ec07c;
+	--blue: #83a598;
+	--red: #fb4934;
 
-	/* default mapping: light */
-	--bg: var(--l-bg);
-	--bg-soft: var(--l-bg-soft);
-	--text: var(--l-text);
-	--text-dim: var(--l-text-dim);
-	--text-mute: var(--l-text-mute);
-	--border: var(--l-border);
-	--accent: var(--l-accent);
-	--accent-soft: var(--l-accent-soft);
-	--amber: var(--l-amber);
-	--green: var(--l-green);
-	--red: var(--l-red);
-	--shadow: var(--l-shadow);
+	--accent-soft: rgba(254, 128, 25, 0.14);
+	--green-soft: rgba(184, 187, 38, 0.13);
+	--green-line: rgba(184, 187, 38, 0.32);
+	--green-ring: rgba(184, 187, 38, 0.45);
 
-	/* Derived tints. If color-mix is unsupported these resolve to nothing,
-	   which just means no grid/glow — the page is unaffected otherwise. */
-	--grid-dot: color-mix(in srgb, var(--accent) 13%, transparent);
-	--glow: color-mix(in srgb, var(--accent) 10%, transparent);
-	--green-soft: color-mix(in srgb, var(--green) 13%, transparent);
-	--green-line: color-mix(in srgb, var(--green) 32%, transparent);
-	--green-ring: color-mix(in srgb, var(--green) 45%, transparent);
-
+	/* Prose is sans. Mono is reserved for the chrome, the
+	   terminal, and metadata, not for paragraphs. */
 	--sans:
 		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
 		Arial, sans-serif;
@@ -75,42 +47,10 @@
 		ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
 		"Liberation Mono", monospace;
 
-	--measure: 680px;
+	--side: 222px;
+	--titleh: 36px;
+	--statush: 26px;
 	--radius: 6px;
-}
-
-/* Dark when the OS asks for it, unless the reader forced light. */
-@media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]) {
-		--bg: var(--d-bg);
-		--bg-soft: var(--d-bg-soft);
-		--text: var(--d-text);
-		--text-dim: var(--d-text-dim);
-		--text-mute: var(--d-text-mute);
-		--border: var(--d-border);
-		--accent: var(--d-accent);
-		--accent-soft: var(--d-accent-soft);
-		--amber: var(--d-amber);
-		--green: var(--d-green);
-		--red: var(--d-red);
-		--shadow: var(--d-shadow);
-	}
-}
-
-/* Dark when the reader forced it, whatever the OS says. */
-:root[data-theme="dark"] {
-	--bg: var(--d-bg);
-	--bg-soft: var(--d-bg-soft);
-	--text: var(--d-text);
-	--text-dim: var(--d-text-dim);
-	--text-mute: var(--d-text-mute);
-	--border: var(--d-border);
-	--accent: var(--d-accent);
-	--accent-soft: var(--d-accent-soft);
-	--amber: var(--d-amber);
-	--green: var(--d-green);
-	--red: var(--d-red);
-	--shadow: var(--d-shadow);
 }
 
 /* ---------------------------------------------------------
@@ -125,80 +65,37 @@
 }
 
 html {
-	scroll-behavior: smooth;
-	scroll-padding-top: 24px;
+	background: var(--chrome-2);
 	-webkit-text-size-adjust: 100%;
-	/* on html, not body, so the body pseudo-layers paint on top of it */
-	background: var(--bg);
 }
 
 body {
-	color: var(--text-dim);
 	font-family: var(--sans);
-	font-size: 16px;
-	line-height: 1.65;
+	font-size: 15.5px;
+	line-height: 1.7;
+	color: var(--text-dim);
 	-webkit-font-smoothing: antialiased;
-}
-
-/* Dot grid, faded out toward the bottom of the viewport. */
-body::before {
-	content: "";
-	position: fixed;
-	inset: 0;
-	z-index: 0;
-	pointer-events: none;
-	background-image: radial-gradient(
-		circle at 1px 1px,
-		var(--grid-dot) 1px,
-		transparent 0
-	);
-	background-size: 24px 24px;
-	-webkit-mask-image: radial-gradient(
-		ellipse 90% 55% at 50% 0%,
-		#000 35%,
-		transparent 100%
-	);
-	mask-image: radial-gradient(
-		ellipse 90% 55% at 50% 0%,
-		#000 35%,
-		transparent 100%
-	);
-}
-
-/* Accent glow behind the masthead. */
-body::after {
-	content: "";
-	position: fixed;
-	top: -260px;
-	left: 50%;
-	width: min(1000px, 140vw);
-	height: 620px;
-	transform: translateX(-50%);
-	z-index: 0;
-	pointer-events: none;
-	background: radial-gradient(ellipse at center, var(--glow) 0%, transparent 68%);
 }
 
 a {
 	color: var(--accent);
 	text-decoration: none;
-	/* underline grows from the left on hover */
-	background-image: linear-gradient(currentColor, currentColor);
-	background-size: 0% 1px;
-	background-position: 0 100%;
-	background-repeat: no-repeat;
-	transition: background-size 0.25s ease;
 }
 
-a:hover,
-a:focus-visible {
-	background-size: 100% 1px;
+a:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+strong {
+	color: var(--text);
+	font-weight: 650;
 }
 
 :focus-visible {
 	outline: 2px solid var(--accent);
-	outline-offset: 3px;
-	border-radius: 2px;
+	outline-offset: 2px;
+	border-radius: 3px;
 }
 
 ::selection {
@@ -206,76 +103,551 @@ a:focus-visible {
 	color: var(--text);
 }
 
-strong {
-	color: var(--text);
-	font-weight: 600;
+.sr-only {
+	position: absolute;
+	left: -9999px;
 }
 
 .skip-link {
 	position: absolute;
 	left: -9999px;
 	top: 0;
-	background: var(--bg);
+	z-index: 60;
+	background: var(--chrome-3);
 	color: var(--text);
 	padding: 10px 16px;
-	border: 1px solid var(--border);
+	border: 1px solid var(--accent);
 	border-radius: var(--radius);
-	z-index: 10;
 }
 
 .skip-link:focus {
-	left: 16px;
-	top: 16px;
-}
-
-.muted {
-	color: var(--text-mute);
+	left: 12px;
+	top: 12px;
 }
 
 /* ---------------------------------------------------------
    3. Shell
    --------------------------------------------------------- */
-.shell {
-	position: relative;
-	z-index: 1;
-	max-width: var(--measure);
-	margin: 0 auto;
-	padding: 72px 24px 96px;
+.ide {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	height: 100dvh;
+	overflow: hidden;
 }
 
-main > section {
-	margin-top: 56px;
+.workbench {
+	flex: 1;
+	display: grid;
+	grid-template-columns: var(--side) minmax(0, 1fr);
+	min-height: 0;
 }
 
 /* ---------------------------------------------------------
-   4. Masthead
+   4. Title bar
    --------------------------------------------------------- */
-.masthead-row {
+.titlebar {
+	height: var(--titleh);
+	flex-shrink: 0;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	gap: 16px;
+	gap: 14px;
+	padding: 0 14px;
+	background: var(--chrome-2);
+	border-bottom: 1px solid var(--border);
+	font-family: var(--mono);
 }
 
-.status {
+.lights {
 	display: inline-flex;
+	gap: 7px;
+}
+
+.lights i {
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+}
+
+.lights i:nth-child(1) {
+	background: #fb4934;
+}
+.lights i:nth-child(2) {
+	background: #fabd2f;
+}
+.lights i:nth-child(3) {
+	background: #b8bb26;
+}
+
+.titlebar-name {
+	flex: 1;
+	text-align: center;
+	font-size: 0.74rem;
+	color: var(--text-mute);
+}
+
+.titlebar-right {
+	display: flex;
 	align-items: center;
 	gap: 8px;
+}
+
+.tb-icon {
+	display: grid;
+	place-items: center;
+	width: 28px;
+	height: 26px;
+	color: var(--text-mute);
+	border: 1px solid transparent;
+	border-radius: 5px;
+	flex-shrink: 0;
+	transition:
+		color 0.16s ease,
+		border-color 0.16s ease;
+}
+
+.tb-icon:hover {
+	color: var(--accent);
+	border-color: var(--border);
+}
+
+.tb-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
 	font-family: var(--mono);
 	font-size: 0.7rem;
-	letter-spacing: 0.08em;
+	color: var(--text-dim);
+	background: none;
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	padding: 2px 8px;
+	cursor: pointer;
+}
+
+.tb-icon {
+	display: grid;
+	place-items: center;
+	width: 28px;
+	height: 26px;
+	color: var(--text-mute);
+	border: 1px solid transparent;
+	border-radius: 5px;
+	flex-shrink: 0;
+	transition:
+		color 0.16s ease,
+		border-color 0.16s ease;
+}
+
+.tb-icon:hover {
+	color: var(--accent);
+	border-color: var(--border);
+}
+
+.tb-btn {
+	transition:
+		color 0.16s ease,
+		border-color 0.16s ease,
+		transform 0.16s ease;
+}
+
+.tb-btn:hover {
+	color: var(--accent);
+	border-color: var(--accent);
+	text-decoration: none;
+	transform: translateY(-1px);
+}
+
+.kbd {
+	font-family: var(--mono);
+	font-size: 0.64rem;
+	border: 1px solid var(--border);
+	border-bottom-width: 2px;
+	border-radius: 3px;
+	padding: 0 4px;
+	color: var(--text-mute);
+}
+
+/* ---------------------------------------------------------
+   6. Explorer
+   --------------------------------------------------------- */
+.explorer {
+	background: var(--chrome);
+	border-right: 1px solid var(--border);
+	overflow-y: auto;
+	padding-bottom: 16px;
+	font-family: var(--mono);
+}
+
+.explorer-title {
+	font-size: 0.66rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--text-mute);
+	padding: 12px 16px 6px;
+}
+
+.root {
+	font-family: var(--mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.06em;
+	color: var(--text);
+	padding: 2px 12px 6px;
+}
+
+.folder {
+	font-size: 0.72rem;
+	letter-spacing: 0.06em;
+	color: var(--text);
+	padding: 4px 12px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.folder .chev {
+	color: var(--text-mute);
+	font-size: 0.68rem;
+	display: inline-block;
+	transition: transform 0.15s ease;
+}
+
+.folder.collapsed .chev {
+	transform: rotate(-90deg);
+}
+
+.tree {
+	list-style: none;
+}
+
+.tree.collapsed {
+	display: none;
+}
+
+.tree a {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	padding: 4px 12px 4px 24px;
+	font-size: 0.78rem;
+	color: var(--text-dim);
+	border-left: 2px solid transparent;
+}
+
+.tree a {
+	transition:
+		background 0.16s ease,
+		color 0.16s ease,
+		padding-left 0.16s ease;
+}
+
+.tree a:hover {
+	background: var(--chrome-3);
+	color: var(--text);
+	text-decoration: none;
+	padding-left: 28px;
+}
+
+.tree a.is-active {
+	background: var(--chrome-3);
+	color: var(--text);
+	border-left-color: var(--accent);
+}
+
+.fi {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	background: var(--c, var(--text-mute));
+}
+
+/* ---------------------------------------------------------
+   7. Editor, tabs, breadcrumb
+   --------------------------------------------------------- */
+.editor {
+	display: grid;
+	grid-template-rows: auto auto minmax(0, 1fr) auto;
+	min-width: 0;
+	min-height: 0;
+	background: var(--bg);
+}
+
+.tabs {
+	display: flex;
+	overflow-x: auto;
+	background: var(--chrome);
+	border-bottom: 1px solid var(--border);
+	scrollbar-width: none;
+	font-family: var(--mono);
+}
+
+.tabs::-webkit-scrollbar {
+	display: none;
+}
+
+.tab {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+	padding: 8px 14px;
+	font-size: 0.75rem;
+	color: var(--text-mute);
+	border-right: 1px solid var(--border);
+	border-top: 2px solid transparent;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.tab:hover {
+	color: var(--text-dim);
+	text-decoration: none;
+}
+
+.tab.is-active {
+	background: var(--bg);
+	color: var(--text);
+	border-top-color: var(--accent);
+}
+
+.tab .x {
+	opacity: 0;
+	width: 15px;
+	height: 15px;
+	display: grid;
+	place-items: center;
+	border-radius: 3px;
+	font-size: 0.8rem;
+	line-height: 1;
+	color: var(--text-mute);
+}
+
+.tab:hover .x,
+.tab.is-active .x {
+	opacity: 1;
+}
+
+.tab .x:hover {
+	background: var(--chrome-3);
+	color: var(--text);
+}
+
+.breadcrumb {
+	padding: 4px 22px;
+	font-family: var(--mono);
+	font-size: 0.69rem;
+	color: var(--text-mute);
+	border-bottom: 1px solid var(--border);
+	background: var(--bg);
+}
+
+.breadcrumb .sep {
+	opacity: 0.6;
+	margin: 0 7px;
+}
+
+.pane {
+	overflow-y: auto;
+}
+
+/* ---------------------------------------------------------
+   8. The document
+   Plain, scannable prose. Sans for anything a person reads in
+   sentences; mono only for labels, dates and tags.
+   --------------------------------------------------------- */
+[data-app="on"] .file:not(.is-open) {
+	display: none;
+}
+
+.doc {
+	max-width: 760px;
+	padding: 30px 32px 56px;
+}
+
+.doc > * + * {
+	margin-top: 14px;
+}
+
+h1 {
+	font-size: 1.75rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+	color: var(--text);
+}
+
+h2 {
+	font-size: 1.22rem;
+	font-weight: 650;
+	letter-spacing: -0.01em;
+	color: var(--text);
+}
+
+h3 {
+	font-size: 1.02rem;
+	font-weight: 650;
+	color: var(--text);
+}
+
+.doc p {
+	max-width: 68ch;
+}
+
+.lead {
+	font-size: 1.04rem;
+	color: var(--text);
+}
+
+/* the line under a page title */
+.subtitle {
+	font-family: var(--mono);
+	font-size: 0.85rem;
+	color: var(--accent);
+	margin-top: 6px !important;
+}
+
+.facts {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 14px;
+	font-family: var(--mono);
+	font-size: 0.76rem;
+	color: var(--text-mute);
+	margin-top: 10px !important;
+}
+
+.doc hr {
+	border: none;
+	border-top: 1px solid var(--border);
+	margin: 26px 0 !important;
+}
+
+/* bullets */
+.doc ul {
+	list-style: none;
+	margin-top: 10px;
+}
+
+.doc li {
+	position: relative;
+	padding-left: 20px;
+	margin-top: 7px;
+	max-width: 68ch;
+}
+
+.doc li::before {
+	content: "▸";
+	position: absolute;
+	left: 2px;
+	color: var(--accent);
+	font-size: 0.8em;
+	top: 0.12em;
+}
+
+/* ---- role / entry blocks ---- */
+.entry {
+	margin-top: 26px !important;
+	position: relative;
+	padding-left: 14px;
+	transition: padding-left 0.2s ease;
+}
+
+/* an accent rule that grows in as you read down an entry */
+.entry::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 4px;
+	bottom: 4px;
+	width: 2px;
+	border-radius: 2px;
+	background: var(--accent);
+	transform: scaleY(0);
+	transform-origin: top;
+	opacity: 0;
+	transition:
+		transform 0.28s ease,
+		opacity 0.28s ease;
+}
+
+.entry:hover::before {
+	transform: scaleY(1);
+	opacity: 0.75;
+}
+
+.entry-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 2px 16px;
+}
+
+.entry-org {
+	font-family: var(--mono);
+	font-size: 0.82rem;
+	color: var(--blue);
+	margin-top: 2px !important;
+}
+
+.entry-when {
+	font-family: var(--mono);
+	font-size: 0.76rem;
+	color: var(--text-mute);
+	white-space: nowrap;
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-top: 12px !important;
+}
+
+.tags span {
+	font-family: var(--mono);
+	font-size: 0.71rem;
+	color: var(--text-dim);
+	background: var(--chrome);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	padding: 2px 9px;
+	transition:
+		border-color 0.18s ease,
+		color 0.18s ease,
+		transform 0.18s ease;
+}
+
+.tags span:hover {
+	border-color: var(--accent);
+	color: var(--accent);
+	transform: translateY(-1px);
+}
+
+/* ---- status pill ---- */
+.pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	font-family: var(--mono);
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
 	text-transform: uppercase;
 	color: var(--green);
 	background: var(--green-soft);
 	border: 1px solid var(--green-line);
 	border-radius: 999px;
-	padding: 4px 12px;
-	margin-bottom: 18px;
+	padding: 1px 11px;
 }
 
-.status-dot {
-	width: 7px;
-	height: 7px;
+.pill-dot {
+	width: 6px;
+	height: 6px;
 	border-radius: 50%;
 	background: var(--green);
 	flex-shrink: 0;
@@ -287,294 +659,92 @@ main > section {
 		box-shadow: 0 0 0 0 var(--green-ring);
 	}
 	70% {
-		box-shadow: 0 0 0 8px transparent;
+		box-shadow: 0 0 0 7px transparent;
 	}
 	100% {
 		box-shadow: 0 0 0 0 transparent;
 	}
 }
 
-h1 {
-	font-size: 1.6rem;
-	font-weight: 650;
-	letter-spacing: -0.02em;
-	color: var(--text);
-	line-height: 1.2;
-}
-
-/* Gradient wordmark, only where the clip is supported — otherwise the
-   plain --text colour above stands. */
-@supports (background-clip: text) or (-webkit-background-clip: text) {
-	h1 {
-		background: linear-gradient(104deg, var(--text) 42%, var(--accent) 108%);
-		-webkit-background-clip: text;
-		background-clip: text;
-		color: transparent;
-	}
-}
-
-.caret {
-	display: inline-block;
-	width: 3px;
-	height: 0.92em;
-	margin-left: 7px;
-	vertical-align: -0.08em;
-	background: var(--accent);
-	animation: blink 1.15s steps(1) infinite;
-}
-
-@keyframes blink {
-	0%,
-	50% {
-		opacity: 1;
-	}
-	50.01%,
-	100% {
-		opacity: 0;
-	}
-}
-
-.standfirst {
-	font-family: var(--mono);
-	font-size: 0.8rem;
-	color: var(--text-mute);
-	margin-top: 8px;
-}
-
-.intro {
-	margin-top: 22px;
-	display: grid;
-	gap: 12px;
-	max-width: 62ch;
-}
-
-.toplinks {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 18px;
-	margin-top: 24px;
-	font-family: var(--mono);
-	font-size: 0.82rem;
-}
-
-/* theme toggle */
-.theme-toggle {
-	flex-shrink: 0;
-	width: 34px;
-	height: 34px;
+/* ---- preview panel ---- */
+.preview {
+	position: relative;
+	aspect-ratio: 16 / 10;
+	background:
+		radial-gradient(
+			circle at 30% 20%,
+			color-mix(in srgb, var(--c) 26%, transparent),
+			transparent 60%
+		),
+		var(--chrome-2);
+	border-bottom: 1px solid var(--border);
+	overflow: hidden;
 	display: grid;
 	place-items: center;
-	background: transparent;
-	color: var(--text-dim);
-	border: 1px solid var(--border);
-	border-radius: var(--radius);
-	cursor: pointer;
-	font-size: 0.95rem;
-	line-height: 1;
+}
+
+.preview video,
+.preview img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
 	transition:
-		border-color 0.15s ease,
-		color 0.15s ease;
+		opacity 0.35s ease,
+		transform 0.5s ease;
+	transform: scale(1.02);
 }
 
-.theme-toggle:hover {
-	border-color: var(--accent);
-	color: var(--accent);
+/* set by JS once the media has actually started */
+.preview.is-playing video,
+.preview.is-playing img {
+	opacity: 1;
+	transform: scale(1);
 }
 
-/* Icon shows the theme you'd switch TO, following the same cascade. */
-[data-icon]::after {
-	content: "\263E";
-}
-
-@media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]) [data-icon]::after {
-		content: "\2600";
-	}
-}
-
-:root[data-theme="dark"] [data-icon]::after {
-	content: "\2600";
-}
-
-:root[data-theme="light"] [data-icon]::after {
-	content: "\263E";
-}
-
-/* ---------------------------------------------------------
-   5. Section headings
-   --------------------------------------------------------- */
-.sec {
+.preview-hint {
+	position: relative;
+	z-index: 1;
 	font-family: var(--mono);
 	font-size: 0.72rem;
-	font-weight: 600;
+	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	letter-spacing: 0.14em;
-	color: var(--accent);
-	padding-bottom: 10px;
-	border-bottom: 1px solid var(--border);
-	margin-bottom: 26px;
-}
-
-/* shell-prompt marker */
-.sec::before {
-	content: "$";
-	margin-right: 9px;
-	opacity: 0.5;
-}
-
-/* ---------------------------------------------------------
-   6. Work entries
-   --------------------------------------------------------- */
-.entry {
-	margin-bottom: 34px;
-}
-
-.entry:last-child {
-	margin-bottom: 0;
-}
-
-.entry-head {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	gap: 16px;
-}
-
-.entry h3 {
-	font-size: 1rem;
-	font-weight: 600;
-	color: var(--text);
-	line-height: 1.4;
-}
-
-.when {
-	flex-shrink: 0;
-	font-family: var(--mono);
-	font-size: 0.76rem;
-	color: var(--text-mute);
-	white-space: nowrap;
-}
-
-.org {
-	font-family: var(--mono);
-	font-size: 0.82rem;
 	color: var(--text-dim);
-	margin-top: 2px;
-}
-
-.entry ul {
-	list-style: none;
-	margin-top: 12px;
-	display: grid;
-	gap: 8px;
-}
-
-.entry li {
-	position: relative;
-	padding-left: 18px;
-	font-size: 0.945rem;
-}
-
-.entry li::before {
-	content: "\2013";
-	position: absolute;
-	left: 0;
-	color: var(--text-mute);
-}
-
-/* Chips. These live inside .entry, so the bullet styling above has to be
-   undone explicitly rather than just not applied. */
-.entry ul.tech {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 6px;
-	margin-top: 14px;
-}
-
-.entry ul.tech li {
-	padding-left: 0;
-	font-family: var(--mono);
-	font-size: 0.7rem;
-	line-height: 1.5;
-	color: var(--text-dim);
-	background: var(--bg-soft);
+	background: rgba(27, 27, 28, 0.72);
 	border: 1px solid var(--border);
-	border-radius: 4px;
-	padding: 2px 9px;
+	border-radius: 999px;
+	padding: 3px 12px;
 	transition:
-		border-color 0.18s ease,
-		color 0.18s ease;
+		opacity 0.3s ease,
+		transform 0.3s ease;
 }
 
-.entry ul.tech li::before {
-	content: none;
-}
-
-.entry ul.tech li:hover {
-	border-color: var(--accent);
-	color: var(--accent);
-}
-
-.entry.compact {
-	margin-bottom: 22px;
-}
-
-.note {
-	font-family: var(--mono);
-	font-size: 0.76rem;
-	color: var(--text-mute);
-	margin-top: 4px;
-}
-
-/* ---------------------------------------------------------
-   7. Projects
-   --------------------------------------------------------- */
-.projects {
-	list-style: none;
-	display: grid;
-	gap: 10px;
-}
-
-.projects > li {
-	padding: 15px 17px;
-	background: var(--bg-soft);
-	border: 1px solid var(--border);
-	border-radius: 10px;
-	transition:
-		border-color 0.2s ease,
-		transform 0.2s ease,
-		box-shadow 0.2s ease;
-}
-
-.projects > li:hover {
-	border-color: var(--accent);
+.card:hover .preview-hint {
 	transform: translateY(-2px);
-	box-shadow: 0 10px 26px var(--shadow);
 }
 
-.proj-head {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	gap: 14px;
+.preview.is-playing .preview-hint {
+	opacity: 0;
 }
 
-.proj-name {
+/* cards with no footage get a decorative panel instead */
+.preview.is-plain .glyph {
 	font-family: var(--mono);
-	font-size: 0.95rem;
-	font-weight: 600;
-	color: var(--text);
+	font-size: 2rem;
+	font-weight: 700;
+	color: color-mix(in srgb, var(--c) 70%, var(--text-mute));
+	opacity: 0.55;
+	letter-spacing: 0.08em;
+	transition:
+		transform 0.3s ease,
+		opacity 0.3s ease;
 }
 
-.lang {
-	flex-shrink: 0;
-	display: inline-flex;
-	align-items: center;
-	gap: 7px;
-	font-family: var(--mono);
-	font-size: 0.74rem;
-	color: var(--text-mute);
-	white-space: nowrap;
+.card:hover .preview.is-plain .glyph {
+	transform: scale(1.08);
+	opacity: 0.8;
 }
 
 .dot {
@@ -585,123 +755,801 @@ h1 {
 	flex-shrink: 0;
 }
 
-.projects p {
-	font-size: 0.945rem;
-	margin-top: 5px;
-}
-
-.proj-links {
-	font-family: var(--mono);
-	font-size: 0.78rem;
-	margin-top: 6px !important;
-}
-
-.more {
-	font-family: var(--mono);
-	font-size: 0.82rem;
-	margin-top: 26px;
-}
-
 /* ---------------------------------------------------------
-   8. Certifications
+   8b. PDF viewer
    --------------------------------------------------------- */
-.certs {
-	list-style: none;
+#resume {
+	height: 100%;
 }
 
-.certs li {
+.pdf-wrap {
+	height: 100%;
 	display: flex;
+	flex-direction: column;
+	background: var(--chrome-2);
+}
+
+.pdf-bar {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	flex-wrap: wrap;
+	padding: 8px 14px;
+	border-bottom: 1px solid var(--border);
+	background: var(--chrome);
+}
+
+.pdf-name {
+	font-family: var(--mono);
+	font-size: 0.76rem;
+	color: var(--text-dim);
+}
+
+.pdf-actions {
+	margin-left: auto;
+	display: flex;
+	gap: 8px;
+}
+
+.pdf-frame {
+	flex: 1;
+	width: 100%;
+	border: 0;
+	background: #3a3735;
+}
+
+.pdf-fallback {
+	display: none;
+	padding: 28px 20px;
+	text-align: center;
+}
+
+.pdf-fallback p + p {
+	margin-top: 8px;
+}
+
+.pdf-fallback-actions {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 16px !important;
+}
+
+/* ---- definition rows (toolkit, certs) ---- */
+.rows {
+	margin-top: 14px !important;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 112px minmax(0, 1fr);
+	gap: 6px 20px;
+	padding: 9px 0;
+	border-bottom: 1px solid var(--border);
+}
+
+.row:last-child {
+	border-bottom: none;
+}
+
+.row dt {
+	font-family: var(--mono);
+	font-size: 0.73rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--text-mute);
+	padding-top: 3px;
+}
+
+.row dd {
+	color: var(--text-dim);
+	font-size: 0.95rem;
+}
+
+.cert {
+	display: flex;
+	flex-wrap: wrap;
 	align-items: baseline;
 	justify-content: space-between;
-	gap: 18px;
-	/* negative margin lets the hover tint bleed past the text column */
-	padding: 11px 10px;
-	margin: 0 -10px;
-	border-radius: 6px;
+	gap: 2px 16px;
+	padding: 10px 0;
 	border-bottom: 1px solid var(--border);
-	transition: background 0.18s ease;
 }
 
-.certs li:hover {
-	background: var(--bg-soft);
-}
-
-.certs li:last-child {
+.cert:last-child {
 	border-bottom: none;
-	padding-bottom: 0;
-}
-
-.certs li:first-child {
-	padding-top: 0;
 }
 
 .cert-name {
-	font-size: 0.945rem;
 	color: var(--text);
+	font-size: 0.97rem;
 }
 
 .cert-meta {
-	flex-shrink: 0;
 	font-family: var(--mono);
 	font-size: 0.74rem;
 	color: var(--text-mute);
-	text-align: right;
+	white-space: nowrap;
 }
 
 /* ---------------------------------------------------------
-   9. Toolkit
+   8c. Project detail pages + clickable cards
    --------------------------------------------------------- */
-.toolkit {
-	display: grid;
-	grid-template-columns: 96px 1fr;
-	gap: 14px 22px;
+.backlink {
+	font-family: var(--mono);
+	font-size: 0.78rem;
+	margin-bottom: 14px;
 }
 
-.toolkit dt {
+.note-line {
+	font-family: var(--mono);
+	font-size: 0.76rem;
+	color: var(--text-mute);
+	margin-top: 10px !important;
+}
+
+/* paragraphs nested inside an entry miss the .doc > * + * rule */
+.entry p + p,
+.entry .entry-org + p {
+	margin-top: 11px;
+}
+
+/* nested folder in the explorer */
+.folder.sub {
+	padding-left: 22px;
+	font-size: 0.7rem;
+	color: var(--text-mute);
+}
+
+.tree.sub a {
+	padding-left: 36px;
+	font-size: 0.75rem;
+}
+
+.tree.sub a:hover {
+	padding-left: 40px;
+}
+
+/* the whole card is a link now, so strip link styling from it */
+a.card,
+a.card:hover {
+	text-decoration: none;
+	color: inherit;
+}
+
+a.card .card-body,
+a.card .card-head,
+a.card .preview {
+	display: flex;
+}
+
+a.card .preview {
+	display: grid;
+}
+
+a.card .card-head {
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 4px 14px;
+}
+
+.card-desc {
+	display: block;
+	margin-top: 6px;
+	font-size: 0.94rem;
+	color: var(--text-dim);
+	flex: 1;
+}
+
+a.card .card-link {
+	color: var(--accent);
+}
+
+.doc h2 {
+	margin-top: 26px !important;
+}
+
+.doc h2 + p,
+.doc h2 + ul {
+	margin-top: 8px !important;
+}
+
+/* ---------------------------------------------------------
+   8d. Listening
+   --------------------------------------------------------- */
+
+/* ---- rotation list ---- */
+.tracklist li {
+	padding-left: 0;
+	margin-top: 0;
+}
+
+.tracklist li::before {
+	content: none;
+}
+
+.tracklist {
+	list-style: none;
+	counter-reset: tl;
+	margin-top: 14px !important;
+	display: grid;
+	gap: 2px;
+}
+
+.tracklist button {
+	counter-increment: tl;
+	position: relative;
+	width: 100%;
+	text-align: left;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px 12px;
+	padding: 9px 12px 9px 40px;
+	background: none;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	cursor: pointer;
+	font-family: var(--sans);
+	font-size: 0.95rem;
+	color: var(--text-dim);
+	transition:
+		background 0.16s ease,
+		border-color 0.16s ease,
+		color 0.16s ease;
+}
+
+.tracklist button::before {
+	content: counter(tl, decimal-leading-zero);
+	position: absolute;
+	left: 12px;
+	font-family: var(--mono);
+	font-size: 0.74rem;
+	color: var(--text-mute);
+}
+
+.tracklist button:hover {
+	background: var(--chrome);
+	border-color: var(--border);
+	color: var(--text);
+}
+
+.tracklist button.is-current {
+	background: var(--chrome);
+	border-color: var(--accent);
+	color: var(--text);
+}
+
+.tracklist button.is-current::before {
+	content: "▶";
+	color: var(--accent);
+}
+
+.tl-artist {
+	margin-left: auto;
+	font-family: var(--mono);
+	font-size: 0.75rem;
+	color: var(--text-mute);
+}
+
+/* ---- project page hero ---- */
+.proj-hero {
+	aspect-ratio: 16 / 9;
+	border: 1px solid var(--border);
+	border-bottom: 1px solid var(--border);
+	border-radius: 10px;
+	margin-top: 20px;
+	max-width: 760px;
+}
+
+.proj-hero.is-plain .glyph {
+	font-size: 2.6rem;
+}
+
+.other-projects {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 6px 12px;
+	margin-top: 32px !important;
+	padding-top: 16px;
+	border-top: 1px solid var(--border);
+	font-family: var(--mono);
+	font-size: 0.76rem;
+	color: var(--text-mute);
+}
+
+.other-projects a {
+	color: var(--text-dim);
+	border-bottom: 1px solid transparent;
+	transition:
+		color 0.16s ease,
+		border-color 0.16s ease;
+}
+
+.other-projects a:hover {
+	color: var(--accent);
+	border-color: var(--accent);
+	text-decoration: none;
+}
+
+/* ---------------------------------------------------------
+   8e. Skills groups
+   Chips animate in with `animation`, not a JS-toggled class, so
+   they are visible even if the animation never runs.
+   --------------------------------------------------------- */
+.stack-group {
+	margin-top: 26px;
+}
+
+.stack-head {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding-bottom: 9px;
+	border-bottom: 1px solid var(--border);
+}
+
+.stack-icon {
+	display: grid;
+	place-items: center;
+	width: 28px;
+	height: 28px;
+	border-radius: 7px;
+	color: var(--accent);
+	background: var(--accent-soft);
+	border: 1px solid rgba(254, 128, 25, 0.28);
+	flex-shrink: 0;
+	transition: transform 0.25s ease;
+}
+
+.stack-group:hover .stack-icon {
+	transform: rotate(-8deg) scale(1.08);
+}
+
+.stack-head h2 {
+	font-size: 1.02rem;
+	margin: 0 !important;
+}
+
+.stack-count {
+	margin-left: auto;
+	font-family: var(--mono);
+	font-size: 0.72rem;
+	color: var(--text-mute);
+}
+
+.chips {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 14px;
+}
+
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+	padding: 6px 14px 6px 10px;
+	margin: 0;
+	background: var(--chrome);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	font-size: 0.86rem;
+	color: var(--text-dim);
+	cursor: default;
+	animation: chip-in 0.4s ease backwards;
+	transition:
+		border-color 0.18s ease,
+		color 0.18s ease,
+		transform 0.18s ease,
+		background 0.18s ease;
+}
+
+.doc .chip::before {
+	content: none;
+}
+
+.chip:hover {
+	border-color: var(--c);
+	background: var(--chrome-3);
+	color: var(--text);
+	transform: translateY(-2px);
+}
+
+.chip-icon {
+	display: grid;
+	place-items: center;
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+	color: var(--c);
+	transition:
+		transform 0.2s ease,
+		filter 0.2s ease;
+}
+
+.chip-icon svg {
+	display: block;
+}
+
+.chip:hover .chip-icon {
+	transform: scale(1.14) rotate(-4deg);
+	filter: drop-shadow(0 0 6px color-mix(in srgb, var(--c) 45%, transparent));
+}
+
+@keyframes chip-in {
+	from {
+		opacity: 0;
+		transform: translateY(7px);
+	}
+}
+
+/* stagger: each chip starts a beat after the one before it */
+.chips li:nth-child(1) { animation-delay: 0.02s; }
+.chips li:nth-child(2) { animation-delay: 0.05s; }
+.chips li:nth-child(3) { animation-delay: 0.08s; }
+.chips li:nth-child(4) { animation-delay: 0.11s; }
+.chips li:nth-child(5) { animation-delay: 0.14s; }
+.chips li:nth-child(6) { animation-delay: 0.17s; }
+.chips li:nth-child(7) { animation-delay: 0.2s; }
+.chips li:nth-child(8) { animation-delay: 0.23s; }
+
+/* ---------------------------------------------------------
+   8f. Explorer extras: language tags, mobile drawer
+   --------------------------------------------------------- */
+.tag-mini {
+	margin-left: auto;
+	font-family: var(--mono);
+	font-size: 0.6rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--text-mute);
+	background: var(--chrome-2);
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	padding: 0 5px;
+	line-height: 1.5;
+	flex-shrink: 0;
+	transition:
+		color 0.16s ease,
+		border-color 0.16s ease;
+}
+
+.tree a:hover .tag-mini,
+.tree a.is-active .tag-mini {
+	color: var(--accent);
+	border-color: rgba(254, 128, 25, 0.4);
+}
+
+.menu-btn {
+	display: none;
+	width: 30px;
+	height: 26px;
+	place-items: center;
+	background: none;
+	border: 1px solid var(--border);
+	border-radius: 5px;
+	color: var(--text-dim);
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.menu-btn:hover {
+	color: var(--accent);
+	border-color: var(--accent);
+}
+
+.explorer-backdrop {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.55);
+	z-index: 44;
+}
+
+/* ---------------------------------------------------------
+   8g. Certifications
+   --------------------------------------------------------- */
+.cert-summary {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 18px !important;
+}
+
+.cert-stat {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 7px;
 	font-family: var(--mono);
 	font-size: 0.72rem;
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
 	color: var(--text-mute);
-	padding-top: 2px;
+	background: var(--chrome);
+	border: 1px solid var(--border);
+	border-radius: 7px;
+	padding: 7px 13px;
 }
 
-.toolkit dd {
-	font-size: 0.93rem;
-	color: var(--text-dim);
+.cert-stat b {
+	font-size: 1.05rem;
+	color: var(--accent);
+	letter-spacing: 0;
+}
+
+.cert-list {
+	list-style: none;
+	display: grid;
+	gap: 8px;
+	margin-top: 20px !important;
+}
+
+.cert-card {
+	display: flex;
+	align-items: flex-start;
+	gap: 13px;
+	padding: 13px 15px;
+	margin: 0;
+	background: var(--chrome);
+	border: 1px solid var(--border);
+	border-left: 3px solid var(--green);
+	border-radius: 8px;
+	transition:
+		border-color 0.18s ease,
+		transform 0.18s ease,
+		background 0.18s ease;
+}
+
+.doc .cert-card::before {
+	content: none;
+}
+
+.cert-card:hover {
+	background: var(--chrome-3);
+	border-left-color: var(--accent);
+	transform: translateX(3px);
+}
+
+.cert-check {
+	display: grid;
+	place-items: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	color: var(--green);
+	background: var(--green-soft);
+	border: 1px solid var(--green-line);
+	margin-top: 1px;
+}
+
+.cert-main {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+	flex: 1;
+}
+
+.cert-title {
+	color: var(--text);
+	font-size: 0.96rem;
+	line-height: 1.4;
+}
+
+.cert-issuer {
+	font-family: var(--mono);
+	font-size: 0.74rem;
+	color: var(--blue);
+}
+
+.cert-side {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 4px;
+	flex-shrink: 0;
+}
+
+.cert-kind {
+	font-family: var(--mono);
+	font-size: 0.63rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--text-mute);
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	padding: 1px 6px;
+}
+
+.cert-date {
+	font-family: var(--mono);
+	font-size: 0.73rem;
+	color: var(--text-mute);
+	white-space: nowrap;
 }
 
 /* ---------------------------------------------------------
-   10. Contact form
+   8h. Terminal panel tabs
    --------------------------------------------------------- */
-.contact-lede {
-	max-width: 58ch;
-	margin-bottom: 22px;
-	font-size: 0.945rem;
+.term-tab {
+	background: none;
+	border: none;
+	padding: 0 0 3px;
+	font-family: var(--mono);
+	font-size: 0.66rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--text-mute);
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	transition: color 0.16s ease;
 }
 
+.term-tab:hover {
+	color: var(--text-dim);
+}
+
+.term-tab.is-on {
+	color: var(--text);
+	box-shadow: inset 0 -1px 0 var(--accent);
+}
+
+.term-badge {
+	font-size: 0.6rem;
+	letter-spacing: 0;
+	color: var(--bg);
+	background: var(--text-mute);
+	border-radius: 999px;
+	min-width: 15px;
+	text-align: center;
+	padding: 0 4px;
+	line-height: 1.5;
+}
+
+.term-badge.has-problems {
+	background: var(--red);
+}
+
+.term-body[hidden] {
+	display: none;
+}
+
+.out-row {
+	display: flex;
+	gap: 12px;
+	align-items: baseline;
+	padding: 1px 0;
+	flex-wrap: wrap;
+}
+
+.out-key {
+	min-width: 176px;
+	color: var(--blue);
+	flex-shrink: 0;
+}
+
+.out-val {
+	color: var(--text);
+}
+
+.ok-line {
+	color: var(--green);
+}
+
+/* ---------------------------------------------------------
+   8i. Spotify player
+   --------------------------------------------------------- */
+.player {
+	margin-top: 16px !important;
+	max-width: 620px;
+}
+
+.player iframe,
+.sp-frame {
+	width: 100%;
+	height: 152px;
+	border: 0;
+	border-radius: 12px;
+	display: block;
+}
+
+.player-note {
+	font-family: var(--mono);
+	font-size: 0.72rem;
+	color: var(--text-mute);
+	margin-top: 9px !important;
+}
+
+/* ---------------------------------------------------------
+   8j. Entrance
+   Keyframes only, with no forwards fill, so every element
+   settles at its normal state even if the animation is
+   skipped, blocked or never runs.
+   --------------------------------------------------------- */
+@keyframes app-in {
+	from {
+		opacity: 0;
+		transform: scale(0.992);
+	}
+}
+
+@keyframes doc-in {
+	from {
+		opacity: 0;
+		transform: translateY(9px);
+	}
+}
+
+@keyframes rail-in {
+	from {
+		opacity: 0;
+		transform: translateX(-10px);
+	}
+}
+
+.ide {
+	animation: app-in 0.45s ease backwards;
+}
+
+.explorer .folder,
+.explorer .tree li {
+	animation: rail-in 0.4s ease backwards;
+}
+
+.explorer .folder:nth-of-type(1) { animation-delay: 0.06s; }
+.explorer .folder:nth-of-type(2) { animation-delay: 0.1s; }
+.explorer .folder:nth-of-type(3) { animation-delay: 0.14s; }
+.explorer .folder:nth-of-type(4) { animation-delay: 0.18s; }
+
+.doc > * {
+	animation: doc-in 0.42s ease backwards;
+}
+
+.doc > *:nth-child(1) { animation-delay: 0.1s; }
+.doc > *:nth-child(2) { animation-delay: 0.15s; }
+.doc > *:nth-child(3) { animation-delay: 0.2s; }
+.doc > *:nth-child(4) { animation-delay: 0.25s; }
+.doc > *:nth-child(5) { animation-delay: 0.3s; }
+.doc > *:nth-child(6) { animation-delay: 0.34s; }
+.doc > *:nth-child(7) { animation-delay: 0.38s; }
+.doc > *:nth-child(n + 8) { animation-delay: 0.42s; }
+
+/* ---------------------------------------------------------
+   9. Contact form
+   --------------------------------------------------------- */
 .hp {
 	position: absolute;
 	left: -9999px;
 }
 
+#contact-form {
+	margin-top: 18px;
+	max-width: 620px;
+}
+
 .field-row {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 14px;
+	gap: 12px;
 }
 
 .field {
 	display: grid;
-	gap: 6px;
-	margin-bottom: 14px;
+	gap: 5px;
+	margin-bottom: 13px;
 }
 
 .field label {
 	font-family: var(--mono);
-	font-size: 0.74rem;
-	text-transform: uppercase;
-	letter-spacing: 0.07em;
+	font-size: 0.72rem;
 	color: var(--text-mute);
 }
 
@@ -709,13 +1557,13 @@ input[type="text"],
 input[type="email"],
 textarea {
 	width: 100%;
-	font-family: inherit;
+	font-family: var(--sans);
 	font-size: 0.95rem;
 	color: var(--text);
-	background: var(--bg-soft);
+	background: var(--chrome);
 	border: 1px solid var(--border);
 	border-radius: var(--radius);
-	padding: 10px 12px;
+	padding: 9px 12px;
 	transition: border-color 0.15s ease;
 }
 
@@ -734,23 +1582,30 @@ textarea {
 	align-items: center;
 	gap: 14px;
 	flex-wrap: wrap;
-	margin-top: 4px;
 }
 
 button[type="submit"] {
 	font-family: var(--mono);
-	font-size: 0.84rem;
-	color: var(--bg);
+	font-size: 0.82rem;
+	color: #1d2021;
 	background: var(--accent);
-	border: 1px solid var(--accent);
+	border: none;
 	border-radius: var(--radius);
-	padding: 9px 18px;
+	padding: 8px 18px;
 	cursor: pointer;
-	transition: opacity 0.15s ease;
 }
 
 button[type="submit"]:hover {
-	opacity: 0.86;
+	opacity: 0.92;
+	transform: translateY(-1px);
+	box-shadow: 0 6px 16px rgba(254, 128, 25, 0.22);
+}
+
+button[type="submit"] {
+	transition:
+		opacity 0.16s ease,
+		transform 0.16s ease,
+		box-shadow 0.16s ease;
 }
 
 button[type="submit"]:disabled {
@@ -760,7 +1615,7 @@ button[type="submit"]:disabled {
 
 .form-status {
 	font-family: var(--mono);
-	font-size: 0.78rem;
+	font-size: 0.76rem;
 	color: var(--text-mute);
 }
 
@@ -773,113 +1628,436 @@ button[type="submit"]:disabled {
 }
 
 /* ---------------------------------------------------------
-   11. Footer
+   10. Integrated terminal
    --------------------------------------------------------- */
-.site-footer {
-	margin-top: 72px;
-	padding-top: 22px;
+.term {
+	border-top: 1px solid var(--border);
+	background: var(--chrome-2);
+	display: flex;
+	flex-direction: column;
+	height: 200px;
+	min-height: 0;
+	font-family: var(--mono);
+}
+
+.term.collapsed {
+	height: 32px;
+}
+
+.term-bar {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	height: 32px;
+	padding: 0 12px;
+	border-bottom: 1px solid var(--border);
+	font-size: 0.66rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--text-mute);
+}
+
+.term-bar .on {
+	color: var(--text);
+	box-shadow: inset 0 -1px 0 var(--accent);
+	padding-bottom: 3px;
+}
+
+.term-bar button {
+	margin-left: auto;
+	background: none;
+	border: none;
+	color: var(--text-mute);
+	cursor: pointer;
+	font-size: 0.85rem;
+	line-height: 1;
+	font-family: var(--mono);
+}
+
+.term-bar button:hover {
+	color: var(--text);
+}
+
+.term.collapsed .term-body {
+	display: none;
+}
+
+.term-body {
+	flex: 1;
+	overflow-y: auto;
+	padding: 9px 14px 14px;
+	font-size: 0.78rem;
+	line-height: 1.7;
+	cursor: text;
+}
+
+.term-line {
+	white-space: pre-wrap;
+	word-break: break-word;
+	color: var(--text-dim);
+}
+
+.ps1 {
+	color: var(--green);
+}
+.ps1 .at {
+	color: var(--aqua);
+}
+.term-body .cmd {
+	color: var(--text);
+}
+.term-body .err {
+	color: var(--red);
+}
+.term-body .hi {
+	color: var(--accent);
+}
+.term-body .dim {
+	color: var(--text-mute);
+}
+
+.term-input-row {
+	display: flex;
+	gap: 8px;
+	align-items: baseline;
+}
+
+.term-input-row input {
+	flex: 1;
+	background: none;
+	border: none;
+	outline: none;
+	color: var(--text);
+	font-family: var(--mono);
+	font-size: 0.78rem;
+	padding: 0;
+}
+
+/* ---------------------------------------------------------
+   11. Command palette
+   --------------------------------------------------------- */
+.palette-backdrop {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.55);
+	z-index: 40;
+}
+
+.palette-backdrop[hidden],
+.palette[hidden] {
+	display: none;
+}
+
+.palette {
+	position: fixed;
+	top: 68px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: min(540px, 92vw);
+	background: var(--chrome);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+	z-index: 41;
+	overflow: hidden;
+	font-family: var(--mono);
+}
+
+.palette input {
+	width: 100%;
+	font-family: var(--mono);
+	font-size: 0.88rem;
+	color: var(--text);
+	background: var(--chrome-3);
+	border: none;
+	border-bottom: 1px solid var(--border);
+	padding: 11px 14px;
+	outline: none;
+}
+
+.palette ul {
+	list-style: none;
+	max-height: 290px;
+	overflow-y: auto;
+}
+
+.palette li {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 7px 14px;
+	font-size: 0.8rem;
+	color: var(--text-dim);
+	cursor: pointer;
+}
+
+.palette li.sel {
+	background: var(--accent-soft);
+	color: var(--text);
+	box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.palette li .hint {
+	margin-left: auto;
+	font-size: 0.68rem;
+	color: var(--text-mute);
+}
+
+.palette .empty {
+	padding: 13px 14px;
+	font-size: 0.78rem;
+	color: var(--text-mute);
+}
+
+/* ---------------------------------------------------------
+   12. Status bar
+   --------------------------------------------------------- */
+.statusbar {
+	height: var(--statush);
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 0 14px;
+	background: var(--chrome-2);
 	border-top: 1px solid var(--border);
 	font-family: var(--mono);
-	font-size: 0.76rem;
+	font-size: 0.68rem;
 	color: var(--text-mute);
-	display: flex;
-	justify-content: space-between;
-	gap: 16px;
-	flex-wrap: wrap;
+}
+
+.st.accent {
+	color: var(--accent);
+}
+
+.st.spacer {
+	flex: 1;
 }
 
 /* ---------------------------------------------------------
-   12. Reveal on scroll
-   Only armed when JS is running (html.js, set by the inline head
-   script). Without it the content is simply visible, so a JS failure
-   can never leave the page blank.
+   13a. Wide screens
+   The measure stays readable, but the column is centred and
+   grows so a 1440px+ display is not mostly empty gutter.
    --------------------------------------------------------- */
-/* Deliberately a no-op. Content must never depend on JS to become
-   visible: a stale cached site.js, a blocked script or any thrown error
-   before initReveal() would otherwise leave whole sections invisible.
-   Kept as a hook so markup doesn't need changing. */
-.reveal {
-	opacity: 1;
+@media (min-width: 1500px) {
+	:root {
+		--side: 268px;
+	}
+	body {
+		font-size: 16px;
+	}
+	.doc {
+		max-width: 940px;
+		margin: 0 auto;
+		padding: 36px 40px 64px;
+	}
+	.proj-hero {
+		max-width: none;
+	}
+	.cert-list {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (min-width: 2000px) {
+	:root {
+		--side: 300px;
+	}
+	.doc {
+		max-width: 1120px;
+	}
 }
 
 /* ---------------------------------------------------------
-   13. Narrow screens
+   13b. Tablet and phone: the explorer becomes a drawer
+   Below 950px the explorer was display:none and the tab strip
+   only lists already-open files, which left a phone with no
+   navigation at all. It now slides in from a menu button.
    --------------------------------------------------------- */
-@media (max-width: 560px) {
-	.shell {
-		padding: 48px 20px 72px;
+@media (max-width: 950px) {
+	.workbench {
+		grid-template-columns: minmax(0, 1fr);
 	}
 
-	main > section {
-		margin-top: 46px;
+	.menu-btn {
+		display: grid;
 	}
 
-	.entry-head,
-	.proj-head,
-	.certs li {
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 3px;
+	.explorer {
+		display: block;
+		position: fixed;
+		top: var(--titleh);
+		bottom: 0;
+		left: 0;
+		width: min(290px, 82vw);
+		z-index: 45;
+		transform: translateX(-102%);
+		transition: transform 0.22s ease;
+		box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
 	}
 
-	.cert-meta {
-		text-align: left;
+	.explorer.is-open {
+		transform: none;
 	}
 
+	.explorer-backdrop {
+		display: block;
+	}
+
+	.explorer-backdrop[hidden] {
+		display: none;
+	}
+}
+
+@media (max-width: 640px) {
+	.workbench {
+		grid-template-columns: minmax(0, 1fr);
+	}
+		.titlebar-name,
+
+	.breadcrumb,
+	.hide-sm {
+		display: none;
+	}
+	.doc {
+		padding: 20px 16px 40px;
+	}
+	h1 {
+		font-size: 1.45rem;
+	}
+	.row {
+		grid-template-columns: 1fr;
+		gap: 2px;
+	}
 	.field-row {
 		grid-template-columns: 1fr;
 	}
-
-	.toolkit {
-		grid-template-columns: 1fr;
-		gap: 4px 0;
+	.term {
+		height: 150px;
 	}
+	.cert-card {
+		flex-wrap: wrap;
+	}
+	.cert-side {
+		flex-direction: row;
+		align-items: center;
+		width: 100%;
+		justify-content: flex-start;
+		gap: 8px;
+	}
+	.tracklist button {
+		padding-left: 34px;
+	}
+	.tl-artist {
+		margin-left: 0;
+		width: 100%;
+	}
+	.pdf-frame {
+		display: none;
+	}
+	.pdf-fallback {
+		display: block;
+	}
+	.stack-head h2 {
+		font-size: 0.96rem;
+	}
+	.chip {
+		font-size: 0.82rem;
+	}
+	.other-projects {
+		font-size: 0.72rem;
+	}
+}
 
-	.toolkit dd {
-		margin-bottom: 12px;
+@media (max-width: 380px) {
+	.doc {
+		padding: 18px 13px 36px;
+	}
+	.tab {
+		padding: 8px 10px;
+		font-size: 0.7rem;
+	}
+	.term {
+		height: 132px;
 	}
 }
 
 /* ---------------------------------------------------------
-   13. Motion and print
+   14. Motion and print
    --------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
-
 	*,
 	*::before,
 	*::after {
-		transition-duration: 0.01ms !important;
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
 	}
-
-	/* no blinking caret, no pulse, no sliding reveal */
-	.caret {
+	.pill-dot {
 		animation: none;
 	}
-
-	.js .reveal {
-		opacity: 1 !important;
-		transform: none !important;
+	.chip,
+	.ide,
+	.doc > *,
+	.explorer .folder,
+	.explorer .tree li {
+		animation: none;
+	}
+	.cert-card:hover {
+		transform: none;
+	}
+	.explorer {
+		transition: none;
+	}
+	.stack-group:hover .stack-icon,
+	.chip:hover,
+	.chip:hover .chip-icon {
+		transform: none;
+	}
+	/* no lifts, grows or slides */
+	.card:hover,
+	.card:focus-within,
+	.tb-btn:hover,
+	button[type="submit"]:hover,
+	.tags span:hover {
+		transform: none;
+	}
+	.entry:hover::before {
+		transform: scaleY(1);
+	}
+	.tree a:hover {
+		padding-left: 24px;
 	}
 }
 
 @media print {
-	.theme-toggle,
-	.skip-link,
-	#contact form {
+	.titlebar,
+	.explorer,
+	.tabs,
+	.breadcrumb,
+	.term,
+	.statusbar,
+	.skip-link {
 		display: none;
 	}
-
-	.shell {
-		max-width: none;
-		padding: 0;
+	.ide,
+	.workbench,
+	.editor {
+		display: block;
+		height: auto;
+		overflow: visible;
 	}
-
-	a {
-		color: inherit;
+	.pane {
+		overflow: visible;
+	}
+	/* print the whole résumé, not just the open file */
+	[data-app="on"] .file:not(.is-open) {
+		display: block;
+	}
+	.doc {
+		max-width: none;
+		padding: 0 0 24px;
+		color: #000;
 	}
 }

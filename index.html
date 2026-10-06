@@ -4,20 +4,22 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<title>Colton Phass — Software Engineer</title>
+		<title>Colton Phass, Software Engineer</title>
 		<meta
 			name="description"
-			content="Colton Phass is a software engineer working on a Defense Health Agency case management system — data integrity, workflow automation, and Section 508 accessibility."
+			content="Colton Phass is a software engineer at Kreative Technologies working on a Defense Health Agency case management system. Business process automation, data integrity, and Section 508 accessibility."
 		/>
 		<link rel="canonical" href="https://www.coltonphass.com/" />
 		<meta name="author" content="Colton Phass" />
+		<meta name="theme-color" content="#1d2021" />
+		<meta name="color-scheme" content="dark" />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://www.coltonphass.com/" />
-		<meta property="og:title" content="Colton Phass — Software Engineer" />
+		<meta property="og:title" content="Colton Phass, Software Engineer" />
 		<meta
 			property="og:description"
-			content="Software engineer working on a Defense Health Agency case management system. Data integrity, workflow automation, and Section 508 accessibility."
+			content="Software engineer at Kreative Technologies working on a Defense Health Agency case management system."
 		/>
 		<meta
 			property="og:image"
@@ -27,34 +29,10 @@
 
 		<link
 			rel="icon"
-			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='monospace' fill='%23c084fc'%3E%26gt;%3C/text%3E%3C/svg%3E"
-		/>
-		<meta
-			name="theme-color"
-			media="(prefers-color-scheme: light)"
-			content="#fbfbfd"
-		/>
-		<meta
-			name="theme-color"
-			media="(prefers-color-scheme: dark)"
-			content="#141416"
+			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='monospace' fill='%23fe8019'%3E%26gt;%3C/text%3E%3C/svg%3E"
 		/>
 
-		<!-- Set the theme before first paint so there is no light/dark flash. -->
-		<script>
-			(function () {
-				// Marks that JS is live, which is what arms the reveal animation.
-				// Without this class the content renders plainly visible.
-				document.documentElement.classList.add("js");
-				try {
-					var t = localStorage.getItem("theme");
-					if (t === "light" || t === "dark")
-						document.documentElement.setAttribute("data-theme", t);
-				} catch (e) {}
-			})();
-		</script>
-
-		<link rel="stylesheet" href="assets/style.css" />
+		<link rel="stylesheet" href="assets/style.css?v=8" />
 
 		<script type="application/ld+json">
 			{
@@ -77,10 +55,7 @@
 						"@type": "CollegeOrUniversity",
 						"name": "University of Maryland Global Campus"
 					},
-					{
-						"@type": "CollegeOrUniversity",
-						"name": "Harford Community College"
-					}
+					{ "@type": "CollegeOrUniversity", "name": "Harford Community College" }
 				],
 				"sameAs": [
 					"https://github.com/coltonphass",
@@ -100,454 +75,841 @@
 	</head>
 
 	<body>
-		<a class="skip-link" href="#main">Skip to content</a>
+		<a class="skip-link" href="#pane">Skip to content</a>
 
-		<div class="shell">
-			<header class="masthead">
-				<p class="status">
-					<span class="status-dot" aria-hidden="true"></span>Open to new roles
-				</p>
-
-				<div class="masthead-row">
-					<h1>Colton Phass<span class="caret" aria-hidden="true"></span></h1>
-					<button
-						id="theme-toggle"
-						type="button"
-						class="theme-toggle"
-						aria-label="Switch colour theme"
-					>
-						<span aria-hidden="true" data-icon></span>
-					</button>
-				</div>
-
-				<p class="standfirst">
-					Software Engineer · Maryland · Active Public Trust
-				</p>
-
-				<div class="intro">
-					<p>
-						I'm a software engineer at
-						<strong>Kreative Technologies</strong>, working on a Defense
-						Health Agency case management system for pediatric special-needs
-						services. Most of my work lives in data integrity, workflow
-						automation, and Section 508 accessibility.
-					</p>
-					<p>
-						Outside of work I build 2D games in Python, run a Pi-hole and two
-						Discord bots off a Raspberry Pi, and maintain a local meditation
-						center's website. I like problems where the data is messy.
-					</p>
-				</div>
-
-				<nav class="toplinks" aria-label="Profiles and résumé">
-					<a href="https://github.com/coltonphass" rel="noopener">GitHub</a>
-					<a
-						href="https://www.linkedin.com/in/colton-phass-61223a255/"
-						rel="noopener"
-						>LinkedIn</a
-					>
-					<a href="Resume/Colton_Phass_Resume.pdf">Résumé&nbsp;↓</a>
-					<a href="#contact">Contact</a>
-				</nav>
+		<div class="ide">
+			<!-- ===================== TITLE BAR ===================== -->
+			<header class="titlebar">
+				<button class="menu-btn" id="menu-btn" type="button" aria-label="Open sections" aria-expanded="false">
+					<svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+				</button>
+				<span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+				<span class="titlebar-name">coltonphass / portfolio</span>
+				<span class="titlebar-right">
+					<a class="tb-icon" href="https://github.com/coltonphass" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 015 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .3.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0012 2z" fill="currentColor"/></svg></a>
+					<a class="tb-icon" href="https://www.linkedin.com/in/colton-phass-61223a255/" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4.5 3.5a2 2 0 110 4 2 2 0 010-4zM3 9h3v12H3zm6 0h2.9v1.7h.1c.4-.8 1.4-1.7 3-1.7 3.2 0 3.8 2.1 3.8 4.8V21h-3v-5.8c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1V21H9z" fill="currentColor"/></svg></a>
+					<a class="tb-btn" href="Resume/Colton_Phass_Resume.pdf" data-file="resume">Résumé</a>
+				</span>
 			</header>
 
-			<main id="main">
-				<!-- ========================= WORK ========================= -->
-				<section id="work" aria-labelledby="work-h">
-					<h2 id="work-h" class="sec">Work</h2>
+			<div class="workbench">
+				<!-- ===================== EXPLORER ===================== -->
+				<div class="explorer-backdrop" id="explorer-backdrop" hidden></div>
+				<nav class="explorer" id="explorer" aria-label="Sections">
+					<p class="explorer-title">Explorer</p>
+					<p class="root">coltonphass</p>
 
-					<article class="entry reveal">
-						<div class="entry-head">
-							<h3>Software Engineer I</h3>
-							<span class="when">Nov 2025 — Present</span>
-						</div>
-						<p class="org">Kreative Technologies</p>
-						<ul>
-							<li>
-								Reconciled roughly <strong>1,200 duplicate child records</strong>
-								left by a legacy data migration and cross-site entry,
-								co-developing the record-linking process with the technical
-								lead.
-							</li>
-							<li>
-								Engineered read-only safeguards for linked duplicates across
-								about <strong>120 changes</strong> to rules, forms, properties,
-								and security settings — blocking create, update, and delete
-								while preserving view access.
-							</li>
-							<li>
-								Built a BPM that sets and clears a record's duplicate flag on
-								link and unlink, and extended the discharge workflow to drop
-								dependent outcome records on rejection, preventing orphaned
-								data.
-							</li>
-							<li>
-								Delivered Section 508 remediation across referral, service
-								detail, outcome summary, and family service plan forms —
-								screen-reader labelling and colour contrast, validated with
-								NVDA and ANDI.
-							</li>
-							<li>
-								Run data remediations over XML/SOAP web services, from 30-record
-								bulk updates to multi-call fixes, including finalising 120
-								session notes after diagnosing a BPM timeout.
-							</li>
-						</ul>
-						<ul class="tech">
-							<li>OpenText Process Automation</li>
-							<li>BPM</li>
-							<li>XML/SOAP</li>
-							<li>SQL Server</li>
-							<li>Section 508</li>
-						</ul>
-					</article>
-
-					<article class="entry reveal">
-						<div class="entry-head">
-							<h3>Student Research Assistant</h3>
-							<span class="when">Mar 2025 — Present</span>
-						</div>
-						<p class="org">Harford Community College</p>
-						<ul>
-							<li>
-								Contribute AI and machine learning research to the college's
-								FY25 curriculum initiative, supporting credit and non-credit
-								course design and related academic publications.
-							</li>
-							<li>
-								Developing the curriculum for a new credit-bearing artificial
-								intelligence course.
-							</li>
-							<li>
-								Evaluate AI platforms for instructional use — ChatGPT, Claude,
-								Gemini, Hugging Face, TensorFlow Playground, Orange Data Mining,
-								Google Colab, and Jupyter.
-							</li>
-						</ul>
-						<ul class="tech">
-							<li>AI/ML</li>
-							<li>Python</li>
-							<li>Jupyter</li>
-						</ul>
-					</article>
-
-					<article class="entry reveal">
-						<div class="entry-head">
-							<h3>Student Curricular Co-Designer</h3>
-							<span class="when">May 2024 — Dec 2024</span>
-						</div>
-						<p class="org">Harford Community College</p>
-						<ul>
-							<li>
-								Co-designed updates to CIS 217: Introduction to Web Development
-								Programming through weekly curriculum reviews with faculty.
-							</li>
-							<li>
-								Built and QA-tested quizzes and programming projects covering
-								HTML5, CSS3, JavaScript, React, and Node.js, and supported
-								instructors in deploying the new material.
-							</li>
-						</ul>
-						<ul class="tech">
-							<li>HTML5</li>
-							<li>CSS3</li>
-							<li>JavaScript</li>
-							<li>React</li>
-							<li>Node.js</li>
-						</ul>
-					</article>
-
-					<article class="entry reveal">
-						<div class="entry-head">
-							<h3>Volunteer Web Developer</h3>
-							<span class="when">Jan 2024 — Present</span>
-						</div>
-						<p class="org">Independent</p>
-						<ul>
-							<li>
-								Manage and maintain the website for a local meditation center on
-								a volunteer basis.
-							</li>
-							<li>
-								Built portfolio and mock business sites — dental, construction,
-								and fitness — with an emphasis on responsive design.
-							</li>
-							<li>
-								Apply performance and SEO practice using Google Lighthouse and
-								the CodeStitch component library.
-							</li>
-						</ul>
-						<ul class="tech">
-							<li>HTML5</li>
-							<li>CSS3</li>
-							<li>JavaScript</li>
-							<li>Lighthouse</li>
-						</ul>
-					</article>
-				</section>
-
-				<!-- ======================= PROJECTS ======================= -->
-				<section id="projects" aria-labelledby="projects-h">
-					<h2 id="projects-h" class="sec">Projects</h2>
-
-					<ul class="projects">
-						<li class="reveal">
-							<div class="proj-head">
-								<span class="proj-name">ezee-budget</span>
-								<span class="lang"
-									><i class="dot" style="--c: #3178c6"></i>TypeScript</span
-								>
-							</div>
-							<p>
-								A shared household budgeting PWA — track expenses together, set
-								goals, and visualise spending. React, TypeScript, Supabase,
-								Tailwind.
-							</p>
-							<p class="proj-links"><span class="muted">Not yet public</span></p>
-						</li>
-
-						<li class="reveal">
-							<div class="proj-head">
-								<span class="proj-name">genesis-alphabetizer</span>
-								<span class="lang"
-									><i class="dot" style="--c: #3572a5"></i>Python</span
-								>
-							</div>
-							<p>
-								Reads the Book of Genesis, extracts every unique word, and
-								verifies each one for spelling accuracy.
-							</p>
-							<p class="proj-links">
-								<a
-									href="https://github.com/coltonphass/Genesis-Alphabetizer"
-									rel="noopener"
-									>Source</a
-								>
-							</p>
-						</li>
-
-						<li class="reveal">
-							<div class="proj-head">
-								<span class="proj-name">space-shooter</span>
-								<span class="lang"
-									><i class="dot" style="--c: #3572a5"></i>Python</span
-								>
-							</div>
-							<p>
-								An arcade-style shooter built with Pygame — collision detection,
-								score tracking, and sprite animation.
-							</p>
-							<p class="proj-links">
-								<a
-									href="https://github.com/coltonphass/Space-Shooter"
-									rel="noopener"
-									>Source</a
-								>
-							</p>
-						</li>
-
-						<li class="reveal">
-							<div class="proj-head">
-								<span class="proj-name">dao-vien-meditation</span>
-								<span class="lang"
-									><i class="dot" style="--c: #f1e05a"></i>JavaScript</span
-								>
-							</div>
-							<p>
-								A site for Dao Vien Meditation Center covering classes, upcoming
-								events, and course material. Maintained on a volunteer basis.
-							</p>
-							<p class="proj-links">
-								<a href="https://daovienmeditation.com/" rel="noopener"
-									>Live site</a
-								>
-							</p>
-						</li>
-
-						<li class="reveal">
-							<div class="proj-head">
-								<span class="proj-name">homelab</span>
-								<span class="lang"
-									><i class="dot" style="--c: #3572a5"></i>Python</span
-								>
-							</div>
-							<p>
-								A Raspberry Pi running Pi-hole for network-wide DNS ad blocking,
-								plus two Python Discord bots.
-							</p>
-							<p class="proj-links"><span class="muted">Self-hosted</span></p>
-						</li>
-
-						<li class="reveal">
-							<div class="proj-head">
-								<span class="proj-name">blackjack</span>
-								<span class="lang"
-									><i class="dot" style="--c: #f1e05a"></i>JavaScript</span
-								>
-							</div>
-							<p>A browser blackjack game with standard dealer rules.</p>
-							<p class="proj-links">
-								<a
-									href="https://coltonsgames.netlify.app/html/blackjack.html"
-									rel="noopener"
-									>Play</a
-								>
-							</p>
-						</li>
+					<p class="folder" data-folder="about" role="button" tabindex="0">
+						<span class="chev" aria-hidden="true">▾</span> about
+					</p>
+					<ul class="tree" data-tree="about">
+						<li><a href="#about" data-file="about"><span class="fi" style="--c: #fe8019" aria-hidden="true"></span>Overview</a></li>
+						<li><a href="#toolkit" data-file="toolkit"><span class="fi" style="--c: #d3869b" aria-hidden="true"></span>Skills &amp; Tools</a></li>
+						<li><a href="#listening" data-file="listening"><span class="fi" style="--c: #8ec07c" aria-hidden="true"></span>Listening</a></li>
 					</ul>
 
-					<p class="more">
-						<a href="https://github.com/coltonphass?tab=repositories" rel="noopener"
-							>All repositories on GitHub →</a
-						>
+					<p class="folder" data-folder="experience" role="button" tabindex="0">
+						<span class="chev" aria-hidden="true">▾</span> experience
 					</p>
-				</section>
-
-				<!-- ======================= EDUCATION ====================== -->
-				<section id="education" aria-labelledby="education-h">
-					<h2 id="education-h" class="sec">Education</h2>
-
-					<article class="entry compact reveal">
-						<div class="entry-head">
-							<h3>B.S. Computer Science</h3>
-							<span class="when">Expected Summer 2027</span>
-						</div>
-						<p class="org">University of Maryland Global Campus</p>
-					</article>
-
-					<article class="entry compact reveal">
-						<div class="entry-head">
-							<h3>A.A.S. Computer Information Systems</h3>
-							<span class="when">2025</span>
-						</div>
-						<p class="org">Harford Community College</p>
-						<p class="note">
-							High Honors · 3.85 GPA · Phi Theta Kappa
-						</p>
-					</article>
-				</section>
-
-				<!-- ==================== CERTIFICATIONS ==================== -->
-				<section id="certifications" aria-labelledby="certifications-h">
-					<h2 id="certifications-h" class="sec">Certifications</h2>
-
-					<ul class="certs">
-						<li class="reveal">
-							<span class="cert-name">Scrum Fundamentals Certified (SFC)</span>
-							<span class="cert-meta">SCRUMstudy · Oct 2026</span>
-						</li>
-						<li class="reveal">
-							<span class="cert-name"
-								>Scrum for Ops and DevOps Fundamentals Certified</span
-							>
-							<span class="cert-meta">SCRUMstudy · Oct 2026</span>
-						</li>
-						<li class="reveal">
-							<span class="cert-name">DoD Cyber Awareness Challenge 2026</span>
-							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
-						</li>
-						<li class="reveal">
-							<span class="cert-name">HIPAA and Privacy Act Training</span>
-							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
-						</li>
-						<li class="reveal">
-							<span class="cert-name">Insider Threat Annual Training</span>
-							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
-						</li>
-						<li class="reveal">
-							<span class="cert-name">Operations Security (OPSEC)</span>
-							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
-						</li>
+					<ul class="tree" data-tree="experience">
+						<li><a href="#experience" data-file="experience"><span class="fi" style="--c: #83a598" aria-hidden="true"></span>Work history</a></li>
+						<li><a href="#education" data-file="education"><span class="fi" style="--c: #8ec07c" aria-hidden="true"></span>Education</a></li>
+						<li><a href="#certifications" data-file="certifications"><span class="fi" style="--c: #fabd2f" aria-hidden="true"></span>Certifications</a></li>
 					</ul>
-				</section>
 
-				<!-- ======================== TOOLKIT ======================== -->
-				<section id="toolkit" aria-labelledby="toolkit-h">
-					<h2 id="toolkit-h" class="sec">Toolkit</h2>
-
-					<dl class="toolkit">
-						<dt>Languages</dt>
-						<dd>Python · JavaScript · TypeScript · SQL · C++ · Java · HTML · CSS</dd>
-
-						<dt>Platforms</dt>
-						<dd>
-							OpenText Process Automation · SQL Server · React · Node.js ·
-							Supabase
-						</dd>
-
-						<dt>Practice</dt>
-						<dd>
-							BPM development · XML/SOAP web services · Section 508 / WCAG ·
-							Agile &amp; Scrum
-						</dd>
-
-						<dt>Tools</dt>
-						<dd>
-							SSMS · VS Code · Git · NVDA · ANDI · Lighthouse · mRemoteNG ·
-							Agent Ransack
-						</dd>
-					</dl>
-				</section>
-
-				<!-- ======================== CONTACT ======================== -->
-				<section id="contact" aria-labelledby="contact-h">
-					<h2 id="contact-h" class="sec">Contact</h2>
-
-					<p class="contact-lede">
-						Open to software engineering roles. The quickest way to reach me is
-						this form — it lands in my inbox and I'll reply within a day or so.
+					<p class="folder" data-folder="projects" role="button" tabindex="0">
+						<span class="chev" aria-hidden="true">▾</span> projects
 					</p>
+					<ul class="tree" data-tree="projects">
+						<li><a href="#p-ezee" data-file="p-ezee"><span class="fi" style="--c: #3178c6" aria-hidden="true"></span>ezee-budget<span class="tag-mini">TS</span></a></li>
+						<li><a href="#p-daovien" data-file="p-daovien"><span class="fi" style="--c: #f1e05a" aria-hidden="true"></span>dao-vien<span class="tag-mini">Web</span></a></li>
+						<li><a href="#p-genesis" data-file="p-genesis"><span class="fi" style="--c: #3572a5" aria-hidden="true"></span>genesis-alphabetizer<span class="tag-mini">Py</span></a></li>
+						<li><a href="#p-shooter" data-file="p-shooter"><span class="fi" style="--c: #3572a5" aria-hidden="true"></span>space-shooter<span class="tag-mini">Py</span></a></li>
+						<li><a href="#p-homelab" data-file="p-homelab"><span class="fi" style="--c: #3572a5" aria-hidden="true"></span>homelab<span class="tag-mini">Py</span></a></li>
+						<li><a href="#p-blackjack" data-file="p-blackjack"><span class="fi" style="--c: #f1e05a" aria-hidden="true"></span>blackjack<span class="tag-mini">JS</span></a></li>
+					</ul>
 
-					<form
-						id="contact-form"
-						name="contact"
-						method="POST"
-						data-netlify="true"
-						netlify-honeypot="bot-field"
-					>
-						<input type="hidden" name="form-name" value="contact" />
-						<p class="hp">
-							<label
-								>Leave this field empty
-								<input name="bot-field" tabindex="-1" autocomplete="off" />
-							</label>
-						</p>
+					<p class="folder" data-folder="contact" role="button" tabindex="0">
+						<span class="chev" aria-hidden="true">▾</span> contact
+					</p>
+					<ul class="tree" data-tree="contact">
+						<li><a href="#contact" data-file="contact"><span class="fi" style="--c: #fb4934" aria-hidden="true"></span>Get in touch</a></li>
+						<li><a href="Resume/Colton_Phass_Resume.pdf" data-file="resume"><span class="fi" style="--c: #d65d0e" aria-hidden="true"></span>Résumé (PDF)</a></li>
+					</ul>
+				</nav>
 
-						<div class="field-row">
-							<p class="field">
-								<label for="cf-name">Name</label>
-								<input id="cf-name" name="name" type="text" required />
-							</p>
-							<p class="field">
-								<label for="cf-email">Email</label>
-								<input id="cf-email" name="email" type="email" required />
-							</p>
+				<!-- ====================== EDITOR ====================== -->
+				<main class="editor">
+					<div class="tabs" id="tabs"></div>
+					<p class="breadcrumb" id="breadcrumb">Colton Phass<span class="sep">›</span>Overview</p>
+
+					<div class="pane" id="pane">
+						<!-- ===================== Overview ==================== -->
+						<section class="file is-open" id="about" aria-labelledby="about-h">
+							<article class="doc">
+								<h1 id="about-h">Colton Phass</h1>
+								<p class="subtitle">Software Engineer I at Kreative Technologies</p>
+								<p class="facts">
+									<span>Maryland, USA</span>
+									<span>Active Public Trust</span>
+									<span class="pill"><span class="pill-dot" aria-hidden="true"></span>Open to new roles</span>
+								</p>
+
+								<hr />
+
+								<p class="lead">
+									I build and maintain software for federal health programs. Right
+									now that means a case management system used by the Defense
+									Health Agency to track pediatric special needs services from
+									referral through discharge.
+								</p>
+								<p>
+									Most of my day is business process automation, data work, and
+									accessibility. I build and change workflows, fix data through
+									web services, remediate forms to Section 508 standards, and
+									write up what I find for the program office. The platform is
+									OpenText Process Automation with SQL Server behind it.
+								</p>
+								<p>
+									Before this I spent two years at Harford Community College,
+									first co-designing a web development course and then doing AI
+									and machine learning research for their curriculum. I am
+									finishing a B.S. in Computer Science at UMGC alongside work.
+								</p>
+								<p>
+									Outside of work I build small games in Python, run a home
+									server with Pi-hole and a couple of Discord bots, and maintain
+									a website for a local meditation center.
+								</p>
+
+								<hr />
+
+								<h2>At a glance</h2>
+								<dl class="rows">
+									<div class="row">
+										<dt>Current</dt>
+										<dd>Software Engineer I at Kreative Technologies, since November 2025</dd>
+									</div>
+									<div class="row">
+										<dt>Focus</dt>
+										<dd>Business process automation, data integrity, Section 508 accessibility</dd>
+									</div>
+									<div class="row">
+										<dt>Main stack</dt>
+										<dd>OpenText Process Automation, SQL Server, XML/SOAP, JavaScript, Python</dd>
+									</div>
+									<div class="row">
+										<dt>Clearance</dt>
+										<dd>Active Public Trust</dd>
+									</div>
+									<div class="row">
+										<dt>Education</dt>
+										<dd>B.S. Computer Science in progress at UMGC, expected Summer 2027</dd>
+									</div>
+									<div class="row">
+										<dt>Links</dt>
+										<dd>
+											<a href="https://github.com/coltonphass" rel="noopener">GitHub</a> ·
+											<a href="https://www.linkedin.com/in/colton-phass-61223a255/" rel="noopener">LinkedIn</a> ·
+											<a href="Resume/Colton_Phass_Resume.pdf" data-file="resume">Résumé</a>
+										</dd>
+									</div>
+								</dl>
+							</article>
+						</section>
+
+						<!-- ==================== Experience =================== -->
+						<section class="file" id="experience" aria-labelledby="experience-h">
+							<article class="doc">
+								<h1 id="experience-h">Experience</h1>
+								<p class="subtitle">Four roles since 2024</p>
+								<hr />
+
+								<div class="entry">
+									<div class="entry-head">
+										<h3>Software Engineer I</h3>
+										<span class="entry-when">Nov 2025 - Present</span>
+									</div>
+									<p class="entry-org">Kreative Technologies</p>
+									<p>
+										Kreative builds and sustains software for federal health
+										programs. The system I work on is a case management platform
+										for the Defense Health Agency that follows pediatric special
+										needs cases through referral, eligibility, service planning,
+										and discharge.
+									</p>
+									<p>
+										My work covers business process (BPM) development, form and
+										workflow changes, data remediation through XML/SOAP web
+										services, and Section 508 accessibility. I also write
+										investigation reports and test steps for the program office,
+										and support changes across development, upgrade, and
+										production environments.
+									</p>
+									<p class="tags">
+										<span>OpenText Process Automation</span><span>BPM</span><span>XML/SOAP</span><span>SQL Server</span><span>JavaScript</span><span>Section 508</span>
+									</p>
+									<p class="note-line">
+										Specifics are in the <a href="Resume/Colton_Phass_Resume.pdf" data-file="resume">résumé</a>.
+									</p>
+								</div>
+
+								<div class="entry">
+									<div class="entry-head">
+										<h3>Student Research Assistant</h3>
+										<span class="entry-when">Mar 2025 - Present</span>
+									</div>
+									<p class="entry-org">Harford Community College</p>
+									<p>
+										I contribute AI and machine learning research to the
+										college's FY25 curriculum work. That means evaluating
+										platforms for classroom use, helping design credit and non
+										credit courses, and supporting the academic publications
+										that come out of it. I am currently building the curriculum
+										for a new credit bearing AI course.
+									</p>
+									<p class="tags"><span>AI/ML</span><span>Python</span><span>Jupyter</span></p>
+								</div>
+
+								<div class="entry">
+									<div class="entry-head">
+										<h3>Student Curricular Co-Designer</h3>
+										<span class="entry-when">May to Dec 2024</span>
+									</div>
+									<p class="entry-org">Harford Community College</p>
+									<p>
+										I worked with faculty on updates to CIS 217, the intro web
+										development course, meeting weekly to review the curriculum.
+										I built and QA tested the quizzes and programming projects
+										that went with it, covering HTML5, CSS3, JavaScript, React,
+										and Node.js.
+									</p>
+									<p class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Node.js</span></p>
+								</div>
+
+								<div class="entry">
+									<div class="entry-head">
+										<h3>Volunteer Web Developer</h3>
+										<span class="entry-when">Jan 2024 - Present</span>
+									</div>
+									<p class="entry-org">Independent</p>
+									<p>
+										I maintain the website for a local meditation center on a
+										volunteer basis. Alongside that I have built portfolio and
+										practice business sites for dental, construction, and
+										fitness, focusing on responsive layouts and page speed.
+									</p>
+									<p class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Lighthouse</span></p>
+								</div>
+							</article>
+						</section>
+
+						<!-- ============== Project: ezee-budget =============== -->
+						<section class="file" id="p-ezee" aria-labelledby="p-ezee-h">
+							<article class="doc">
+								<h1 id="p-ezee-h">ezee-budget</h1>
+								<p class="subtitle">Shared household budgeting, built as a PWA</p>
+								<hr />
+
+								<div class="preview proj-hero" data-media="video" data-src="images/Project-images/EzeeBudget.mp4" style="--c: #3178c6">
+									<video muted loop playsinline preload="none" aria-label="ezee-budget demo"></video>
+									<span class="preview-hint" aria-hidden="true">▶ preview</span>
+								</div>
+
+								<h2>Overview</h2>
+								<p>
+									A budgeting app my partner and I use to track shared household
+									spending. It is a progressive web app, so it installs on a phone
+									and works like a normal app without going through an app store.
+								</p>
+
+								<h2>Problem</h2>
+								<p>
+									We were tracking the household budget in a spreadsheet. It
+									worked, but only one of us could sensibly edit it at a time,
+									nothing updated live, and it was awkward to use on a phone,
+									which is where you actually are when you are spending money.
+								</p>
+								<ul>
+									<li>Two people needed to add expenses from their own phones</li>
+									<li>Changes had to show up for both of us without a refresh or a re-share</li>
+									<li>It had to be quick to log something in a few seconds at a checkout</li>
+								</ul>
+
+								<h2>What it does</h2>
+								<ul>
+									<li>Logs shared expenses against categories</li>
+									<li>Tracks progress toward savings goals</li>
+									<li>Shows where the money actually went over a period</li>
+									<li>Installs to the home screen and keeps working offline</li>
+								</ul>
+
+								<h2>My role</h2>
+								<p>
+									Sole developer and designer. I picked the stack, built the UI in
+									React and TypeScript, and used Supabase for the database, auth,
+									and realtime sync so both of us see the same numbers at the same
+									time. Styling is Tailwind.
+								</p>
+
+								<h2>Status</h2>
+								<p>
+									In active use by the two of us and still being worked on. It is
+									not public yet because it is tied to our own data.
+								</p>
+
+								<p class="tags"><span>React</span><span>TypeScript</span><span>Supabase</span><span>Tailwind</span><span>PWA</span></p>
+							
+
+								<p class="other-projects">Other projects <a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-homelab" data-file="p-homelab">homelab</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+							</article>
+						</section>
+
+						<!-- ============== Project: dao-vien ================= -->
+						<section class="file" id="p-daovien" aria-labelledby="p-daovien-h">
+							<article class="doc">
+								<h1 id="p-daovien-h">dao-vien-meditation</h1>
+								<p class="subtitle">A live site for a local meditation center</p>
+								<hr />
+
+								<div class="preview proj-hero" data-media="video" data-src="images/Project-images/Dao-Vien.mp4" style="--c: #f1e05a">
+									<video muted loop playsinline preload="none" aria-label="dao-vien demo"></video>
+									<span class="preview-hint" aria-hidden="true">▶ preview</span>
+								</div>
+
+								<h2>Overview</h2>
+								<p>
+									The website for Dao Vien Meditation Center. It covers who they
+									are, what classes run and when, upcoming events, and the course
+									material students need between sessions.
+								</p>
+
+								<h2>Problem</h2>
+								<p>
+									The center needed one place people could check for class times
+									and course material instead of relying on word of mouth and
+									social posts. Most of the people using it are not especially
+									technical, and a lot of them are on a phone, so it had to be
+									plain and quick to read.
+								</p>
+
+								<h2>My role</h2>
+								<p>
+									I build and maintain the site on a volunteer basis. That covers
+									the layout and design system, the content structure, keeping
+									schedules and events current, and the performance and SEO side
+									using Lighthouse.
+								</p>
+
+								<h2>Status</h2>
+								<p>Live, and I still maintain it.</p>
+
+								<p class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Lighthouse</span></p>
+								<p><a href="https://daovienmeditation.com/" rel="noopener">Visit the site ↗</a></p>
+							
+
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-homelab" data-file="p-homelab">homelab</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+							</article>
+						</section>
+
+						<!-- ============== Project: genesis ================== -->
+						<section class="file" id="p-genesis" aria-labelledby="p-genesis-h">
+							<article class="doc">
+								<h1 id="p-genesis-h">genesis-alphabetizer</h1>
+								<p class="subtitle">Pulling every unique word out of a long text</p>
+								<hr />
+
+								<div class="preview proj-hero" data-media="video" data-src="images/Project-images/Genesis-Alphabetizer.mp4" style="--c: #3572a5">
+									<video muted loop playsinline preload="none" aria-label="genesis-alphabetizer demo"></video>
+									<span class="preview-hint" aria-hidden="true">▶ preview</span>
+								</div>
+
+								<h2>Overview</h2>
+								<p>
+									A Python tool that reads the Book of Genesis, extracts every
+									unique word in it, sorts them, and then checks each one for
+									spelling accuracy.
+								</p>
+
+								<h2>Problem</h2>
+								<p>
+									Doing this by hand on a text that long is not realistic. The
+									interesting part is not the reading, it is deciding what counts
+									as a word: punctuation, capitalisation, and archaic spellings
+									all have to be handled before you can say whether a word is
+									unique or misspelled.
+								</p>
+
+								<h2>What it does</h2>
+								<ul>
+									<li>Reads and normalises the source text</li>
+									<li>Builds a sorted set of unique words</li>
+									<li>Checks each word against a dictionary and flags what fails</li>
+								</ul>
+
+								<h2>My role</h2>
+								<p>Sole developer. Written in Python, no framework.</p>
+
+								<p class="tags"><span>Python</span><span>Text processing</span></p>
+								<p><a href="https://github.com/coltonphass/Genesis-Alphabetizer" rel="noopener">View source ↗</a></p>
+							
+
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-homelab" data-file="p-homelab">homelab</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+							</article>
+						</section>
+
+						<!-- ============== Project: space-shooter ============ -->
+						<section class="file" id="p-shooter" aria-labelledby="p-shooter-h">
+							<article class="doc">
+								<h1 id="p-shooter-h">space-shooter</h1>
+								<p class="subtitle">An arcade shooter built with Pygame</p>
+								<hr />
+
+								<div class="preview proj-hero" data-media="gif" data-src="images/Project-images/SpaceShooter.gif" style="--c: #3572a5">
+									<img alt="space-shooter gameplay" />
+									<span class="preview-hint" aria-hidden="true">▶ preview</span>
+								</div>
+
+								<h2>Overview</h2>
+								<p>
+									A classic arcade style space shooter. You fly a ship, things come
+									at you, you shoot them, your score goes up.
+								</p>
+
+								<h2>Why I built it</h2>
+								<p>
+									I wanted to understand how games actually work under the hood
+									rather than just playing them. A shooter is small enough to
+									finish but still forces you to deal with a real game loop,
+									collision detection, sprite animation, and state that changes
+									sixty times a second.
+								</p>
+
+								<h2>What it covers</h2>
+								<ul>
+									<li>A game loop with frame independent updates</li>
+									<li>Collision detection between ships, bullets, and obstacles</li>
+									<li>Sprite animation and sheet handling</li>
+									<li>Score tracking and game over state</li>
+								</ul>
+
+								<h2>My role</h2>
+								<p>Sole developer. Python and Pygame.</p>
+
+								<p class="tags"><span>Python</span><span>Pygame</span></p>
+								<p><a href="https://github.com/coltonphass/Space-Shooter" rel="noopener">View source ↗</a></p>
+							
+
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-homelab" data-file="p-homelab">homelab</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+							</article>
+						</section>
+
+						<!-- ============== Project: homelab ================== -->
+						<section class="file" id="p-homelab" aria-labelledby="p-homelab-h">
+							<article class="doc">
+								<h1 id="p-homelab-h">homelab</h1>
+								<p class="subtitle">A Raspberry Pi running things I rely on</p>
+								<hr />
+
+								<div class="preview proj-hero is-plain" style="--c: #3572a5" aria-hidden="true">
+									<span class="glyph">pi</span>
+								</div>
+
+								<h2>Overview</h2>
+								<p>
+									A Raspberry Pi that sits on my network and runs Pi-hole for DNS
+									level ad blocking, plus two Python Discord bots.
+								</p>
+
+								<h2>Problem</h2>
+								<p>
+									Browser based ad blockers only cover the browser, and only on
+									the machine they are installed on. Running the block list at the
+									DNS layer covers every device on the network, including phones
+									and TVs that have no way to install an extension.
+								</p>
+
+								<h2>What it runs</h2>
+								<ul>
+									<li>Pi-hole, filtering DNS for every device on the network</li>
+									<li>Two Python Discord bots that need to stay online all the time</li>
+								</ul>
+
+								<h2>What I learned</h2>
+								<p>
+									Most of the value here was operational rather than code: how DNS
+									resolution actually flows, keeping a service running across
+									reboots and power cuts, and the fact that something only you
+									maintain still needs to be maintained.
+								</p>
+
+								<p class="tags"><span>Raspberry Pi</span><span>Pi-hole</span><span>Python</span><span>DNS</span><span>Linux</span></p>
+							
+
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+							</article>
+						</section>
+
+						<!-- ============== Project: blackjack =============== -->
+						<section class="file" id="p-blackjack" aria-labelledby="p-blackjack-h">
+							<article class="doc">
+								<h1 id="p-blackjack-h">blackjack</h1>
+								<p class="subtitle">Browser blackjack with standard dealer rules</p>
+								<hr />
+
+								<div class="preview proj-hero is-plain" style="--c: #f1e05a" aria-hidden="true">
+									<span class="glyph">21</span>
+								</div>
+
+								<h2>Overview</h2>
+								<p>
+									A playable blackjack game that runs in the browser, with the
+									dealer following standard house rules.
+								</p>
+
+								<h2>Why I built it</h2>
+								<p>
+									Card games are a good way to practise state management without a
+									framework. A deck has to be shuffled and dealt from, hands have
+									to be scored with aces counting as one or eleven depending on
+									the hand, and the dealer has to follow fixed rules rather than
+									choices.
+								</p>
+
+								<h2>My role</h2>
+								<p>Sole developer. Plain JavaScript, HTML, and CSS.</p>
+
+								<p class="tags"><span>JavaScript</span><span>HTML5</span><span>CSS3</span></p>
+								<p><a href="https://coltonsgames.netlify.app/html/blackjack.html" rel="noopener">Play it ↗</a></p>
+							
+
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-homelab" data-file="p-homelab">homelab</a></p>
+							</article>
+						</section>
+
+						<!-- ==================== Education ==================== -->
+						<section class="file" id="education" aria-labelledby="education-h">
+							<article class="doc">
+								<h1 id="education-h">Education</h1>
+								<hr />
+
+								<div class="entry">
+									<div class="entry-head">
+										<h3>B.S. Computer Science</h3>
+										<span class="entry-when">Expected Summer 2027</span>
+									</div>
+									<p class="entry-org">University of Maryland Global Campus</p>
+									<p>In progress, alongside full time work.</p>
+								</div>
+
+								<div class="entry">
+									<div class="entry-head">
+										<h3>A.A.S. Computer Information Systems</h3>
+										<span class="entry-when">Graduated May 2025</span>
+									</div>
+									<p class="entry-org">Harford Community College</p>
+									<p>Graduated with High Honors, a 3.85 GPA, and membership of Phi Theta Kappa.</p>
+								</div>
+							</article>
+						</section>
+
+						<!-- ================= Certifications ================== -->
+						<section class="file" id="certifications" aria-labelledby="certifications-h">
+							<article class="doc">
+								<h1 id="certifications-h">Certifications</h1>
+								<p class="subtitle">Six current, none expired</p>
+								<hr />
+
+								<div class="cert-summary">
+									<span class="cert-stat"><b>6</b>current</span>
+									<span class="cert-stat"><b>2</b>issuers</span>
+									<span class="cert-stat"><b>0</b>expired</span>
+								</div>
+
+								<ul class="cert-list">
+									<li class="cert-card">
+										<span class="cert-check"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M4 12.5l5 5 11-11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+										<span class="cert-main">
+											<span class="cert-title">Scrum Fundamentals Certified (SFC)</span>
+											<span class="cert-issuer">SCRUMstudy</span>
+										</span>
+										<span class="cert-side"><span class="cert-kind">Agile</span><span class="cert-date">Oct 2026</span></span>
+									</li>
+									<li class="cert-card">
+										<span class="cert-check"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M4 12.5l5 5 11-11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+										<span class="cert-main">
+											<span class="cert-title">Scrum for Ops and DevOps Fundamentals Certified</span>
+											<span class="cert-issuer">SCRUMstudy</span>
+										</span>
+										<span class="cert-side"><span class="cert-kind">Agile</span><span class="cert-date">Oct 2026</span></span>
+									</li>
+									<li class="cert-card">
+										<span class="cert-check"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M4 12.5l5 5 11-11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+										<span class="cert-main">
+											<span class="cert-title">DoD Cyber Awareness Challenge 2026</span>
+											<span class="cert-issuer">Defense Health Agency</span>
+										</span>
+										<span class="cert-side"><span class="cert-kind">Security</span><span class="cert-date">Dec 2025</span></span>
+									</li>
+									<li class="cert-card">
+										<span class="cert-check"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M4 12.5l5 5 11-11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+										<span class="cert-main">
+											<span class="cert-title">HIPAA and Privacy Act Training</span>
+											<span class="cert-issuer">Defense Health Agency</span>
+										</span>
+										<span class="cert-side"><span class="cert-kind">Privacy</span><span class="cert-date">Dec 2025</span></span>
+									</li>
+									<li class="cert-card">
+										<span class="cert-check"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M4 12.5l5 5 11-11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+										<span class="cert-main">
+											<span class="cert-title">Insider Threat Annual Training</span>
+											<span class="cert-issuer">Defense Health Agency</span>
+										</span>
+										<span class="cert-side"><span class="cert-kind">Security</span><span class="cert-date">Dec 2025</span></span>
+									</li>
+									<li class="cert-card">
+										<span class="cert-check"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M4 12.5l5 5 11-11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+										<span class="cert-main">
+											<span class="cert-title">Operations Security (OPSEC)</span>
+											<span class="cert-issuer">Defense Health Agency</span>
+										</span>
+										<span class="cert-side"><span class="cert-kind">Security</span><span class="cert-date">Dec 2025</span></span>
+									</li>
+								</ul>
+							</article>
+						</section>
+
+						<!-- ================== Skills & Tools ================= -->
+						<section class="file" id="toolkit" aria-labelledby="toolkit-h">
+							<article class="doc">
+								<h1 id="toolkit-h">Skills &amp; Tools</h1>
+								<p class="subtitle">What I reach for</p>
+								<hr />
+
+								<section class="stack-group">
+									<div class="stack-head">
+										<span class="stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+										<h2>Languages</h2>
+										<span class="stack-count">8</span>
+									</div>
+									<ul class="chips">
+										<li class="chip" style="--c: #6ea8dc"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg></span>Python</li>
+										<li class="chip" style="--c: #f1e05a"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg></span>JavaScript</li>
+										<li class="chip" style="--c: #5ba7f7"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/></svg></span>TypeScript</li>
+										<li class="chip" style="--c: #e8a33d"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13"/><path d="M4.5 12c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8"/></svg></span>SQL</li>
+										<li class="chip" style="--c: #f47fa3"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.11-7.11a7.133 7.133 0 016.156 3.553l-3.076 1.78a3.567 3.567 0 00-3.08-1.78A3.56 3.56 0 008.444 12 3.56 3.56 0 0012 15.555a3.57 3.57 0 003.08-1.778l3.078 1.78A7.135 7.135 0 0112 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z"/></svg></span>C++</li>
+										<li class="chip" style="--c: #d79b5a"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M11.915 0 11.7.215C9.515 2.4 7.47 6.39 6.046 10.483c-1.064 1.024-3.633 2.81-3.711 3.551-.093.87 1.746 2.611 1.55 3.235-.198.625-1.304 1.408-1.014 1.939.1.188.823.011 1.277-.491a13.389 13.389 0 0 0-.017 2.14c.076.906.27 1.668.643 2.232.372.563.956.911 1.667.911.397 0 .727-.114 1.024-.264.298-.149.571-.33.91-.5.68-.34 1.634-.666 3.53-.604 1.903.062 2.872.39 3.559.704.687.314 1.15.664 1.925.664.767 0 1.395-.336 1.807-.9.412-.563.631-1.33.72-2.24.06-.623.055-1.32 0-2.066.454.45 1.117.604 1.213.424.29-.53-.816-1.314-1.013-1.937-.198-.624 1.642-2.366 1.549-3.236-.08-.748-2.707-2.568-3.748-3.586C16.428 6.374 14.308 2.394 12.13.215zm.175 6.038a2.95 2.95 0 0 1 2.943 2.942 2.95 2.95 0 0 1-2.943 2.943A2.95 2.95 0 0 1 9.148 8.98a2.95 2.95 0 0 1 2.942-2.942zM8.685 7.983a3.515 3.515 0 0 0-.145.997c0 1.951 1.6 3.55 3.55 3.55 1.95 0 3.55-1.598 3.55-3.55 0-.329-.046-.648-.132-.951.334.095.64.208.915.336a42.699 42.699 0 0 1 2.042 5.829c.678 2.545 1.01 4.92.846 6.607-.082.844-.29 1.51-.606 1.94-.315.431-.713.651-1.315.651-.593 0-.932-.27-1.673-.61-.741-.338-1.825-.694-3.792-.758-1.974-.064-3.073.293-3.821.669-.375.188-.659.373-.911.5s-.466.2-.752.2c-.53 0-.876-.209-1.16-.64-.285-.43-.474-1.101-.545-1.948-.141-1.693.176-4.069.823-6.614a43.155 43.155 0 0 1 1.934-5.783c.348-.167.749-.31 1.192-.425zm-3.382 4.362a.216.216 0 0 1 .13.031c-.166.56-.323 1.116-.463 1.665a33.849 33.849 0 0 0-.547 2.555 3.9 3.9 0 0 0-.2-.39c-.58-1.012-.914-1.642-1.16-2.08.315-.24 1.679-1.755 2.24-1.781zm13.394.01c.562.027 1.926 1.543 2.24 1.783-.246.438-.58 1.068-1.16 2.08a4.428 4.428 0 0 0-.163.309 32.354 32.354 0 0 0-.562-2.49 40.579 40.579 0 0 0-.482-1.652.216.216 0 0 1 .127-.03z"/></svg></span>Java</li>
+										<li class="chip" style="--c: #ef8a62"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg></span>HTML</li>
+										<li class="chip" style="--c: #9b8cd8"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg></span>CSS</li>
+									</ul>
+								</section>
+
+								<section class="stack-group">
+									<div class="stack-head">
+										<span class="stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+										<h2>Platforms</h2>
+										<span class="stack-count">5</span>
+									</div>
+									<ul class="chips">
+										<li class="chip" style="--c: #5eb0f5"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M3.412 11.809c0 .786-.468 1.637-1.7 1.637-.894 0-1.712-.49-1.712-1.637 0-.946.616-1.68 1.828-1.616 1.297.074 1.584 1.052 1.584 1.616zm-2.307-.596c-.117.17-.159.383-.159.596 0 .478.244.914.765.914.51 0 .755-.404.755-.872 0-.34-.085-.595-.266-.754a.727.727 0 0 0-.553-.17c-.255.01-.414.095-.542.286zm10.63-.67c.095-.095.148-.17.318-.244.149-.063.35-.106.585-.106.191 0 .404.032.563.117.33.17.425.446.425.935v2.126h-.946v-1.754c0-.276-.01-.382-.042-.467-.075-.17-.234-.234-.425-.234-.49 0-.49.382-.49.776v1.68h-.935v-3.105h.946v.277zm-1.393 2.02c-.085.181-.361.883-1.584.883-.946 0-1.605-.564-1.605-1.584 0-.744.383-1.669 1.637-1.669.191 0 .733-.021 1.148.404.415.436.436 1.042.446 1.392H8.1c0 .383.223.776.734.776s.69-.33.807-.542l.702.34zm-.935-1.148c-.022-.127-.043-.308-.181-.435a.66.66 0 0 0-.457-.17.67.67 0 0 0-.478.202c-.128.138-.16.276-.192.414l1.308-.01zm13.977-.5H24v-.637h-.616V9.62h-.936v.648H22.3l-.425.638h.574v1.478c0 .297.01.52.138.701.202.287.553.308.883.308.17 0 .297-.02.488-.053v-.712l-.329.01c-.255 0-.255-.159-.244-.35v-1.371zM14.073 9.62h.935v.648h.967l-.425.638h-.553v1.382c-.01.191-.01.35.245.35l.33-.01v.712c-.203.032-.32.053-.49.053-.318 0-.68-.02-.882-.308-.127-.18-.138-.404-.138-.701V9.619h.01zm4.836 2.944-.18.266c-.171.234-.48.606-1.383.606-.946 0-1.573-.563-1.573-1.584 0-.744.383-1.669 1.637-1.669.191 0 .733-.02 1.148.404.415.436.436 1.042.446 1.393H16.73c-.01.382.191.776.69.776.51 0 .66-.33.777-.542l.712.35zm-.872-1.148c-.021-.127-.042-.308-.18-.435a.66.66 0 0 0-.458-.17.67.67 0 0 0-.478.202c-.127.138-.16.276-.191.414l1.307-.01zm4.071 1.956-1.17-1.626.968-1.467h-1.063l-.457.691-.5-.69h-1.062l1.052 1.466-1.084 1.626h1.063l.563-.86.617.86h1.073zm-17.41-2.827c.085-.138.372-.35.829-.35.776 0 1.329.573 1.329 1.604 0 .638-.234 1.637-1.372 1.637-.403 0-.722-.223-.797-.35v1.296h-.935v-4.114h.946v.277zm.638.361c-.17 0-.351.064-.479.234-.138.16-.19.404-.19.68 0 .362.105.585.222.712a.588.588 0 0 0 .425.192c.457 0 .66-.468.66-.925 0-.383-.117-.786-.5-.872-.053-.01-.096-.02-.138-.02z"/></svg></span>OpenText Process Automation</li>
+										<li class="chip" style="--c: #f2706e"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="5" rx="6.5" ry="2.5"/><path d="M3.5 5v9c0 1.4 2.9 2.5 6.5 2.5"/><path d="M3.5 10c0 1.4 2.9 2.5 6.5 2.5"/><circle cx="17" cy="17" r="3"/><path d="M17 13v1.2M17 19.8V21M13 17h1.2M19.8 17H21"/></svg></span>SQL Server</li>
+										<li class="chip" style="--c: #61dafb"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg></span>React</li>
+										<li class="chip" style="--c: #7cc95e"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/></svg></span>Node.js</li>
+										<li class="chip" style="--c: #3ecf8e"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"/></svg></span>Supabase</li>
+									</ul>
+								</section>
+
+								<section class="stack-group">
+									<div class="stack-head">
+										<span class="stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17"><circle cx="6" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 8.5v6a3 3 0 003 3h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+										<h2>Practice</h2>
+										<span class="stack-count">4</span>
+									</div>
+									<ul class="chips">
+										<li class="chip" style="--c: #fabd2f"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="7" height="5" rx="1.3"/><rect x="14.5" y="16" width="7" height="5" rx="1.3"/><path d="M6 8v5a3 3 0 0 0 3 3h5.5"/><path d="M12.5 14.2 14.8 16l-2.3 1.8"/></svg></span>Business process (BPM) development</li>
+										<li class="chip" style="--c: #8ec07c"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7 3.5 12 8 17"/><path d="M16 7l4.5 5L16 17"/><path d="M13.6 5.5 10.4 18.5"/></svg></span>XML/SOAP web services</li>
+										<li class="chip" style="--c: #fe8019"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.6" r="1.9"/><path d="M4.6 8.6c4.8 1.5 9.9 1.5 14.7 0"/><path d="M12 8.9v4.4M12 13.3 8.8 20M12 13.3 15.2 20"/></svg></span>Section 508 and WCAG</li>
+										<li class="chip" style="--c: #83a598"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20.4 3.4V8h-4.6"/></svg></span>Agile and Scrum</li>
+									</ul>
+								</section>
+
+								<section class="stack-group">
+									<div class="stack-head">
+										<span class="stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17"><path d="M14.7 6.3a4 4 0 01-5 5L4 17v3h3l5.7-5.7a4 4 0 015-5l-2.4-2.4 2.1-2.1a4 4 0 00-2.7 1.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+										<h2>Tools</h2>
+										<span class="stack-count">9</span>
+									</div>
+									<ul class="chips">
+										<li class="chip" style="--c: #f2706e"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="5" rx="6.5" ry="2.5"/><path d="M3.5 5v9c0 1.4 2.9 2.5 6.5 2.5"/><path d="M3.5 10c0 1.4 2.9 2.5 6.5 2.5"/><circle cx="17" cy="17" r="3"/><path d="M17 13v1.2M17 19.8V21M13 17h1.2M19.8 17H21"/></svg></span>SQL Server Management Studio</li>
+										<li class="chip" style="--c: #4fa6e8"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 4.5h-2a2 2 0 0 0-2 2v3.1a2 2 0 0 1-2 2 2 2 0 0 1 2 2v3.1a2 2 0 0 0 2 2h2"/><path d="M15.5 4.5h2a2 2 0 0 1 2 2v3.1a2 2 0 0 0 2 2 2 2 0 0 0-2 2v3.1a2 2 0 0 1-2 2h-2"/></svg></span>VS Code</li>
+										<li class="chip" style="--c: #ef8a62"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></svg></span>Git</li>
+										<li class="chip" style="--c: #f0932b"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M7.157 22.201A1.784 1.799 0 0 1 5.374 24a1.784 1.799 0 0 1-1.784-1.799 1.784 1.799 0 0 1 1.784-1.799 1.784 1.799 0 0 1 1.783 1.799zM20.582 1.427a1.415 1.427 0 0 1-1.415 1.428 1.415 1.427 0 0 1-1.416-1.428A1.415 1.427 0 0 1 19.167 0a1.415 1.427 0 0 1 1.415 1.427zM4.992 3.336A1.047 1.056 0 0 1 3.946 4.39a1.047 1.056 0 0 1-1.047-1.055A1.047 1.056 0 0 1 3.946 2.28a1.047 1.056 0 0 1 1.046 1.056zm7.336 1.517c3.769 0 7.06 1.38 8.768 3.424a9.363 9.363 0 0 0-3.393-4.547 9.238 9.238 0 0 0-5.377-1.728A9.238 9.238 0 0 0 6.95 3.73a9.363 9.363 0 0 0-3.394 4.547c1.713-2.04 5.004-3.424 8.772-3.424zm.001 13.295c-3.768 0-7.06-1.381-8.768-3.425a9.363 9.363 0 0 0 3.394 4.547A9.238 9.238 0 0 0 12.33 21a9.238 9.238 0 0 0 5.377-1.729 9.363 9.363 0 0 0 3.393-4.547c-1.712 2.044-5.003 3.425-8.772 3.425Z"/></svg></span>Jupyter</li>
+										<li class="chip" style="--c: #b8bb26"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.2L12 5.4v13.2L7.2 14.5H4z"/><path d="M15.6 9.2a4 4 0 0 1 0 5.6"/><path d="M18.2 6.6a7.6 7.6 0 0 1 0 10.8"/></svg></span>NVDA</li>
+										<li class="chip" style="--c: #8ec07c"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S5.9 5.8 12 5.8 21.5 12 21.5 12 18.1 18.2 12 18.2 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.7"/></svg></span>ANDI</li>
+										<li class="chip" style="--c: #fabd2f"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M12 0l5.5 3.5v5H20v3h-2.25l2 12.5H4.25l2-12.5H4v-3h2.5V3.53zm2.94 13.25l-6.22 2.26L8 20.04l7.5-2.75zM12 3.56L9.5 5.17V8.5h5V5.15Z"/></svg></span>Google Lighthouse</li>
+										<li class="chip" style="--c: #d3869b"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="1.6"/><path d="M9 20.5h6M12 16.5v4"/><path d="m10 8 3 2.2-3 2.2"/></svg></span>mRemoteNG</li>
+										<li class="chip" style="--c: #a89984"><span class="chip-icon"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 2.8H6.2A1.7 1.7 0 0 0 4.5 4.5v15a1.7 1.7 0 0 0 1.7 1.7h11.6a1.7 1.7 0 0 0 1.7-1.7V8.3z"/><path d="M13.5 2.8v5.5h5.9"/><circle cx="11" cy="13.6" r="2.6"/><path d="m13 15.6 2.2 2.2"/></svg></span>Agent Ransack</li>
+									</ul>
+								</section>
+							</article>
+						</section>
+
+						<!-- ==================== Listening ==================== -->
+						<!-- Track ids verified via Spotify oEmbed. The Olivia row points
+						     at the album because no track id was findable; replace
+						     data-kind/data-sid with the track once you have the link. -->
+						<section class="file" id="listening" aria-labelledby="listening-h">
+							<article class="doc">
+								<h1 id="listening-h">Listening</h1>
+								<p class="subtitle">What is on rotation lately</p>
+								<hr />
+
+								<div class="player">
+									<iframe class="sp-frame" id="sp-frame"
+										src="https://open.spotify.com/embed/album/18qJgKH8dyYe2RRp6TbnNY"
+										title="Spotify player" loading="lazy"
+										allow="encrypted-media; clipboard-write; picture-in-picture"></iframe>
+									<p class="player-note">
+										Nothing plays until you press play. Spotify gives everyone a
+										preview; sign in there for the full track.
+									</p>
+								</div>
+
+								<h2>Rotation</h2>
+								<p>Pick one to load it into the player.</p>
+								<ol class="tracklist" id="tracklist">
+									<li><button type="button" class="is-current" data-kind="album" data-sid="18qJgKH8dyYe2RRp6TbnNY">expectations<span class="tl-artist">Olivia Rodrigo</span></button></li>
+									<li><button type="button" data-kind="track" data-sid="724utiMbqUfT1g3tqbfQYu">Spoiled little brat<span class="tl-artist">underscores</span></button></li>
+									<li><button type="button" data-kind="track" data-sid="3wjkp2V8BNLg6uNq7LUnhR">Dumbest Girl Alive<span class="tl-artist">100 gecs</span></button></li>
+									<li><button type="button" data-kind="track" data-sid="3MebYJnEDK4XdnCj3VMLjL">The Mountain<span class="tl-artist">Gorillaz</span></button></li>
+									<li><button type="button" data-kind="track" data-sid="1iNhNmEwrd2TP4XrV7pQBI">If I Could Be a Constellation<span class="tl-artist">Kessoku Band</span></button></li>
+								</ol>
+							</article>
+						</section>
+
+						<!-- ===================== Contact ===================== -->
+						<section class="file" id="contact" aria-labelledby="contact-h">
+							<article class="doc">
+								<h1 id="contact-h">Contact</h1>
+								<p class="subtitle">Open to software engineering roles</p>
+								<hr />
+
+								<p>
+									The quickest way to reach me is this form. It goes straight to
+									my inbox and I will reply within a day or so. You can also find
+									me on
+									<a href="https://www.linkedin.com/in/colton-phass-61223a255/" rel="noopener">LinkedIn</a>
+									or <a href="https://github.com/coltonphass" rel="noopener">GitHub</a>.
+								</p>
+
+								<form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+									<input type="hidden" name="form-name" value="contact" />
+									<p class="hp">
+										<label>Leave this field empty
+											<input name="bot-field" tabindex="-1" autocomplete="off" />
+										</label>
+									</p>
+									<div class="field-row">
+										<span class="field">
+											<label for="cf-name">Name</label>
+											<input id="cf-name" name="name" type="text" required />
+										</span>
+										<span class="field">
+											<label for="cf-email">Email</label>
+											<input id="cf-email" name="email" type="email" required />
+										</span>
+									</div>
+									<span class="field">
+										<label for="cf-message">Message</label>
+										<textarea id="cf-message" name="message" rows="5" required></textarea>
+									</span>
+									<span class="field-actions">
+										<button type="submit">Send message</button>
+										<span id="form-status" class="form-status" role="status" aria-live="polite"></span>
+									</span>
+								</form>
+							</article>
+						</section>
+
+						<!-- ================== Résumé (PDF) =================== -->
+						<section class="file" id="resume" aria-label="Résumé">
+							<div class="pdf-wrap">
+								<div class="pdf-bar">
+									<span class="pdf-name">Colton_Phass_Resume.pdf</span>
+									<span class="pdf-actions">
+										<a class="tb-btn" href="Resume/Colton_Phass_Resume.pdf" target="_blank" rel="noopener">Open in new tab ↗</a>
+										<a class="tb-btn" href="Resume/Colton_Phass_Resume.pdf" download>Download ↓</a>
+									</span>
+								</div>
+
+								<!-- lazy so the PDF isn't fetched on every page load, while
+								     still working with no JS at all -->
+								<iframe
+									class="pdf-frame"
+									src="Resume/Colton_Phass_Resume.pdf#view=FitH"
+									title="Colton Phass résumé (PDF)"
+									loading="lazy"
+								></iframe>
+
+								<!-- Mobile browsers render PDFs in iframes poorly or not at
+								     all, so below 640px this replaces the embed. -->
+								<div class="pdf-fallback">
+									<p><strong>Résumé, PDF</strong></p>
+									<p>Inline preview is not reliable on small screens, so open or download it instead.</p>
+									<p class="pdf-fallback-actions">
+										<a class="tb-btn" href="Resume/Colton_Phass_Resume.pdf" target="_blank" rel="noopener">Open ↗</a>
+										<a class="tb-btn" href="Resume/Colton_Phass_Resume.pdf" download>Download ↓</a>
+									</p>
+								</div>
+							</div>
+						</section>
+					</div>
+
+					<!-- ================ INTEGRATED TERMINAL =============== -->
+					<section class="term" id="term" aria-label="Terminal">
+						<div class="term-bar">
+							<button class="term-tab is-on" type="button" data-panel="terminal">Terminal</button>
+							<button class="term-tab" type="button" data-panel="output">Output</button>
+							<button class="term-tab" type="button" data-panel="problems">Problems<span class="term-badge" id="prob-badge">0</span></button>
+							<button type="button" id="term-toggle" aria-label="Collapse panel">▾</button>
 						</div>
 
-						<p class="field">
-							<label for="cf-message">Message</label>
-							<textarea id="cf-message" name="message" rows="5" required></textarea>
-						</p>
+						<div class="term-body" data-panel="terminal" id="term-body">
+							<div class="term-input-row">
+								<span class="ps1">colton<span class="at">@</span>portfolio</span><span class="dim">:~$</span>
+								<label for="term-input" class="sr-only">Terminal input</label>
+								<input id="term-input" type="text" autocomplete="off" spellcheck="false" />
+							</div>
+						</div>
 
-						<p class="field-actions">
-							<button type="submit">Send message</button>
-							<span id="form-status" class="form-status" role="status" aria-live="polite"></span>
-						</p>
-					</form>
-				</section>
-			</main>
+						<div class="term-body" data-panel="output" id="output-body" hidden>
+							<p class="term-line dim">Collecting load metrics…</p>
+						</div>
 
-			<footer class="site-footer">
-				<p>
-					Built by hand — no framework, no build step.
-					<a href="https://github.com/coltonphass/Portfolio" rel="noopener"
-						>Source</a
-					>.
-				</p>
-				<p class="colophon">© <span id="year">2026</span> Colton Phass</p>
+						<div class="term-body" data-panel="problems" id="problems-body" hidden>
+							<p class="term-line dim">Running checks…</p>
+						</div>
+					</section>
+				</main>
+			</div>
+
+			<!-- ===================== STATUS BAR ==================== -->
+			<footer class="statusbar">
+				<span class="st accent">⎇ main</span>
+				<span class="st" id="st-open">1 open</span>
+				<span class="st hide-sm">Active Public Trust</span>
+				<span class="st spacer"></span>
+				<span class="st hide-sm">Maryland, USA</span>
+				<span class="st" id="st-lang">Overview</span>
 			</footer>
 		</div>
 
-		<script src="assets/site.js"></script>
+		<div class="palette-backdrop" id="pal-backdrop" hidden></div>
+		<div class="palette" id="palette" hidden role="dialog" aria-label="Jump to section">
+			<input id="pal-input" type="text" aria-label="Jump to section" placeholder="Jump to section…   (Esc to close)" autocomplete="off" />
+			<ul id="pal-list"></ul>
+		</div>
+
+		<script src="assets/site.js?v=8"></script>
 	</body>
 </html>
