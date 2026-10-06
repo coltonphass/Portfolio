@@ -163,19 +163,47 @@ strong {
 	gap: 7px;
 }
 
-.lights i {
-	width: 11px;
-	height: 11px;
+.light {
+	width: 12px;
+	height: 12px;
+	padding: 0;
+	border: none;
 	border-radius: 50%;
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+	font-family: var(--mono);
+	font-size: 9px;
+	font-weight: 700;
+	line-height: 1;
+	color: rgba(0, 0, 0, 0.62);
+	transition: filter 0.15s ease;
 }
 
-.lights i:nth-child(1) {
+.light span {
+	opacity: 0;
+	transition: opacity 0.15s ease;
+	pointer-events: none;
+	margin-top: -0.5px;
+}
+
+/* macOS shows the glyphs when the cluster is hovered, not each dot */
+.lights:hover .light span,
+.light:focus-visible span {
+	opacity: 1;
+}
+
+.light:hover {
+	filter: brightness(1.18);
+}
+
+.light.close {
 	background: #fb4934;
 }
-.lights i:nth-child(2) {
+.light.min {
 	background: #fabd2f;
 }
-.lights i:nth-child(3) {
+.light.max {
 	background: #b8bb26;
 }
 
@@ -452,6 +480,95 @@ strong {
 
 .pane {
 	overflow-y: auto;
+}
+
+
+/* ---------------------------------------------------------
+   7b. Tab reordering
+   HTML5 drag and drop, so this is a pointer affordance. Touch
+   devices do not fire these events and simply keep the order.
+   --------------------------------------------------------- */
+.tab {
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.tab.is-dragging {
+	opacity: 0.45;
+}
+
+.tab.drop-before {
+	box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.tab.drop-after {
+	box-shadow: inset -2px 0 0 var(--accent);
+}
+
+/* ---------------------------------------------------------
+   7c. Focus mode (the green light)
+   --------------------------------------------------------- */
+[data-zen="on"] .explorer,
+[data-zen="on"] .term,
+[data-zen="on"] .breadcrumb {
+	display: none;
+}
+
+[data-zen="on"] .workbench {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+[data-zen="on"] .doc {
+	margin: 0 auto;
+}
+
+/* ---------------------------------------------------------
+   7d. The duck
+   --------------------------------------------------------- */
+.duck-stage {
+	position: fixed;
+	inset: 0;
+	z-index: 90;
+	display: grid;
+	place-items: center;
+	background: var(--chrome-2);
+	animation: app-in 0.3s ease backwards;
+}
+
+.duck-stage[hidden] {
+	display: none;
+}
+
+.duck-inner {
+	text-align: center;
+	padding: 24px;
+}
+
+.duck {
+	display: block;
+	margin: 0 auto 22px;
+	animation: duck-spin 2.6s linear infinite;
+	transform-origin: 50% 55%;
+}
+
+@keyframes duck-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.duck-line {
+	font-family: var(--mono);
+	font-size: 1rem;
+	color: var(--text);
+}
+
+.duck-sub {
+	font-family: var(--mono);
+	font-size: 0.8rem;
+	color: var(--text-mute);
+	margin-top: 6px !important;
+	margin-bottom: 20px !important;
 }
 
 /* ---------------------------------------------------------
@@ -1988,6 +2105,7 @@ button[type="submit"]:disabled {
 		animation: none;
 	}
 	.chip,
+	.duck,
 	.ide,
 	.doc > *,
 	.explorer .folder,

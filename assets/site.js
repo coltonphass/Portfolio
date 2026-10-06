@@ -48,6 +48,7 @@
 		// Independent steps: one throwing must not skip the others.
 		[
 			initWorkbench,
+			initWindowControls,
 			initDrawer,
 			initPanels,
 			initPreviews,
@@ -129,6 +130,41 @@
 			tab.addEventListener("click", function () {
 				openFile(id);
 			});
+
+			tab.draggable = true;
+			tab.addEventListener("dragstart", function (e) {
+				dragging = id;
+				tab.classList.add("is-dragging");
+				e.dataTransfer.effectAllowed = "move";
+				// Firefox needs data set or the drag never starts
+				try {
+					e.dataTransfer.setData("text/plain", id);
+				} catch (err) {}
+			});
+			tab.addEventListener("dragend", function () {
+				dragging = null;
+				clearDropMarks();
+				tab.classList.remove("is-dragging");
+			});
+			tab.addEventListener("dragover", function (e) {
+				if (!dragging || dragging === id) return;
+				e.preventDefault();
+				e.dataTransfer.dropEffect = "move";
+				var r = tab.getBoundingClientRect();
+				var before = e.clientX < r.left + r.width / 2;
+				clearDropMarks();
+				tab.classList.add(before ? "drop-before" : "drop-after");
+			});
+			tab.addEventListener("dragleave", function () {
+				tab.classList.remove("drop-before", "drop-after");
+			});
+			tab.addEventListener("drop", function (e) {
+				if (!dragging || dragging === id) return;
+				e.preventDefault();
+				var r = tab.getBoundingClientRect();
+				moveTab(dragging, id, e.clientX < r.left + r.width / 2);
+			});
+
 			els.tabs.appendChild(tab);
 		});
 
@@ -269,6 +305,86 @@
 		});
 	}
 
+
+	var dragging = null;
+
+	function clearDropMarks() {
+		[].slice.call(document.querySelectorAll(".tab")).forEach(function (t) {
+			t.classList.remove("drop-before", "drop-after");
+		});
+	}
+
+	// Pull the dragged tab out first, then insert relative to the target's
+	// position in the shortened list, so the index is never stale.
+	function moveTab(fromId, toId, before) {
+		var from = open.indexOf(fromId);
+		if (from === -1) return;
+		open.splice(from, 1);
+		var to = open.indexOf(toId);
+		if (to === -1) {
+			open.push(fromId);
+		} else {
+			open.splice(before ? to : to + 1, 0, fromId);
+		}
+		dragging = null;
+		render();
+	}
+
+	/* ---------------- window controls ----------------
+	   The three dots do window things: collapse the panel, toggle a
+	   distraction free reading mode, and close. Close is a joke, and it
+	   is reversible, so nothing is actually lost.
+	   -------------------------------------------------- */
+	function initWindowControls() {
+		var closeBtn = document.getElementById("win-close");
+		var minBtn = document.getElementById("win-min");
+		var maxBtn = document.getElementById("win-max");
+		var stage = document.getElementById("duck-stage");
+		var back = document.getElementById("duck-back");
+
+		if (minBtn) {
+			minBtn.addEventListener("click", function () {
+				var term = document.getElementById("term");
+				if (!term) return;
+				var down = term.classList.toggle("collapsed");
+				var t = document.getElementById("term-toggle");
+				if (t) t.textContent = down ? "\u25b4" : "\u25be";
+			});
+		}
+
+		if (maxBtn) {
+			maxBtn.addEventListener("click", function () {
+				var on =
+					document.documentElement.getAttribute("data-zen") === "on";
+				document.documentElement.setAttribute(
+					"data-zen",
+					on ? "off" : "on",
+				);
+				maxBtn.setAttribute(
+					"aria-label",
+					on ? "Toggle focus mode" : "Leave focus mode",
+				);
+			});
+		}
+
+		if (closeBtn && stage) {
+			var hide = function () {
+				stage.hidden = true;
+				closeBtn.focus();
+			};
+			closeBtn.addEventListener("click", function () {
+				stage.hidden = false;
+				if (back) back.focus();
+			});
+			if (back) back.addEventListener("click", hide);
+			stage.addEventListener("click", function (e) {
+				if (e.target === stage) hide();
+			});
+			document.addEventListener("keydown", function (e) {
+				if (e.key === "Escape" && !stage.hidden) hide();
+			});
+		}
+	}
 
 	/* ---------------- explorer drawer ----------------
 	   Under 950px the explorer is off-canvas. Without this the tab strip

@@ -32,7 +32,7 @@
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='monospace' fill='%23fe8019'%3E%26gt;%3C/text%3E%3C/svg%3E"
 		/>
 
-		<link rel="stylesheet" href="assets/style.css?v=11" />
+		<link rel="stylesheet" href="assets/style.css?v=13" />
 
 		<script type="application/ld+json">
 			{
@@ -83,7 +83,11 @@
 				<button class="menu-btn" id="menu-btn" type="button" aria-label="Open sections" aria-expanded="false">
 					<svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
 				</button>
-				<span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+				<span class="lights">
+					<button type="button" class="light close" id="win-close" aria-label="Close window"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="light min" id="win-min" aria-label="Collapse the panel"><span aria-hidden="true">&minus;</span></button>
+					<button type="button" class="light max" id="win-max" aria-label="Toggle focus mode"><span aria-hidden="true">+</span></button>
+				</span>
 				<span class="titlebar-name">coltonphass / portfolio</span>
 				<span class="titlebar-right">
 					<a class="tb-icon" href="https://github.com/coltonphass" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 015 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .3.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0012 2z" fill="currentColor"/></svg></a>
@@ -883,12 +887,29 @@
 			</footer>
 		</div>
 
+
+		<div class="duck-stage" id="duck-stage" hidden>
+			<div class="duck-inner" role="dialog" aria-label="You closed the window">
+				<svg class="duck" viewBox="0 0 140 120" width="190" height="163" aria-hidden="true">
+					<ellipse cx="62" cy="80" rx="40" ry="27" fill="#fabd2f" />
+					<path d="M24 74 L4 60 L26 63 Z" fill="#e8a33d" />
+					<path d="M48 74 q18 -14 36 0 q-18 15 -36 0 Z" fill="#e8a33d" />
+					<circle cx="92" cy="44" r="23" fill="#fabd2f" />
+					<path d="M111 40 L136 49 L111 57 Z" fill="#fe8019" />
+					<circle cx="99" cy="37" r="3.6" fill="#1d2021" />
+				</svg>
+				<p class="duck-line">You closed the window.</p>
+				<p class="duck-sub">There is only duck now.</p>
+				<button type="button" class="tb-btn" id="duck-back">Put it back</button>
+			</div>
+		</div>
+
 		<div class="palette-backdrop" id="pal-backdrop" hidden></div>
 		<div class="palette" id="palette" hidden role="dialog" aria-label="Jump to section">
 			<input id="pal-input" type="text" aria-label="Jump to section" placeholder="Jump to section…   (Esc to close)" autocomplete="off" />
 			<ul id="pal-list"></ul>
 		</div>
 
-		<script src="assets/site.js?v=11"></script>
+		<script src="assets/site.js?v=13"></script>
 	</body>
 </html>
