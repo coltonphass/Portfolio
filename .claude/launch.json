@@ -16,7 +16,7 @@
     {
       "name": "budget-app",
       "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
-      "runtimeArgs": ["C:\\Users\\chief\\github\\budget-app\\node_modules\\vite\\bin\\vite.js", "C:\\Users\\chief\\github\\budget-app", "--port", "5173"],
+      "runtimeArgs": ["C:\\Users\\chief\\github\\budget-app\\node_modules\\vite\\bin\\vite.js", "C:\\Users\\chief\\github\\budget-app", "--config", "C:\\Users\\chief\\github\\budget-app\\config\\vite.config.ts", "--port", "5173"],
       "port": 5173
     }
   ]

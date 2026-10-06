@@ -1,1068 +1,63 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<!-- SEO: Primary meta tags -->
-		<title>Colton Phass - Software Engineer I</title>
+		<title>Colton Phass — Software Engineer</title>
 		<meta
 			name="description"
-			content="Colton Phass — Software Engineer. Projects, experience, and writing from a developer focused on building efficient, scalable, user-friendly software."
+			content="Colton Phass is a software engineer working on a Defense Health Agency case management system — data integrity, workflow automation, and Section 508 accessibility."
 		/>
-		<meta name="author" content="Colton Phass" />
-		<meta
-			name="keywords"
-			content="Colton Phass, software engineer, portfolio, projects, blog, GitHub, JavaScript, C++, Python, Java"
-		/>
-		<meta name="robots" content="index, follow" />
-		<meta name="googlebot" content="index, follow, max-image-preview:large" />
 		<link rel="canonical" href="https://www.coltonphass.com/" />
-		<meta name="theme-color" content="#0a0a0b" />
+		<meta name="author" content="Colton Phass" />
 
-		<!-- Favicon (inline SVG: emerald >_ prompt) -->
-		<link
-			rel="icon"
-			type="image/svg+xml"
-			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0b'/%3E%3Cpath d='M9 11l5 5-5 5' stroke='%2334d399' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='17' y1='22' x2='23' y2='22' stroke='%2334d399' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E"
-		/>
-
-		<!-- Open Graph / Social preview -->
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://www.coltonphass.com/" />
 		<meta property="og:title" content="Colton Phass — Software Engineer" />
 		<meta
 			property="og:description"
-			content="Software engineer portfolio: projects, experience, and writing."
+			content="Software engineer working on a Defense Health Agency case management system. Data integrity, workflow automation, and Section 508 accessibility."
 		/>
-		<meta property="og:url" content="https://www.coltonphass.com/" />
-		<meta property="og:site_name" content="Colton Phass" />
 		<meta
 			property="og:image"
 			content="https://www.coltonphass.com/images/coltonpfp-1.webp.jpg"
 		/>
+		<meta name="twitter:card" content="summary" />
 
-		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Colton Phass — Software Engineer" />
-		<meta
-			name="twitter:description"
-			content="Software engineer portfolio: projects, experience, and writing."
-		/>
-		<meta
-			name="twitter:image"
-			content="https://www.coltonphass.com/images/coltonpfp-1.webp.jpg"
-		/>
-
-		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-			rel="stylesheet"
+			rel="icon"
+			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='monospace' fill='%2334d399'%3E%26gt;%3C/text%3E%3C/svg%3E"
 		/>
+
+		<!-- Set the theme before first paint so there is no light/dark flash. -->
+		<script>
+			(function () {
+				try {
+					var t = localStorage.getItem("theme");
+					if (t === "light" || t === "dark")
+						document.documentElement.setAttribute("data-theme", t);
+				} catch (e) {}
+			})();
+		</script>
 
 		<link rel="stylesheet" href="assets/style.css" />
-	</head>
-	<body>
-		<!-- ===================== CHROME ===================== -->
-		<a href="#home" class="brand">colton<span class="accent">phass</span></a>
 
-		<nav class="dot-nav" aria-label="Section navigation">
-			<a href="#home"
-				><span class="label">home</span><span class="dot"></span
-			></a>
-			<a href="#about"
-				><span class="label">about</span><span class="dot"></span
-			></a>
-			<a href="#skills"
-				><span class="label">skills</span><span class="dot"></span
-			></a>
-			<a href="#experience"
-				><span class="label">experience</span><span class="dot"></span
-			></a>
-			<a href="#projects"
-				><span class="label">projects</span><span class="dot"></span
-			></a>
-			<a href="#education"
-				><span class="label">education</span><span class="dot"></span
-			></a>
-			<a href="#contact"
-				><span class="label">contact</span><span class="dot"></span
-			></a>
-		</nav>
-
-		<main>
-			<!-- ===================== HERO ===================== -->
-			<section id="home" class="section hero wrap">
-				<div class="hero-grid">
-					<!-- welcome intro -->
-					<div class="hero-intro">
-						<span class="kernel-chip">
-							<span class="kernel-dot"></span> SYSTEM.ONLINE · available for
-							work
-						</span>
-
-						<h1>
-							<span class="hello">Hello, I'm</span>
-							<span class="name">Colton Phass</span>
-						</h1>
-
-						<p class="hero-tagline">
-							<span class="role-tag">&lt;Developer /&gt;</span> Building
-							creative, scalable software. Currently focused on web development,
-							healthcare systems, database integration, and Pygame.
-						</p>
-
-						<div class="hero-actions">
-							<a href="#projects" class="btn btn-primary">▷ View Projects</a>
-							<a
-								href="https://github.com/coltonphass"
-								target="_blank"
-								rel="noopener"
-								class="btn btn-ghost"
-								>⎇ GitHub</a
-							>
-						</div>
-
-						<div class="loaded-modules">
-							<span class="lm-label">LOADED_MODULES:</span>
-							<span class="lm-badge">PYTHON</span>
-							<span class="lm-badge">JAVA</span>
-							<span class="lm-badge">JAVASCRIPT</span>
-							<span class="lm-badge">C++</span>
-							<span class="lm-badge">SQL</span>
-							<span class="lm-badge">OpenText AppWorks</span>
-							<span class="lm-badge">GIT</span>
-						</div>
-					</div>
-
-					<!-- code window -->
-					<div class="code-window">
-						<div class="code-titlebar">
-							<div class="traffic">
-								<span class="r"></span><span class="y"></span
-								><span class="g"></span>
-							</div>
-							<span class="code-filename">portfolio.tsx</span>
-						</div>
-
-						<div class="code-body">
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 1"><span class="ln">1</span><span class="cc"><span class="tok-comment">// Welcome to my workspace</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 2"><span class="ln">2</span><span class="cc"><span class="tok-key">import</span> <span class="tok-punc">{</span> <span class="tok-tag">Developer</span> <span class="tok-punc">}</span> <span class="tok-key">from</span> <span class="tok-str">'./universe'</span><span class="tok-punc">;</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 3"><span class="ln">3</span><span class="cc"> </span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 4"><span class="ln">4</span><span class="cc"><span class="tok-key">const</span> <span class="tok-fn">Colton</span> <span class="tok-punc">= ()</span> <span class="tok-key">=&gt;</span> <span class="tok-punc">{</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 5"><span class="ln">5</span><span class="cc">  <span class="tok-key">return</span> <span class="tok-punc">(</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 6"><span class="ln">6</span><span class="cc">    <span class="tok-punc">&lt;</span><span class="tok-tag">Developer</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 7"><span class="ln">7</span><span class="cc">      <span class="tok-attr">name</span><span class="tok-punc">=</span><span class="tok-str">"Colton Phass"</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 8"><span class="ln">8</span><span class="cc">      <span class="tok-attr">role</span><span class="tok-punc">=</span><span class="tok-str">"Software Engineer I"</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 9"><span class="ln">9</span><span class="cc">      <span class="tok-attr">focus</span><span class="tok-punc">=</span><span class="tok-str">"Having fun through coding"</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 10"><span class="ln">10</span><span class="cc">    <span class="tok-punc">/&gt;</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 11"><span class="ln">11</span><span class="cc">  <span class="tok-punc">);</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line" style="--i: 12"><span class="ln">12</span><span class="cc"><span class="tok-punc">};</span></span></div>
-						</div>
-
-						<div class="code-actions">
-							<button id="run-profile" class="btn btn-primary" type="button">
-								▷ Run Profile
-							</button>
-							<a href="#projects" class="btn btn-ghost">▢ View Projects</a>
-							<a
-								href="Resume/Colton_Portfolio_Resume.pdf"
-								target="_blank"
-								rel="noopener"
-								class="btn btn-ghost"
-								>📄 Resume</a
-							>
-						</div>
-
-						<div class="code-console" id="code-console">
-							<div class="cline">
-								<span class="cprompt">$</span> run profile
-							</div>
-							<div class="cline">&gt; compiling workspace...</div>
-							<div class="cline">
-								&gt; loaded: Colton Phass - Software Engineer I
-							</div>
-							<div class="cline">
-								&gt; stack: JS · Python · Java · C++ · SQL · Git
-							</div>
-							<div class="cline">
-								<span class="cok">✓ status: available for work</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- ===================== ABOUT.system ===================== -->
-			<section id="about" class="section wrap">
-				<div class="section-head reveal">
-					<h2 class="term"><span class="prompt">&gt;_</span> # About.system</h2>
-				</div>
-
-				<div class="about-grid reveal">
-					<div class="operator-card">
-						<div class="operator-avatar">
-							<img
-								src="images/coltonpfp-1.webp.jpg"
-								alt="Colton Phass"
-								width="168"
-								height="168"
-							/>
-							<span class="live"></span>
-						</div>
-						<div class="operator-rows">
-							<div class="op-row">
-								<span class="k">OPERATOR</span>
-								<span class="v accent">COLTON PHASS</span>
-							</div>
-							<div class="op-row">
-								<span class="k">ROLE</span>
-								<span class="v link">SOFTWARE_ENGINEER I</span>
-							</div>
-							<div class="op-row">
-								<span class="k">CLEARANCE</span>
-								<span class="v">Active Secret</span>
-							</div>
-							<div class="op-row">
-								<span class="k">FROM</span>
-								<span class="v">Maryland, USA</span>
-							</div>
-							<div class="op-row">
-								<span class="k">STATUS</span>
-								<span class="tag-open">OPEN</span>
-							</div>
-						</div>
-					</div>
-
-					<div>
-						<div class="log-window">
-							<div class="log-bar">
-								<span class="prompt">&gt;_</span> user_profile.log
-							</div>
-							<div class="log-body">
-								<div>
-									<div class="log-cmd">whoami</div>
-									<p class="log-out">
-										Software engineer focused on building fun, scalable, and
-										interactive software. Self-taught since 2022, I fell for
-										<strong>C++</strong> in 2023 and now work across
-										<strong>DHA Healthcare Information Systems</strong>,
-										JavaScript, business process automation, and
-										<strong>SQL</strong>.
-									</p>
-								</div>
-								<div>
-									<div class="log-cmd">cat mission.txt</div>
-									<p class="log-out">
-										Finding different ways to express myself through code,
-										practicing fundamental <strong>SWE principles</strong>, and
-										building a portfolio of projects that are
-										<strong>fun and useful</strong>. My ultimate goal is to keep
-										learning every day to the point where no idea feels out of
-										reach to build with the right effort.
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="stat-tiles">
-							<div class="stat-tile">
-								<div class="label">⌁ EXPERIENCE</div>
-								<div>
-									<span class="num">4+</span><span class="unit">yrs</span>
-								</div>
-							</div>
-							<div class="stat-tile">
-								<div class="label">&lt;/&gt; PROJECTS</div>
-								<div>
-									<span class="num">35+</span><span class="unit">built</span>
-								</div>
-							</div>
-							<div class="stat-tile caffeine">
-								<div class="label">☕ CAFFEINE</div>
-								<div>
-									<span class="num">∞</span><span class="unit">ml</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- ===================== SKILLS.json ===================== -->
-			<section id="skills" class="section wrap">
-				<div class="section-head reveal">
-					<h2 class="term">
-						<span class="ico">✦</span> <span class="prompt">$</span> #
-						Skills.json
-					</h2>
-					<p>The languages and tools I reach for. Drag the globe to explore.</p>
-				</div>
-
-				<div class="reveal">
-					<div class="universe" id="universe">
-						<svg
-							class="globe-lines"
-							width="388"
-							height="388"
-							viewBox="0 0 400 400"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1"
-							aria-hidden="true"
-						>
-							<circle cx="200" cy="200" r="190" />
-							<ellipse cx="200" cy="200" rx="190" ry="150" />
-							<ellipse cx="200" cy="200" rx="190" ry="95" />
-							<ellipse cx="200" cy="200" rx="190" ry="38" />
-							<line x1="10" y1="200" x2="390" y2="200" />
-							<g class="spin">
-								<ellipse cx="200" cy="200" rx="150" ry="190" />
-								<ellipse cx="200" cy="200" rx="95" ry="190" />
-								<ellipse cx="200" cy="200" rx="38" ry="190" />
-								<line x1="200" y1="10" x2="200" y2="390" />
-							</g>
-						</svg>
-
-						<div class="universe-stage" id="sphere-stage">
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-									alt="JavaScript"
-									loading="lazy"
-								/><span class="nlabel">JavaScript</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-									alt="Python"
-									loading="lazy"
-								/><span class="nlabel">Python</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-									alt="Java"
-									loading="lazy"
-								/><span class="nlabel">Java</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-									alt="C++"
-									loading="lazy"
-								/><span class="nlabel">C++</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
-									alt="C"
-									loading="lazy"
-								/><span class="nlabel">C</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-									alt="HTML5"
-									loading="lazy"
-								/><span class="nlabel">HTML5</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-									alt="CSS3"
-									loading="lazy"
-								/><span class="nlabel">CSS3</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-									alt="MySQL"
-									loading="lazy"
-								/><span class="nlabel">MySQL</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-									alt="Git"
-									loading="lazy"
-								/><span class="nlabel">Git</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-									alt="Linux"
-									loading="lazy"
-								/><span class="nlabel">Linux</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-									alt="VS Code"
-									loading="lazy"
-								/><span class="nlabel">VS Code</span>
-							</div>
-							<div class="tech-node">
-								<img
-									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg"
-									alt="IntelliJ IDEA"
-									loading="lazy"
-								/><span class="nlabel">IntelliJ</span>
-							</div>
-						</div>
-					</div>
-					<p class="universe-hint">✦ drag to explore the stack</p>
-				</div>
-			</section>
-
-			<!-- ===================== EXPERIENCE ===================== -->
-			<section id="experience" class="section wrap">
-				<div class="experience-head reveal">
-					<h2 class="term">
-						<span class="ico">⎇</span> <span class="prompt">$</span> git log
-						--stat --oneline
-					</h2>
-				</div>
-
-				<div class="git-graph">
-					<div class="git-commit reveal">
-						<span class="git-node"></span>
-						<div class="git-card">
-							<div class="git-card-head">
-								<span class="git-hash">a1f9c2e</span>
-								<span class="branch-badge">HEAD → engineer</span>
-								<span class="git-date">2025-11 — Present</span>
-							</div>
-							<div class="git-card-body">
-								<h3>Software Engineer I</h3>
-								<p class="git-org">Kreative Technologies</p>
-								<p class="git-desc">
-									Manage the integration of clinical applications into the
-									<strong>OpenText</strong> platform for Defense Health Agency
-									(DHA) systems. Partner closely with cross-functional
-									engineering teams to modernize legacy healthcare software,
-									building stable application environments that
-									<strong>mitigate data risks</strong> and securely handle live
-									data for medical staff.
-								</p>
-								<div class="git-tags">
-									<span class="git-tag">OpenText AppWorks</span>
-									<span class="git-tag">SQL</span>
-									<span class="git-tag">XML</span>
-									<span class="git-tag">DHA</span>
-									<span class="git-tag">JavaScript</span>
-									<span class="git-tag">508 Web Accessibility</span>
-								</div>
-							</div>
-							<div class="git-stats">
-								<span>▤ 14 files changed</span>
-								<span class="ins">+312 insertions</span>
-								<span class="del">-28 deletions</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="git-commit reveal">
-						<span class="git-node"></span>
-						<div class="git-card">
-							<div class="git-card-head">
-								<span class="git-hash">7d3b08a</span>
-								<span class="branch-badge">researcher</span>
-								<span class="git-date">2025-03 — Present</span>
-							</div>
-							<div class="git-card-body">
-								<h3>Student Research Assistant &amp; Curricular Co-Designer</h3>
-								<p class="git-org">Harford Community College</p>
-								<p class="git-desc">
-									Participate in FY25 curricular research development,
-									conducting AI/ML academic research, designing credit and
-									non-credit curriculum, and supporting associated academic
-									publications under faculty supervision.
-								</p>
-								<div class="git-tags">
-									<span class="git-tag">AI / ML</span>
-									<span class="git-tag">Python</span>
-									<span class="git-tag">TensorFlow</span>
-									<span class="git-tag">LLMs</span>
-									<span class="git-tag">SQL</span>
-									<span class="git-tag">Ollama</span>
-								</div>
-							</div>
-							<div class="git-stats">
-								<span>▤ 9 files changed</span>
-								<span class="ins">+180 insertions</span>
-								<span class="del">-12 deletions</span>
-							</div>
-						</div>
-					</div>
-
-					<span class="git-turn" aria-hidden="true"><i></i></span>
-
-					<div class="git-commit reveal">
-						<span class="git-node"></span>
-						<div class="git-card">
-							<div class="git-card-head">
-								<span class="git-hash">c4e9f1b</span>
-								<span class="branch-badge">curriculum</span>
-								<span class="git-date">2024-05 — 2024-12</span>
-							</div>
-							<div class="git-card-body">
-								<h3>Student Curricular Co-Designer</h3>
-								<p class="git-org">Harford Community College</p>
-								<p class="git-desc">
-									Drove the curricular update for the CIS 217 Introduction to
-									Web Development course; weekly review meetings, QA-testing
-									materials, and collaborating with instructors and peers to
-									build quizzes and take-home programming projects.
-								</p>
-								<div class="git-tags">
-									<span class="git-tag">HTML5</span>
-									<span class="git-tag">CSS3</span>
-									<span class="git-tag">JavaScript</span>
-									<span class="git-tag">React</span>
-									<span class="git-tag">Node.js</span>
-								</div>
-							</div>
-							<div class="git-stats">
-								<span>▤ 7 files changed</span>
-								<span class="ins">+140 insertions</span>
-								<span class="del">-22 deletions</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="git-commit reveal">
-						<span class="git-node"></span>
-						<div class="git-card">
-							<div class="git-card-head">
-								<span class="git-hash">9a2d3c5</span>
-								<span class="branch-badge">intern</span>
-								<span class="git-date">2024-01 — 2024-04</span>
-							</div>
-							<div class="git-card-body">
-								<h3>Full Stack Developer Intern</h3>
-								<p class="git-org">Code Zealot Studios</p>
-								<p class="git-desc">
-									Built and maintained client-facing websites; designing and
-									programming responsive, performance-optimized front-end web
-									applications and portfolios with modern UI practices.
-								</p>
-								<div class="git-tags">
-									<span class="git-tag">HTML5</span>
-									<span class="git-tag">CSS3</span>
-									<span class="git-tag">JavaScript</span>
-									<span class="git-tag">SEO</span>
-									<span class="git-tag">Lighthouse</span>
-									<span class="git-tag">Code Stitch</span>
-								</div>
-							</div>
-							<div class="git-stats">
-								<span>▤ 5 files changed</span>
-								<span class="ins">+120 insertions</span>
-								<span class="del">-15 deletions</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="git-initial reveal">
-						<span>⎇ Initial Commit · 2022 (Hello World)</span>
-					</div>
-				</div>
-			</section>
-
-			<!-- ===================== PROJECTS ===================== -->
-			<section id="projects" class="section wrap">
-				<div class="section-head reveal">
-					<h2 class="term"><span class="prompt">$</span> ls -la ~/projects</h2>
-				</div>
-
-				<div class="repos-layout reveal">
-					<!-- repo sidebar -->
-					<aside class="repo-sidebar">
-						<div class="repo-sidebar-head">
-							<span>▤ Repositories</span><span class="count">6</span>
-						</div>
-						<div class="repo-list">
-							<a href="#coming-soon" class="repo-row">
-								<div class="repo-row-top">
-									<span class="repo-name">ezee-budget</span>
-									<span class="repo-public">Coming</span>
-								</div>
-								<div class="repo-meta">
-									<span class="dot-lang" style="background: #61dafb"></span>
-									React
-								</div>
-							</a>
-							<a
-								href="https://coltonsgames.netlify.app/html/blackjack.html"
-								target="_blank"
-								rel="noopener"
-								class="repo-row"
-							>
-								<div class="repo-row-top">
-									<span class="repo-name">blackjack</span>
-									<span class="repo-public">Public</span>
-								</div>
-								<div class="repo-meta">
-									<span class="dot-lang" style="background: #f1e05a"></span>
-									JavaScript
-								</div>
-							</a>
-							<a
-								href="https://github.com/coltonphass/Space-Shooter"
-								target="_blank"
-								rel="noopener"
-								class="repo-row"
-							>
-								<div class="repo-row-top">
-									<span class="repo-name">space-shooter</span>
-									<span class="repo-public">Public</span>
-								</div>
-								<div class="repo-meta">
-									<span class="dot-lang" style="background: #3572a5"></span>
-									Python
-								</div>
-							</a>
-							<a
-								href="https://daovienmeditation.com/"
-								target="_blank"
-								rel="noopener"
-								class="repo-row"
-							>
-								<div class="repo-row-top">
-									<span class="repo-name">dao-vien-meditation</span>
-									<span class="repo-public">Public</span>
-								</div>
-								<div class="repo-meta">
-									<span class="dot-lang" style="background: #f1e05a"></span>
-									JavaScript
-								</div>
-							</a>
-							<a
-								href="https://dentitchsolutions.netlify.app/"
-								target="_blank"
-								rel="noopener"
-								class="repo-row"
-							>
-								<div class="repo-row-top">
-									<span class="repo-name">dentitch-solutions</span>
-									<span class="repo-public">Public</span>
-								</div>
-								<div class="repo-meta">
-									<span class="dot-lang" style="background: #f1e05a"></span>
-									JavaScript
-								</div>
-							</a>
-							<a
-								href="https://github.com/coltonphass/Genesis-Alphabetizer"
-								target="_blank"
-								rel="noopener"
-								class="repo-row"
-							>
-								<div class="repo-row-top">
-									<span class="repo-name">genesis-alphabetizer</span>
-									<span class="repo-public">Public</span>
-								</div>
-								<div class="repo-meta">
-									<span class="dot-lang" style="background: #3572a5"></span>
-									Python
-								</div>
-							</a>
-						</div>
-					</aside>
-
-					<!-- pinned projects -->
-					<div>
-						<p class="pinned-label">PINNED PROJECTS</p>
-						<div class="pinned-grid">
-							<div class="proj-card">
-								<a href="#coming-soon" class="pc-preview">
-									<video autoplay muted loop playsinline loading="lazy">
-										<source src="images/Project-images/EzeeBudget.mp4" type="video/mp4">
-										<img src="images/Project-images/EzeeBudget.gif" alt="Ezee Budget" />
-									</video>
-								</a>
-								<div class="pc-head">
-									<span class="pc-name">▢ ezee-budget</span>
-									<span class="pc-public">Coming Soon</span>
-								</div>
-								<p class="pc-desc">
-									A collaborative household budgeting PWA built with React,
-									TypeScript, and Supabase. Track shared expenses, set goals,
-									and visualize spending together.
-								</p>
-								<div class="pc-tags">
-									<span class="pc-tag">React</span>
-									<span class="pc-tag">TypeScript</span>
-									<span class="pc-tag">Supabase</span>
-									<span class="pc-tag">Tailwind</span>
-								</div>
-								<div class="pc-foot">
-									<span class="lang"
-										><span class="dot-lang" style="background: #61dafb"></span>
-										React</span
-									>
-									<a href="#coming-soon" class="pc-link">Coming Soon ↗</a>
-								</div>
-							</div>
-
-							<div class="proj-card">
-								<a
-									href="https://github.com/coltonphass/Space-Shooter"
-									target="_blank"
-									rel="noopener"
-									class="pc-preview"
-								>
-									<img
-										src="images/Project-images/SpaceShooter.gif"
-										alt="Space Shooter"
-									/>
-								</a>
-								<div class="pc-head">
-									<span class="pc-name">▢ space-shooter</span>
-									<span class="pc-public">Public</span>
-								</div>
-								<p class="pc-desc">
-									A classic arcade-style space shooter with collision detection,
-									score tracking, and sprite animation, built with Python and
-									Pygame.
-								</p>
-								<div class="pc-tags">
-									<span class="pc-tag">Python</span>
-									<span class="pc-tag">Pygame</span>
-								</div>
-								<div class="pc-foot">
-									<span class="lang"
-										><span class="dot-lang" style="background: #3572a5"></span>
-										Python</span
-									>
-									<a
-										href="https://github.com/coltonphass/Space-Shooter"
-										target="_blank"
-										rel="noopener"
-										class="pc-link"
-										>Code ↗</a
-									>
-								</div>
-							</div>
-
-							<div class="proj-card">
-								<a
-									href="https://daovienmeditation.com/"
-									target="_blank"
-									rel="noopener"
-									class="pc-preview"
-								>
-									<video autoplay muted loop playsinline loading="lazy">
-										<source src="images/Project-images/Dao-Vien.mp4" type="video/mp4">
-									</video>
-								</a>
-								<div class="pc-head">
-									<span class="pc-name">▢ dao-vien-meditation</span>
-									<span class="pc-public">Public</span>
-								</div>
-								<p class="pc-desc">
-									A site for Dao Vien Meditation Center sharing information
-									about classes, upcoming events, and course material.
-								</p>
-								<div class="pc-tags">
-									<span class="pc-tag">HTML</span>
-									<span class="pc-tag">CSS</span>
-									<span class="pc-tag">JavaScript</span>
-								</div>
-								<div class="pc-foot">
-									<span class="lang"
-										><span class="dot-lang" style="background: #f1e05a"></span>
-										JavaScript</span
-									>
-									<a
-										href="https://daovienmeditation.com/"
-										target="_blank"
-										rel="noopener"
-										class="pc-link"
-										>Demo ↗</a
-									>
-								</div>
-							</div>
-
-							<div class="proj-card">
-								<a
-									href="https://github.com/coltonphass/Genesis-Alphabetizer"
-									target="_blank"
-									rel="noopener"
-									class="pc-preview"
-								>
-									<video autoplay muted loop playsinline loading="lazy">
-										<source src="images/Project-images/Genesis-Alphabetizer.mp4" type="video/mp4">
-									</video>
-								</a>
-								<div class="pc-head">
-									<span class="pc-name">▢ genesis-alphabetizer</span>
-									<span class="pc-public">Public</span>
-								</div>
-								<p class="pc-desc">
-									A word verification tool that reads "The Book of Genesis" and
-									extracts unique words, then verifies them for spelling
-									accuracy.
-								</p>
-								<div class="pc-tags">
-									<span class="pc-tag">Python</span>
-									<span class="pc-tag">Text Processing</span>
-									<span class="pc-tag">NLP</span>
-								</div>
-								<div class="pc-foot">
-									<span class="lang"
-										><span class="dot-lang" style="background: #3572a5"></span>
-										Python</span
-									>
-									<a
-										href="https://github.com/coltonphass/Genesis-Alphabetizer"
-										target="_blank"
-										rel="noopener"
-										class="pc-link"
-										>Code ↗</a
-									>
-								</div>
-							</div>
-						</div>
-
-						<div class="repos-more">
-							<a
-								href="https://github.com/coltonphass?tab=repositories"
-								target="_blank"
-								rel="noopener"
-								>View all repositories ›</a
-							>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- ===================== EDUCATION ===================== -->
-			<section id="education" class="section wrap">
-				<div class="section-head reveal">
-					<h2 class="term"><span class="prompt">$</span> cat ~/education</h2>
-				</div>
-
-				<div class="edu-list reveal">
-					<div class="edu-card">
-						<div class="edu-head">
-							<span class="edu-school"
-								>University of Maryland Global Campus</span
-							>
-							<span class="edu-date">2025 — 2027 (expected)</span>
-						</div>
-						<div class="edu-degree">B.S. Computer Science</div>
-						<div class="edu-tags">
-							<span class="edu-tag hl">In Progress</span>
-							<span class="edu-tag">Anticipated 10/2027</span>
-						</div>
-					</div>
-
-					<div class="edu-card">
-						<div class="edu-head">
-							<span class="edu-school">Harford Community College</span>
-							<span class="edu-date">Graduated 05/2025</span>
-						</div>
-						<div class="edu-degree">A.A.S. Computer Information Systems</div>
-						<div class="edu-tags">
-							<span class="edu-tag hl">GPA 3.85</span>
-							<span class="edu-tag">High Honors Graduate</span>
-							<span class="edu-tag">President's List</span>
-							<span class="edu-tag">Phi Theta Kappa</span>
-							<span class="edu-tag">10+ Scholarships</span>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- ===================== CONTACT ===================== -->
-			<section id="contact" class="section wrap">
-				<div class="section-head reveal">
-					<h2 class="term">
-						<span class="ico">✉</span> <span class="prompt">$</span>
-						./contact.exe
-					</h2>
-				</div>
-
-				<div class="contact-layout reveal">
-					<!-- contact_info.json -->
-					<div class="code-window">
-						<div class="code-titlebar">
-							<div class="traffic">
-								<span class="r"></span><span class="y"></span
-								><span class="g"></span>
-							</div>
-							<span class="code-filename">contact_info.json</span>
-						</div>
-						<div class="code-body">
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">1</span><span class="cc"><span class="tok-punc">{</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">2</span><span class="cc">  <span class="tok-attr">"status"</span><span class="tok-punc">:</span> <span class="tok-str">"open_to_work"</span><span class="tok-punc">,</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">3</span><span class="cc">  <span class="tok-attr">"socials"</span><span class="tok-punc">: {</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">4</span><span class="cc">    <span class="tok-attr">"github"</span><span class="tok-punc">:</span> <span class="tok-str">"@coltonphass"</span><span class="tok-punc">,</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">5</span><span class="cc">    <span class="tok-attr">"linkedin"</span><span class="tok-punc">:</span> <span class="tok-str">"@colton-phass"</span><span class="tok-punc">,</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">6</span><span class="cc">    <span class="tok-attr">"codingame"</span><span class="tok-punc">:</span> <span class="tok-str">"@coltonphass"</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">7</span><span class="cc">  <span class="tok-punc">},</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">8</span><span class="cc">  <span class="tok-attr">"location"</span><span class="tok-punc">:</span> <span class="tok-str">"Maryland, USA"</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">9</span><span class="cc"><span class="tok-punc">}</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">10</span><span class="cc"> </span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">11</span><span class="cc"><span class="tok-comment">// Waiting for connection...</span></span></div>
-							<!-- prettier-ignore -->
-							<div class="code-line"><span class="ln">12</span><span class="cc"><span class="cursor">_</span></span></div>
-						</div>
-					</div>
-
-					<!-- sendMessage.ts -->
-					<div class="msg-panel">
-						<div class="msg-tab">
-							<span class="ts">TS</span> sendMessage.ts <span class="x">×</span>
-						</div>
-						<div class="mail-inner">
-							<div class="mail-head">
-								<span>✉ mail.compose</span>
-								<span class="secure">secure channel</span>
-							</div>
-							<div class="mail-to">
-								<span>to: @coltonphass</span>
-								<span>response: <span class="within">within 24h</span></span>
-							</div>
-
-							<form
-								name="contact"
-								method="POST"
-								data-netlify="true"
-								netlify-honeypot="bot-field"
-								id="contact-form"
-							>
-								<input type="hidden" name="form-name" value="contact" />
-								<p class="mail-hp" aria-hidden="true">
-									<label
-										>Don't fill this out if you're human:
-										<input name="bot-field" tabindex="-1" autocomplete="off"
-									/></label>
-								</p>
-
-								<div class="field-row">
-									<div class="field">
-										<label for="cf-name">NAME</label>
-										<input
-											id="cf-name"
-											name="name"
-											type="text"
-											placeholder="Your Name"
-											autocomplete="name"
-											required
-										/>
-									</div>
-									<div class="field">
-										<label for="cf-email">EMAIL</label>
-										<input
-											id="cf-email"
-											name="email"
-											type="email"
-											placeholder="your@email.com"
-											autocomplete="email"
-											required
-										/>
-									</div>
-								</div>
-
-								<div class="field">
-									<label for="cf-subject">SUBJECT</label>
-									<input
-										id="cf-subject"
-										name="subject"
-										type="text"
-										placeholder="Project inquiry / Collaboration"
-									/>
-								</div>
-
-								<div class="field">
-									<label for="cf-message">MESSAGE</label>
-									<textarea
-										id="cf-message"
-										name="message"
-										rows="5"
-										placeholder="Tell me about your project, timeline, and goals..."
-										required
-									></textarea>
-								</div>
-
-								<p class="mail-note">
-									// Protected by spam filters and rate limits
-								</p>
-
-								<button type="submit" class="btn btn-primary">
-									▷ SEND MESSAGE
-								</button>
-
-								<p class="form-status" id="form-status"></p>
-							</form>
-						</div>
-					</div>
-				</div>
-			</section>
-		</main>
-
-		<!-- ===================== FOOTER ===================== -->
-		<footer class="footer">
-			<div class="footer-inner">
-				<p>© 2026 Colton Phass</p>
-				<div class="socials">
-					<a href="https://github.com/coltonphass">GitHub</a>
-					<span class="sep">/</span>
-					<a href="https://www.linkedin.com/in/colton-phass-61223a255/"
-						>LinkedIn</a
-					>
-					<span class="sep">/</span>
-					<a href="#home">Back to top ↑</a>
-				</div>
-			</div>
-		</footer>
-
-		<script src="assets/site.js"></script>
-
-		<!-- Structured data (JSON-LD) -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
 				"@type": "Person",
 				"name": "Colton Phass",
 				"url": "https://www.coltonphass.com/",
-				"image": "https://www.coltonphass.com/images/coltonpfp-1.webp.jpg",
-				"jobTitle": "Software Engineer",
+				"jobTitle": "Software Engineer I",
+				"worksFor": {
+					"@type": "Organization",
+					"name": "Kreative Technologies"
+				},
 				"address": {
 					"@type": "PostalAddress",
 					"addressRegion": "MD",
 					"addressCountry": "US"
-				},
-				"worksFor": {
-					"@type": "Organization",
-					"name": "Kreative Technologies"
 				},
 				"alumniOf": [
 					{
@@ -1074,22 +69,450 @@
 						"name": "Harford Community College"
 					}
 				],
-				"knowsAbout": [
-					"Software Engineering",
-					"Web Development",
-					"Artificial Intelligence",
-					"Machine Learning",
-					"Python",
-					"Java",
-					"JavaScript",
-					"C++"
-				],
 				"sameAs": [
 					"https://github.com/coltonphass",
-					"https://www.linkedin.com/in/colton-phass-61223a255/",
-					"https://www.codingame.com/profile/6c0691c159ff8aa6eb18430504ab0edc7750706"
+					"https://www.linkedin.com/in/colton-phass-61223a255/"
+				],
+				"knowsAbout": [
+					"OpenText Process Automation",
+					"Business Process Management",
+					"XML/SOAP web services",
+					"SQL Server",
+					"Section 508 accessibility",
+					"Python",
+					"JavaScript"
 				]
 			}
 		</script>
+	</head>
+
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+
+		<div class="shell">
+			<header class="masthead">
+				<div class="masthead-row">
+					<h1>Colton Phass</h1>
+					<button
+						id="theme-toggle"
+						type="button"
+						class="theme-toggle"
+						aria-label="Switch colour theme"
+					>
+						<span aria-hidden="true" data-icon></span>
+					</button>
+				</div>
+
+				<p class="standfirst">
+					Software Engineer · Maryland · Active Public Trust
+				</p>
+
+				<div class="intro">
+					<p>
+						I'm a software engineer at
+						<strong>Kreative Technologies</strong>, working on a Defense
+						Health Agency case management system for pediatric special-needs
+						services. Most of my work lives in data integrity, workflow
+						automation, and Section 508 accessibility.
+					</p>
+					<p>
+						Outside of work I build 2D games in Python, run a Pi-hole and two
+						Discord bots off a Raspberry Pi, and maintain a local meditation
+						center's website. I like problems where the data is messy.
+					</p>
+				</div>
+
+				<nav class="toplinks" aria-label="Profiles and résumé">
+					<a href="https://github.com/coltonphass" rel="noopener">GitHub</a>
+					<a
+						href="https://www.linkedin.com/in/colton-phass-61223a255/"
+						rel="noopener"
+						>LinkedIn</a
+					>
+					<a href="Resume/Colton_Phass_Resume.pdf">Résumé&nbsp;↓</a>
+					<a href="#contact">Contact</a>
+				</nav>
+			</header>
+
+			<main id="main">
+				<!-- ========================= WORK ========================= -->
+				<section id="work" aria-labelledby="work-h">
+					<h2 id="work-h" class="sec">Work</h2>
+
+					<article class="entry">
+						<div class="entry-head">
+							<h3>Software Engineer I</h3>
+							<span class="when">Nov 2025 — Present</span>
+						</div>
+						<p class="org">Kreative Technologies</p>
+						<ul>
+							<li>
+								Reconciled roughly <strong>1,200 duplicate child records</strong>
+								left by a legacy data migration and cross-site entry,
+								co-developing the record-linking process with the technical
+								lead.
+							</li>
+							<li>
+								Engineered read-only safeguards for linked duplicates across
+								about <strong>120 changes</strong> to rules, forms, properties,
+								and security settings — blocking create, update, and delete
+								while preserving view access.
+							</li>
+							<li>
+								Built a BPM that sets and clears a record's duplicate flag on
+								link and unlink, and extended the discharge workflow to drop
+								dependent outcome records on rejection, preventing orphaned
+								data.
+							</li>
+							<li>
+								Delivered Section 508 remediation across referral, service
+								detail, outcome summary, and family service plan forms —
+								screen-reader labelling and colour contrast, validated with
+								NVDA and ANDI.
+							</li>
+							<li>
+								Run data remediations over XML/SOAP web services, from 30-record
+								bulk updates to multi-call fixes, including finalising 120
+								session notes after diagnosing a BPM timeout.
+							</li>
+						</ul>
+						<p class="tech">
+							OpenText Process Automation · BPM · XML/SOAP · SQL Server ·
+							Section 508
+						</p>
+					</article>
+
+					<article class="entry">
+						<div class="entry-head">
+							<h3>Student Research Assistant</h3>
+							<span class="when">Mar 2025 — Present</span>
+						</div>
+						<p class="org">Harford Community College</p>
+						<ul>
+							<li>
+								Contribute AI and machine learning research to the college's
+								FY25 curriculum initiative, supporting credit and non-credit
+								course design and related academic publications.
+							</li>
+							<li>
+								Developing the curriculum for a new credit-bearing artificial
+								intelligence course.
+							</li>
+							<li>
+								Evaluate AI platforms for instructional use — ChatGPT, Claude,
+								Gemini, Hugging Face, TensorFlow Playground, Orange Data Mining,
+								Google Colab, and Jupyter.
+							</li>
+						</ul>
+						<p class="tech">AI/ML · Python · Jupyter</p>
+					</article>
+
+					<article class="entry">
+						<div class="entry-head">
+							<h3>Student Curricular Co-Designer</h3>
+							<span class="when">May 2024 — Dec 2024</span>
+						</div>
+						<p class="org">Harford Community College</p>
+						<ul>
+							<li>
+								Co-designed updates to CIS 217: Introduction to Web Development
+								Programming through weekly curriculum reviews with faculty.
+							</li>
+							<li>
+								Built and QA-tested quizzes and programming projects covering
+								HTML5, CSS3, JavaScript, React, and Node.js, and supported
+								instructors in deploying the new material.
+							</li>
+						</ul>
+						<p class="tech">HTML5 · CSS3 · JavaScript · React · Node.js</p>
+					</article>
+
+					<article class="entry">
+						<div class="entry-head">
+							<h3>Volunteer Web Developer</h3>
+							<span class="when">Jan 2024 — Present</span>
+						</div>
+						<p class="org">Independent</p>
+						<ul>
+							<li>
+								Manage and maintain the website for a local meditation center on
+								a volunteer basis.
+							</li>
+							<li>
+								Built portfolio and mock business sites — dental, construction,
+								and fitness — with an emphasis on responsive design.
+							</li>
+							<li>
+								Apply performance and SEO practice using Google Lighthouse and
+								the CodeStitch component library.
+							</li>
+						</ul>
+						<p class="tech">HTML5 · CSS3 · JavaScript · Lighthouse</p>
+					</article>
+				</section>
+
+				<!-- ======================= PROJECTS ======================= -->
+				<section id="projects" aria-labelledby="projects-h">
+					<h2 id="projects-h" class="sec">Projects</h2>
+
+					<ul class="projects">
+						<li>
+							<div class="proj-head">
+								<span class="proj-name">ezee-budget</span>
+								<span class="lang"
+									><i class="dot" style="--c: #3178c6"></i>TypeScript</span
+								>
+							</div>
+							<p>
+								A shared household budgeting PWA — track expenses together, set
+								goals, and visualise spending. React, TypeScript, Supabase,
+								Tailwind.
+							</p>
+							<p class="proj-links"><span class="muted">Not yet public</span></p>
+						</li>
+
+						<li>
+							<div class="proj-head">
+								<span class="proj-name">genesis-alphabetizer</span>
+								<span class="lang"
+									><i class="dot" style="--c: #3572a5"></i>Python</span
+								>
+							</div>
+							<p>
+								Reads the Book of Genesis, extracts every unique word, and
+								verifies each one for spelling accuracy.
+							</p>
+							<p class="proj-links">
+								<a
+									href="https://github.com/coltonphass/Genesis-Alphabetizer"
+									rel="noopener"
+									>Source</a
+								>
+							</p>
+						</li>
+
+						<li>
+							<div class="proj-head">
+								<span class="proj-name">space-shooter</span>
+								<span class="lang"
+									><i class="dot" style="--c: #3572a5"></i>Python</span
+								>
+							</div>
+							<p>
+								An arcade-style shooter built with Pygame — collision detection,
+								score tracking, and sprite animation.
+							</p>
+							<p class="proj-links">
+								<a
+									href="https://github.com/coltonphass/Space-Shooter"
+									rel="noopener"
+									>Source</a
+								>
+							</p>
+						</li>
+
+						<li>
+							<div class="proj-head">
+								<span class="proj-name">dao-vien-meditation</span>
+								<span class="lang"
+									><i class="dot" style="--c: #f1e05a"></i>JavaScript</span
+								>
+							</div>
+							<p>
+								A site for Dao Vien Meditation Center covering classes, upcoming
+								events, and course material. Maintained on a volunteer basis.
+							</p>
+							<p class="proj-links">
+								<a href="https://daovienmeditation.com/" rel="noopener"
+									>Live site</a
+								>
+							</p>
+						</li>
+
+						<li>
+							<div class="proj-head">
+								<span class="proj-name">homelab</span>
+								<span class="lang"
+									><i class="dot" style="--c: #3572a5"></i>Python</span
+								>
+							</div>
+							<p>
+								A Raspberry Pi running Pi-hole for network-wide DNS ad blocking,
+								plus two Python Discord bots.
+							</p>
+							<p class="proj-links"><span class="muted">Self-hosted</span></p>
+						</li>
+
+						<li>
+							<div class="proj-head">
+								<span class="proj-name">blackjack</span>
+								<span class="lang"
+									><i class="dot" style="--c: #f1e05a"></i>JavaScript</span
+								>
+							</div>
+							<p>A browser blackjack game with standard dealer rules.</p>
+							<p class="proj-links">
+								<a
+									href="https://coltonsgames.netlify.app/html/blackjack.html"
+									rel="noopener"
+									>Play</a
+								>
+							</p>
+						</li>
+					</ul>
+
+					<p class="more">
+						<a href="https://github.com/coltonphass?tab=repositories" rel="noopener"
+							>All repositories on GitHub →</a
+						>
+					</p>
+				</section>
+
+				<!-- ======================= EDUCATION ====================== -->
+				<section id="education" aria-labelledby="education-h">
+					<h2 id="education-h" class="sec">Education</h2>
+
+					<article class="entry compact">
+						<div class="entry-head">
+							<h3>B.S. Computer Science</h3>
+							<span class="when">Expected Summer 2027</span>
+						</div>
+						<p class="org">University of Maryland Global Campus</p>
+					</article>
+
+					<article class="entry compact">
+						<div class="entry-head">
+							<h3>A.A.S. Computer Information Systems</h3>
+							<span class="when">2025</span>
+						</div>
+						<p class="org">Harford Community College</p>
+						<p class="note">
+							High Honors · 3.85 GPA · Phi Theta Kappa
+						</p>
+					</article>
+				</section>
+
+				<!-- ==================== CERTIFICATIONS ==================== -->
+				<section id="certifications" aria-labelledby="certifications-h">
+					<h2 id="certifications-h" class="sec">Certifications</h2>
+
+					<ul class="certs">
+						<li>
+							<span class="cert-name">Scrum Fundamentals Certified (SFC)</span>
+							<span class="cert-meta">SCRUMstudy · Oct 2026</span>
+						</li>
+						<li>
+							<span class="cert-name"
+								>Scrum for Ops and DevOps Fundamentals Certified</span
+							>
+							<span class="cert-meta">SCRUMstudy · Oct 2026</span>
+						</li>
+						<li>
+							<span class="cert-name">DoD Cyber Awareness Challenge 2026</span>
+							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
+						</li>
+						<li>
+							<span class="cert-name">HIPAA and Privacy Act Training</span>
+							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
+						</li>
+						<li>
+							<span class="cert-name">Insider Threat Annual Training</span>
+							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
+						</li>
+						<li>
+							<span class="cert-name">Operations Security (OPSEC)</span>
+							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
+						</li>
+					</ul>
+				</section>
+
+				<!-- ======================== TOOLKIT ======================== -->
+				<section id="toolkit" aria-labelledby="toolkit-h">
+					<h2 id="toolkit-h" class="sec">Toolkit</h2>
+
+					<dl class="toolkit">
+						<dt>Languages</dt>
+						<dd>Python · JavaScript · TypeScript · SQL · C++ · Java · HTML · CSS</dd>
+
+						<dt>Platforms</dt>
+						<dd>
+							OpenText Process Automation · SQL Server · React · Node.js ·
+							Supabase
+						</dd>
+
+						<dt>Practice</dt>
+						<dd>
+							BPM development · XML/SOAP web services · Section 508 / WCAG ·
+							Agile &amp; Scrum
+						</dd>
+
+						<dt>Tools</dt>
+						<dd>
+							SSMS · VS Code · Git · NVDA · ANDI · Lighthouse · mRemoteNG ·
+							Agent Ransack
+						</dd>
+					</dl>
+				</section>
+
+				<!-- ======================== CONTACT ======================== -->
+				<section id="contact" aria-labelledby="contact-h">
+					<h2 id="contact-h" class="sec">Contact</h2>
+
+					<p class="contact-lede">
+						Open to software engineering roles. The quickest way to reach me is
+						this form — it lands in my inbox and I'll reply within a day or so.
+					</p>
+
+					<form
+						id="contact-form"
+						name="contact"
+						method="POST"
+						data-netlify="true"
+						netlify-honeypot="bot-field"
+					>
+						<input type="hidden" name="form-name" value="contact" />
+						<p class="hp">
+							<label
+								>Leave this field empty
+								<input name="bot-field" tabindex="-1" autocomplete="off" />
+							</label>
+						</p>
+
+						<div class="field-row">
+							<p class="field">
+								<label for="cf-name">Name</label>
+								<input id="cf-name" name="name" type="text" required />
+							</p>
+							<p class="field">
+								<label for="cf-email">Email</label>
+								<input id="cf-email" name="email" type="email" required />
+							</p>
+						</div>
+
+						<p class="field">
+							<label for="cf-message">Message</label>
+							<textarea id="cf-message" name="message" rows="5" required></textarea>
+						</p>
+
+						<p class="field-actions">
+							<button type="submit">Send message</button>
+							<span id="form-status" class="form-status" role="status" aria-live="polite"></span>
+						</p>
+					</form>
+				</section>
+			</main>
+
+			<footer class="site-footer">
+				<p>
+					Built by hand — no framework, no build step.
+					<a href="https://github.com/coltonphass/Portfolio" rel="noopener"
+						>Source</a
+					>.
+				</p>
+				<p class="colophon">© <span id="year">2026</span> Colton Phass</p>
+			</footer>
+		</div>
+
+		<script src="assets/site.js"></script>
 	</body>
 </html>
