@@ -32,7 +32,7 @@
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='monospace' fill='%23fe8019'%3E%26gt;%3C/text%3E%3C/svg%3E"
 		/>
 
-		<link rel="stylesheet" href="assets/style.css?v=8" />
+		<link rel="stylesheet" href="assets/style.css?v=10" />
 
 		<script type="application/ld+json">
 			{
@@ -765,24 +765,28 @@
 								<hr />
 
 								<div class="player">
-									<iframe class="sp-frame" id="sp-frame"
-										src="https://open.spotify.com/embed/album/18qJgKH8dyYe2RRp6TbnNY"
-										title="Spotify player" loading="lazy"
-										allow="encrypted-media; clipboard-write; picture-in-picture"></iframe>
-									<p class="player-note">
-										Nothing plays until you press play. Spotify gives everyone a
-										preview; sign in there for the full track.
+									<!-- A real src means the player still works with no JS.
+									     enablejsapi lets the API attach to this iframe rather
+									     than replace it, which is what allows the volume to be
+									     turned down. -->
+									<iframe id="yt-player" class="yt-frame"
+										src="https://www.youtube.com/embed/RaSCeuWZ70s?enablejsapi=1&amp;rel=0&amp;modestbranding=1"
+										title="Music player"
+										allow="encrypted-media; picture-in-picture"
+										allowfullscreen loading="lazy"></iframe>
+									<p class="player-note" id="player-note">
+										Nothing plays until you press play. Starts quiet, at 15% volume.
 									</p>
 								</div>
 
 								<h2>Rotation</h2>
 								<p>Pick one to load it into the player.</p>
 								<ol class="tracklist" id="tracklist">
-									<li><button type="button" class="is-current" data-kind="album" data-sid="18qJgKH8dyYe2RRp6TbnNY">expectations<span class="tl-artist">Olivia Rodrigo</span></button></li>
-									<li><button type="button" data-kind="track" data-sid="724utiMbqUfT1g3tqbfQYu">Spoiled little brat<span class="tl-artist">underscores</span></button></li>
-									<li><button type="button" data-kind="track" data-sid="3wjkp2V8BNLg6uNq7LUnhR">Dumbest Girl Alive<span class="tl-artist">100 gecs</span></button></li>
-									<li><button type="button" data-kind="track" data-sid="3MebYJnEDK4XdnCj3VMLjL">The Mountain<span class="tl-artist">Gorillaz</span></button></li>
-									<li><button type="button" data-kind="track" data-sid="1iNhNmEwrd2TP4XrV7pQBI">If I Could Be a Constellation<span class="tl-artist">Kessoku Band</span></button></li>
+									<li><button type="button" class="is-current" data-vid="RaSCeuWZ70s" data-title="expectations">expectations<span class="tl-artist">Olivia Rodrigo</span></button></li>
+									<li><button type="button" data-vid="GLNowszQmlw" data-title="Spoiled little brat">Spoiled little brat<span class="tl-artist">underscores</span></button></li>
+									<li><button type="button" data-vid="oYOPz1vqeZU" data-title="Dumbest Girl Alive">Dumbest Girl Alive<span class="tl-artist">100 gecs</span></button></li>
+									<li><button type="button" data-vid="a2IdAW2A1ug" data-title="The Mountain">The Mountain<span class="tl-artist">Gorillaz</span></button></li>
+									<li><button type="button" data-vid="zfr5eY-i-84" data-title="more">more<span class="tl-artist">irou</span></button></li>
 								</ol>
 							</article>
 						</section>
@@ -910,6 +914,6 @@
 			<ul id="pal-list"></ul>
 		</div>
 
-		<script src="assets/site.js?v=8"></script>
+		<script src="assets/site.js?v=10"></script>
 	</body>
 </html>

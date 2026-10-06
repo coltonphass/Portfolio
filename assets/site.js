@@ -469,14 +469,17 @@
 	}
 
 	/* ---------------- listening ----------------
-	   A plain Spotify embed. Nothing is hosted here and nothing autoplays:
-	   choosing a track swaps the iframe source, which always loads paused.
-	   The embed carries a real src in the markup, so the player still works
-	   with no JS; only the track switching needs it.
+	   YouTube rather than Spotify, because Spotify's embed exposes no
+	   volume control and this needs to start quiet. Nothing is hosted
+	   here and nothing autoplays: the iframe is cued, never played, and
+	   picking a track uses cueVideoById so it loads paused.
 	   -------------------------------------------------- */
+	var VOLUME = 15;
+	var yt = null;
+
 	function initDeck() {
 		var list = document.getElementById("tracklist");
-		var frame = document.getElementById("sp-frame");
+		var frame = document.getElementById("yt-player");
 		if (!list || !frame) return;
 
 		var buttons = [].slice.call(list.querySelectorAll("button"));
@@ -486,13 +489,46 @@
 				buttons.forEach(function (o) {
 					o.classList.toggle("is-current", o === b);
 				});
-				frame.src =
-					"https://open.spotify.com/embed/" +
-					b.dataset.kind +
-					"/" +
-					b.dataset.sid;
+				if (yt && yt.cueVideoById) {
+					// cue, not load: it must not start on its own
+					yt.cueVideoById(b.dataset.vid);
+					yt.setVolume(VOLUME);
+				} else {
+					frame.src =
+						"https://www.youtube.com/embed/" +
+						b.dataset.vid +
+						"?enablejsapi=1&rel=0&modestbranding=1";
+				}
 			});
 		});
+
+		// The API attaches to the existing iframe because it carries
+		// enablejsapi=1, so the player keeps working if this never loads.
+		window.onYouTubeIframeAPIReady = function () {
+			try {
+				yt = new YT.Player("yt-player", {
+					events: {
+						onReady: function (e) {
+							e.target.setVolume(VOLUME);
+						},
+						onError: function () {
+							var note = document.getElementById("player-note");
+							if (note) {
+								note.textContent =
+									"That track will not embed. Open it on YouTube instead.";
+							}
+						},
+					},
+				});
+			} catch (e) {
+				console.error("[listening] player init failed:", e && e.message);
+			}
+		};
+
+		var tag = document.createElement("script");
+		tag.src = "https://www.youtube.com/iframe_api";
+		tag.async = true;
+		document.head.appendChild(tag);
 	}
 
 	/* ---------------- command palette ---------------- */

@@ -1452,13 +1452,14 @@ a.card .card-link {
 	max-width: 620px;
 }
 
-.player iframe,
-.sp-frame {
+.yt-frame {
 	width: 100%;
-	height: 152px;
-	border: 0;
+	max-width: 560px;
+	aspect-ratio: 16 / 9;
+	border: 1px solid var(--border);
 	border-radius: 12px;
 	display: block;
+	background: #000;
 }
 
 .player-note {
