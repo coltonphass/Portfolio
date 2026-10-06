@@ -69,6 +69,16 @@ html {
 	-webkit-text-size-adjust: 100%;
 }
 
+/* The shell is the viewport and the pane is the only thing that scrolls.
+   Without this, iOS reports 100vh taller than the visible area, the
+   document scrolls, and the title bar and tabs leave the screen. */
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+	overscroll-behavior: none;
+}
+
 body {
 	font-family: var(--sans);
 	font-size: 15.5px;
@@ -129,6 +139,10 @@ strong {
    3. Shell
    --------------------------------------------------------- */
 .ide {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
@@ -303,6 +317,7 @@ strong {
 	background: var(--chrome);
 	border-right: 1px solid var(--border);
 	overflow-y: auto;
+	overscroll-behavior: contain;
 	padding-bottom: 16px;
 	font-family: var(--mono);
 }
@@ -407,6 +422,7 @@ strong {
 .tabs {
 	display: flex;
 	overflow-x: auto;
+	overscroll-behavior-x: contain;
 	background: var(--chrome);
 	border-bottom: 1px solid var(--border);
 	scrollbar-width: none;
@@ -480,6 +496,8 @@ strong {
 
 .pane {
 	overflow-y: auto;
+	overscroll-behavior: contain;
+	-webkit-overflow-scrolling: touch;
 }
 
 
@@ -1854,6 +1872,7 @@ button[type="submit"]:disabled {
 .term-body {
 	flex: 1;
 	overflow-y: auto;
+	overscroll-behavior: contain;
 	padding: 9px 14px 14px;
 	font-size: 0.78rem;
 	line-height: 1.7;
