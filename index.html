@@ -32,7 +32,7 @@
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='monospace' fill='%23fe8019'%3E%26gt;%3C/text%3E%3C/svg%3E"
 		/>
 
-		<link rel="stylesheet" href="assets/style.css?v=13" />
+		<link rel="stylesheet" href="assets/style.css?v=18" />
 
 		<script type="application/ld+json">
 			{
@@ -888,19 +888,23 @@
 		</div>
 
 
-		<div class="duck-stage" id="duck-stage" hidden>
-			<div class="duck-inner" role="dialog" aria-label="You closed the window">
-				<svg class="duck" viewBox="0 0 140 120" width="190" height="163" aria-hidden="true">
-					<ellipse cx="62" cy="80" rx="40" ry="27" fill="#fabd2f" />
-					<path d="M24 74 L4 60 L26 63 Z" fill="#e8a33d" />
-					<path d="M48 74 q18 -14 36 0 q-18 15 -36 0 Z" fill="#e8a33d" />
-					<circle cx="92" cy="44" r="23" fill="#fabd2f" />
-					<path d="M111 40 L136 49 L111 57 Z" fill="#fe8019" />
-					<circle cx="99" cy="37" r="3.6" fill="#1d2021" />
-				</svg>
-				<p class="duck-line">You closed the window.</p>
-				<p class="duck-sub">There is only duck now.</p>
-				<button type="button" class="tb-btn" id="duck-back">Put it back</button>
+		<div class="game-stage" id="game-stage" hidden>
+			<div class="game-shell" role="dialog" aria-label="Hidden game">
+				<div class="game-bar">
+					<span class="egg-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+					<span class="game-title">runner.exe</span>
+					<span class="game-score">
+						score <b id="g-score">0</b><span class="dim"> / best </span><b id="g-best">0</b>
+					</span>
+				</div>
+
+				<canvas id="game" width="640" height="190"
+					aria-label="A small jumping game. Press space to jump."></canvas>
+
+				<div class="game-foot">
+					<p class="game-hint" id="g-hint">space, arrow up or tap to jump &middot; esc to leave</p>
+					<button type="button" class="tb-btn" id="game-back">back to the site</button>
+				</div>
 			</div>
 		</div>
 
@@ -910,6 +914,6 @@
 			<ul id="pal-list"></ul>
 		</div>
 
-		<script src="assets/site.js?v=13"></script>
+		<script src="assets/site.js?v=18"></script>
 	</body>
 </html>

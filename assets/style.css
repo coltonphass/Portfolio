@@ -523,52 +523,103 @@ strong {
 }
 
 /* ---------------------------------------------------------
-   7d. The duck
+   7d. Hidden game
+   Reached from the red window button or by typing `play` in
+   the terminal. Never runs until it is opened.
    --------------------------------------------------------- */
-.duck-stage {
+.game-stage {
 	position: fixed;
 	inset: 0;
 	z-index: 90;
 	display: grid;
 	place-items: center;
-	background: var(--chrome-2);
-	animation: app-in 0.3s ease backwards;
+	padding: 20px;
+	background: rgba(12, 12, 13, 0.94);
+	animation: app-in 0.28s ease backwards;
 }
 
-.duck-stage[hidden] {
+.game-stage[hidden] {
 	display: none;
 }
 
-.duck-inner {
-	text-align: center;
-	padding: 24px;
+.game-shell {
+	width: min(680px, 96vw);
+	background: var(--chrome-2);
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
+	overflow: hidden;
 }
 
-.duck {
-	display: block;
-	margin: 0 auto 22px;
-	animation: duck-spin 2.6s linear infinite;
-	transform-origin: 50% 55%;
-}
-
-@keyframes duck-spin {
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-.duck-line {
+.game-bar {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 9px 13px;
+	background: var(--chrome);
+	border-bottom: 1px solid var(--border);
 	font-family: var(--mono);
-	font-size: 1rem;
-	color: var(--text);
-}
-
-.duck-sub {
-	font-family: var(--mono);
-	font-size: 0.8rem;
+	font-size: 0.73rem;
 	color: var(--text-mute);
-	margin-top: 6px !important;
-	margin-bottom: 20px !important;
+}
+
+.egg-dots {
+	display: inline-flex;
+	gap: 7px;
+}
+
+.egg-dots i {
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+}
+
+.egg-dots i:nth-child(1) {
+	background: #fb4934;
+}
+.egg-dots i:nth-child(2) {
+	background: #fabd2f;
+}
+.egg-dots i:nth-child(3) {
+	background: #b8bb26;
+}
+
+.game-score {
+	margin-left: auto;
+	white-space: nowrap;
+}
+
+.game-score b {
+	color: var(--accent);
+	font-weight: 700;
+}
+
+#game {
+	display: block;
+	width: 100%;
+	height: auto;
+	background: var(--bg);
+	touch-action: manipulation;
+	cursor: pointer;
+}
+
+.game-foot {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	flex-wrap: wrap;
+	padding: 11px 13px 13px;
+	border-top: 1px solid var(--border);
+}
+
+.game-hint {
+	font-family: var(--mono);
+	font-size: 0.72rem;
+	color: var(--text-mute);
+}
+
+.game-foot .tb-btn {
+	margin-left: auto;
 }
 
 /* ---------------------------------------------------------
@@ -2105,7 +2156,6 @@ button[type="submit"]:disabled {
 		animation: none;
 	}
 	.chip,
-	.duck,
 	.ide,
 	.doc > *,
 	.explorer .folder,

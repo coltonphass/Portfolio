@@ -339,8 +339,8 @@
 		var closeBtn = document.getElementById("win-close");
 		var minBtn = document.getElementById("win-min");
 		var maxBtn = document.getElementById("win-max");
-		var stage = document.getElementById("duck-stage");
-		var back = document.getElementById("duck-back");
+		var stage = document.getElementById("game-stage");
+		var back = document.getElementById("game-back");
 
 		if (minBtn) {
 			minBtn.addEventListener("click", function () {
@@ -368,23 +368,277 @@
 		}
 
 		if (closeBtn && stage) {
-			var hide = function () {
-				stage.hidden = true;
-				closeBtn.focus();
-			};
-			closeBtn.addEventListener("click", function () {
-				stage.hidden = false;
-				if (back) back.focus();
-			});
-			if (back) back.addEventListener("click", hide);
+			closeBtn.addEventListener("click", openGame);
+			if (back) back.addEventListener("click", closeGame);
 			stage.addEventListener("click", function (e) {
-				if (e.target === stage) hide();
+				if (e.target === stage) closeGame();
 			});
 			document.addEventListener("keydown", function (e) {
-				if (e.key === "Escape" && !stage.hidden) hide();
+				if (e.key === "Escape" && !stage.hidden) closeGame();
 			});
 		}
 	}
+
+	/* ---------------- the hidden game ----------------
+	   A small endless runner. You are the terminal cursor and the things
+	   in your way are bugs. Nothing starts until the stage is opened, and
+	   the loop is cancelled when it closes so it never runs in the
+	   background.
+	   -------------------------------------------------- */
+	var STEP_MS = 1000 / 60;
+
+	var game = {
+		raf: null,
+		last: 0,
+		acc: 0,
+		started: false,
+		over: false,
+		t: 0,
+		speed: 5,
+		score: 0,
+		best: 0,
+		player: null,
+		obstacles: [],
+	};
+
+	function openGame() {
+		var stage = document.getElementById("game-stage");
+		if (!stage) return;
+		stage.hidden = false;
+		var back = document.getElementById("game-back");
+		if (back) back.focus();
+		startGame();
+	}
+
+	function closeGame() {
+		var stage = document.getElementById("game-stage");
+		if (!stage) return;
+		stage.hidden = true;
+		if (game.raf) cancelAnimationFrame(game.raf);
+		game.raf = null;
+		var closeBtn = document.getElementById("win-close");
+		if (closeBtn) closeBtn.focus();
+	}
+
+	function readBest() {
+		try {
+			return parseInt(localStorage.getItem("runner-best") || "0", 10) || 0;
+		} catch (e) {
+			return 0;
+		}
+	}
+
+	function writeBest(v) {
+		try {
+			localStorage.setItem("runner-best", String(v));
+		} catch (e) {}
+	}
+
+	function resetGame(W, H) {
+		game.last = 0;
+		game.acc = 0;
+		game.started = false;
+		game.over = false;
+		game.t = 0;
+		game.speed = 5;
+		game.score = 0;
+		game.obstacles = [];
+		game.player = { x: 62, y: 0, w: 15, h: 22, vy: 0, onGround: true };
+		game.groundY = H - 34;
+		game.player.y = game.groundY - game.player.h;
+	}
+
+	function startGame() {
+		var cv = document.getElementById("game");
+		if (!cv) return;
+		var ctx = cv.getContext("2d");
+		var W = cv.width;
+		var H = cv.height;
+
+		game.best = readBest();
+		var bestEl = document.getElementById("g-best");
+		if (bestEl) bestEl.textContent = game.best;
+
+		resetGame(W, H);
+
+		function jump() {
+			if (game.over) {
+				resetGame(W, H);
+				game.started = true;
+				return;
+			}
+			game.started = true;
+			if (game.player.onGround) {
+				game.player.vy = -11.4;
+				game.player.onGround = false;
+			}
+		}
+
+		if (!cv._bound) {
+			cv._bound = true;
+			cv.addEventListener("pointerdown", function (e) {
+				e.preventDefault();
+				jump();
+			});
+			document.addEventListener("keydown", function (e) {
+				var stage = document.getElementById("game-stage");
+				if (!stage || stage.hidden) return;
+				if (e.code === "Space" || e.key === " " || e.key === "ArrowUp") {
+					e.preventDefault();
+					jump();
+				}
+			});
+		}
+		cv._jump = jump;
+
+		function spawn() {
+			var tall = Math.random() < 0.35;
+			game.obstacles.push({
+				x: W + 20,
+				w: tall ? 13 : 17,
+				h: tall ? 34 : 22,
+			});
+		}
+
+		function hit(p, o) {
+			return (
+				p.x < o.x + o.w &&
+				p.x + p.w > o.x &&
+				p.y < game.groundY &&
+				p.y + p.h > game.groundY - o.h
+			);
+		}
+
+		function draw() {
+			ctx.clearRect(0, 0, W, H);
+
+			// ground
+			ctx.strokeStyle = "#3c3836";
+			ctx.lineWidth = 2;
+			ctx.beginPath();
+			ctx.moveTo(0, game.groundY + 1);
+			ctx.lineTo(W, game.groundY + 1);
+			ctx.stroke();
+
+			// ground speckle, scrolling so motion reads even on an empty screen
+			ctx.fillStyle = "#504945";
+			for (var i = 0; i < 18; i++) {
+				var sx = (i * 73 - ((game.t * game.speed) % 73) * 1) % W;
+				if (sx < 0) sx += W;
+				ctx.fillRect(sx, game.groundY + 8 + ((i * 13) % 10), 10, 2);
+			}
+
+			// player: a cursor block
+			var p = game.player;
+			ctx.fillStyle = "#fe8019";
+			ctx.fillRect(p.x, p.y, p.w, p.h);
+			ctx.fillStyle = "#1d2021";
+			ctx.fillRect(p.x + 4, p.y + 5, 7, 3);
+
+			// obstacles: little bugs
+			game.obstacles.forEach(function (o) {
+				var oy = game.groundY - o.h;
+				ctx.fillStyle = "#fb4934";
+				ctx.fillRect(o.x, oy, o.w, o.h);
+				ctx.fillStyle = "#1d2021";
+				ctx.fillRect(o.x + 2, oy + 4, o.w - 4, 2);
+				ctx.fillRect(o.x + 2, oy + 10, o.w - 4, 2);
+			});
+
+			if (!game.started) {
+				ctx.fillStyle = "#a89984";
+				ctx.font = '13px ui-monospace, Menlo, Consolas, monospace';
+				ctx.textAlign = "center";
+				ctx.fillText("press space to run", W / 2, H / 2 - 6);
+				ctx.textAlign = "left";
+			}
+
+			if (game.over) {
+				ctx.fillStyle = "#ebdbb2";
+				ctx.font = '15px ui-monospace, Menlo, Consolas, monospace';
+				ctx.textAlign = "center";
+				ctx.fillText("caught a bug", W / 2, H / 2 - 10);
+				ctx.fillStyle = "#a89984";
+				ctx.font = '12px ui-monospace, Menlo, Consolas, monospace';
+				ctx.fillText("space to try again", W / 2, H / 2 + 12);
+				ctx.textAlign = "left";
+			}
+		}
+
+		// One simulation tick. Physics lives here and never in the frame
+		// callback, so the game runs at the same speed on a 60Hz panel and
+		// on a 240Hz one.
+		function update() {
+			if (!game.started || game.over) return;
+
+			game.t++;
+			game.speed = 5 + game.t * 0.0016;
+
+			var p = game.player;
+			p.vy += 0.62;
+			p.y += p.vy;
+			if (p.y >= game.groundY - p.h) {
+				p.y = game.groundY - p.h;
+				p.vy = 0;
+				p.onGround = true;
+			}
+
+			var last = game.obstacles[game.obstacles.length - 1];
+			if (!last || last.x < W - (210 + Math.random() * 220)) spawn();
+
+			for (var i = game.obstacles.length - 1; i >= 0; i--) {
+				var o = game.obstacles[i];
+				o.x -= game.speed;
+				if (o.x + o.w < -10) {
+					game.obstacles.splice(i, 1);
+					continue;
+				}
+				if (hit(p, o)) {
+					game.over = true;
+					if (game.score > game.best) {
+						game.best = game.score;
+						writeBest(game.best);
+						var b = document.getElementById("g-best");
+						if (b) b.textContent = game.best;
+					}
+				}
+			}
+
+			game.score = Math.floor(game.t / 6);
+			var sc = document.getElementById("g-score");
+			if (sc) sc.textContent = game.score;
+		}
+
+		function frame(now) {
+			if (!game.last) game.last = now;
+			var elapsed = now - game.last;
+			game.last = now;
+
+			// A backgrounded tab returns one enormous delta. Treat it as a
+			// single tick rather than simulating the minutes that passed.
+			if (elapsed > 250) elapsed = STEP_MS;
+			game.acc += elapsed;
+
+			// Catch up in whole ticks, but never run so many that the
+			// catching up itself falls further behind.
+			var ran = 0;
+			while (game.acc >= STEP_MS && ran < 5) {
+				update();
+				game.acc -= STEP_MS;
+				ran++;
+			}
+			if (ran === 5) game.acc = 0;
+
+			draw();
+			game.raf = requestAnimationFrame(frame);
+		}
+
+		if (game.raf) cancelAnimationFrame(game.raf);
+		game.last = 0;
+		game.acc = 0;
+		game.raf = requestAnimationFrame(frame);
+	}
+
 
 	/* ---------------- explorer drawer ----------------
 	   Under 950px the explorer is off-canvas. Without this the tab strip
@@ -819,6 +1073,10 @@
 			resume: function () {
 				out("opening <span class='hi'>Résumé</span>. view it here, or download it from the bar above.");
 				openFile("resume");
+			},
+			play: function () {
+				out("loading <span class='hi'>runner.exe</span> \u2026");
+				openGame();
 			},
 			clear: function () {
 				[].slice.call(body.querySelectorAll(".term-line")).forEach(function (n) {
