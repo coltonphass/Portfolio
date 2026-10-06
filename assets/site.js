@@ -7,9 +7,46 @@
 
 	document.addEventListener("DOMContentLoaded", function () {
 		initTheme();
+		initReveal();
 		initContactForm();
 		initYear();
 	});
+
+	/* ---------- Reveal on scroll ---------- */
+	function initReveal() {
+		var items = [].slice.call(document.querySelectorAll(".reveal"));
+		if (!items.length) return;
+
+		var show = function (el) {
+			el.classList.add("in");
+		};
+
+		// No observer, or the reader asked for less motion: show everything
+		// at once rather than leaving it stuck at opacity 0.
+		var still =
+			window.matchMedia &&
+			window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+		if (!("IntersectionObserver" in window) || still) {
+			items.forEach(show);
+			return;
+		}
+
+		var io = new IntersectionObserver(
+			function (entries, obs) {
+				entries.forEach(function (entry) {
+					if (!entry.isIntersecting) return;
+					show(entry.target);
+					obs.unobserve(entry.target); // one-shot; never re-hides
+				});
+			},
+			{ rootMargin: "0px 0px -8% 0px", threshold: 0.04 },
+		);
+
+		items.forEach(function (el) {
+			io.observe(el);
+		});
+	}
 
 	/* ---------- Theme ---------- */
 	function initTheme() {

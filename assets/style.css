@@ -28,6 +28,7 @@
 	--d-amber: #f4a949;
 	--d-green: #9ae17b;
 	--d-red: #f87171;
+	--d-shadow: rgba(0, 0, 0, 0.45);
 
 	/* light */
 	--l-bg: #fbfbfd;
@@ -39,8 +40,11 @@
 	--l-accent: #7e22ce;
 	--l-accent-soft: rgba(126, 34, 206, 0.09);
 	--l-amber: #b45309;
-	--l-green: #15803d;
+	/* deliberately darker than the dark-theme green: it sits on its own
+	   translucent tint in the status pill, which lifts the backdrop */
+	--l-green: #166534;
 	--l-red: #dc2626;
+	--l-shadow: rgba(16, 16, 28, 0.1);
 
 	/* default mapping: light */
 	--bg: var(--l-bg);
@@ -54,6 +58,15 @@
 	--amber: var(--l-amber);
 	--green: var(--l-green);
 	--red: var(--l-red);
+	--shadow: var(--l-shadow);
+
+	/* Derived tints. If color-mix is unsupported these resolve to nothing,
+	   which just means no grid/glow — the page is unaffected otherwise. */
+	--grid-dot: color-mix(in srgb, var(--accent) 13%, transparent);
+	--glow: color-mix(in srgb, var(--accent) 10%, transparent);
+	--green-soft: color-mix(in srgb, var(--green) 13%, transparent);
+	--green-line: color-mix(in srgb, var(--green) 32%, transparent);
+	--green-ring: color-mix(in srgb, var(--green) 45%, transparent);
 
 	--sans:
 		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
@@ -80,6 +93,7 @@
 		--amber: var(--d-amber);
 		--green: var(--d-green);
 		--red: var(--d-red);
+		--shadow: var(--d-shadow);
 	}
 }
 
@@ -96,6 +110,7 @@
 	--amber: var(--d-amber);
 	--green: var(--d-green);
 	--red: var(--d-red);
+	--shadow: var(--d-shadow);
 }
 
 /* ---------------------------------------------------------
@@ -113,10 +128,11 @@ html {
 	scroll-behavior: smooth;
 	scroll-padding-top: 24px;
 	-webkit-text-size-adjust: 100%;
+	/* on html, not body, so the body pseudo-layers paint on top of it */
+	background: var(--bg);
 }
 
 body {
-	background: var(--bg);
 	color: var(--text-dim);
 	font-family: var(--sans);
 	font-size: 16px;
@@ -124,15 +140,59 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+/* Dot grid, faded out toward the bottom of the viewport. */
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background-image: radial-gradient(
+		circle at 1px 1px,
+		var(--grid-dot) 1px,
+		transparent 0
+	);
+	background-size: 24px 24px;
+	-webkit-mask-image: radial-gradient(
+		ellipse 90% 55% at 50% 0%,
+		#000 35%,
+		transparent 100%
+	);
+	mask-image: radial-gradient(
+		ellipse 90% 55% at 50% 0%,
+		#000 35%,
+		transparent 100%
+	);
+}
+
+/* Accent glow behind the masthead. */
+body::after {
+	content: "";
+	position: fixed;
+	top: -260px;
+	left: 50%;
+	width: min(1000px, 140vw);
+	height: 620px;
+	transform: translateX(-50%);
+	z-index: 0;
+	pointer-events: none;
+	background: radial-gradient(ellipse at center, var(--glow) 0%, transparent 68%);
+}
+
 a {
 	color: var(--accent);
 	text-decoration: none;
-	border-bottom: 1px solid transparent;
-	transition: border-color 0.15s ease;
+	/* underline grows from the left on hover */
+	background-image: linear-gradient(currentColor, currentColor);
+	background-size: 0% 1px;
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	transition: background-size 0.25s ease;
 }
 
-a:hover {
-	border-bottom-color: currentColor;
+a:hover,
+a:focus-visible {
+	background-size: 100% 1px;
 }
 
 :focus-visible {
@@ -176,6 +236,8 @@ strong {
    3. Shell
    --------------------------------------------------------- */
 .shell {
+	position: relative;
+	z-index: 1;
 	max-width: var(--measure);
 	margin: 0 auto;
 	padding: 72px 24px 96px;
@@ -195,12 +257,81 @@ main > section {
 	gap: 16px;
 }
 
+.status {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-family: var(--mono);
+	font-size: 0.7rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--green);
+	background: var(--green-soft);
+	border: 1px solid var(--green-line);
+	border-radius: 999px;
+	padding: 4px 12px;
+	margin-bottom: 18px;
+}
+
+.status-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--green);
+	flex-shrink: 0;
+	animation: pulse 2.6s ease-out infinite;
+}
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 var(--green-ring);
+	}
+	70% {
+		box-shadow: 0 0 0 8px transparent;
+	}
+	100% {
+		box-shadow: 0 0 0 0 transparent;
+	}
+}
+
 h1 {
 	font-size: 1.6rem;
 	font-weight: 650;
 	letter-spacing: -0.02em;
 	color: var(--text);
 	line-height: 1.2;
+}
+
+/* Gradient wordmark, only where the clip is supported — otherwise the
+   plain --text colour above stands. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+	h1 {
+		background: linear-gradient(104deg, var(--text) 42%, var(--accent) 108%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+}
+
+.caret {
+	display: inline-block;
+	width: 3px;
+	height: 0.92em;
+	margin-left: 7px;
+	vertical-align: -0.08em;
+	background: var(--accent);
+	animation: blink 1.15s steps(1) infinite;
+}
+
+@keyframes blink {
+	0%,
+	50% {
+		opacity: 1;
+	}
+	50.01%,
+	100% {
+		opacity: 0;
+	}
 }
 
 .standfirst {
@@ -284,6 +415,13 @@ h1 {
 	margin-bottom: 26px;
 }
 
+/* shell-prompt marker */
+.sec::before {
+	content: "$";
+	margin-right: 9px;
+	opacity: 0.5;
+}
+
 /* ---------------------------------------------------------
    6. Work entries
    --------------------------------------------------------- */
@@ -344,11 +482,37 @@ h1 {
 	color: var(--text-mute);
 }
 
-.tech {
+/* Chips. These live inside .entry, so the bullet styling above has to be
+   undone explicitly rather than just not applied. */
+.entry ul.tech {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-top: 14px;
+}
+
+.entry ul.tech li {
+	padding-left: 0;
 	font-family: var(--mono);
-	font-size: 0.73rem;
-	color: var(--text-mute);
-	margin-top: 12px;
+	font-size: 0.7rem;
+	line-height: 1.5;
+	color: var(--text-dim);
+	background: var(--bg-soft);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	padding: 2px 9px;
+	transition:
+		border-color 0.18s ease,
+		color 0.18s ease;
+}
+
+.entry ul.tech li::before {
+	content: none;
+}
+
+.entry ul.tech li:hover {
+	border-color: var(--accent);
+	color: var(--accent);
 }
 
 .entry.compact {
@@ -368,7 +532,24 @@ h1 {
 .projects {
 	list-style: none;
 	display: grid;
-	gap: 24px;
+	gap: 10px;
+}
+
+.projects > li {
+	padding: 15px 17px;
+	background: var(--bg-soft);
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	transition:
+		border-color 0.2s ease,
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.projects > li:hover {
+	border-color: var(--accent);
+	transform: translateY(-2px);
+	box-shadow: 0 10px 26px var(--shadow);
 }
 
 .proj-head {
@@ -433,8 +614,16 @@ h1 {
 	align-items: baseline;
 	justify-content: space-between;
 	gap: 18px;
-	padding: 11px 0;
+	/* negative margin lets the hover tint bleed past the text column */
+	padding: 11px 10px;
+	margin: 0 -10px;
+	border-radius: 6px;
 	border-bottom: 1px solid var(--border);
+	transition: background 0.18s ease;
+}
+
+.certs li:hover {
+	background: var(--bg-soft);
 }
 
 .certs li:last-child {
@@ -600,7 +789,26 @@ button[type="submit"]:disabled {
 }
 
 /* ---------------------------------------------------------
-   12. Narrow screens
+   12. Reveal on scroll
+   Only armed when JS is running (html.js, set by the inline head
+   script). Without it the content is simply visible, so a JS failure
+   can never leave the page blank.
+   --------------------------------------------------------- */
+.js .reveal {
+	opacity: 0;
+	transform: translateY(14px);
+	transition:
+		opacity 0.55s ease,
+		transform 0.55s ease;
+}
+
+.js .reveal.in {
+	opacity: 1;
+	transform: none;
+}
+
+/* ---------------------------------------------------------
+   13. Narrow screens
    --------------------------------------------------------- */
 @media (max-width: 560px) {
 	.shell {
@@ -645,8 +853,22 @@ button[type="submit"]:disabled {
 		scroll-behavior: auto;
 	}
 
-	* {
+	*,
+	*::before,
+	*::after {
 		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+
+	/* no blinking caret, no pulse, no sliding reveal */
+	.caret {
+		animation: none;
+	}
+
+	.js .reveal {
+		opacity: 1 !important;
+		transform: none !important;
 	}
 }
 

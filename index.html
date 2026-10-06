@@ -43,6 +43,9 @@
 		<!-- Set the theme before first paint so there is no light/dark flash. -->
 		<script>
 			(function () {
+				// Marks that JS is live, which is what arms the reveal animation.
+				// Without this class the content renders plainly visible.
+				document.documentElement.classList.add("js");
 				try {
 					var t = localStorage.getItem("theme");
 					if (t === "light" || t === "dark")
@@ -101,8 +104,12 @@
 
 		<div class="shell">
 			<header class="masthead">
+				<p class="status">
+					<span class="status-dot" aria-hidden="true"></span>Open to new roles
+				</p>
+
 				<div class="masthead-row">
-					<h1>Colton Phass</h1>
+					<h1>Colton Phass<span class="caret" aria-hidden="true"></span></h1>
 					<button
 						id="theme-toggle"
 						type="button"
@@ -149,7 +156,7 @@
 				<section id="work" aria-labelledby="work-h">
 					<h2 id="work-h" class="sec">Work</h2>
 
-					<article class="entry">
+					<article class="entry reveal">
 						<div class="entry-head">
 							<h3>Software Engineer I</h3>
 							<span class="when">Nov 2025 — Present</span>
@@ -186,13 +193,16 @@
 								session notes after diagnosing a BPM timeout.
 							</li>
 						</ul>
-						<p class="tech">
-							OpenText Process Automation · BPM · XML/SOAP · SQL Server ·
-							Section 508
-						</p>
+						<ul class="tech">
+							<li>OpenText Process Automation</li>
+							<li>BPM</li>
+							<li>XML/SOAP</li>
+							<li>SQL Server</li>
+							<li>Section 508</li>
+						</ul>
 					</article>
 
-					<article class="entry">
+					<article class="entry reveal">
 						<div class="entry-head">
 							<h3>Student Research Assistant</h3>
 							<span class="when">Mar 2025 — Present</span>
@@ -214,10 +224,14 @@
 								Google Colab, and Jupyter.
 							</li>
 						</ul>
-						<p class="tech">AI/ML · Python · Jupyter</p>
+						<ul class="tech">
+							<li>AI/ML</li>
+							<li>Python</li>
+							<li>Jupyter</li>
+						</ul>
 					</article>
 
-					<article class="entry">
+					<article class="entry reveal">
 						<div class="entry-head">
 							<h3>Student Curricular Co-Designer</h3>
 							<span class="when">May 2024 — Dec 2024</span>
@@ -234,10 +248,16 @@
 								instructors in deploying the new material.
 							</li>
 						</ul>
-						<p class="tech">HTML5 · CSS3 · JavaScript · React · Node.js</p>
+						<ul class="tech">
+							<li>HTML5</li>
+							<li>CSS3</li>
+							<li>JavaScript</li>
+							<li>React</li>
+							<li>Node.js</li>
+						</ul>
 					</article>
 
-					<article class="entry">
+					<article class="entry reveal">
 						<div class="entry-head">
 							<h3>Volunteer Web Developer</h3>
 							<span class="when">Jan 2024 — Present</span>
@@ -257,7 +277,12 @@
 								the CodeStitch component library.
 							</li>
 						</ul>
-						<p class="tech">HTML5 · CSS3 · JavaScript · Lighthouse</p>
+						<ul class="tech">
+							<li>HTML5</li>
+							<li>CSS3</li>
+							<li>JavaScript</li>
+							<li>Lighthouse</li>
+						</ul>
 					</article>
 				</section>
 
@@ -266,7 +291,7 @@
 					<h2 id="projects-h" class="sec">Projects</h2>
 
 					<ul class="projects">
-						<li>
+						<li class="reveal">
 							<div class="proj-head">
 								<span class="proj-name">ezee-budget</span>
 								<span class="lang"
@@ -281,7 +306,7 @@
 							<p class="proj-links"><span class="muted">Not yet public</span></p>
 						</li>
 
-						<li>
+						<li class="reveal">
 							<div class="proj-head">
 								<span class="proj-name">genesis-alphabetizer</span>
 								<span class="lang"
@@ -301,7 +326,7 @@
 							</p>
 						</li>
 
-						<li>
+						<li class="reveal">
 							<div class="proj-head">
 								<span class="proj-name">space-shooter</span>
 								<span class="lang"
@@ -321,7 +346,7 @@
 							</p>
 						</li>
 
-						<li>
+						<li class="reveal">
 							<div class="proj-head">
 								<span class="proj-name">dao-vien-meditation</span>
 								<span class="lang"
@@ -339,7 +364,7 @@
 							</p>
 						</li>
 
-						<li>
+						<li class="reveal">
 							<div class="proj-head">
 								<span class="proj-name">homelab</span>
 								<span class="lang"
@@ -353,7 +378,7 @@
 							<p class="proj-links"><span class="muted">Self-hosted</span></p>
 						</li>
 
-						<li>
+						<li class="reveal">
 							<div class="proj-head">
 								<span class="proj-name">blackjack</span>
 								<span class="lang"
@@ -382,7 +407,7 @@
 				<section id="education" aria-labelledby="education-h">
 					<h2 id="education-h" class="sec">Education</h2>
 
-					<article class="entry compact">
+					<article class="entry compact reveal">
 						<div class="entry-head">
 							<h3>B.S. Computer Science</h3>
 							<span class="when">Expected Summer 2027</span>
@@ -390,7 +415,7 @@
 						<p class="org">University of Maryland Global Campus</p>
 					</article>
 
-					<article class="entry compact">
+					<article class="entry compact reveal">
 						<div class="entry-head">
 							<h3>A.A.S. Computer Information Systems</h3>
 							<span class="when">2025</span>
@@ -407,29 +432,29 @@
 					<h2 id="certifications-h" class="sec">Certifications</h2>
 
 					<ul class="certs">
-						<li>
+						<li class="reveal">
 							<span class="cert-name">Scrum Fundamentals Certified (SFC)</span>
 							<span class="cert-meta">SCRUMstudy · Oct 2026</span>
 						</li>
-						<li>
+						<li class="reveal">
 							<span class="cert-name"
 								>Scrum for Ops and DevOps Fundamentals Certified</span
 							>
 							<span class="cert-meta">SCRUMstudy · Oct 2026</span>
 						</li>
-						<li>
+						<li class="reveal">
 							<span class="cert-name">DoD Cyber Awareness Challenge 2026</span>
 							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
 						</li>
-						<li>
+						<li class="reveal">
 							<span class="cert-name">HIPAA and Privacy Act Training</span>
 							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
 						</li>
-						<li>
+						<li class="reveal">
 							<span class="cert-name">Insider Threat Annual Training</span>
 							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
 						</li>
-						<li>
+						<li class="reveal">
 							<span class="cert-name">Operations Security (OPSEC)</span>
 							<span class="cert-meta">Defense Health Agency (JKO) · Dec 2025</span>
 						</li>
