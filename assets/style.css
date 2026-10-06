@@ -794,17 +794,12 @@ button[type="submit"]:disabled {
    script). Without it the content is simply visible, so a JS failure
    can never leave the page blank.
    --------------------------------------------------------- */
-.js .reveal {
-	opacity: 0;
-	transform: translateY(14px);
-	transition:
-		opacity 0.55s ease,
-		transform 0.55s ease;
-}
-
-.js .reveal.in {
+/* Deliberately a no-op. Content must never depend on JS to become
+   visible: a stale cached site.js, a blocked script or any thrown error
+   before initReveal() would otherwise leave whole sections invisible.
+   Kept as a hook so markup doesn't need changing. */
+.reveal {
 	opacity: 1;
-	transform: none;
 }
 
 /* ---------------------------------------------------------
