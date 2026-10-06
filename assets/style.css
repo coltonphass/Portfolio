@@ -8,14 +8,52 @@
    1. Tokens
    --------------------------------------------------------- */
 :root {
-	--bg: #fcfcfc;
-	--bg-soft: #f4f4f5;
-	--text: #18181b;
-	--text-dim: #52525b;
-	--text-mute: #6b6b76;
-	--border: #e4e4e7;
-	--accent: #047857;
-	--accent-soft: rgba(4, 120, 87, 0.09);
+	/* ---- palette ----------------------------------------------------
+	   Editor-dark: near-black base, cool white text, purple accent, with
+	   amber and green as the secondary syntax colours.
+	   Every colour value lives here exactly once. The blocks further down
+	   only re-point --bg, --text, etc. at one of these two sets, so
+	   changing a shade is a one-line edit rather than three.
+	   ------------------------------------------------------------------ */
+
+	/* dark */
+	--d-bg: #141416;
+	--d-bg-soft: #1c1c21;
+	--d-text: #f0f8ff;
+	--d-text-dim: #b4b8c4;
+	--d-text-mute: #8b90a0;
+	--d-border: #2a2a32;
+	--d-accent: #c084fc;
+	--d-accent-soft: rgba(192, 132, 252, 0.14);
+	--d-amber: #f4a949;
+	--d-green: #9ae17b;
+	--d-red: #f87171;
+
+	/* light */
+	--l-bg: #fbfbfd;
+	--l-bg-soft: #f2f2f6;
+	--l-text: #16161c;
+	--l-text-dim: #4c4c58;
+	--l-text-mute: #6c6c7a;
+	--l-border: #e3e3ea;
+	--l-accent: #7e22ce;
+	--l-accent-soft: rgba(126, 34, 206, 0.09);
+	--l-amber: #b45309;
+	--l-green: #15803d;
+	--l-red: #dc2626;
+
+	/* default mapping: light */
+	--bg: var(--l-bg);
+	--bg-soft: var(--l-bg-soft);
+	--text: var(--l-text);
+	--text-dim: var(--l-text-dim);
+	--text-mute: var(--l-text-mute);
+	--border: var(--l-border);
+	--accent: var(--l-accent);
+	--accent-soft: var(--l-accent-soft);
+	--amber: var(--l-amber);
+	--green: var(--l-green);
+	--red: var(--l-red);
 
 	--sans:
 		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
@@ -31,27 +69,33 @@
 /* Dark when the OS asks for it, unless the reader forced light. */
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme="light"]) {
-		--bg: #0b0b0d;
-		--bg-soft: #141417;
-		--text: #ededef;
-		--text-dim: #a1a1aa;
-		--text-mute: #8b8b95;
-		--border: #27272b;
-		--accent: #34d399;
-		--accent-soft: rgba(52, 211, 153, 0.12);
+		--bg: var(--d-bg);
+		--bg-soft: var(--d-bg-soft);
+		--text: var(--d-text);
+		--text-dim: var(--d-text-dim);
+		--text-mute: var(--d-text-mute);
+		--border: var(--d-border);
+		--accent: var(--d-accent);
+		--accent-soft: var(--d-accent-soft);
+		--amber: var(--d-amber);
+		--green: var(--d-green);
+		--red: var(--d-red);
 	}
 }
 
 /* Dark when the reader forced it, whatever the OS says. */
 :root[data-theme="dark"] {
-	--bg: #0b0b0d;
-	--bg-soft: #141417;
-	--text: #ededef;
-	--text-dim: #a1a1aa;
-	--text-mute: #8b8b95;
-	--border: #27272b;
-	--accent: #34d399;
-	--accent-soft: rgba(52, 211, 153, 0.12);
+	--bg: var(--d-bg);
+	--bg-soft: var(--d-bg-soft);
+	--text: var(--d-text);
+	--text-dim: var(--d-text-dim);
+	--text-mute: var(--d-text-mute);
+	--border: var(--d-border);
+	--accent: var(--d-accent);
+	--accent-soft: var(--d-accent-soft);
+	--amber: var(--d-amber);
+	--green: var(--d-green);
+	--red: var(--d-red);
 }
 
 /* ---------------------------------------------------------
@@ -234,7 +278,7 @@ h1 {
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.14em;
-	color: var(--text-mute);
+	color: var(--accent);
 	padding-bottom: 10px;
 	border-bottom: 1px solid var(--border);
 	margin-bottom: 26px;
@@ -532,21 +576,11 @@ button[type="submit"]:disabled {
 }
 
 .form-status.ok {
-	color: var(--accent);
+	color: var(--green);
 }
 
 .form-status.err {
-	color: #dc2626;
-}
-
-:root[data-theme="dark"] .form-status.err {
-	color: #f87171;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]) .form-status.err {
-		color: #f87171;
-	}
+	color: var(--red);
 }
 
 /* ---------------------------------------------------------
