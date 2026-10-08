@@ -1231,7 +1231,7 @@
 				out(
 					"  <span class='hi'>ls</span>            list sections\n" +
 						"  <span class='hi'>open</span> &lt;name&gt;   open a section\n" +
-						"  <span class='hi'>cat</span> &lt;name&gt;    same as open\n" +
+						"  <span class='hi'>close</span> [all]   close a tab, or every tab\n" +
 						"  <span class='hi'>whoami</span>        the short version\n" +
 						"  <span class='hi'>stack</span>         languages and tools\n" +
 						"  <span class='hi'>contact</span>       how to get in touch\n" +
@@ -1300,7 +1300,41 @@
 			var cmd = (parts[0] || "").toLowerCase();
 			if (!cmd) return;
 
-			if (["open", "cat", "vim", "code", "less"].indexOf(cmd) !== -1) {
+			if (cmd === "close") {
+				var what = (parts[1] || "").toLowerCase();
+
+				if (what === "all") {
+					var n = open.length;
+					// closeFile falls back to Overview once the last one goes,
+					// so the workbench is never left with nothing open.
+					open.slice().forEach(function (id) {
+						closeFile(id);
+					});
+					out(
+						"closed " +
+							n +
+							" tab" +
+							(n === 1 ? "" : "s") +
+							", back to <span class='hi'>Overview</span>",
+					);
+					return;
+				}
+
+				var target = what ? resolve(parts[1]) : byId[active];
+				if (!target) {
+					out("close: " + esc(parts[1]) + ": no such section", "err");
+					return;
+				}
+				if (open.indexOf(target.id) === -1) {
+					out("close: <span class='hi'>" + target.name + "</span> is not open", "err");
+					return;
+				}
+				closeFile(target.id);
+				out("closed <span class='hi'>" + target.name + "</span>");
+				return;
+			}
+
+			if (["open", "vim", "code", "less"].indexOf(cmd) !== -1) {
 				var f = resolve(parts[1]);
 				if (!f) {
 					out(
@@ -1356,13 +1390,19 @@
 				e.preventDefault();
 				var cur = input.value.split(/\s+/);
 				if (cur.length >= 2) {
-					var m = FILES.filter(function (f) {
-						return f.name.toLowerCase().indexOf(cur[1].toLowerCase()) === 0;
+					// `close` also takes `all`, so offer it alongside the
+					// section names rather than completing past it.
+					var names = FILES.map(function (f) {
+						return f.name;
 					});
-					if (m.length === 1) input.value = cur[0] + " " + m[0].name;
+					if (cur[0].toLowerCase() === "close") names.unshift("all");
+					var m = names.filter(function (n) {
+						return n.toLowerCase().indexOf(cur[1].toLowerCase()) === 0;
+					});
+					if (m.length === 1) input.value = cur[0] + " " + m[0];
 				} else {
 					var c = Object.keys(CMDS)
-						.concat(["open", "cat"])
+						.concat(["open", "close"])
 						.filter(function (k) {
 							return k.indexOf(cur[0].toLowerCase()) === 0;
 						});
