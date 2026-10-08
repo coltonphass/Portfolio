@@ -20,10 +20,12 @@
 		{ id: "listening", name: "Listening", lang: "Listening" },
 		{ id: "contact", name: "Contact", lang: "Contact" },
 		{ id: "p-ezee", name: "ezee-budget", lang: "Project" },
+		{ id: "p-shipping", name: "mini-shipping-manager", lang: "Project" },
 		{ id: "p-daovien", name: "dao-vien", lang: "Project" },
+		{ id: "p-forged", name: "forged-data", lang: "Project" },
 		{ id: "p-genesis", name: "genesis-alphabetizer", lang: "Project" },
 		{ id: "p-shooter", name: "space-shooter", lang: "Project" },
-		{ id: "p-homelab", name: "homelab", lang: "Project" },
+		{ id: "p-algotimer", name: "algorithm-timer", lang: "Project" },
 		{ id: "p-blackjack", name: "blackjack", lang: "Project" },
 		{ id: "resume", name: "Résumé", lang: "PDF" },
 	];
@@ -53,6 +55,7 @@
 			initPanels,
 			initPreviews,
 			initDeck,
+			initAlbum,
 			initPalette,
 			initTerminal,
 			initContactForm,
@@ -899,6 +902,199 @@
 		tag.src = "https://www.youtube.com/iframe_api";
 		tag.async = true;
 		document.head.appendChild(tag);
+	}
+
+	/* ---------------- photo album ----------------
+	   The track already scrolls and snaps on its own, so this adds
+	   controls rather than mechanics. Everything reads the current
+	   slide back out of the scroll position, which means a swipe, a
+	   scrollbar drag, an arrow key and a button press all converge
+	   on the same answer instead of each keeping its own idea of
+	   where the album is.
+	   -------------------------------------------------- */
+	function initAlbum() {
+		var track = document.getElementById("album-track");
+		if (!track) return;
+
+		var dotsBox = document.getElementById("album-dots");
+		var countEl = document.getElementById("album-count");
+		var prevBtn = document.getElementById("album-prev");
+		var nextBtn = document.getElementById("album-next");
+		var bar = document.querySelector(".album-bar");
+
+		var slides = [];
+		var index = 0;
+		var shown = -1;
+		// true while a button or dot scroll is animating, so the
+		// scroll handler does not drag the controls back to whichever
+		// slide happens to be under the midpoint mid-flight
+		var seeking = false;
+		var seekTimer = null;
+
+		function present() {
+			return [].slice
+				.call(track.querySelectorAll(".album-slide"))
+				.filter(function (s) {
+					return !s.hidden;
+				});
+		}
+
+		function buildDots() {
+			if (!dotsBox) return;
+			dotsBox.textContent = "";
+			slides.forEach(function (s, i) {
+				var b = document.createElement("button");
+				b.type = "button";
+				b.className = "album-dot";
+				b.setAttribute("aria-label", "Photo " + (i + 1));
+				b.addEventListener("click", function () {
+					go(i);
+				});
+				dotsBox.appendChild(b);
+			});
+		}
+
+		// Whichever slide sits closest to the middle of the track.
+		// Measured off rects rather than offsetLeft so the scroll
+		// position and the slide positions are in one coordinate
+		// space, mid-animation included.
+		function nearest() {
+			var t = track.getBoundingClientRect();
+			var mid = t.left + t.width / 2;
+			var best = 0;
+			var bestD = Infinity;
+			slides.forEach(function (s, i) {
+				var r = s.getBoundingClientRect();
+				var d = Math.abs(r.left + r.width / 2 - mid);
+				if (d < bestD) {
+					bestD = d;
+					best = i;
+				}
+			});
+			return best;
+		}
+
+		function setActive(i) {
+			// scroll fires continuously; the counter is aria-live, so
+			// only touch the DOM when the slide actually changed.
+			if (i === shown) return;
+			shown = i;
+			index = i;
+
+			if (countEl) {
+				countEl.textContent = i + 1 + " / " + slides.length;
+			}
+			if (dotsBox) {
+				[].slice.call(dotsBox.children).forEach(function (d, n) {
+					if (n === i) d.setAttribute("aria-current", "true");
+					else d.removeAttribute("aria-current");
+				});
+			}
+			if (prevBtn) prevBtn.disabled = i === 0;
+			if (nextBtn) nextBtn.disabled = i === slides.length - 1;
+		}
+
+		function sync() {
+			if (!slides.length) return;
+			setActive(nearest());
+		}
+
+		function go(i) {
+			if (!slides.length) return;
+			if (i < 0) i = 0;
+			if (i > slides.length - 1) i = slides.length - 1;
+
+			// scrollTo, not a `scrollLeft` assignment. Under
+			// scroll-snap-type: mandatory the setter resolves against the
+			// position before the assignment, so the smooth scroll lands a
+			// slide behind and only catches up on the next interaction.
+			// No `behavior` here on purpose: the CSS value wins, which
+			// keeps the prefers-reduced-motion override working.
+			//
+			// offsetLeft is a layout position, so unlike a rect it does
+			// not move while a smooth scroll is still in flight.
+			seeking = true;
+			clearTimeout(seekTimer);
+			seekTimer = setTimeout(endSeek, 700);
+			track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft });
+
+			// Move the controls now rather than waiting for the animation,
+			// so a button press never feels like it was dropped.
+			setActive(i);
+		}
+
+		function endSeek() {
+			seeking = false;
+			clearTimeout(seekTimer);
+			sync();
+		}
+
+		function refresh() {
+			slides = present();
+			if (bar) bar.style.display = slides.length > 1 ? "" : "none";
+			shown = -1;
+			buildDots();
+			sync();
+		}
+
+		if (prevBtn) {
+			prevBtn.addEventListener("click", function () {
+				go(index - 1);
+			});
+		}
+		if (nextBtn) {
+			nextBtn.addEventListener("click", function () {
+				go(index + 1);
+			});
+		}
+
+		var queued = false;
+		track.addEventListener("scroll", function () {
+			if (seeking || queued) return;
+			queued = true;
+			requestAnimationFrame(function () {
+				queued = false;
+				sync();
+			});
+		});
+
+		// scrollend lands exactly when a swipe or an animation settles.
+		// Safari only shipped it recently, so the timeout in go() is the
+		// fallback that clears `seeking` when this never fires.
+		track.addEventListener("scrollend", endSeek);
+
+		track.addEventListener("keydown", function (e) {
+			if (e.key === "ArrowRight") {
+				e.preventDefault();
+				go(index + 1);
+			} else if (e.key === "ArrowLeft") {
+				e.preventDefault();
+				go(index - 1);
+			}
+		});
+
+		// A slide whose file 404s hides itself, which happens after
+		// this runs. `error` does not bubble, so catch it capturing
+		// and rebuild the dots and the count around what is left.
+		track.addEventListener(
+			"error",
+			function (e) {
+				if (e.target && e.target.tagName === "IMG") refresh();
+			},
+			true,
+		);
+
+		// Slide width is the track width, so a resize moves every
+		// snap point. Re-pin to the slide that was showing.
+		var rt = null;
+		window.addEventListener("resize", function () {
+			clearTimeout(rt);
+			rt = setTimeout(function () {
+				go(index);
+			}, 120);
+		});
+
+		refresh();
 	}
 
 	/* ---------------- command palette ---------------- */

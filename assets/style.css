@@ -1262,6 +1262,233 @@ a.card .card-link {
 }
 
 /* ---------------------------------------------------------
+   8d-2. Photo album
+   A native scroll-snap track, not a JS carousel. Every slide
+   is always in the DOM and always reachable by swiping or by
+   the scrollbar, so the album still works with no JS at all.
+   The buttons and dots under it are enhancement and only
+   appear once [data-app="on"] is set.
+   --------------------------------------------------------- */
+.album {
+	/* Deliberately well short of the 760px column. This is a
+	   personal aside sitting in the middle of a CV, not a gallery,
+	   and at full width it read as the main event. */
+	max-width: 400px;
+	margin-top: 24px !important;
+}
+
+.album-track {
+	display: flex;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	/* A sideways swipe must not chain out to the pane behind it. */
+	overscroll-behavior-x: contain;
+	-webkit-overflow-scrolling: touch;
+	border-radius: 10px;
+	/* Visible only when JS is absent, where it is the sole
+	   affordance; hidden below once the buttons exist. */
+	scrollbar-width: thin;
+	scrollbar-color: var(--border) transparent;
+}
+
+.album-track:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
+}
+
+[data-app="on"] .album-track {
+	scrollbar-width: none;
+}
+
+[data-app="on"] .album-track::-webkit-scrollbar {
+	display: none;
+}
+
+.album-slide {
+	flex: 0 0 100%;
+	min-width: 0;
+	margin: 0;
+	scroll-snap-align: center;
+	scroll-snap-stop: always;
+}
+
+.album-slide[hidden] {
+	display: none;
+}
+
+.album-shot {
+	position: relative;
+	/* 4:3 is the compromise across a mixed album: the landscape
+	   shots fill it exactly and a 3:4 portrait still gets 56% of
+	   the width instead of the 50% a 3:2 frame would leave it. */
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	background: var(--chrome-3);
+}
+
+.album-blur,
+.album-img {
+	position: absolute;
+	inset: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* A blown-up, blurred copy of the same file fills whatever the
+   photo itself does not reach, so a portrait headshot and a
+   landscape snapshot sit in one frame with neither cropped. It
+   is the same URL, so it costs no extra network request. */
+.album-blur {
+	object-fit: cover;
+	filter: blur(22px) saturate(1.35) brightness(0.45);
+	transform: scale(1.22);
+}
+
+.album-img {
+	object-fit: contain;
+}
+
+.album-cap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px 8px;
+	margin-top: 9px;
+	min-height: 1.2em;
+	font-family: var(--mono);
+	font-size: 0.72rem;
+	color: var(--text-mute);
+}
+
+.album-file {
+	color: var(--text-dim);
+}
+
+.album-note::before {
+	content: "·";
+	margin-right: 8px;
+	color: var(--border);
+}
+
+/* ---- controls ---- */
+.album-bar {
+	display: none;
+	align-items: center;
+	gap: 10px;
+	margin-top: 12px;
+}
+
+[data-app="on"] .album-bar {
+	display: flex;
+}
+
+.album-nav {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	background: var(--chrome);
+	color: var(--text-dim);
+	font-family: var(--mono);
+	font-size: 1.05rem;
+	line-height: 1;
+	cursor: pointer;
+	transition:
+		border-color 0.16s ease,
+		color 0.16s ease,
+		background 0.16s ease;
+}
+
+.album-nav:hover:not(:disabled) {
+	border-color: var(--accent);
+	color: var(--accent);
+	background: var(--accent-soft);
+}
+
+.album-nav:disabled {
+	opacity: 0.32;
+	cursor: default;
+}
+
+.album-nav:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+.album-dots {
+	display: flex;
+	gap: 0;
+	margin-left: auto;
+}
+
+/* The dot you see is 7px, drawn by ::before. The button around
+   it is 24px with no gap, so adjacent centres land 24px apart
+   and the targets meet WCAG 2.5.8 on a touch screen. */
+.album-dot {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.album-dot::before {
+	content: "";
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--border);
+	transition:
+		background 0.18s ease,
+		transform 0.18s ease;
+}
+
+.album-dot:hover::before {
+	background: var(--text-mute);
+}
+
+.album-dot[aria-current="true"]::before {
+	background: var(--accent);
+	transform: scale(1.3);
+}
+
+.album-dot:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: -2px;
+	border-radius: 50%;
+}
+
+.album-count {
+	margin-left: auto;
+	font-family: var(--mono);
+	font-size: 0.72rem;
+	color: var(--text-mute);
+	font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.album-track {
+		scroll-behavior: auto;
+	}
+
+	.album-dot::before {
+		transition: none;
+	}
+}
+
+/* ---------------------------------------------------------
    8e. Skills groups
    Chips animate in with `animation`, not a JS-toggled class, so
    they are visible even if the animation never runs.
@@ -2144,6 +2371,9 @@ button[type="submit"]:disabled {
 	}
 	.other-projects {
 		font-size: 0.72rem;
+	}
+	.album-cap {
+		font-size: 0.68rem;
 	}
 }
 

@@ -32,7 +32,7 @@
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='monospace' fill='%23fe8019'%3E%26gt;%3C/text%3E%3C/svg%3E"
 		/>
 
-		<link rel="stylesheet" href="assets/style.css?v=19" />
+		<link rel="stylesheet" href="assets/style.css?v=32" />
 
 		<script type="application/ld+json">
 			{
@@ -126,10 +126,12 @@
 					</p>
 					<ul class="tree" data-tree="projects">
 						<li><a href="#p-ezee" data-file="p-ezee"><span class="fi" style="--c: #3178c6" aria-hidden="true"></span>ezee-budget<span class="tag-mini">TS</span></a></li>
+						<li><a href="#p-shipping" data-file="p-shipping"><span class="fi" style="--c: #f1e05a" aria-hidden="true"></span>mini-shipping-manager<span class="tag-mini">JS</span></a></li>
 						<li><a href="#p-daovien" data-file="p-daovien"><span class="fi" style="--c: #f1e05a" aria-hidden="true"></span>dao-vien<span class="tag-mini">Web</span></a></li>
+						<li><a href="#p-forged" data-file="p-forged"><span class="fi" style="--c: #3572a5" aria-hidden="true"></span>forged-data<span class="tag-mini">Py</span></a></li>
 						<li><a href="#p-genesis" data-file="p-genesis"><span class="fi" style="--c: #3572a5" aria-hidden="true"></span>genesis-alphabetizer<span class="tag-mini">Py</span></a></li>
 						<li><a href="#p-shooter" data-file="p-shooter"><span class="fi" style="--c: #3572a5" aria-hidden="true"></span>space-shooter<span class="tag-mini">Py</span></a></li>
-						<li><a href="#p-homelab" data-file="p-homelab"><span class="fi" style="--c: #3572a5" aria-hidden="true"></span>homelab<span class="tag-mini">Py</span></a></li>
+						<li><a href="#p-algotimer" data-file="p-algotimer"><span class="fi" style="--c: #f34b7d" aria-hidden="true"></span>algorithm-timer<span class="tag-mini">C++</span></a></li>
 						<li><a href="#p-blackjack" data-file="p-blackjack"><span class="fi" style="--c: #f1e05a" aria-hidden="true"></span>blackjack<span class="tag-mini">JS</span></a></li>
 					</ul>
 
@@ -219,6 +221,102 @@
 										</dd>
 									</div>
 								</dl>
+
+								<hr />
+
+								<!-- ============== photo album ==============
+								     The track is a native scroll-snap row, so every
+								     photo is reachable by swiping or by the scrollbar
+								     even if site.js never runs. The buttons, dots and
+								     counter below it are enhancement and only appear
+								     once JS has set [data-app="on"].
+
+								     TO ADD A PHOTO: copy one <figure class="album-slide">
+								     block, point BOTH <img> tags at the new file, and
+								     write the caption. Any shape works, the blurred
+								     backdrop fills whatever the photo does not cover.
+								     Run tools/add-photo.ps1 first to size it.
+								     ========================================== -->
+								<div class="album" id="album">
+									<div
+										class="album-track"
+										id="album-track"
+										tabindex="0"
+										role="group"
+										aria-label="Photos. Scroll sideways, or use the left and right arrow keys."
+									>
+										<figure class="album-slide">
+											<div class="album-shot">
+												<img class="album-blur" src="images/colton-and-ola.jpg" alt="" aria-hidden="true" loading="lazy" />
+												<img
+													class="album-img"
+													src="images/colton-and-ola.jpg"
+													alt="Colton and Ola on their front porch"
+													width="800"
+													height="600"
+													loading="lazy"
+													decoding="async"
+													onerror="var f=this.closest('.album-slide'); if (f) f.hidden = true;"
+												/>
+											</div>
+											<figcaption class="album-cap">
+												<span class="album-file">colton-and-ola.jpg</span>
+												<span class="album-note">Ola and me</span>
+											</figcaption>
+										</figure>
+
+										<figure class="album-slide">
+											<div class="album-shot">
+												<img class="album-blur" src="images/patches.jpg" alt="" aria-hidden="true" loading="lazy" />
+												<img
+													class="album-img"
+													src="images/patches.jpg"
+													alt="Patches, a black and white cat lying in the grass in a harness"
+													width="450"
+													height="600"
+													loading="lazy"
+													decoding="async"
+													onerror="var f=this.closest('.album-slide'); if (f) f.hidden = true;"
+												/>
+											</div>
+											<figcaption class="album-cap">
+												<span class="album-file">patches.jpg</span>
+												<span class="album-note">Patches</span>
+											</figcaption>
+										</figure>
+
+										<figure class="album-slide">
+											<div class="album-shot">
+												<img class="album-blur" src="images/raven.jpg" alt="" aria-hidden="true" loading="lazy" />
+												<img
+													class="album-img"
+													src="images/raven.jpg"
+													alt="Raven, a tabby cat standing on the carpet"
+													width="450"
+													height="600"
+													loading="lazy"
+													decoding="async"
+													onerror="var f=this.closest('.album-slide'); if (f) f.hidden = true;"
+												/>
+											</div>
+											<figcaption class="album-cap">
+												<span class="album-file">raven.jpg</span>
+												<span class="album-note">Raven</span>
+											</figcaption>
+										</figure>
+									</div>
+
+									<div class="album-bar">
+										<button type="button" class="album-nav" id="album-prev" aria-label="Previous photo">
+											<span aria-hidden="true">&lsaquo;</span>
+										</button>
+										<div class="album-dots" id="album-dots"></div>
+										<span class="album-count" id="album-count" aria-live="polite"></span>
+										<button type="button" class="album-nav" id="album-next" aria-label="Next photo">
+											<span aria-hidden="true">&rsaquo;</span>
+										</button>
+									</div>
+								</div>
 							</article>
 						</section>
 
@@ -315,8 +413,8 @@
 								<p class="subtitle">Shared household budgeting, built as a PWA</p>
 								<hr />
 
-								<div class="preview proj-hero" data-media="video" data-src="images/Project-images/EzeeBudget.mp4" style="--c: #3178c6">
-									<video muted loop playsinline preload="none" aria-label="ezee-budget demo"></video>
+								<div class="preview proj-hero" data-media="gif" data-src="images/Project-images/EzeeBudget.gif" style="--c: #3178c6">
+									<img alt="The ezee-budget household dashboard, showing net worth, assets and liabilities" />
 									<span class="preview-hint" aria-hidden="true">▶ preview</span>
 								</div>
 
@@ -365,7 +463,60 @@
 								<p class="tags"><span>React</span><span>TypeScript</span><span>Supabase</span><span>Tailwind</span><span>PWA</span></p>
 							
 
-								<p class="other-projects">Other projects <a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-homelab" data-file="p-homelab">homelab</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+								<p class="other-projects">Other projects <a href="#p-shipping" data-file="p-shipping">mini-shipping-manager</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-forged" data-file="p-forged">forged-data</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-algotimer" data-file="p-algotimer">algorithm-timer</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+							</article>
+						</section>
+
+						<!-- ============== Project: mini-shipping-manager =============== -->
+						<section class="file" id="p-shipping" aria-labelledby="p-shipping-h">
+							<article class="doc">
+								<h1 id="p-shipping-h">mini-shipping-manager</h1>
+								<p class="subtitle">An Express API that stores shipments and prints labels for them</p>
+								<hr />
+
+								<div class="preview proj-hero" data-media="gif" data-src="images/Project-images/MiniShippingManager.gif" style="--c: #f1e05a">
+									<img alt="Creating a shipment in mini-shipping-manager and watching it appear in the list" />
+									<span class="preview-hint" aria-hidden="true">▶ preview</span>
+								</div>
+
+								<h2>Overview</h2>
+								<p>
+									A shipping tool in two parts, a plain JavaScript front end and a
+									Node back end. You enter a recipient, address, weight and service
+									level, the shipment is written to MongoDB, and a printable PDF
+									label is generated for it. The most recent labels can be merged
+									into a single file so a batch prints in one go.
+								</p>
+
+								<h2>Problem</h2>
+								<p>
+									Printing labels one at a time is the slow part of shipping
+									anything in volume. Generating the label on the server from the
+									same record the system already holds means the paperwork cannot
+									drift away from the data, and merging the recent ones turns a
+									stack of separate prints into a single document.
+								</p>
+
+								<h2>How it works</h2>
+								<ul>
+									<li>A POST validates the payload, writes the shipment, and returns it</li>
+									<li>The PDF is written after the response has gone out, so the caller is not held open while a file is rendered to disk</li>
+									<li>A GET returns the five most recent shipments, newest first</li>
+									<li>A merge route stitches the recent labels into one PDF with pdf-lib and sends it back as a download</li>
+									<li>The same merge exists a second time as a Python script using PyPDF2</li>
+									<li>Anything a user typed is escaped before it is put back into the page</li>
+								</ul>
+
+								<h2>My role</h2>
+								<p>
+									Sole developer, front end and back end.
+								</p>
+
+								<p class="tags"><span>JavaScript</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Mongoose</span><span>PDFKit</span><span>pdf-lib</span><span>Python</span></p>
+								<p><a href="https://github.com/coltonphass/mini-shipping-manager-backend" rel="noopener">View the back end ↗</a></p>
+								<p><a href="https://github.com/coltonphass/mini-shipping-manager" rel="noopener">View the front end ↗</a></p>
+
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-forged" data-file="p-forged">forged-data</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-algotimer" data-file="p-algotimer">algorithm-timer</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
 							</article>
 						</section>
 
@@ -412,7 +563,59 @@
 								<p><a href="https://daovienmeditation.com/" rel="noopener">Visit the site ↗</a></p>
 							
 
-								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-homelab" data-file="p-homelab">homelab</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-shipping" data-file="p-shipping">mini-shipping-manager</a><a href="#p-forged" data-file="p-forged">forged-data</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-algotimer" data-file="p-algotimer">algorithm-timer</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+							</article>
+						</section>
+
+						<!-- ============== Project: forged-data =============== -->
+						<section class="file" id="p-forged" aria-labelledby="p-forged-h">
+							<article class="doc">
+								<h1 id="p-forged-h">forged-data</h1>
+								<p class="subtitle">Using Benford's Law to flag numbers that were made up</p>
+								<hr />
+
+								<div class="preview proj-hero" data-media="gif" data-src="images/Project-images/Forged-Data.gif" style="--c: #3572a5">
+									<img alt="forged-data running over a set of sample files" />
+									<span class="preview-hint" aria-hidden="true">▶ preview</span>
+								</div>
+
+								<h2>Overview</h2>
+								<p>
+									A Python tool that reads files of numbers, counts the leading
+									digit of every value, and compares what it finds against the
+									distribution Benford's Law predicts. It reports a forgery
+									coefficient: a single number for how far a file sits from the
+									curve it should be sitting on.
+								</p>
+
+								<h2>Why it works</h2>
+								<p>
+									In figures that arise naturally, leading digits are not evenly
+									spread. A 1 leads about thirty percent of the time and a 9 under
+									five. People inventing numbers tend to spread them evenly,
+									because even spread is what made up data looks like to a person.
+									A file that departs sharply from the curve is worth a second
+									look.
+								</p>
+
+								<h2>What it does</h2>
+								<ul>
+									<li>Counts how often each digit from 1 to 9 leads a value</li>
+									<li>Converts those totals to relative frequencies and compares them against the expected Benford values</li>
+									<li>Produces an offset per digit and one forgery coefficient per file</li>
+									<li>Runs across a batch of files and prints the results as a table</li>
+									<li>Carries on through unparseable values and missing files rather than stopping</li>
+								</ul>
+
+								<h2>My role</h2>
+								<p>
+									Sole developer. Written in Python.
+								</p>
+
+								<p class="tags"><span>Python</span><span>Statistics</span><span>Data forensics</span><span>File I/O</span></p>
+								<p><a href="https://github.com/coltonphass/Forged-Data" rel="noopener">View source ↗</a></p>
+
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-shipping" data-file="p-shipping">mini-shipping-manager</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-algotimer" data-file="p-algotimer">algorithm-timer</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
 							</article>
 						</section>
 
@@ -458,7 +661,7 @@
 								<p><a href="https://github.com/coltonphass/Genesis-Alphabetizer" rel="noopener">View source ↗</a></p>
 							
 
-								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-homelab" data-file="p-homelab">homelab</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-shipping" data-file="p-shipping">mini-shipping-manager</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-forged" data-file="p-forged">forged-data</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-algotimer" data-file="p-algotimer">algorithm-timer</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
 							</article>
 						</section>
 
@@ -504,55 +707,57 @@
 								<p><a href="https://github.com/coltonphass/Space-Shooter" rel="noopener">View source ↗</a></p>
 							
 
-								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-homelab" data-file="p-homelab">homelab</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-shipping" data-file="p-shipping">mini-shipping-manager</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-forged" data-file="p-forged">forged-data</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-algotimer" data-file="p-algotimer">algorithm-timer</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
 							</article>
 						</section>
 
-						<!-- ============== Project: homelab ================== -->
-						<section class="file" id="p-homelab" aria-labelledby="p-homelab-h">
+						<!-- ============== Project: algorithm-timer =============== -->
+						<section class="file" id="p-algotimer" aria-labelledby="p-algotimer-h">
 							<article class="doc">
-								<h1 id="p-homelab-h">homelab</h1>
-								<p class="subtitle">A Raspberry Pi running things I rely on</p>
+								<h1 id="p-algotimer-h">algorithm-timer</h1>
+								<p class="subtitle">Timing three sorting algorithms against identical input</p>
 								<hr />
 
-								<div class="preview proj-hero is-plain" style="--c: #3572a5" aria-hidden="true">
-									<span class="glyph">pi</span>
+								<div class="preview proj-hero" data-media="gif" data-src="images/Project-images/Algorithm-Timer.gif" style="--c: #f34b7d">
+									<img alt="algorithm-timer comparing three sorts in the console" />
+									<span class="preview-hint" aria-hidden="true">▶ preview</span>
 								</div>
 
 								<h2>Overview</h2>
 								<p>
-									A Raspberry Pi that sits on my network and runs Pi-hole for DNS
-									level ad blocking, plus two Python Discord bots.
+									A C++ console program that builds an array of random values and
+									runs bubble sort, selection sort and insertion sort across the
+									same input, reporting how long each one took in milliseconds.
 								</p>
 
 								<h2>Problem</h2>
 								<p>
-									Browser based ad blockers only cover the browser, and only on
-									the machine they are installed on. Running the block list at the
-									DNS layer covers every device on the network, including phones
-									and TVs that have no way to install an extension.
+									A complexity class tells you how an algorithm scales, not what it
+									costs. Three sorts that are all quadratic in the worst case still
+									behave quite differently on real input. Running them over
+									identical data and timing them turns that from something you are
+									told into something you can watch.
 								</p>
 
-								<h2>What it runs</h2>
+								<h2>What it does</h2>
 								<ul>
-									<li>Pi-hole, filtering DNS for every device on the network</li>
-									<li>Two Python Discord bots that need to stay online all the time</li>
+									<li>Generates one random array and gives every algorithm the same copy of it</li>
+									<li>Times each sort and reports the result in milliseconds</li>
+									<li>Prints the three times together so the gap between them is the thing you read</li>
 								</ul>
 
-								<h2>What I learned</h2>
+								<h2>My role</h2>
 								<p>
-									Most of the value here was operational rather than code: how DNS
-									resolution actually flows, keeping a service running across
-									reboots and power cuts, and the fact that something only you
-									maintain still needs to be maintained.
+									Sole developer. C++, standard library only.
 								</p>
 
-								<p class="tags"><span>Raspberry Pi</span><span>Pi-hole</span><span>Python</span><span>DNS</span><span>Linux</span></p>
-							
+								<p class="tags"><span>C++</span><span>Algorithms</span><span>Benchmarking</span></p>
+								<p><a href="https://github.com/coltonphass/Algorithm-Timer" rel="noopener">View source ↗</a></p>
 
-								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-shipping" data-file="p-shipping">mini-shipping-manager</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-forged" data-file="p-forged">forged-data</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-blackjack" data-file="p-blackjack">blackjack</a></p>
 							</article>
 						</section>
+
 
 						<!-- ============== Project: blackjack =============== -->
 						<section class="file" id="p-blackjack" aria-labelledby="p-blackjack-h">
@@ -561,8 +766,9 @@
 								<p class="subtitle">Browser blackjack with standard dealer rules</p>
 								<hr />
 
-								<div class="preview proj-hero is-plain" style="--c: #f1e05a" aria-hidden="true">
-									<span class="glyph">21</span>
+								<div class="preview proj-hero" data-media="gif" data-src="images/Project-images/Blackjack.gif" style="--c: #f1e05a">
+									<img alt="A hand of blackjack being played in the browser" />
+									<span class="preview-hint" aria-hidden="true">▶ preview</span>
 								</div>
 
 								<h2>Overview</h2>
@@ -587,7 +793,7 @@
 								<p><a href="https://coltonsgames.netlify.app/html/blackjack.html" rel="noopener">Play it ↗</a></p>
 							
 
-								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-homelab" data-file="p-homelab">homelab</a></p>
+								<p class="other-projects">Other projects <a href="#p-ezee" data-file="p-ezee">ezee-budget</a><a href="#p-shipping" data-file="p-shipping">mini-shipping-manager</a><a href="#p-daovien" data-file="p-daovien">dao-vien</a><a href="#p-forged" data-file="p-forged">forged-data</a><a href="#p-genesis" data-file="p-genesis">genesis-alphabetizer</a><a href="#p-shooter" data-file="p-shooter">space-shooter</a><a href="#p-algotimer" data-file="p-algotimer">algorithm-timer</a></p>
 							</article>
 						</section>
 
@@ -914,6 +1120,6 @@
 			<ul id="pal-list"></ul>
 		</div>
 
-		<script src="assets/site.js?v=19"></script>
+		<script src="assets/site.js?v=32"></script>
 	</body>
 </html>
